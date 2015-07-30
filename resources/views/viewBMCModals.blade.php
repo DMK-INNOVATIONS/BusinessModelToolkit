@@ -20,6 +20,7 @@
 <?php 
 	$new_bmc_view = false;
 	$posturl = $bmc_id;
+	$view_type = 'viewBMC';
 ?>
 
 
@@ -85,21 +86,3 @@
     </div>
   </div>
 </div>
-
-<!-- add Persona Modal -->
-<div class="modal fade" id="addPersonaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">add Persona</h4>
-      </div>
-      <div class="modal-body">
-        ... Hier muss noch Text rein ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div

@@ -22,6 +22,7 @@ Route::get('bmc/edit/{id}', 'BmcController@edit');
 Route::get('bmc/delete/{id}','BmcController@deleteBMC');
 Route::get('bmc/viewBMC/{id}', 'BMCController@viewBMC');
 Route::post('bmc/savePostIt/{id}', 'BMCController@savePostIt');
+Route::get('bmc/deletePostIt/{id}', 'BMCController@deletePostIt');
 Route::post('bmc/changeStatus/{id}', 'BMCController@changeStatus');
 
 Route::get('projects', 'ProjectsController@index');
@@ -36,7 +37,7 @@ Route::get('notice/edit/{id}', 'NoticeController@edit');
 Route::get('notice/delete/{id}','NoticeController@deleteProject');
 
 Route::get('persona', 'PersonaController@index');
-Route::get('persona/create', 'PersonaController@create');
+Route::get('persona/create/{id}', 'PersonaController@create');
 Route::post('persona/save/{id?}', 'PersonaController@save');
 Route::get('persona/edit/{id}', 'PersonaController@edit');
 Route::get('persona/delete/{id}','PersonaController@deletePersona');

@@ -19,8 +19,8 @@
 					@endif
 					
 					<?php 
-						$posturl = "";
-						if(isset($persona)) : $posturl = $persona['id']; endif;
+						$posturl = "null";
+						if(isset($persona)) : $posturl = $persona['id']; endif;						
 					?>
 			
 				<div class="row">
@@ -36,7 +36,7 @@
 						<?php endif; ?>
 					</div>
 					<div class="col-md-9">
-						<form class="form-horizontal" role="form" method="POST" action="{{ url('/persona/save/'.$posturl) }}">
+						<form class="form-horizontal" role="form" method="POST" action="{{ url('/persona/save/'.$posturl.','.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status) }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	
 							<div class="form-group">
@@ -153,7 +153,7 @@
 							
 							<div class="form-group">
 								<div class="col-md-8 col-md-offset-2">
-									<a href="{{ url('/persona') }}"><button type="submit" class="btn btn-primary">Save</button></a>
+									<button type="submit" class="btn btn-primary">Save</button>
 									<a href="{{ url('/persona') }}"><button type="button" class="btn btn-default">Back</button></a>
 								</div>
 							</div>

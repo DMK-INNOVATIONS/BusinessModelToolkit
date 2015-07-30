@@ -35,10 +35,9 @@ class PersonaController extends Controller {
 	public function index() {
 		$getMyPersonas = $this->getMyPersonas();
 		
-		return view ( 'persona', [ 
-				'myPersonas' => $getMyPersonas 
-		] );
+		return view ( 'persona', ['myPersonas' => $getMyPersonas]);
 	}
+	
 	public function getAllPersonas() {
 		return Persona::all ();
 	}
@@ -64,9 +63,17 @@ class PersonaController extends Controller {
 	}
 	
 	public function edit($id){
+		$inserts = explode(",", $id);
+		
+		$persona_id = $inserts[0];
+		$view_type = $inserts[1];
+		$bmc_id = $inserts[2];
+		$project_id = $inserts[3];
+		$bmc_status = $inserts[4];
+		
 		$persona = Persona::find($id);
-	
-		return view('newPersona', ['persona' => json_decode($persona, true)]);
+		
+		return view('newPersona', ['view_type' => $view_type, 'bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_status' =>$bmc_status, 'persona' => $persona]);
 	}
 	
 	public function deletePersona($id){
@@ -75,7 +82,16 @@ class PersonaController extends Controller {
 		return redirect('persona');
 	}
 	
-	public function save($id=null){
+	public function save($id){
+		
+		$inserts = explode(",", $id);
+		
+		$persona_id = $inserts[0];
+		$view_type = $inserts[1];
+		$bmc_id = $inserts[2];
+		$project_id = $inserts[3];
+		$bmc_status = $inserts[4];		
+		
 		$name = $_POST["name"];
 		
 		if($name == ''){
@@ -85,7 +101,7 @@ class PersonaController extends Controller {
 		}else{
 			//noch prüfen ob Titel schon in DB vorhanden ist in Kombi mit diesem Assignee
 	
-			if(is_null($id)){
+			if($persona_id == 'null'){
 				$persona = new Persona();
 			} else {
 				$persona = Persona::find($id);
@@ -103,7 +119,13 @@ class PersonaController extends Controller {
 			$persona->needs = $_POST["needs"];
 			$persona->save();
 	
-			return redirect('persona');
+			if($view_type == 'persona'){
+				return redirect('persona');
+			}else {
+				$view = '../public/bmc/viewBMC/'.$bmc_id.$project_id.$bmc_status;
+					
+				return redirect($view);
+			}
 		}
 	}
 	
@@ -112,9 +134,16 @@ class PersonaController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($id)
 	{
-		return view('newPersona');
+		$inserts = explode(",", $id);
+		
+		$view_type = $inserts[0];
+		$bmc_id = $inserts[1];
+		$project_id = $inserts[2];
+		$bmc_status = $inserts[3];
+		
+		return view('newPersona', ['view_type' => $view_type, 'bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_status' =>$bmc_status]);
 	}
 	
 	/**

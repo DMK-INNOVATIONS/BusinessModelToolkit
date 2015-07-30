@@ -37,11 +37,7 @@ class ProjectsController extends Controller {
 		$user_name = Auth::user ()->name;
 		$getMyProjects = $this->getMyProjects ();
 		
-		return view ( 'projects', [ 
-				'myProjects' => $getMyProjects 
-		], [ 
-				'user_name' => $user_name 
-		] );
+		return view ( 'projects', ['myProjects' => $getMyProjects ], ['user_name' => $user_name ] );
 	}
 	
 	/**

@@ -3,7 +3,9 @@
 use App\BMC;
 use App\Status;
 use App\Project;
+use App\Persona;
 use App\Http\Controllers\Auth\AuthController;
+use Illuminate\Support\Facades\Auth;
 use App\Notice;
 use App\App;
 class BmcController extends Controller {
@@ -134,6 +136,8 @@ class BmcController extends Controller {
 	public function viewBMC($id){
 		$inserts= str_split($id);
 		
+		$myPersonas = $this->getMyPersonas();
+		
 		$bmc = BMC::find($inserts[0]);
 		
 		$bmc_name= $bmc['title'];
@@ -156,7 +160,31 @@ class BmcController extends Controller {
 				break;
 		}
 	
-		return view('viewBMC', ['bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_name' => $bmc_name, 'bmc_status' => $bmc_status, 'bmc_postIts' => $bmc_postIts]);
+		return view('viewBMC', ['bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_name' => $bmc_name, 'bmc_status' => $bmc_status, 'bmc_postIts' => $bmc_postIts, 'myPersonas' =>$myPersonas]);
+	}
+	
+	public function getAllPersonas() {
+		return Persona::all ();
+	}
+	
+	public function getMyPersonas(){
+		$allPersonas = $this->getAllPersonas();
+		$personas = json_decode($allPersonas, true);
+	
+		$user_id = Auth::user()->id;
+		$myPersonas = array();
+	
+		foreach ($personas as $persona){
+	
+			$assigne_id = $persona["assignee_id"];
+	
+			if($user_id == $assigne_id){
+				$temp = json_encode($persona);
+				array_push($myPersonas, $persona);
+			}
+		}
+	
+		return $myPersonas;
 	}
 	
 	public function getBMCPostIts($bmc_id){
@@ -268,11 +296,13 @@ class BmcController extends Controller {
 	public function deletePostIt($id){
 		$inserts= str_split($id);
 	
-		Notice::destroy($inserts[0]);
+		$post_it_id = $inserts[0];
+		$bmc_id = $inserts[1];
+		$project_id = $inserts[2];
+		$bmc_status = $inserts[3];
+
+		Notice::destroy($post_it_id);
 	
-		$project_id = $inserts[1];
-		$view = 'projects/showBMCs/'.$project_id;
-			
 		$view = '../public/bmc/viewBMC/'.$bmc_id.$project_id.$bmc_status;
 			
  		return redirect($view);

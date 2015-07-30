@@ -28,6 +28,11 @@
 						    <th>edit</th>
 					  	</tr>
 							<?php 
+								$view_type= 'persona';
+								$bmc_id = 'null';
+								$project_id = 'null';
+								$bmc_status = 'null';
+							
 							foreach ($myPersonas as $myPersona){
 								print '<tr>';
 									print '<td>';
@@ -52,7 +57,7 @@
 										print $myPersona["updated_at"];
 									print '</td>';
 									print '<td>';
-										print '<a href="persona/edit/'.$myPersona["id"].'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>  ';
+										print '<a href="persona/edit/'.$myPersona["id"].','.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>  ';
 										print '<a href="persona/delete/'.$myPersona["id"].'"><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a>  ';
 									print '</td>';
 									print '<td>';
@@ -124,7 +129,7 @@
 					</div>
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<br>
-						<a href="persona/create"><button type="button" class="btn btn-primary">new Persona</button></a>
+						<?php print '<a href="persona/create/'.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.'"><button type="button" class="btn btn-primary">new Persona</button></a>';?>
 					</div>
 				</div>
 			</div> 

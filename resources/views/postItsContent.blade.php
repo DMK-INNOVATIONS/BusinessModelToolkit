@@ -1,6 +1,5 @@
 <div class="panel-body canvas_box">
 	<?php
-	
 		$empty = true;
 		foreach ($bmc_postIts as $bmc_postIt){
 			if($bmc_postIt['canvas_box_id']==$boxId){
@@ -22,8 +21,8 @@
 				print '</div>
 						<div>'.$bmc_postIt['content'].'</div>
 						<div class="post-it-footer">
-							<a href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>  
-							<a href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a>
+							<a href="#addPostItModal'.$boxId.'" role="button" data-toggle="modal"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>  
+							<a href="/bmc/public/bmc/deletePostIt/'.$bmc_postIt['id'].$bmc_id.$project_id.$status.'"><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a>
 						</div>
 					</div>
 				';
