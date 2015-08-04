@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Auth;
 use App\Notice;
 use App\App;
+use Illuminate\Http\Request;
 class BmcController extends Controller {
 
 	/*
@@ -306,5 +307,68 @@ class BmcController extends Controller {
 		$view = '../public/bmc/viewBMC/'.$bmc_id.$project_id.$bmc_status;
 			
  		return redirect($view);
+	}
+	
+	public function changePostItStatus($id){
+		$inserts = explode(",", $id);
+	
+		$project_id = $inserts[0];
+		$bmc_id = $inserts[1];
+		$bmc_status = $inserts[2];
+		$postIt_id = $inserts[3];
+		$postIt_status = $_POST["postIt_status"];
+	
+		$postIt = Notice::find($postIt_id);
+			
+		switch ($postIt_status) {
+			case 'inWork':
+				$postIt->status = Status::IN_WORK;
+				break;
+			case 'approved':
+				$postIt->status = Status::APPROVED;
+				break;
+			case 'rejected':
+				$postIt->status = Status::REJECTED;
+				break;
+		}
+	
+		$postIt->save();
+			
+		$view = '../public/bmc/viewBMC/'.$bmc_id.$project_id.$bmc_status;
+	
+		return redirect($view);
+	}
+	
+	public function addPersona(Request $request, $id){
+		$bmc = BMC::find($id);
+		
+		if(empty($bmc)) return "ERROR!";
+		
+		$personaIds = $request->input('selectedPersona');
+		if(!empty($personaIds)){
+			// remove all existing
+			$bmc->personas()->detach();
+			// save new relations
+			$bmc->personas()->attach($personaIds);
+			$bmc->save();
+		}
+		
+		switch ($bmc->status) {
+			case 'inWork':
+				$status = 1;
+				break;
+			case 'approved':
+				$status = 2;
+				break;
+			case 'rejected':
+				$status = 3;
+				break;
+		}
+		
+		//print($bmc->personas()->get());
+		
+		$view = '../public/bmc/viewBMC/'.$bmc->id.$bmc->project->id.$status;
+		
+		return redirect($view);
 	}
 }

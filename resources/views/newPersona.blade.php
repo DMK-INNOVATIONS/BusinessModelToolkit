@@ -154,7 +154,13 @@
 							<div class="form-group">
 								<div class="col-md-8 col-md-offset-2">
 									<button type="submit" class="btn btn-primary">Save</button>
-									<a href="{{ url('/persona') }}"><button type="button" class="btn btn-default">Back</button></a>
+									<?php 
+										if($view_type == "viewBMC"){
+											print '<a href="/bmc/public/bmc/viewBMC/'.$bmc_id.$project_id.$bmc_status.'"><button type="button" class="btn btn-default">Back</button></a>';	
+										}else{
+											print '<a href="/bmc/public/persona"><button type="button" class="btn btn-default">Back</button></a>';
+										}
+									?>
 								</div>
 							</div>
 						</form>

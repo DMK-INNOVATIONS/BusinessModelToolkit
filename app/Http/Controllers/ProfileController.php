@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
 class ProfileController extends Controller {
 
 	/*
@@ -28,23 +29,25 @@ class ProfileController extends Controller {
 	 */
 	public function index()
 	{
-		return view('profile');
-	}
-	
-	public function edit($id) {
-		$user = User::find ( $id );
-	
-		return view ( 'profile', ['user' => json_decode ( $user, true )]);
+		return view('profile', ['user' => json_decode ( Auth::user(), true )]);
 	}
 
-	public function save() {
-		$user_id = Auth::user ()->id;
-		$user = User::find ( $user_id );
+	public function save($id) {
+		$user = User::find($id);
 
-		$user->name = $_POST ["name"];
-		$user->email = $_POST ["email"];
-		$user->password = $_POST ["password"];
-		$user->save ();
+		if(!empty($_POST ["name"])){
+			$user->name = $_POST ["name"];
+		}
+		
+		if(!empty($_POST ["email"])){
+			$user->email = $_POST ["email"];
+		}
+		
+		if(!empty($_POST ["password"])){
+			$user->password = bcrypt($_POST['password']);
+		}
+		
+		$user->save();
 			
 		return redirect ( 'bmc' );
 	}

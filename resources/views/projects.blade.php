@@ -12,41 +12,34 @@
 				<div class="panel-body">
 					
 					<div class="panel panel-default">
-					  <div class="panel-body">
+					  <div class="panel-body table_text">
 					    <p>In this Table you can find all your created Projects.</p>
 					  </div>
-					
-					  <table class="table">
-					    <tr>
-						    <th>Title</th>
-						    <th>created at</th>
-						    <th>updated at</th>
-						    <th>edit</th>
-						    <th>BMC's</th>
-					  	</tr>
+					  
+					  <div class="row table_head">
+					  		<div class="col-md-3">Title</div>
+					  		<div class="col-md-3">created at</div>
+					  		<div class="col-md-3">updated at</div>
+					  		<div class="col-md-1">edit</div>
+					  		<div class="col-md-2">BMC's</div>
+					  </div>
+
 							<?php 
 							foreach ($myProjects as $myProject){
-								print '<tr>';
-									print '<td>';
-										print $myProject["title"];
-									print '</td>';
-									print '<td>';
-										print $myProject["created_at"];
-									print '</td>';
-									print '<td>';
-										print $myProject["updated_at"];
-									print '</td>';
-									print '<td>';
-										print '<a href="projects/edit/'.$myProject["id"].'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>   ';
-										print '<a href="projects/delete/'.$myProject["id"].'"><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a>';
-									print '</td>';
-									print '<td>';
-										print '<a href="projects/showBMCs/'.$myProject["id"].'"><button type="button" class="btn btn-default">show BMC\'s </button></a>';
-									print '</td>';
-								print '</tr>';
+								print '<div class="row table_body">';
+									print '<div class="col-md-3">'.$myProject["title"].'</div>
+							  		<div class="col-md-3">'.$myProject["created_at"].'</div>
+							  		<div class="col-md-3">'.$myProject["updated_at"].'</div>
+							  		<div class="col-md-1">';
+									print '<a href="projects/edit/'.$myProject["id"].'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>   ';
+									print '<a href="projects/delete/'.$myProject["id"].'"><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a>';
+									print '</div>
+							  		<div class="col-md-2">';
+									print '<a href="projects/showBMCs/'.$myProject["id"].'"><button type="button" class="btn btn-default">show BMC\'s </button></a>';
+					    			print'</div>';
+								print '</div>';							
 							}
 							?>   	
-					  </table>
 					</div>
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<br>

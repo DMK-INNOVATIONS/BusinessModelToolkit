@@ -42,6 +42,6 @@ class BMC extends Model {
 	 */
 	public function personas()
 	{
-		return $this->belongsToMany('App\Persona', 'bmc_personas');
+		return $this->belongsToMany('App\Persona', 'bmc_personas', 'bmc_id', 'persona_id');
 	}
 }

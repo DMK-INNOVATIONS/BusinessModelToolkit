@@ -14,7 +14,7 @@
 				<div class="panel-heading">User Profile <button type="button" data-toggle="modal" data-target="#helpModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button></div>
 				<div class="panel-body">
 				
-				<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
+				<form class="form-horizontal" role="form" method="POST" action="/bmc/public/profile/save/<?php print $user['id'];?>">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						
 						<div class="form-group">
@@ -42,7 +42,7 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label">Password</label>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="password" value="{{ old('password') }}">
+								<input type="password" class="form-control" name="password" value="{{ old('password') }}">
 							</div>
 						</div>
 

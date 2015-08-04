@@ -11,75 +11,63 @@
 					<!-- Team Member Table -->
 					
 					<div class="panel panel-default">
-					  <div class="panel-body">
+					  <div class="panel-body table_text">
 					    <p>In this Table you can see, add and edit all your Business Model Canvas.</p>
 					  </div>
-					
-					  <!-- Table -->
-					  <table class="table">
-					    <tr>
-						    <th>Titel</th>
-						    <th class="showBMCTable_center">Status</th>
-						    <th class="showBMCTable_center">Version</th>
-						    <th>created_at</th>
-						    <th>updated_at</th>
-						    <th class="showBMCTable_center">edit</th>
-						    <th class="showBMCTable_center"></th>
-					  	</tr>  	
+					  
+					  <div class="row table_head">
+					  		<div class="col-md-2">Title</div>
+					  		<div class="col-md-2">Status</div>
+					  		<div class="col-md-1">Version</div>
+					  		<div class="col-md-2">created at</div>
+					  		<div class="col-md-2">updated at</div>
+					  		<div class="col-md-1">edit</div>
+					  		<div class="col-md-2"></div>
+					  </div>
+
 					  	<?php 					  	
 							foreach ($bmcs as $bmc){
 								
 								$new_bmc_view = true;
 								$posturl = $bmc["id"];
 								
-								print '<tr>';
-									print '<td>';
-										print $bmc["title"];
-									print '</td>';
-									print '<td class="showBMCTable_center">';
-									
-										switch ($bmc["status"]) {
-											case 'inWork':
-												print '<button type="button" data-toggle="modal" data-target="#statusChangeModal'.$bmc["id"].'" class="btn btn-warning showBMCStatus">'.$bmc["status"].'</button>';
-												break;
-											case 'approved':
-												print '<button type="button" data-toggle="modal" data-target="#statusChangeModal'.$bmc["id"].'" class="btn btn-success showBMCStatus">'.$bmc["status"].'</button>';
-												break;
-											case 'rejected':
-												print '<button type="button" data-toggle="modal" data-target="#statusChangeModal'.$bmc["id"].'" class="btn btn-danger showBMCStatus">'.$bmc["status"].'</button>';
-												break;
-										}
-								
-									print '</td>';
-									print '<td class="showBMCTable_center">';
-										print $bmc["version"];
-									print '</td>';
-									print '<td>';
-										print $bmc["created_at"];
-									print '</td>';
-									print '<td>';
-										print $bmc["updated_at"];
-									print '</td>';
-									print '<td class="showBMCTable_center">';
-										print '<a href="/bmc/public/bmc/edit/'.$bmc["id"].'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>   ';
-										print '<a href="/bmc/public/bmc/delete/'.$bmc["id"].$project_id.'"><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a>';
-									print '</td>';
-									print '<td class="showBMCTable_center">';
-										$temp_status;
-									
-										if ($bmc["status"] == 'inWork'){
-											$temp_status = 1;
-										}elseif ($bmc["status"] == 'approved'){
-											$temp_status = 2;
-										}elseif ($bmc["status"] == 'rejected'){
-											$temp_status = 3;
-										}
-										print '<a href="/bmc/public/bmc/viewBMC/'.$bmc["id"].$project_id.$temp_status.'"><button type="button" class="btn btn-default">show BMC</button></a>';
-									print '</td>';
-								print '</tr>';	
+								print '<div class="row table_body">
+											<div class="col-md-2">'.$bmc["title"].'</div>
+											<div class="col-md-2">';
+												switch ($bmc["status"]) {
+													case 'inWork':
+														print '<button type="button" data-toggle="modal" data-target="#statusChangeModal'.$bmc["id"].'" class="btn btn-warning showBMCStatus">'.$bmc["status"].'</button>';
+														break;
+													case 'approved':
+														print '<button type="button" data-toggle="modal" data-target="#statusChangeModal'.$bmc["id"].'" class="btn btn-success showBMCStatus">'.$bmc["status"].'</button>';
+														break;
+													case 'rejected':
+														print '<button type="button" data-toggle="modal" data-target="#statusChangeModal'.$bmc["id"].'" class="btn btn-danger showBMCStatus">'.$bmc["status"].'</button>';
+														break;
+												}
+								print'		</div>
+											<div class="col-md-1">'.$bmc["version"].'</div>
+											<div class="col-md-2">'.$bmc["created_at"].'</div>
+											<div class="col-md-2">'.$bmc["updated_at"].'</div>
+											<div class="col-md-1">';
+												print '<a href="/bmc/public/bmc/edit/'.$bmc["id"].'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>   ';
+												print '<a href="/bmc/public/bmc/delete/'.$bmc["id"].$project_id.'"><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a>';
+								print'		</div>
+											<div class="col-md-2">';
+												$temp_status;
+													
+												if ($bmc["status"] == 'inWork'){
+													$temp_status = 1;
+												}elseif ($bmc["status"] == 'approved'){
+													$temp_status = 2;
+												}elseif ($bmc["status"] == 'rejected'){
+													$temp_status = 3;
+												}
+												print '<a href="/bmc/public/bmc/viewBMC/'.$bmc["id"].$project_id.$temp_status.'"><button type="button" class="btn btn-default">show BMC</button></a>';
+								print'		</div>
+										</div>';	
 							}							
 							?>   	
-					  </table>
 					</div>					
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<br>
