@@ -26,6 +26,7 @@ Route::get('bmc/deletePostIt/{id}', 'BMCController@deletePostIt');
 Route::post('bmc/changeStatus/{id}', 'BMCController@changeStatus');
 Route::post('bmc/changePostItStatus/{id}', 'BMCController@changePostItStatus');
 Route::post('bmc/addPersona/{id}', 'BMCController@addPersona');
+Route::get('bmc/deleteAssignedPersona/{id}', 'BMCController@deleteAssignedPersona');
 
 Route::get('projects', 'ProjectsController@index');
 Route::get('projects/create', 'ProjectsController@create');
@@ -51,9 +52,7 @@ Route::get('project_bmc_view', 'ProjectBmcViewController@index');
 
 Route::get('team', 'TeamController@index');
 Route::get('team/create', 'TeamController@create');
-Route::post('team/save/{id?}', 'TeamController@save');
-Route::get('team/edit/{id}', 'TeamController@edit');
-Route::get('team/delete/{id}','TeamController@deleteTeamMember');
+Route::post('team/addUserToProject', 'TeamController@addUserToProject');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

@@ -4,6 +4,14 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1 col-sm-10 col-xs-12">
+
+			@if(session('error'))
+				<div class="panel panel-danger">
+					<div class="panel-heading"></div>
+					<div class="panel-body">{{ session('error') }}</div>
+				</div>
+			@endif
+
 			<div class="panel panel-default">
 				<div class="panel-heading">My Team <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button></div>
 				<div class="panel-body">
@@ -11,19 +19,37 @@
 					<!-- Team Member Table -->
 					
 					<div class="panel panel-default">
-					  <div class="panel-body">
-					    <p>In this Table you can see, add and edit all your Team Members.</p>
+					  <div class="panel-body table_text">
+					    <p>In this Table you can see, add and edit all your Connections between Team Members an your Projects.</p>
 					  </div>
 					
 					  <!-- Table -->
-					  <table class="table">
-					    <tr>
-						    <th>Name</th>
-						    <th>E-Mail</th>
-						    <th>Assigned Project</th>
-						    <th>edit</th>
-					  	</tr>  	
-					  </table>
+					  <div class="row table_head">
+					  		<div class="col-md-3">Name</div>
+					  		<div class="col-md-3">E-Mail</div>
+					  		<div class="col-md-3">Assigned Project</div>
+					  		<div class="col-md-3">edit</div>
+					  </div>
+					  <?php 
+							foreach ($assignedTeamMembers as $assignedTeamMember){
+								foreach ($assignedTeamMember as $teamMember){
+									print '<div class="row table_body">';
+										print '<div class="col-md-3">'.$teamMember['name'].'</div>
+								  		<div class="col-md-3">'.$teamMember['email'].'</div>';
+										foreach($myProjects as $myProject){
+											if($teamMember['pivot']['project_id'] == $myProject['id']){
+												print '<div class="col-md-3">'.$myProject['title'].'</div>';	
+											}	
+										}
+								  		print '<div class="col-md-3">';
+											print '<a href=""><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>   ';
+											print '<a href=""><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a>';
+										print '</div>';
+									print '</div>';
+								}						
+							}
+							?> 
+					  
 					</div>
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<br>

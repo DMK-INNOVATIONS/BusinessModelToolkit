@@ -42,7 +42,7 @@ class Project extends Model {
 	 */
 	public function members()
 	{
-		return $this->belongsToMany('App\User', 'project_members');
+		return $this->belongsToMany('App\User', 'project_members', 'project_id', 'user_id');
 	}
 
 	/**

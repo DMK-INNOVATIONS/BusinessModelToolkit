@@ -33,7 +33,7 @@
 				    			<div class="row">
 					    			<div class="panel panel-default bmc_view_content_container big_column">
 					    				<div class="panel-heading"><b>Key Partners</b>  <button type="button" data-toggle="modal" data-target="#addPostItModal1" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
-										@include('postItsContent', array('boxId' => 1))
+										@include('postItsContent', ['boxId' =>1])
 										@include('postItsViewModal', ['boxId' =>1])
 									</div>
 								</div>
@@ -42,14 +42,14 @@
 				    			<div class="row">
 				    				<div class="panel panel-default bmc_view_content_container">
 					    				<div class="panel-heading"><b>Key Activities</b>  <button type="button" data-toggle="modal" data-target="#addPostItModal2" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
-										@include('postItsContent', array('boxId' => 2))
+										@include('postItsContent', ['boxId' =>2])
 										@include('postItsViewModal', ['boxId' =>2])
 									</div>
 				    			</div>	
 				    			<div class="row">
 				    				<div class="panel panel-default bmc_view_content_container">
 					    				<div class="panel-heading"><b>Key Ressources</b>  <button type="button" data-toggle="modal" data-target="#addPostItModal3" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
-										@include('postItsContent', array('boxId' => 3))
+										@include('postItsContent', ['boxId' =>3])
 										@include('postItsViewModal', ['boxId' =>3])
 									</div>
 				    			</div>
@@ -58,7 +58,7 @@
 				    			<div class="row">
 					    			<div class="panel panel-default bmc_view_content_container big_column">
 					    				<div class="panel-heading"><b>Value Propositions</b>  <button type="button" data-toggle="modal" data-target="#addPostItModal4" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
-										@include('postItsContent', array('boxId' => 4))
+										@include('postItsContent', ['boxId' =>4])
 										@include('postItsViewModal', ['boxId' =>4])
 									</div>
 								</div>
@@ -67,14 +67,14 @@
 				    			<div class="row">
 				    				<div class="panel panel-default bmc_view_content_container">
 					    				<div class="panel-heading"><b>Customer Relationships</b>  <button type="button" data-toggle="modal" data-target="#addPostItModal5" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
-										@include('postItsContent', array('boxId' => 5))
+										@include('postItsContent', ['boxId' =>5])
 										@include('postItsViewModal', ['boxId' =>5])
 									</div>
 				    			</div>	
 				    			<div class="row">
 				    				<div class="panel panel-default bmc_view_content_container">
 					    				<div class="panel-heading"><b>Channels</b>  <button type="button" data-toggle="modal" data-target="#addPostItModal6" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
-										@include('postItsContent', array('boxId' => 6))
+										@include('postItsContent', ['boxId' =>6])
 										@include('postItsViewModal', ['boxId' =>6])
 									</div>
 				    			</div>
@@ -83,7 +83,7 @@
 				    			<div class="row">
 				    				<div class="panel panel-default bmc_view_content_container big_column">
 					    				<div class="panel-heading"><b>Customer Segments</b>  <button type="button" data-toggle="modal" data-target="#addPersonaModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
-										@include('personaContent', array('boxId' => 7))
+										@include('personaContent', ['boxId' =>7])
 										@include('personaViewModal')
 									</div>
 								</div>
@@ -94,7 +94,7 @@
 				    			<div class="row">
 				    				<div class="panel panel-default bmc_view_content_container">
 					    				<div class="panel-heading"><b>Cost Structure</b>  <button type="button" data-toggle="modal" data-target="#addPostItModal8" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
-										@include('postItsContent', array('boxId' => 8))
+										@include('postItsContent', ['boxId' =>8])
 										@include('postItsViewModal', ['boxId' =>8])
 									</div>
 								</div>
@@ -103,7 +103,7 @@
 				    			<div class="row">
 					    			<div class="panel panel-default bmc_view_content_container">
 					    				<div class="panel-heading"><b>Revenue Streams</b>  <button type="button" data-toggle="modal" data-target="#addPostItModal9" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></div>
-										@include('postItsContent', array('boxId' => 9))
+										@include('postItsContent', ['boxId' =>9])
 										@include('postItsViewModal', ['boxId' =>9])
 									</div>
 								</div>

@@ -36,8 +36,9 @@ class ProjectsController extends Controller {
 	public function index() {
 		$user_name = Auth::user ()->name;
 		$getMyProjects = $this->getMyProjects ();
+		$myAssignedProjects = $this->getMyAssignedProjects();
 		
-		return view ( 'projects', ['myProjects' => $getMyProjects ], ['user_name' => $user_name ] );
+		return view ( 'projects', ['myProjects' => $getMyProjects, 'user_name' => $user_name, 'myAssignedProjects' => $myAssignedProjects] );
 	}
 	
 	/**
@@ -210,5 +211,24 @@ class ProjectsController extends Controller {
 			return Redirect::action ( NewProjectController::index () );
 		}
 		return Redirect::action ( NewProjectController::createNewProject () );
+	}
+	
+	public function getMyAssignedProjects(){
+		$allProjects = $this->getAllProjects();
+		$user_id = Auth::user()->id;
+	
+		$myAssignedProjects = array();
+	
+		foreach($allProjects as $aProject){
+			$project = Project::find($aProject['id']);
+			$assignedTeamMembers = $project->members()->get();
+				
+			foreach ($assignedTeamMembers as $assignedTeamMember){
+				if($assignedTeamMember['id'] == $user_id){
+					array_push($myAssignedProjects, $project);
+				}
+			}
+		}
+		return $myAssignedProjects;
 	}
 }

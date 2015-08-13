@@ -82,7 +82,7 @@ class BmcController extends Controller {
 	}
 	
 	public function save($id){
-		$inserts= explode(",", $id); //divides Sring in 0-project_id, 1-bmc_id, 2-bmc-status[inWork, approved, rejected], 3-view_type[newBMC,viewBMC]
+		$inserts= explode(",", $id); 
 		
 		$project_id = $inserts[0];
 		$bmc_id = $inserts[1];
@@ -141,6 +141,8 @@ class BmcController extends Controller {
 		
 		$bmc = BMC::find($inserts[0]);
 		
+		$myAssignedPersonas = $this->getAssignedPersonas($inserts[0]);
+		
 		$bmc_name= $bmc['title'];
 		
 		$bmc_id = $inserts[0];
@@ -161,7 +163,7 @@ class BmcController extends Controller {
 				break;
 		}
 	
-		return view('viewBMC', ['bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_name' => $bmc_name, 'bmc_status' => $bmc_status, 'bmc_postIts' => $bmc_postIts, 'myPersonas' =>$myPersonas]);
+		return view('viewBMC', ['bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_name' => $bmc_name, 'bmc_status' => $bmc_status, 'bmc_postIts' => $bmc_postIts, 'myPersonas' =>$myPersonas, 'myAssignedPersonas' => $myAssignedPersonas]);
 	}
 	
 	public function getAllPersonas() {
@@ -295,7 +297,7 @@ class BmcController extends Controller {
 	}
 	
 	public function deletePostIt($id){
-		$inserts= str_split($id);
+		$inserts= explode(",", $id);
 	
 		$post_it_id = $inserts[0];
 		$bmc_id = $inserts[1];
@@ -316,6 +318,7 @@ class BmcController extends Controller {
 		$bmc_id = $inserts[1];
 		$bmc_status = $inserts[2];
 		$postIt_id = $inserts[3];
+		
 		$postIt_status = $_POST["postIt_status"];
 	
 		$postIt = Notice::find($postIt_id);
@@ -365,9 +368,28 @@ class BmcController extends Controller {
 				break;
 		}
 		
-		//print($bmc->personas()->get());
-		
 		$view = '../public/bmc/viewBMC/'.$bmc->id.$bmc->project->id.$status;
+		
+		return redirect($view);
+	}
+	
+	public function getAssignedPersonas($id){		
+		$bmc = BMC::find($id);
+		return $bmc->personas()->get();
+	}
+	
+	public function deleteAssignedPersona($id){
+		$inserts = explode(",", $id);
+		
+		$bmc_id = $inserts[0];
+		$project_id = $inserts[1];
+		$bmc_status = $inserts[2];
+		$persona_id = $inserts[3];
+		
+		$bmc = BMC::find($bmc_id);
+		$bmc->personas()->detach($persona_id);
+		
+		$view = '../public/bmc/viewBMC/'.$bmc->id.$project_id.$bmc_status;
 		
 		return redirect($view);
 	}

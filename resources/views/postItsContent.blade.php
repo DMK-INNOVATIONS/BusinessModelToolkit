@@ -4,10 +4,10 @@
 		foreach ($bmc_postIts as $bmc_postIt){
 			if($bmc_postIt['canvas_box_id']==$boxId){
 				$empty = false;
-				print '	<div class="col-md-12 post_It">
+				print '	<div class="col-md-12 col-xs-12 post_It">
 							<div class="post-it-headder">
-								<div class="col-md-8 post_It_content">'.$bmc_postIt['title'].'</div>
-								<div class="col-md-4 post_It_content">';	
+								<div class="col-md-8 col-xs-8 post_It_content">'.$bmc_postIt['title'].'</div>
+								<div class="col-md-4 col-xs-4 post_It_content">';	
 									switch ($bmc_postIt['status']) {
 										case 'inWork':
 											print '   <button type="button" data-toggle="modal" data-target="#statusChangeModal_Post-IT'.$bmc_postIt['id'].'" class="btn btn-warning btn-sm post-it-status"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"/></button>';
@@ -21,51 +21,116 @@
 									}
 				print '			</div>
 							</div>
-							<div class="col-md-12 post_It_content">'.$bmc_postIt['content'].'</div>
-							<div class="row post-it-footer">
-								<a href="#addPostItModal'.$boxId.'" role="button" data-toggle="modal"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>  
-								<a href="/bmc/public/bmc/deletePostIt/'.$bmc_postIt['id'].$bmc_id.$project_id.$status.'"><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a>
+							<div class="col-md-12 col-xs-12 post_It_content">'.$bmc_postIt['content'].'</div>
+							<div class="row post-it-footer col-md-12 col-xs-12">
+								<a href="#editPostItModal'.$boxId.$bmc_postIt['id'].'" role="button" data-toggle="modal"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>  
+								<a href="/bmc/public/bmc/deletePostIt/'.$bmc_postIt['id'].','.$bmc_id.','.$project_id.','.$status.'"><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a>
 							</div>
 						</div>
-				';
-				
-				print '
-					<!-- change Post-It Status Modal -->
-						<div class="modal fade" id="statusChangeModal_Post-IT'.$bmc_postIt['id'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-						  <div class="modal-dialog" role="document">
+
+										
+					<div class="modal fade" id="statusChangeModal_Post-IT'.$bmc_postIt['id'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					      	<h4>Change the Status of your Post-It</h4>
+					      </div>
+					      <div class="modal-body">
+						      <form class="form-horizontal" role="form" method="POST" action="/bmc/public/bmc/changePostItStatus/'.$project_id.','.$bmc_id.','.$bmc_status.','.$bmc_postIt["id"].'">
+									<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							
+									<div class="form-group">
+									 	<label for="postIt_status" class="col-md-2 control-label">Status</label>
+									 	<div class="col-md-8">
+										  <select class="form-control" id="postIt_status" name="postIt_status">
+										    <option>inWork</option>
+										    <option>approved</option>
+										    <option>rejected</option>
+										  </select>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-md-8 col-md-offset-2">
+											<button type="submit" class="btn btn-primary">Save</button>
+											<button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+										</div>
+									</div>
+								</form>
+					      </div>
+					    </div>
+					  </div>
+					</div>		
+
+	      			<div class="modal fade" id="editPostItModal'.$boxId.$bmc_postIt['id'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
 						    <div class="modal-content">
 						      <div class="modal-header">
 						        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						      	<h4>Change the Status of your Post-It</h4>
+						        <h4 class="modal-title" id="myModalLabel">add Post-It</h4>
 						      </div>
 						      <div class="modal-body">
-							      <form class="form-horizontal" role="form" method="POST" action="/bmc/public/bmc/changePostItStatus/'.$project_id.','.$bmc_id.','.$bmc_status.','.$bmc_postIt['id'].'">
-										<input type="hidden" name="_token" value="{{ csrf_token() }}">
-								
-										<div class="form-group">
-										 	<label for="post_it" class="col-md-2 control-label">Status</label>
-										 	<div class="col-md-8">
-											  <select class="form-control" id="postIt_status" name="postIt_status">
-											    <option>inWork</option>
-											    <option>approved</option>
-											    <option>rejected</option>
-											  </select>
+						        <div class="row">
+							    	<div class="col-md-4 Post-It_Image">
+							    		<div class="row">
+							    			<div class="col-md-12">
+												<img src="/bmc/public/img/Postit_gelb.jpg">
 											</div>
 										</div>
-										<div class="form-group">
-											<div class="col-md-8 col-md-offset-2">
-												<button type="submit" class="btn btn-primary">Save</button>
-												<button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+							    	</div>
+						 	 		<div class="col-md-8">
+										<form class="form-horizontal" role="form" method="POST" action="/bmc/public/bmc/savePostIt/'.$boxId.','.$bmc_id.','.$project_id.','.$status.','.$bmc_postIt['id'].'">
+											<input type="hidden" name="_token" value="{{ csrf_token() }}">
+									
+											<div class="form-group">
+												<label class="col-md-4 control-label">Title</label>
+												<div class="col-md-8">
+													<input type="text" class="form-control" name="title" value="'.$bmc_postIt['title'].'">
+												</div>
 											</div>
-										</div>
-									</form>
+											<div class="form-group">
+												<label class="col-md-4 control-label">Content</label>
+												<div class="col-md-8">
+													<textarea class="form-control" rows="3" name="content">'.$bmc_postIt['content'].'</textarea>
+												</div>
+											</div>
+											<div class="form-group">
+											 	<label for="test_status" class="col-md-4 control-label">Test Status</label>
+											 	<div class="col-md-8">
+												  <select class="form-control" id="status" name="status">
+												';
+													switch ($bmc_postIt['status']) {
+														case 'inWork':
+															print '<option selected>inWork</option><option>approved</option><option>rejected</option>';break;
+														case 'approved':
+															print '<option>inWork</option><option selected>approved</option><option>rejected</option>';break;
+														case 'rejected':
+															print '<option>inWork</option><option>approved</option><option selected>rejected</option>';break;									
+													}
+												    print '
+												  </select>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-4 control-label">Notice</label>
+												<div class="col-md-8">
+													<textarea class="form-control" rows="5" name="notice">'.$bmc_postIt['notice'].'</textarea>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-md-8 col-md-offset-4">
+													<button type="submit" class="btn btn-primary">Save</button>
+													<button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+												</div>
+											</div>
+										</form>
+						 	 		</div>
+								</div>
 						      </div>
 						    </div>
 						  </div>
-						</div>									
+						</div>
 				';
-				
-				
 			}
 		}
 		

@@ -17,33 +17,24 @@
 							</ul>
 						</div>
 					@endif
-
-					<?php 
-						$posturl = "";
-						if(isset($project)) : $posturl = $project['id']; endif;
-					?>
-					
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/projects/save/'.$posturl) }}">
+				
+					<form class="form-horizontal" role="form" method="POST" action="<?php print './addUserToProject' ?>">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">E-Mail Adress</label>
 							<div class="col-md-6">
-								<?php if(isset($project)) : ?>
-									<input type="text" class="form-control" name="title" value="{{ $project['title'] }}">
-								<?php else : ?>
-									<input type="text" class="form-control" name="title">
-								<?php endif; ?>
+								<input type="text" class="form-control" name="Email">
 							</div>
 						</div>
 						
 						<div class="form-group">
-						 	<label for="marital_status" class="col-md-4 control-label">Project</label>
+						 	<label for="projects" class="col-md-4 control-label">Project</label>
 						 	<div class="col-md-6">
-							  <select class="form-control" id="marital_status" name="marital_status">
+							  <select class="form-control" name="projects">
 							  	<?php 
 							  		foreach ($myProjects as $project){
-							  			print '<option>'.$project['title'].'</option>';
+							  			print '<option value="'.$project['id'].'">'.$project['title'].'</option>';
 							  		}
 							  	
 							  	?>
