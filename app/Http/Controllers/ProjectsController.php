@@ -37,8 +37,9 @@ class ProjectsController extends Controller {
 		$user_name = Auth::user ()->name;
 		$getMyProjects = $this->getMyProjects ();
 		$myAssignedProjects = $this->getMyAssignedProjects();
+		$assignedProjectsOwners = $this->getAssignedProjectsOwner();
 		
-		return view ( 'projects', ['myProjects' => $getMyProjects, 'user_name' => $user_name, 'myAssignedProjects' => $myAssignedProjects] );
+		return view ( 'projects', ['myProjects' => $getMyProjects, 'user_name' => $user_name, 'myAssignedProjects' => $myAssignedProjects, 'assignedProjectsOwners' =>$assignedProjectsOwners] );
 	}
 	
 	/**
@@ -91,14 +92,17 @@ class ProjectsController extends Controller {
 	 * @return \Illuminate\View\View
 	 */
 	public function showBMCs($id) {
-		$project_id = $id;
+		$inserts = explode(",", $id);
+		
+		$project_id = $inserts[0];
 		$project_name = $this->getProjectName ( $id );
 		$allProjectBMCs = $this->getAllProjectBMCs ( $id );
 		
 		return view ( 'showBMCs', [ 
 				'bmcs' => $allProjectBMCs,
 				'project_id' => $project_id,
-				'project_name' => $project_name 
+				'project_name' => $project_name,
+				'owner' => $inserts[1]
 		] );
 	}
 	
@@ -230,5 +234,19 @@ class ProjectsController extends Controller {
 			}
 		}
 		return $myAssignedProjects;
+	}
+	
+	public function getAssignedProjectsOwner(){
+		$myAssignedProjects = $this->getMyAssignedProjects();
+		
+		$owner = array();
+		
+		foreach($myAssignedProjects as $myAssignedProject){
+
+			$owner_array= User::find($myAssignedProject['assignee_id']);
+			array_push($owner, $owner_array);
+		}
+		
+		return $owner;
 	}
 }

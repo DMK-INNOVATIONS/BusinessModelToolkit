@@ -28,22 +28,28 @@
 					  		<div class="col-md-3">Name</div>
 					  		<div class="col-md-3">E-Mail</div>
 					  		<div class="col-md-3">Assigned Project</div>
-					  		<div class="col-md-3">edit</div>
+					  		<div class="col-md-3">Tools</div>
 					  </div>
 					  <?php 
 							foreach ($assignedTeamMembers as $assignedTeamMember){
 								foreach ($assignedTeamMember as $teamMember){
+									$project_title = '';
+									$project_id = '';
+									
 									print '<div class="row table_body">';
 										print '<div class="col-md-3">'.$teamMember['name'].'</div>
 								  		<div class="col-md-3">'.$teamMember['email'].'</div>';
 										foreach($myProjects as $myProject){
 											if($teamMember['pivot']['project_id'] == $myProject['id']){
 												print '<div class="col-md-3">'.$myProject['title'].'</div>';	
+												$project_title = $myProject['title'];
+												$project_id = $myProject['id'];
 											}	
 										}
+										
 								  		print '<div class="col-md-3">';
-											print '<a href=""><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>   ';
-											print '<a href=""><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a>';
+// 											print '<a href="team/edit/'.$teamMember['id'].','.$teamMember['email'].','.$project_title.','.$project_id.'"><span class="glyphicon glyphicon-pencil" aria-hidden="true" /></a>   ';
+											print '<a href="team/delete/'.$teamMember['pivot']['project_id'].','.$teamMember['id'].'"><span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/></a>';
 										print '</div>';
 									print '</div>';
 								}						
@@ -53,7 +59,7 @@
 					</div>
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<br>
-						<a href="team/create"><button type="button" class="btn btn-primary">add Team Member</button></a>
+						<a href="team/create"><button type="button" class="btn btn-primary">Add Team Member</button></a>
 					</div>
 				</div>
 			</div> 

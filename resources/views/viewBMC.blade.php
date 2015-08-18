@@ -112,7 +112,7 @@
 			    	</div>
     				<div class="col-md-10 col-sm-10 col-xs-10 col-md-offset-1">
 						<br>
-						<?php print '<a href="/bmc/public/projects/showBMCs/'.$project_id.'"><button type="button" class="btn btn-primary">Back to Project</button></a>';?>
+						<?php print '<a href="/bmc/public/projects/showBMCs/'.$project_id.','.$owner.'"><button type="button" class="btn btn-primary">Back to Project</button></a>';?>
 					</div>
 			    	
 				</div>

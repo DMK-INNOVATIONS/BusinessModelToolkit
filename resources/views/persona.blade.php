@@ -22,7 +22,7 @@
 					  		<div class="col-md-1 col-sm-1">Gender</div>
 					  		<div class="col-md-2 col-sm-2">Occupation</div>
 					  		<div class="col-md-2 col-sm-2">updated at</div>
-					  		<div class="col-md-1 col-sm-1">edit</div>
+					  		<div class="col-md-1 col-sm-1">Tools</div>
 					  		<div class="col-md-2 col-sm-2"></div>
 					  </div>
 						<?php 
@@ -41,8 +41,8 @@
 									  		<div class="col-md-2 col-sm-2">'.$myPersona["occupation"].'</div>
 									  		<div class="col-md-2 col-sm-2">'.$myPersona["updated_at"].'</div>
 									  		<div class="col-md-1 col-sm-1">';
-												print '<a href="persona/edit/'.$myPersona["id"].','.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>  ';
-												print '<a href="persona/delete/'.$myPersona["id"].'"><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a>  ';
+												print '<a href="persona/edit/'.$myPersona["id"].','.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.'"><span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/></a>  ';
+												print '<a href="persona/delete/'.$myPersona["id"].'"><span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/></a>  ';
 							print'			</div>
 									  		<div class="col-md-2 col-sm-2">';
 												print '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myPersona'.$myPersona["id"].'">show</button>';

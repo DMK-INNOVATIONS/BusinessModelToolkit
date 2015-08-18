@@ -20,13 +20,13 @@
 					
 					<?php 
 						$posturl = "null";
-						$new_bmc_view = true;
+						$new_bmc_view = 1;
 						$bmc_status = 'inWork';
 						if(isset($bmc)) : $posturl = $bmc['id']; endif;
 						
 					?>
 
-					<form class="form-horizontal" role="form" method="POST" action="<?php print "/bmc/public/bmc/save/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view.','.true ?>">
+					<form class="form-horizontal" role="form" method="POST" action="<?php print "/bmc/public/bmc/save/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view.','.true.','.$owner ?>">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						
 						<?php 
@@ -51,7 +51,7 @@
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">Save</button></a>
-								<?php print '<a href="/bmc/public/projects/showBMCs/'.$project_id.'"><button type="button" class="btn btn-default">Back</button></a>';?>
+								<?php print '<a href="/bmc/public/projects/showBMCs/'.$project_id.','.$owner.'"><button type="button" class="btn btn-default">Back</button></a>';?>
 							</div>
 						</div>
 					</form>

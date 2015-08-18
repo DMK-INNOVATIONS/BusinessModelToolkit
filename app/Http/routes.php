@@ -52,6 +52,7 @@ Route::get('project_bmc_view', 'ProjectBmcViewController@index');
 
 Route::get('team', 'TeamController@index');
 Route::get('team/create', 'TeamController@create');
+Route::get('team/delete/{id}', 'TeamController@delete');
 Route::post('team/addUserToProject', 'TeamController@addUserToProject');
 
 Route::controllers([

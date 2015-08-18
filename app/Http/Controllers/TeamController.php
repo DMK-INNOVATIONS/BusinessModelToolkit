@@ -54,7 +54,6 @@ class TeamController extends Controller {
 			foreach($assignedTeamMembers as $assignedTeamMember){
 				if($assignedTeamMember['id'] == true){
 					array_push($myAssignedTeamMembers, $assignedTeamMembers);
-// 					print $assignedTeamMember['name'];
 				}	
 			}
 		}
@@ -66,6 +65,24 @@ class TeamController extends Controller {
 		$myProjects = $this->getMyProjects();
 		
 		return view('addTeamMember', ['myProjects' => $myProjects]);
+	}
+	
+	public function delete($id){
+		$inserts= explode(",", $id);
+		
+		$project_id = $inserts[0];
+		$user_id = $inserts[1];
+		
+		$project = Project::find($project_id);
+		$assignedTeamMembers = $project->members()->get();
+		
+		foreach ($assignedTeamMembers as $assignedTeamMember){
+			if($assignedTeamMember['pivot']['user_id'] == $user_id){
+				$project->members()->detach($user_id);
+				
+				return redirect('team');
+			}		
+		}
 	}
 	
 	public function getAllProjects(){

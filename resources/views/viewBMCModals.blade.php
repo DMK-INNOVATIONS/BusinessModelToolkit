@@ -18,7 +18,7 @@
 
 <!-- BMC Title Change Modal -->
 <?php 
-	$new_bmc_view = false;
+	$new_bmc_view = 0;
 	$posturl = $bmc_id;
 	$view_type = 'viewBMC';
 ?>
@@ -32,7 +32,7 @@
       	<h4>Change the Title of Your BMC</h4>
       </div>
       <div class="modal-body">
-	      <form class="form-horizontal" role="form" method="POST" action="<?php print "/bmc/public/bmc/save/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view ?>">
+	      <form class="form-horizontal" role="form" method="POST" action="<?php print "/bmc/public/bmc/save/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view.','.$owner ?>">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		
 				<div class="form-group">
@@ -62,7 +62,7 @@
       	<h4>Change the Status of <?php print $bmc_name;?></h4>
       </div>
       <div class="modal-body">
-	      <form class="form-horizontal" role="form" method="POST" action="<?php print "/bmc/public/bmc/changeStatus/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view ?>">
+	      <form class="form-horizontal" role="form" method="POST" action="<?php print "/bmc/public/bmc/changeStatus/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view.','.$owner ?>">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		
 				<div class="form-group">

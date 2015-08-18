@@ -15,7 +15,7 @@
 						</div>
 						<div class="persona-bmc-footer col-md-6 col-sm-12 col-md-offset-6">
 							<a href=""><span class="glyphicon glyphicon-search" aria-hidden="true"/></a>
-							<a href="/bmc/public/bmc/deleteAssignedPersona/'.$bmc_id.','.$project_id.','.$status.','.$assignedPersona["id"].'"><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a> 
+							<a href="/bmc/public/bmc/deleteAssignedPersona/'.$bmc_id.','.$project_id.','.$status.','.$assignedPersona["id"].','.$owner.'"><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a> 
 						</div>
 					</div>
 				';

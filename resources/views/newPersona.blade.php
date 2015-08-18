@@ -36,7 +36,7 @@
 						<?php endif; ?>
 					</div>
 					<div class="col-md-9">
-						<form class="form-horizontal" role="form" method="POST" action="{{ url('/persona/save/'.$posturl.','.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status) }}">
+						<form class="form-horizontal" role="form" method="POST" action="{{ url('/persona/save/'.$posturl.','.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.','.$owner) }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	
 							<div class="form-group">
@@ -156,7 +156,7 @@
 									<button type="submit" class="btn btn-primary">Save</button>
 									<?php 
 										if($view_type == "viewBMC"){
-											print '<a href="/bmc/public/bmc/viewBMC/'.$bmc_id.$project_id.$bmc_status.'"><button type="button" class="btn btn-default">Back</button></a>';	
+											print '<a href="/bmc/public/bmc/viewBMC/'.$bmc_id.$project_id.$bmc_status.$owner.'"><button type="button" class="btn btn-default">Back</button></a>';	
 										}else{
 											print '<a href="/bmc/public/persona"><button type="button" class="btn btn-default">Back</button></a>';
 										}

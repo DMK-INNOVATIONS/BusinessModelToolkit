@@ -24,7 +24,7 @@
 							<div class="col-md-12 col-xs-12 post_It_content">'.$bmc_postIt['content'].'</div>
 							<div class="row post-it-footer col-md-12 col-xs-12">
 								<a href="#editPostItModal'.$boxId.$bmc_postIt['id'].'" role="button" data-toggle="modal"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>  
-								<a href="/bmc/public/bmc/deletePostIt/'.$bmc_postIt['id'].','.$bmc_id.','.$project_id.','.$status.'"><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a>
+								<a href="/bmc/public/bmc/deletePostIt/'.$bmc_postIt['id'].','.$bmc_id.','.$project_id.','.$status.','.$owner.'"><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a>
 							</div>
 						</div>
 
@@ -37,17 +37,24 @@
 					      	<h4>Change the Status of your Post-It</h4>
 					      </div>
 					      <div class="modal-body">
-						      <form class="form-horizontal" role="form" method="POST" action="/bmc/public/bmc/changePostItStatus/'.$project_id.','.$bmc_id.','.$bmc_status.','.$bmc_postIt["id"].'">
-									<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						      <form class="form-horizontal" role="form" method="POST" action="/bmc/public/bmc/changePostItStatus/'.$project_id.','.$bmc_id.','.$bmc_status.','.$bmc_postIt["id"].','.$owner.'">
+									<input type="hidden" name="_token" value="'.csrf_token().'">
 							
 									<div class="form-group">
 									 	<label for="postIt_status" class="col-md-2 control-label">Status</label>
-									 	<div class="col-md-8">
-										  <select class="form-control" id="postIt_status" name="postIt_status">
-										    <option>inWork</option>
-										    <option>approved</option>
-										    <option>rejected</option>
-										  </select>
+									 	<div class="col-md-8">									
+											<select class="form-control" id="postIt_status" name="postIt_status">
+											';
+												switch ($bmc_postIt['status']) {
+													case 'inWork':
+														print '<option selected>inWork</option><option>approved</option><option>rejected</option>';break;
+													case 'approved':
+														print '<option>inWork</option><option selected>approved</option><option>rejected</option>';break;
+													case 'rejected':
+														print '<option>inWork</option><option>approved</option><option selected>rejected</option>';break;									
+												}
+											    print '
+											  </select>
 										</div>
 									</div>
 									<div class="form-group">
@@ -79,8 +86,8 @@
 										</div>
 							    	</div>
 						 	 		<div class="col-md-8">
-										<form class="form-horizontal" role="form" method="POST" action="/bmc/public/bmc/savePostIt/'.$boxId.','.$bmc_id.','.$project_id.','.$status.','.$bmc_postIt['id'].'">
-											<input type="hidden" name="_token" value="{{ csrf_token() }}">
+										<form class="form-horizontal" role="form" method="POST" action="/bmc/public/bmc/savePostIt/'.$boxId.','.$bmc_id.','.$project_id.','.$status.','.$bmc_postIt['id'].','.$owner.'">
+											<input type="hidden" name="_token" value="'. csrf_token() .'">
 									
 											<div class="form-group">
 												<label class="col-md-4 control-label">Title</label>
