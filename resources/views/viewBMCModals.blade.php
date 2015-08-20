@@ -1,15 +1,73 @@
 <!-- Help Modal - -->
 <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content col-md-12">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">BMC Help</h4>
       </div>
       <div class="modal-body">
-        ... Hier muss noch Text rein ...
+      	<p>
+      		<span class="glyphicon glyphicon-hand-right col-md-1" aria-hidden="true"></span>
+      		<div>The Business Model Canvas consists of the following nine Parts:</div>
+      	</p>
+      	
+      	<p>
+      		<div class="col-md-offset-1">
+	      		<span class="glyphicon glyphicon-play col-md-1" aria-hidden="true"></span>
+	      		<div><b>Key Partners:</b> What are your key partners to get competitive advantage?</div>
+      		</div>
+      	</p>
+     	<p>
+      		<div class="col-md-offset-1">
+	      		<span class="glyphicon glyphicon-play col-md-1" aria-hidden="true"></span>
+	      		<div><b>Key Activities:</b> What are the key steps to move ahead to your customers?</div>
+      		</div>
+      	</p>
+      	<p>
+      		<div class="col-md-offset-1">
+	      		<span class="glyphicon glyphicon-play col-md-1" aria-hidden="true"></span>
+	      		<div><b>Key Ressources:</b> What resources do you need to make your idea work?</div>
+      		</div>
+      	</p>
+      	<p>
+      		<div class="col-md-offset-1">
+	      		<span class="glyphicon glyphicon-play col-md-1" aria-hidden="true"></span>
+	      		<div><b>Value Propositions:</b> How will you make your customers' life happier?</div>
+      		</div>
+      	</p>
+      	<p>
+      		<div class="col-md-offset-1">
+	      		<span class="glyphicon glyphicon-play col-md-1" aria-hidden="true"></span>
+	      		<div><b>Customer Relations:</b> How often will you interact with your customers? Does your product imply one-time or multiple payments?</div>
+      		</div>
+      	</p>
+      	<p>
+      		<div class="col-md-offset-1">
+	      		<span class="glyphicon glyphicon-play col-md-1" aria-hidden="true"></span>
+	      		<div><b>Channels:</b> How are you going to reach your customers?</div>
+      		</div>
+      	</p>
+      	<p>
+      		<div class="col-md-offset-1">
+	      		<span class="glyphicon glyphicon-play col-md-1" aria-hidden="true"></span>
+	      		<div><b>Customer Segments:</b> Who are your customers? Coose from your Personas.</div>
+      		</div>
+      	</p>
+      	<p>
+      		<div class="col-md-offset-1">
+	      		<span class="glyphicon glyphicon-play col-md-1" aria-hidden="true"></span>
+	      		<div><b>Cost Structure:</b> How much are you planning to spend on the product development and marketing for a certain period?</div>
+      		</div>
+      	</p>
+      	<p>
+      		<div class="col-md-offset-1">
+	      		<span class="glyphicon glyphicon-play col-md-1" aria-hidden="true"></span>
+	      		<div><b>Revenue Streams:</b> How much are you planning to earn in a certain period? Compare your costs & revenues.</div>
+      		</div>
+      	</p>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer col-md-12">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>

@@ -176,3 +176,11 @@ width: 150px;
 a{
 	color: brown;
 }
+
+.page-header{
+	margin-top: 0px;
+}
+
+.bmcViewBackground{
+	background-image: url(../img/gplaypattern.png);
+}

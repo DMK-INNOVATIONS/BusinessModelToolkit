@@ -26,7 +26,7 @@
 					?>
 					<button type="button" data-toggle="modal" data-target="#helpModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button>
 				</div>
-				<div class="panel-body">
+				<div class="panel-body bmcViewBackground">
 					<div class="viewBMC_body">
 				    	<div class="col-md-12 col-sm-12">
 				    		<div class="col-md-2 col-sm-2 col-md-offset-1">

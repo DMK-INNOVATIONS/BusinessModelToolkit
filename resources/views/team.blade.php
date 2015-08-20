@@ -2,8 +2,12 @@
 
 @section('content')
 <div class="container-fluid">
+	<div class=" col-md-10 col-md-offset-1 col-sm-10 col-xs-12 page-header">
+	  <h1>Team View <br><small>In this Table you can see, add and edit all Connections between your Team Members an your Projects.</small></h1>
+	  
+	</div>
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1 col-sm-10 col-xs-12">
+		<div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
 
 			@if(session('error'))
 				<div class="panel panel-danger">
@@ -13,22 +17,19 @@
 			@endif
 
 			<div class="panel panel-default">
-				<div class="panel-heading">My Team <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button></div>
+				<div class="panel-heading"><b>Your Connections</b> <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button></div>
 				<div class="panel-body">
 									
 					<!-- Team Member Table -->
 					
 					<div class="panel panel-default">
-					  <div class="panel-body table_text">
-					    <p>In this Table you can see, add and edit all your Connections between Team Members an your Projects.</p>
-					  </div>
 					
 					  <!-- Table -->
 					  <div class="row table_head">
-					  		<div class="col-md-3">Name</div>
-					  		<div class="col-md-3">E-Mail</div>
-					  		<div class="col-md-3">Assigned Project</div>
-					  		<div class="col-md-3">Tools</div>
+					  		<div class="col-md-3 col-sm-3 col-xs-6">Name</div>
+					  		<div class="col-md-3 col-sm-3 col-xs-6">E-Mail</div>
+					  		<div class="col-md-3 col-sm-3 col-xs-6">Assigned Project</div>
+					  		<div class="col-md-3 col-sm-3 col-xs-6">Tools</div>
 					  </div>
 					  <?php 
 							foreach ($assignedTeamMembers as $assignedTeamMember){
@@ -37,17 +38,17 @@
 									$project_id = '';
 									
 									print '<div class="row table_body">';
-										print '<div class="col-md-3">'.$teamMember['name'].'</div>
-								  		<div class="col-md-3">'.$teamMember['email'].'</div>';
+										print '<div class="col-md-3 col-sm-3 col-xs-6">'.$teamMember['name'].'</div>
+								  		<div class="col-md-3 col-sm-3 col-xs-6">'.$teamMember['email'].'</div>';
 										foreach($myProjects as $myProject){
 											if($teamMember['pivot']['project_id'] == $myProject['id']){
-												print '<div class="col-md-3">'.$myProject['title'].'</div>';	
+												print '<div class="col-md-3 col-sm-3 col-xs-6">'.$myProject['title'].'</div>';	
 												$project_title = $myProject['title'];
 												$project_id = $myProject['id'];
 											}	
 										}
 										
-								  		print '<div class="col-md-3">';
+								  		print '<div class="col-md-3 col-sm-3 col-xs-6">';
 // 											print '<a href="team/edit/'.$teamMember['id'].','.$teamMember['email'].','.$project_title.','.$project_id.'"><span class="glyphicon glyphicon-pencil" aria-hidden="true" /></a>   ';
 											print '<a href="team/delete/'.$teamMember['pivot']['project_id'].','.$teamMember['id'].'"><span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/></a>';
 										print '</div>';

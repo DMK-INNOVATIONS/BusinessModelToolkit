@@ -2,15 +2,11 @@
 
 @section('content')
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-default">
+	<div class=" col-md-10 col-md-offset-1 col-sm-10 col-xs-12 page-header">
+	  <h1>Welcome {{ Auth::user()->name }}!</h1>
+	</div>
 
-				<div class="panel-body">
-					Welcome {{ Auth::user()->name }}!
-				</div>
-			</div>
-		</div>
+	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="col-md-4 col-xs-12">
 			    <a href="{{ url('/projects') }}" class="thumbnail thumbnail_start">

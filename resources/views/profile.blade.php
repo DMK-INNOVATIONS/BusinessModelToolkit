@@ -8,10 +8,13 @@
 ?>
 
 <div class="container-fluid">
+	<div class=" col-md-10 col-md-offset-1 col-sm-10 col-xs-12 page-header">
+	  <h1>User Profile</h1>
+	</div>
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-10 col-md-offset-1 col-sm-10 col-xs-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">User Profile <button type="button" data-toggle="modal" data-target="#helpModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button></div>
+				<div class="panel-heading"><b>User Profile</b> <button type="button" data-toggle="modal" data-target="#helpModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button></div>
 				<div class="panel-body">
 				
 				<form class="form-horizontal" role="form" method="POST" action="/bmc/public/profile/save/<?php print $user['id'];?>">

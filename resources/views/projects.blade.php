@@ -2,35 +2,38 @@
 
 @section('content')
 <div class="container-fluid">
+	<div class=" col-md-10 col-md-offset-1 col-sm-10 col-xs-12 page-header">
+	  <h1>Projects View <br><small>This View shows your own Projects and the Projects your Team Members assigned to you.</small></h1>
+	</div>
 	<div class="row">
 	
 		<!-- User Projects Table - Start -->
 		
-		<div class="col-md-10 col-md-offset-1 col-sm-10 col-xs-12">
+		<div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">My Projects <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button></div>
+				<div class="panel-heading"><b>My Projects</b> <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button></div>
 				<div class="panel-body">
 					
 					<div class="panel panel-default">
 					  <div class="panel-body table_text">
-					    <p>In this Table you can find all your created Projects.</p>
+					    <p>This Table contains the Projects you own.</p>
 					  </div>
 					  
-					  <div class="row table_head">
-					  		<div class="col-md-3">Title</div>
-					  		<div class="col-md-3">created at</div>
-					  		<div class="col-md-2">updated at</div>
-					  		<div class="col-md-2">Tools</div>
-					  		<div class="col-md-2">BMC's</div>
+					  <div class="row table_head" style="text-align: center;">
+					  		<div class="col-md-3 col-xs-12">Title</div>
+					  		<div class="col-md-3 col-xs-6">created at</div>
+					  		<div class="col-md-2 col-xs-6">updated at</div>
+					  		<div class="col-md-2 col-xs-6">Tools</div>
+					  		<div class="col-md-2 col-xs-6">BMC's</div>
 					  </div>
 
 							<?php 
 							foreach ($myProjects as $myProject){
-								print '<div class="row table_body">';
-									print '	<div class="col-md-3">'.$myProject["title"].'</div>
-							  				<div class="col-md-3">'.$myProject["created_at"].'</div>
-							  				<div class="col-md-2">'.$myProject["updated_at"].'</div>
-									  		<div class="col-md-2">';
+								print '<div class="row table_body" style="text-align: center;">';
+									print '	<div class="col-md-3 col-xs-12 project_title-smal">'.$myProject["title"].'</div>
+							  				<div class="col-md-3 col-xs-6">'.$myProject["created_at"].'</div>
+							  				<div class="col-md-2 col-xs-6">'.$myProject["updated_at"].'</div>
+									  		<div class="col-md-2 col-xs-6">';
 											print '	<a href="projects/edit/'.$myProject["id"].'">
 														<span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/>
 													</a>   ';
@@ -38,7 +41,7 @@
 							    						<span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/>
 							    					</a>';
 									print '	</div>
-									  		<div class="col-md-2">';
+									  		<div class="col-md-2 col-xs-6">';
 											print '	<a href="projects/showBMCs/'.$myProject["id"].',1">
 							  							<button type="button" class="btn btn-default">show BMC\'s </button>
 							  						</a>';
@@ -56,41 +59,37 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1 col-sm-10 col-xs-12">
+		<div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">My Assigned Projects</div>
+				<div class="panel-heading"><b>My Assigned Projects</b></div>
 				<div class="panel-body">
 					<div class="panel panel-default">
 					  <div class="panel-body table_text">
-					    <p>In this Table you can find all your assigned Projects.</p>
+					    <p>This Table contains the Projects your Team Members assigned to you.</p>
 					  </div>
 					  
-					  <div class="row table_head">
-					  		<div class="col-md-3">Title</div>
-					  		<div class="col-md-3">created at</div>
-					  		<div class="col-md-2">updated at</div>					  		
-					  		<div class="col-md-2">Owner</div>
-					  		<div class="col-md-2">BMC's</div>
+					  <div class="row table_head " style="text-align: center;">
+					  		<div class="col-md-5 col-xs-12">Title</div>			  		
+					  		<div class="col-md-5 col-xs-6">Owner</div>
+					  		<div class="col-md-2 col-xs-6">BMC's</div>
 					  </div>
 					  
 					  <?php 
 							foreach ($myAssignedProjects as $myAssignedProject){
-								print '<div class="row table_body">';
-									print '<div class="col-md-3">'.$myAssignedProject["title"].'</div>
-							  		<div class="col-md-3">'.$myAssignedProject["created_at"].'</div>
-							  		<div class="col-md-2">'.$myAssignedProject["updated_at"].'</div>';
+								print '<div class="row table_body" style="text-align: center;">';
+									print '<div class="col-md-5 col-xs-12">'.$myAssignedProject["title"].'</div>';
 
 									$bereits_vorhanden = null;
 									foreach ($assignedProjectsOwners as $Owner){
 										if($myAssignedProject["assignee_id"] == $Owner['id']){
 											if($bereits_vorhanden != $Owner['id']){
-												print '<div class="col-md-2">'.$Owner['name'].'</div>';
+												print '<div class="col-md-5 col-xs-6">'.$Owner['name'].'</div>';
 												$bereits_vorhanden = $Owner['id'];
 											}
 										}
 									}
 									
-							  		print'<div class="col-md-2">';
+							  		print'<div class="col-md-2 col-xs-6">';
 									print '<a href="projects/showBMCs/'.$myAssignedProject["id"].',0"><button type="button" class="btn btn-default">show BMC\'s </button></a>';
 					    			print'</div>';
 								print '</div>';							
@@ -132,11 +131,11 @@
       	
       		<p>
       			<span class="glyphicon glyphicon-hand-right col-md-1" aria-hidden="true"></span> 
-      			<div class="col-md-11">To show the Business Model Canvas of a Project use the <button type="button" class="btn btn-default">show BMC's </button> Button.</div>
+      			<div class="col-md-11">To show the Business Model Canvas of a Project use the <button type="button" class="btn btn-default disabled">show BMC's </button> Button.</div>
       		</p>
       		<p>
       			<span class="glyphicon glyphicon-hand-right col-md-1" aria-hidden="true"></span> 
-      			<div class="col-md-11" style="padding: 0 0 15px 0;">Also you can create new projects with the <button type="button" class="btn btn-primary">new Project</button> Button.</div>
+      			<div class="col-md-11" style="padding: 0 0 15px 0;">Also you can create new projects with the <button type="button" class="btn btn-primary disabled">new Project</button> Button.</div>
       		</p>    			
       </div>
       <div class="modal-footer col-md-12" style="margin: 0;">
