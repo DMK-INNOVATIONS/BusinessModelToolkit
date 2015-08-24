@@ -70,10 +70,11 @@ class PersonaController extends Controller {
 		$bmc_id = $inserts[2];
 		$project_id = $inserts[3];
 		$bmc_status = $inserts[4];
+		$owner = $inserts[5];
 		
 		$persona = Persona::find($id);
 		
-		return view('newPersona', ['view_type' => $view_type, 'bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_status' =>$bmc_status, 'persona' => $persona]);
+		return view('newPersona', ['view_type' => $view_type, 'bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_status' =>$bmc_status, 'persona' => $persona, 'owner' => $owner]);
 	}
 	
 	public function deletePersona($id){
@@ -116,6 +117,8 @@ class PersonaController extends Controller {
 			$persona->occupation = $_POST["occupation"];
 			$persona->nationality = $_POST["nationality"];
 			$persona->marital_status = $_POST["marital_status"];
+			$persona->quote = $_POST["quote"];
+			$persona->personality = $_POST["personality"];
 			$persona->skills = $_POST["skills"];
 			$persona->needs = $_POST["needs"];
 			$persona->save();

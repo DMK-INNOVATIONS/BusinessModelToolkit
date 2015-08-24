@@ -124,6 +124,33 @@
 							</div>
 							
 							<div class="form-group">
+								<label class="col-md-2 control-label">Quote</label>
+								<div class="col-md-8">
+									<?php if(isset($persona)) : ?>
+										<input type="text" class="form-control" name="quote" value="{{ $persona['quote'] }}">
+									<?php else : ?>
+										<div class="input-group">
+											<input type="text" class="form-control" name="quote">
+											<span class="input-group-addon glyphicon glyphicon-question-sign persona_formular_help" data-toggle="tooltip" data-placement="right" title="Please divide your inserts with a semicolon."/>	
+										</div>
+									<?php endif; ?>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-md-2 control-label">Personality</label>
+								<div class="col-md-8">								
+									<?php if(isset($persona)) : ?>
+										<textarea type="text" class="form-control" rows="5" name="personality" ><?php print $persona['personality'];?></textarea>
+									<?php else : ?>
+										<div class="input-group col-md-12">
+											<textarea type="text" class="form-control" rows="5" name="personality"></textarea>
+										</div>
+									<?php endif; ?>
+								</div>
+							</div>
+							
+							<div class="form-group">
 								<label class="col-md-2 control-label">Skills</label>
 								<div class="col-md-8">
 									<?php if(isset($persona)) : ?>

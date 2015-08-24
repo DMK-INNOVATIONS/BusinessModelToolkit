@@ -23,6 +23,8 @@ class CreatePersonasTable extends Migration {
 			$table->string('occupation');
 			$table->string('nationality');
 			$table->enum('marital_status', ['single', 'in a relationship', 'long-term relationship', 'married', 'widowed', 'divorced', 'other']);
+			$table->string('quote');
+			$table->string('personality');
 			$table->string('skills');
 			$table->string('needs');
 			$table->timestamps();

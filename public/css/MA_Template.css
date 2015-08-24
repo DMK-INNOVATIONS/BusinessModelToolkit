@@ -53,6 +53,46 @@ padding: 0 5px;
 top:0;	
 }
 
+.persona_view_box{
+	padding: 0;
+	text-align: center;
+}
+
+.persona_view_box > img{
+	padding: 10px;
+}
+
+.persona_view_box_content{
+	padding: 0;
+}
+
+.persona_view_box_quote{
+	border: 1px solid #dddddd;	
+	background-color: #ffffff;
+	border-radius: 4px;
+	position: relative;  
+	margin-bottom: 20px;
+    box-shadow: 0 1px 1px lightgray;
+    height: 80px;
+}
+
+.persona_view_box_quote:before {  
+  content: ' ';  
+  position: absolute;    
+  border: 6px solid;  
+  border-color: #dddddd transparent transparent #dddddd;  
+  top: 78px;
+  }
+  
+.persona_view_box_quote:after {  
+  content: ' ';  
+  position: absolute;   
+  top: 78px;  
+  border: 4px solid;  
+  border-color: #fff transparent transparent #fff;  
+  left: 16px;
+  }
+
 .needs_help{
 	display:none;
     position:absolute;
@@ -183,4 +223,8 @@ a{
 
 .bmcViewBackground{
 	background-image: url(../img/gplaypattern.png);
+}
+
+.modal-dialog{
+	width: 800px;
 }

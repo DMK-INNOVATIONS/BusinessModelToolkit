@@ -65,15 +65,22 @@
 <!-- help Modal -->
 <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content col-md-12">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">User Profile Help</h4>
       </div>
       <div class="modal-body">
-        ... Hier muss noch Text rein ...
+      		<p>
+				<span class="glyphicon glyphicon-hand-right col-md-1" aria-hidden="true"></span> 
+				<div class="col-md-11">The User Profile contains all your User Data.</div>
+			</p> 
+			<p>
+				<span class="glyphicon glyphicon-hand-right col-md-1" aria-hidden="true"></span> 
+				<div class="col-md-11">You can change your Name, E-Mail Address and Password by typing in the columns. To save the changes Date press the <button type="button" class="btn btn-primary disabled">Save Changes</button> Button.</div>
+			</p>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer col-md-12">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>

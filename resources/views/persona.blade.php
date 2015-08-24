@@ -42,7 +42,7 @@
 									  		<div class="col-md-2 col-sm-2 col-xs-6">'.$myPersona["occupation"].'</div>
 									  		<div class="col-md-2 col-sm-2 col-xs-6">'.$myPersona["updated_at"].'</div>
 									  		<div class="col-md-1 col-sm-1 col-xs-6">';
-												print '<a href="persona/edit/'.$myPersona["id"].','.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.'"><span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/></a>  ';
+												print '<a href="persona/edit/'.$myPersona["id"].','.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.',0"><span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/></a>  ';
 												print '<a href="persona/delete/'.$myPersona["id"].'"><span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/></a>  ';
 							print'			</div>
 									  		<div class="col-md-2 col-sm-2 col-xs-6">';
@@ -52,12 +52,83 @@
 							';
 							
 							$skills = explode(';',$myPersona["skills"]);
-							$needs = explode(';',$myPersona["needs"]);
+							$needs = explode(';',$myPersona["needs"]);							
 							
-							
-							print '				
+							print '			
+
+							<div class="modal fade" id="myPersona'.$myPersona["id"].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title" id="myModalLabel">Persona Help</h4>
+							      </div>
+							      <div class="modal-body">
+							      	<div class="container-fluid">
+							      		<div class="panel panel-default">
+							      			<div class="panel-heading">My Persona</div>
+							      			<div class="panel-body bmcViewBackground">
+							      				<div class="row">
+							      					<div class="col-md-4">
+							      						<div class="col-md-12 panel panel-default"><b>'.$myPersona["name"].'</b></div>
+							      						<div class="col-md-12 panel panel-default persona_view_box"><img alt="Persona Avatar" src="'.$myPersona["avatarImg"].'" height="125px"></div>
+							      					</div>
+							      					<div class="col-md-8">
+							      						<div class="col-md-12 persona_view_box_quote">
+							      							<div class="col-md-12">
+							      								<b>"'.$myPersona["quote"].'"</b>
+							      							</div>
+							      						</div>
+							      						<div class="col-md-12 panel panel-default">
+							      							<div class="col-md-12"><b>Personality</b></div><br>
+							      								<p>'.$myPersona["personality"].'</p>
+							      						</div>
+							      					</div>
+							      				</div>
+							      				<div class="row">
+							      					<div class="col-md-4">
+								      					<div class="col-md-12 panel panel-default">
+								      						<div class="col-md-12 persona_view_box_content"><b>Age:</b> '.$myPersona["age"].'</div>
+							      							<div class="col-md-12 persona_view_box_content"><b>Gender:</b> '.$myPersona["gender"].'</div>
+								      						<div class="col-md-12 persona_view_box_content"><b>Marital Status:</b> '.$myPersona["marital_status"].'</div>
+								      						<div class="col-md-12 persona_view_box_content"><b>Occupation:</b> '.$myPersona["occupation"].'</div>
+								      						<div class="col-md-12 persona_view_box_content"><b>Nationality:</b> '.$myPersona["nationality"].'</div>
+								      					</div>
+							      					</div>
+							      					<div class="col-md-4">
+								      					<div class="col-md-12 panel panel-default persona_view_box_content">
+								      						<div class="col-md-12"><b>Skills</b></div><br>
+								      						<ul>';
+																 foreach ($skills as $skill){
+																 	print '<li>'.$skill.'</li>';
+																 }
+													 print '</ul>
+								      					</div>
+							      					</div>
+							      					<div class="col-md-4">
+								      					<div class="col-md-12 panel panel-default persona_view_box_content">
+								      						<div class="col-md-12"><b>Needs</b></div><br>
+								      						<ul>';
+																foreach ($needs as $need){
+																	print '<li>'.$need.'</li>';	
+																}
+													 print '</ul>
+								      					</div>
+							      					</div>	
+							      				</div>
+									      	</div>
+							      		</div>
+									</div>
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>		  				
+									  				
 							<!-- Modal for Persona View-->
-								<div class="modal fade" id="myPersona'.$myPersona["id"].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								<div class="modal fade" id="myPersonas'.$myPersona["id"].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 								  <div class="modal-dialog" role="document">
 								    <div class="modal-content">
 								      <div class="modal-header">
@@ -114,7 +185,7 @@
 					</div>
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<br>
-						<?php print '<a href="persona/create/'.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.'"><button type="button" class="btn btn-primary">new Persona</button></a>';?>
+						<?php print '<a href="persona/create/'.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.',0"><button type="button" class="btn btn-primary">new Persona</button></a>';?>
 					</div>
 				</div>
 			</div> 
@@ -133,48 +204,63 @@
       <div class="modal-body">
       	<div class="container-fluid">		
       		<div class="panel panel-default">
-	      		<div class="panel-heading">Persona History</div>
+	      		<div class="panel-heading">Persona Description</div>
 		      	<div class="panel-body">
+		      		<p>Personas are fictional character profiles, which are created to represent a group of customers. They help developers, entrepreneurs and start-up's to understand their target audience. With the help of Personas you can see Problems through the eyes of your customers. <br> Also you can target and design your products and services for your Customers with Personas better, quicker and cheaper.</p>
 		      	</div>
 	      	</div>
       	</div>
       	<div class="container-fluid">
       		<div class="panel panel-default">
-	      		<div class="panel-heading">Persona Structure</div>
-		      	<div class="panel-body">
-				  <div class="row persona_line_1">
-				    	<div class="col-md-6 text-center persona_line_1_1">
-							<img class="persona_image" src="./img/dmk_e-business_logo.png">
-				    	</div>
-		 	 			<div class="col-md-6">
-		 	 				<div class="col-md-12"><strong>Name:</strong> Jane Doe</div>
-		 	 				<div class="col-md-12"><strong>Age:</strong> 25</div>
-		 	 				<div class="col-md-12"><strong>Gender:</strong> Female</div>
-		 	 				<div class="col-md-12"><strong>Nationality:</strong> German</div>
-		 	 				<div class="col-md-12"><strong>Marital Status:</strong> Single</div>
-		 	 				<div class="col-md-12"><strong>Occupation:</strong> Student</div>
-		 	 			</div>
-				  </div>
-				  <div class="row">
-				    	<div class="col-md-6 persona_line_1_1"><strong>Needs</strong>
-					    	<ul>
-							  <li class="list-group-item">Books</li>
-							  <li class="list-group-item">Internet Access</li>
-							  <li class="list-group-item">Laptop</li>
-							  <li class="list-group-item">...</li>
-							  <li class="list-group-item">...</li>
-						 	</ul>
-				    	</div>
-		 	 			<div class="col-md-6"><strong>Skills</strong>
-		 	 				<ul>
-							  <li class="list-group-item">Digital Native</li>
-							  <li class="list-group-item">...</li>
-							  <li class="list-group-item">...</li>
-						 	</ul>
-		 	 			</div>
-				  </div>
-				</div>  
-			</div>
+      			<div class="panel-heading">Persona Structure</div>
+      			<div class="panel-body bmcViewBackground">
+      				<div class="row">
+      					<div class="col-md-4">
+      						<div class="col-md-12 panel panel-default"><b>John Doe</b></div>
+      						<div class="col-md-12 panel panel-default persona_view_box"><img alt="Persona Avatar" src="{{ asset('img/male_persona_default.png') }}" height="125px"></div>
+      					</div>
+      					<div class="col-md-8">
+      						<div class="col-md-12 persona_view_box_quote">
+      							<div class="col-md-12">
+      								<b>"I love playing with my Kids!"</b>
+      							</div>
+      						</div>
+      						<div class="col-md-12 panel panel-default">
+      							<div class="col-md-12"><b>Personality</b></div><br>
+      							<p>John lives in a small town near London with his wife and two kids. He loves to play with his two Children after work. Also he loves to hear Jazz Music in his study.</p>
+      						</div>
+      					</div>
+      				</div>
+      				<div class="row">
+      					<div class="col-md-4">
+	      					<div class="col-md-12 panel panel-default">
+	      						<div class="col-md-12 persona_view_box_content"><b>Age:</b> 30</div>
+	      						<div class="col-md-12 persona_view_box_content"><b>Marital Status:</b> married</div>
+	      						<div class="col-md-12 persona_view_box_content"><b>Occupation:</b> Salesman</div>
+	      						<div class="col-md-12 persona_view_box_content"><b>Nationality:</b> British</div>
+	      					</div>
+      					</div>
+      					<div class="col-md-4">
+	      					<div class="col-md-12 panel panel-default persona_view_box_content">
+	      						<div class="col-md-12"><b>Skills</b></div><br>
+	      						<ul>
+	      							<li>MS Office</li>
+	      							<li>BWL</li>
+	      						</ul>
+	      					</div>
+      					</div>
+      					<div class="col-md-4">
+	      					<div class="col-md-12 panel panel-default persona_view_box_content">
+	      						<div class="col-md-12"><b>Needs</b></div><br>
+	      						<ul>
+	      							<li>new Laptop</li>
+	      							<li>advanced training</li>
+	      						</ul>
+	      					</div>
+      					</div>	
+      				</div>
+		      	</div>
+      		</div>
 		</div>
       </div>
       <div class="modal-footer">

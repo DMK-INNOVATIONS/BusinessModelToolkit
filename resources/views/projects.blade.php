@@ -40,14 +40,17 @@
 											print '	<a href="projects/delete/'.$myProject["id"].'">
 							    						<span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/>
 							    					</a>';
+											print '	<a data-toggle="modal" data-target="#deleteModal'.$myProject["id"].'">
+							    						<span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/>
+							    					</a>';
 									print '	</div>
 									  		<div class="col-md-2 col-xs-6">';
 											print '	<a href="projects/showBMCs/'.$myProject["id"].',1">
 							  							<button type="button" class="btn btn-default">show BMC\'s </button>
 							  						</a>';
 							    			print'</div>';
-								print '</div>';							
-							}
+								print '</div>';															
+								}
 							?>   	
 					</div>
 					<div class="col-md-12 col-sm-12 col-xs-12">
