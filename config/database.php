@@ -1,5 +1,17 @@
 <?php
 
+if($_SERVER['REMOTE_ADDR'] == "127.0.0.1"){
+	$DB_HOST = 'localhost';	
+	$DB_DATABASE = 'ersatz';	
+	$DB_USERNAME = 'bmc';
+	$DB_PASSWORD = 'bmc_test';
+}else{
+	$DB_HOST = 'phpmyadmin.project.dmknet.de';
+	$DB_DATABASE = 'bmcounselor_1';
+	$DB_USERNAME = 'bmcounselor';
+	$DB_PASSWORD = 'qTFzz6YtsE6Su2HV';
+}
+
 return [
 
 	/*
@@ -43,7 +55,7 @@ return [
 	| choice installed on your machine before you begin development.
 	|
 	*/
-
+		
 	'connections' => [
 
 		'sqlite' => [
@@ -54,10 +66,10 @@ return [
 
 		'mysql' => [
 			'driver'    => 'mysql',
-			'host'      => env('DB_HOST', 'localhost'),
-			'database'  => env('DB_DATABASE', 'ersatz'),
-			'username'  => env('DB_USERNAME', 'bmc'),
-			'password'  => env('DB_PASSWORD', 'bmc_test'),
+			'host'      => env('DB_HOST', $DB_HOST),
+			'database'  => env('DB_DATABASE', $DB_DATABASE),
+			'username'  => env('DB_USERNAME', $DB_USERNAME),
+			'password'  => env('DB_PASSWORD', $DB_PASSWORD),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_general_ci',
 			'prefix'    => '',
