@@ -41,7 +41,7 @@ class BmcController extends Controller {
 	
 	public function create($id)
 	{
-		$inserts = str_split($id);
+		$inserts = explode(",", $id);
 		$project_id = $inserts[0];
 		$owner = $inserts[1];
 		
@@ -225,6 +225,50 @@ class BmcController extends Controller {
 		return view('newBmc',['bmc' =>json_decode($bmc, true) ,'project_id' => $bmc['project_id'], 'error' => false, 'owner' => $owner]);
 	}
 	
+	public function copyBmc($id){
+		$inserts = explode(",", $id);
+	
+		$bmc_original_id = $inserts[0];
+		$project_id = $inserts[1];
+		$owner = $inserts[2];
+	
+		$bmc_original = BMC::find($bmc_original_id);
+		$bmc_original_PostIts = $this->getBMCPostIts($bmc_original_id);
+		$assignedPersonas = $this->getAssignedPersonas($bmc_original_id);
+		
+		$bmc_copy = new BMC();
+		$bmc_copy->title = $bmc_original['title'].' (Kopie)';	
+		$bmc_copy->status = $bmc_original['status'];
+		$bmc_copy->version = 1;
+		$bmc_copy->project_id = $bmc_original['project_id'];
+		$bmc_copy->save();
+		
+		foreach($bmc_original_PostIts as $bmc_original_PostIt){
+			$sort_anz = 0;
+			
+			$postIt = new Notice();
+			
+			$postIt->title = $bmc_original_PostIt['title'];
+			$postIt->content = $bmc_original_PostIt['content'];
+			$postIt->status = $bmc_original_PostIt['status'];			
+			$postIt->notice = $bmc_original_PostIt['notice'];
+			$postIt->sort = $sort_anz+1;
+			$postIt->color = '';
+			$postIt->canvas_box_id = $bmc_original_PostIt['canvas_box_id'];
+			$postIt->bmc_id = $bmc_copy['id'];
+			
+			$postIt->save();
+		}		
+		
+		foreach($assignedPersonas as $assignedPersona){
+			$bmc_copy = BMC::find($bmc_copy['id']);
+			$bmc_copy->personas()->attach($assignedPersona['id']);	
+		}
+	
+		$view = 'projects/showBMCs/'.$project_id.','.$owner;
+		return redirect($view);
+	}
+	
 	/**
 	 * deletes BMC
 	 * @param unknown $id
@@ -233,10 +277,29 @@ class BmcController extends Controller {
 	public function deleteBMC($id){
 		$inserts= explode(",", $id);
 		
-		BMC::destroy($inserts[0]);
-		$owner = $inserts[1];
-	
+		$bmc_id = $inserts[0];
 		$project_id = $inserts[1];
+		$owner = $inserts[2];
+		
+		$bmc = BMC::find($bmc_id);
+		
+		//personas detachen
+		$assignedPersonas = $this->getAssignedPersonas($bmc_id);
+		
+		foreach($assignedPersonas as $assignedPersona){
+			$bmc->personas()->detach($assignedPersona['id']);
+		}
+				
+		//post-IT's löschen		
+		$bmcPostIts = $this->getBMCPostIts($bmc_id);
+		
+		foreach($bmcPostIts as $bmcPostIt){
+			Notice::destroy($bmcPostIt['id']);
+		}		
+		
+		//BMC löschen
+		BMC::destroy($bmc_id);
+		
 		$view = 'projects/showBMCs/'.$project_id.','.$owner;
 			
 		return redirect($view);
@@ -283,6 +346,7 @@ class BmcController extends Controller {
 			
  			$postIt->notice = $_POST["notice"];
  			$postIt->sort = $sort_anz+1;
+ 			$postIt->color = '';
  			$postIt->canvas_box_id = $canvas_box_id;
  			$postIt->bmc_id = $bmc_id;
 

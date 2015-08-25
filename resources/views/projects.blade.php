@@ -40,9 +40,6 @@
 											print '	<a href="projects/delete/'.$myProject["id"].'">
 							    						<span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/>
 							    					</a>';
-											print '	<a data-toggle="modal" data-target="#deleteModal'.$myProject["id"].'">
-							    						<span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/>
-							    					</a>';
 									print '	</div>
 									  		<div class="col-md-2 col-xs-6">';
 											print '	<a href="projects/showBMCs/'.$myProject["id"].',1">

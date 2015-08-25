@@ -19,6 +19,7 @@ Route::get('bmc', 'BmcController@index');
 Route::get('bmc/create/{id?}', 'BmcController@create');
 Route::post('bmc/save/{id}', 'BmcController@save');
 Route::get('bmc/edit/{id}', 'BmcController@edit');
+Route::get('bmc/copyBmc/{id}', 'BmcController@copyBmc');
 Route::get('bmc/delete/{id}','BmcController@deleteBMC');
 Route::get('bmc/viewBMC/{id}', 'BMCController@viewBMC');
 Route::post('bmc/savePostIt/{id}', 'BMCController@savePostIt');

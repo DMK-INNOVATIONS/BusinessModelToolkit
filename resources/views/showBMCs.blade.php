@@ -54,24 +54,21 @@
 											if($owner == 0){
 												print '   
 													<a href="">
-															<span class="glyphicon glyphicon-file" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="duplicate"/>
-													</a>   
-													<a href="">
 															<span class="glyphicon glyphicon-export" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="export"/>
 													</a> 	
 												';	
 											}else {
 												print '
-													<a href="/bmc/public/bmc/edit/'.$bmc["id"].','.$owner.'">
+													<a href="/bmc/public/bmc/edit/'.$bmc["id"].',1">
 															<span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/>
 													</a>   
-													<a href="">
+													<a href="/bmc/public/bmc/copyBmc/'.$bmc["id"].','.$project_id.',1">
 															<span class="glyphicon glyphicon-file" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="duplicate"/>
 													</a>   
 													<a href="">
 															<span class="glyphicon glyphicon-export" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="export"/>
 													</a> 
-													<a href="/bmc/public/bmc/delete/'.$bmc["id"].','.$project_id.','.$owner.'">
+													<a href="/bmc/public/bmc/delete/'.$bmc["id"].','.$project_id.',1">
 															<span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/>
 													</a>
 												';
@@ -98,7 +95,7 @@
 						<br>
 						<?php 
 							if($owner == 1){
-								print  '<a href="/bmc/public/bmc/create/'.$project_id.$owner.'"><button type="button" class="btn btn-primary">New BMC</button></a>';
+								print  '<a href="/bmc/public/bmc/create/'.$project_id.','.$owner.'"><button type="button" class="btn btn-primary">New BMC</button></a>';
 							}
 						?>
 						<a href="{{ url('/projects') }}"><button type="button" class="btn btn-default">Back to Projects</button></a>
@@ -130,9 +127,6 @@
 			<?php 
 				if($owner == 0){
 					print '
-			      		<p>
-				      		<span class="glyphicon glyphicon-file col-md-offset-2" aria-hidden="true"></span> - duplicate: Used to duplicate a BMC.
-			      		</p>
 			      		<p>
 				      		<span class="glyphicon glyphicon-export col-md-offset-2" aria-hidden="true"></span> - export: Used to export a BMC.
 			      		</p>

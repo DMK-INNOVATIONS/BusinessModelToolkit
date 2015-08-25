@@ -16,7 +16,7 @@ class Notice extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['text', 'status', 'sort', 'canvas_box', 'bmc'];
+	protected $fillable = ['text', 'status', 'sort', 'canvas_box_id', 'bmc_id'];
 	
 	/**
 	 * The One To Many relationship CanvasBox - Notice.
