@@ -111,7 +111,12 @@ class PersonaController extends Controller {
 					
 			$persona->name = $_POST["name"];
 			$persona->assignee_id = Auth::user()->id;
-			$persona->avatarImg = $_POST["avatarImg"];
+			
+			if (empty($_POST["avatarImg"])){
+				$persona->avatarImg = 'img/male_persona_default_bg.png';
+			}else{
+				$persona->avatarImg = $_POST["avatarImg"];
+			}
 			$persona->age = $_POST["age"];
 			$persona->gender = $_POST["gender"];
 			$persona->occupation = $_POST["occupation"];
