@@ -1,6 +1,14 @@
 @extends('app')
 
 @section('content')
+	<?php 
+		if($_SERVER['REMOTE_ADDR']=='127.0.0.1'){
+			$path = '/bmc/public';
+		}else{
+			$path = '';
+		}
+	?>
+
 <div class="container-fluid">
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-default">
@@ -185,11 +193,7 @@
 										if($view_type == "viewBMC"){
 											print '<a href="/bmc/public/bmc/viewBMC/'.$bmc_id.$project_id.$bmc_status.$owner.'"><button type="button" class="btn btn-default">Back</button></a>';	
 										}else{
-											if($_SERVER['REMOTE_ADDR']=='127.0.0.1'){
-												print '<a href="/bmc/public/persona"><button type="button" class="btn btn-default">Back</button></a>';
-											}else{
-												print '<a href="/persona"><button type="button" class="btn btn-default">Back</button></a>';
-											}
+											print '<a href="'.$path.'/persona"><button type="button" class="btn btn-default">Back</button></a>';
 										}
 									?>
 								</div>

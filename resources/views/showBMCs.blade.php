@@ -1,4 +1,13 @@
 @extends('app') @section('content')
+
+<?php 
+		if($_SERVER['REMOTE_ADDR']=='127.0.0.1'){
+			$path = '/bmc/public';
+		}else{
+			$path = '';
+		}
+	?>
+
 <div class="container-fluid">
 	<div class=" col-md-10 col-md-offset-1 col-sm-10 col-xs-12 page-header">
 		<h1><?php print $project_name;?><br>
@@ -66,10 +75,10 @@
 												';
 									} else {
 										print '
-													<a href="/bmc/public/bmc/edit/' . $bmc ["id"] . ',1">
+													<a href="'.$path.'/bmc/edit/' . $bmc ["id"] . ',1">
 															<span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/>
 													</a>   
-													<a href="/bmc/public/bmc/copyBmc/' . $bmc ["id"] . ',' . $project_id . ',1">
+													<a href="'.$path.'/bmc/copyBmc/' . $bmc ["id"] . ',' . $project_id . ',1">
 															<span class="glyphicon glyphicon-file" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="duplicate"/>
 													</a>   
 													<a href="">
@@ -92,7 +101,7 @@
 									} elseif ($bmc ["status"] == 'rejected') {
 										$temp_status = 3;
 									}
-									print '<a href="/bmc/public/bmc/viewBMC/' . $bmc ["id"] . ',' . $project_id . ',' . $temp_status . ',' . $owner . '"><button type="button" class="btn btn-default">show BMC</button></a>';
+									print '<a href="'.$path.'/bmc/viewBMC/' . $bmc ["id"] . ',' . $project_id . ',' . $temp_status . ',' . $owner . '"><button type="button" class="btn btn-default">show BMC</button></a>';
 									print '		</div>
 										</div>';
 									
@@ -105,7 +114,7 @@
 										        <h4 class="modal-title">Do you want to delete ' . $bmc ["title"] . '?</h4>
 										      </div>
 										      <div class="modal-footer delete col-md-12">
-									      		<div class="col-md-6"><a href="/bmc/public/bmc/delete/' . $bmc ["id"] . ',' . $project_id . ',1"><button type="button" class="btn btn-primary btn-lg">Yes</button></a></div>
+									      		<div class="col-md-6"><a href="'.$path.'/bmc/delete/' . $bmc ["id"] . ',' . $project_id . ',1"><button type="button" class="btn btn-primary btn-lg">Yes</button></a></div>
 								  				<div class="col-md-6"><button type="button" class="btn btn-default btn-lg" data-dismiss="modal">No</button></div>
 										      </div>
 										    </div>
@@ -119,7 +128,7 @@
 						<br>
 						<?php
 						if ($owner == 1) {
-							print '<a href="/bmc/public/bmc/create/' . $project_id . ',' . $owner . '"><button type="button" class="btn btn-primary">New BMC</button></a>';
+							print '<a href="'.$path.'/bmc/create/' . $project_id . ',' . $owner . '"><button type="button" class="btn btn-primary">New BMC</button></a>';
 						}
 						?>
 						<a href="{{ url('/projects') }}"><button type="button" class="btn btn-default">Back to Projects</button></a>
