@@ -185,7 +185,11 @@
 										if($view_type == "viewBMC"){
 											print '<a href="/bmc/public/bmc/viewBMC/'.$bmc_id.$project_id.$bmc_status.$owner.'"><button type="button" class="btn btn-default">Back</button></a>';	
 										}else{
-											print '<a href="/bmc/public/persona"><button type="button" class="btn btn-default">Back</button></a>';
+											if($_SERVER['REMOTE_ADDR']){
+												print '<a href="/bmc/public/persona"><button type="button" class="btn btn-default">Back</button></a>';
+											}else{
+												print '<a href="/persona"><button type="button" class="btn btn-default">Back</button></a>';
+											}
 										}
 									?>
 								</div>

@@ -122,8 +122,7 @@
 							print '<a href="/bmc/public/bmc/create/' . $project_id . ',' . $owner . '"><button type="button" class="btn btn-primary">New BMC</button></a>';
 						}
 						?>
-						<a href="{{ url('/projects') }}"><button type="button"
-								class="btn btn-default">Back to Projects</button></a>
+						<a href="{{ url('/projects') }}"><button type="button" class="btn btn-default">Back to Projects</button></a>
 					</div>
 				</div>
 			</div>
