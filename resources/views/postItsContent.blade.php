@@ -24,7 +24,7 @@
 							<div class="col-md-12 col-xs-12 post_It_content">'.$bmc_postIt['content'].'</div>
 							<div class="row post-it-footer col-md-12 col-xs-12">
 								<a href="#editPostItModal'.$boxId.$bmc_postIt['id'].'" role="button" data-toggle="modal"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>  
-								<a href="/bmc/public/bmc/deletePostIt/'.$bmc_postIt['id'].','.$bmc_id.','.$project_id.','.$status.','.$owner.'"><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a>
+								<a data-toggle="modal" data-target="#deleteModal'.$bmc_postIt['id'].'"><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a>
 							</div>
 						</div>
 
@@ -138,6 +138,23 @@
 						  </div>
 						</div>
 				';
+												    
+			    print '
+  					<div class="modal fade" id="deleteModal' . $bmc_postIt["id"] . '" tabindex="-1" role="dialog">
+					  <div class="modal-dialog delete" role="document">
+					    <div class="modal-content delete col-md-12">
+					      <div class="modal-header col-md-12">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					        <h4 class="modal-title">Do you want to delete ' . $bmc_postIt ["title"] . '?</h4>
+					      </div>
+					      <div class="modal-footer delete col-md-12">
+				      		<div class="col-md-6"><a href="/bmc/public/bmc/deletePostIt/'.$bmc_postIt['id'].','.$bmc_id.','.$project_id.','.$status.','.$owner.'"><button type="button" class="btn btn-primary btn-lg">Yes</button></a></div>
+			  				<div class="col-md-6"><button type="button" class="btn btn-default btn-lg" data-dismiss="modal">No</button></div>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+  				';
 			}
 		}
 		

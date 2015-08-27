@@ -49,12 +49,28 @@
 										}
 										
 								  		print '<div class="col-md-3 col-sm-3 col-xs-6">';
-// 											print '<a href="team/edit/'.$teamMember['id'].','.$teamMember['email'].','.$project_title.','.$project_id.'"><span class="glyphicon glyphicon-pencil" aria-hidden="true" /></a>   ';
-											print '<a href="team/delete/'.$teamMember['pivot']['project_id'].','.$teamMember['id'].'"><span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/></a>';
+											print '<a data-toggle="modal" data-target="#deleteModal'.$teamMember['id'].'"><span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/></a>';
 										print '</div>';
 									print '</div>';
+									
+									print '
+					  					<div class="modal fade" id="deleteModal'.$teamMember["id"].'" tabindex="-1" role="dialog">
+										  <div class="modal-dialog delete" role="document">
+										    <div class="modal-content delete col-md-12">
+										      <div class="modal-header col-md-12">
+										        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										        <h4 class="modal-title">Do you want to remove '.$teamMember["name"].' from your Team list?</h4>
+										      </div>
+										      <div class="modal-footer delete col-md-12">
+									      		<div class="col-md-6"><a href="team/delete/'.$teamMember['pivot']['project_id'].','.$teamMember['id'].'"><button type="button" class="btn btn-primary btn-lg">Yes</button></a></div>
+								  				<div class="col-md-6"><button type="button" class="btn btn-default btn-lg" data-dismiss="modal">No</button></div>
+										      </div>
+										    </div>
+										  </div>
+										</div>
+					  				';
 								}						
-							}
+							}			
 							?> 
 					  
 					</div>

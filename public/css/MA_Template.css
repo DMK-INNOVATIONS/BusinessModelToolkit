@@ -229,3 +229,15 @@ a{
 .modal-dialog{
 	width: 800px;
 }
+
+.modal-dialog.delete{
+	width: 400px;
+}
+
+.modal-content.delete{
+	text-align: center;
+}
+
+.modal-footer.delete{
+	text-align:center;
+}

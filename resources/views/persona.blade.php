@@ -43,7 +43,7 @@
 									  		<div class="col-md-2 col-sm-2 col-xs-6">'.$myPersona["updated_at"].'</div>
 									  		<div class="col-md-1 col-sm-1 col-xs-6">';
 												print '<a href="persona/edit/'.$myPersona["id"].','.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.',0"><span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/></a>  ';
-												print '<a href="persona/delete/'.$myPersona["id"].'"><span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/></a>  ';
+												print '<a data-toggle="modal" data-target="#deleteModal'.$myPersona['id'].'"><span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/></a>  ';
 							print'			</div>
 									  		<div class="col-md-2 col-sm-2 col-xs-6">';
 												print '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myPersona'.$myPersona["id"].'">show</button>';
@@ -180,6 +180,23 @@
 								  </div>
 								</div>							
 							';
+														 
+							 print ' <!-- delete Modal -->
+			  					<div class="modal fade" id="deleteModal'.$myPersona["id"].'" tabindex="-1" role="dialog">
+								  <div class="modal-dialog delete" role="document">
+								    <div class="modal-content delete col-md-12">
+								      <div class="modal-header col-md-12">
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								        <h4 class="modal-title">Do you want to delete '.$myPersona["name"].'?</h4>
+								      </div>
+								      <div class="modal-footer delete col-md-12">
+							      		<div class="col-md-6"><a href="persona/delete/'.$myPersona["id"].'"><button type="button" class="btn btn-primary btn-lg">Yes</button></a></div>
+						  				<div class="col-md-6"><button type="button" class="btn btn-default btn-lg" data-dismiss="modal">No</button></div>
+								      </div>
+								    </div>
+								  </div>
+								</div>
+			  				';
 						}
 						?>   	
 					</div>
