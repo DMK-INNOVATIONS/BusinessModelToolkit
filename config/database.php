@@ -6,7 +6,7 @@ if($_SERVER['REMOTE_ADDR'] == "127.0.0.1"){
 	$DB_USERNAME = 'bmc';
 	$DB_PASSWORD = 'bmc_test';
 }else{
-	$DB_HOST = 'https://phpmyadmin.project.dmknet.de';
+	$DB_HOST = 'bmcounselor.project.dmknet.de';
 	$DB_DATABASE = 'bmcounselor_1';
 	$DB_USERNAME = 'bmcounselor';
 	$DB_PASSWORD = 'qTFzz6YtsE6Su2HV';

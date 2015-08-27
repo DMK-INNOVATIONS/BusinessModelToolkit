@@ -37,7 +37,7 @@
 											print '	<a href="projects/edit/'.$myProject["id"].'">
 														<span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/>
 													</a>   ';
-											print '	<a href="projects/delete/'.$myProject["id"].'">
+											print '	<a data-toggle="modal" data-target="#deleteModal'.$myProject['id'].'">
 							    						<span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/>
 							    					</a>';
 									print '	</div>
@@ -46,7 +46,26 @@
 							  							<button type="button" class="btn btn-default">show BMC\'s </button>
 							  						</a>';
 							    			print'</div>';
-								print '</div>';															
+								print '</div>';			
+
+								
+								print '
+					  					<div class="modal fade" id="deleteModal'.$myProject["id"].'" tabindex="-1" role="dialog">
+										  <div class="modal-dialog" role="document">
+										    <div class="modal-content col-md-12">
+										      <div class="modal-header col-md-12">
+										        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										        <h4 class="modal-title">Do you want to delete '.$myProject["title"].'?</h4>
+										      </div>
+										      <div class="modal-footer col-md-5">
+									      		<a href="projects/delete/'.$myProject["id"].'"><button type="button" class="btn btn-primary btn-lg">Yes</button></a>
+								  				<button type="button" class="btn btn-default btn-lg" data-dismiss="modal">No</button>
+										      </div>
+										    </div><!-- /.modal-content -->
+										  </div><!-- /.modal-dialog -->
+										</div><!-- /.modal -->
+					  				
+					  				';
 								}
 							?>   	
 					</div>
