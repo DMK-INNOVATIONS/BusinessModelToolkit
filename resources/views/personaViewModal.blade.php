@@ -58,11 +58,11 @@
 										'.$myPersona["occupation"].'	
 									</div>
 									<div class="col-md-1 col-sm-1 col-xs-1">
-										<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myPersona'.$myPersona["id"].'">show</button>
+										<button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#myPersona'.$myPersona["id"].'">show</button>
 									</div>
 							';
 							print '</div>';
-							$count = $count+1;							
+							$count = $count+1;		
 						}
 					?>
 				</div>

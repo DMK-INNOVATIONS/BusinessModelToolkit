@@ -125,60 +125,7 @@
 							      </div>
 							    </div>
 							  </div>
-							</div>		  				
-									  				
-							<!-- Modal for Persona View-->
-								<div class="modal fade" id="myPersonas'.$myPersona["id"].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-								  <div class="modal-dialog" role="document">
-								    <div class="modal-content">
-								      <div class="modal-header">
-								        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								        <h4 class="modal-title" id="myModalLabel">Persona View</h4>
-								      </div>
-								      <div class="modal-body">
-								      	<div class="container-fluid">
-								      		<div class="panel panel-default">
-									      		<div class="panel-heading">My Persona</div>
-										      	<div class="panel-body">
-												  <div class="row persona_line_1">
-												    	<div class="col-md-6 text-center persona_line_1_1 ">
-															<img class="persona_image" src="'.$myPersona["avatarImg"].'">
-												    	</div>
-										 	 			<div class="col-md-6">
-										 	 				<div class="col-md-12"><strong>Name:</strong> '.$myPersona["name"].'</div>
-										 	 				<div class="col-md-12"><strong>Age:</strong> '.$myPersona["age"].'</div>
-										 	 				<div class="col-md-12"><strong>Gender:</strong> '.$myPersona["gender"].'</div>
-										 	 				<div class="col-md-12"><strong>Nationality:</strong> '.$myPersona["nationality"].'</div>
-										 	 				<div class="col-md-12"><strong>Marital Status:</strong> '.$myPersona["marital_status"].'</div>
-										 	 				<div class="col-md-12"><strong>Occupation:</strong> '.$myPersona["occupation"].'</div>
-										 	 			</div>
-												  </div>
-												  <div class="row">
-												    	<div class="col-md-6 persona_line_1_1"><strong>Needs</strong>
-													    	<ul>';
-																foreach ($needs as $need){
-																	print '<li class="list-group-item">'.$need.'</li>';	
-																}
-														 print '</ul>
-												    	</div>
-										 	 			<div class="col-md-6"><strong>Skills</strong>
-										 	 				<ul>';
-																 foreach ($skills as $skill){
-																 	print '<li class="list-group-item">'.$skill.'</li>';
-																 }
-														 print '</ul>
-										 	 			</div>
-												  </div>
-												</div>  
-											</div>
-										</div>
-								      </div>
-								      <div class="modal-footer">
-								        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								      </div>
-								    </div>
-								  </div>
-								</div>							
+							</div>		  									
 							';
 														 
 							 print ' <!-- delete Modal -->
