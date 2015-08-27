@@ -1,3 +1,14 @@
+<?php 
+	$posturl = "";
+	if(isset($user)) : $posturl = $user['id']; endif;
+ 
+	if($_SERVER['REMOTE_ADDR']=='127.0.0.1'){
+		$path = '/bmc/public';
+	}else{
+		$path = '';
+	}
+?>
+
 <div class="panel-body canvas_box">
 	<?php
 		$empty = true;
@@ -37,7 +48,7 @@
 					      	<h4>Change the Status of your Post-It</h4>
 					      </div>
 					      <div class="modal-body">
-						      <form class="form-horizontal" role="form" method="POST" action="/bmc/public/bmc/changePostItStatus/'.$project_id.','.$bmc_id.','.$bmc_status.','.$bmc_postIt["id"].','.$owner.'">
+						      <form class="form-horizontal" role="form" method="POST" action="'.$path.'/bmc/changePostItStatus/'.$project_id.','.$bmc_id.','.$bmc_status.','.$bmc_postIt["id"].','.$owner.'">
 									<input type="hidden" name="_token" value="'.csrf_token().'">
 							
 									<div class="form-group">
@@ -86,7 +97,7 @@
 										</div>
 							    	</div>
 						 	 		<div class="col-md-8">
-										<form class="form-horizontal" role="form" method="POST" action="/bmc/public/bmc/savePostIt/'.$boxId.','.$bmc_id.','.$project_id.','.$status.','.$bmc_postIt['id'].','.$owner.'">
+										<form class="form-horizontal" role="form" method="POST" action="'.$path.'/bmc/savePostIt/'.$boxId.','.$bmc_id.','.$project_id.','.$status.','.$bmc_postIt['id'].','.$owner.'">
 											<input type="hidden" name="_token" value="'. csrf_token() .'">
 									
 											<div class="form-group">
@@ -148,7 +159,7 @@
 					        <h4 class="modal-title">Do you want to delete ' . $bmc_postIt ["title"] . '?</h4>
 					      </div>
 					      <div class="modal-footer delete col-md-12">
-				      		<div class="col-md-6"><a href="/bmc/public/bmc/deletePostIt/'.$bmc_postIt['id'].','.$bmc_id.','.$project_id.','.$status.','.$owner.'"><button type="button" class="btn btn-primary btn-lg">Yes</button></a></div>
+				      		<div class="col-md-6"><a href="'.$path.'/bmc/deletePostIt/'.$bmc_postIt['id'].','.$bmc_id.','.$project_id.','.$status.','.$owner.'"><button type="button" class="btn btn-primary btn-lg">Yes</button></a></div>
 			  				<div class="col-md-6"><button type="button" class="btn btn-default btn-lg" data-dismiss="modal">No</button></div>
 					      </div>
 					    </div>

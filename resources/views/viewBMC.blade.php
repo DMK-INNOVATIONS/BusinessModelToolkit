@@ -1,6 +1,17 @@
 @extends('app')
 
 @section('content')
+
+<?php 
+	$posturl = "";
+	if(isset($user)) : $posturl = $user['id']; endif;
+ 
+	if($_SERVER['REMOTE_ADDR']=='127.0.0.1'){
+		$path = '/bmc/public';
+	}else{
+		$path = '';
+	}
+?>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -112,7 +123,7 @@
 			    	</div>
     				<div class="col-md-10 col-sm-10 col-xs-10 col-md-offset-1">
 						<br>
-						<?php print '<a href="/bmc/public/projects/showBMCs/'.$project_id.','.$owner.'"><button type="button" class="btn btn-primary">Back to Project</button></a>';?>
+						<?php print '<a href="'.$path.'/projects/showBMCs/'.$project_id.','.$owner.'"><button type="button" class="btn btn-primary">Back to Project</button></a>';?>
 					</div>
 			    	
 				</div>

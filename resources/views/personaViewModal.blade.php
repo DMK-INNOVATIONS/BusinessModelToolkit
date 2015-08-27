@@ -1,3 +1,14 @@
+<?php 
+	$posturl = "";
+	if(isset($user)) : $posturl = $user['id']; endif;
+ 
+	if($_SERVER['REMOTE_ADDR']=='127.0.0.1'){
+		$path = '/bmc/public';
+	}else{
+		$path = '';
+	}
+?>
+
 <div class="modal fade" id="addPersonaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -6,7 +17,7 @@
         <h4 class="modal-title" id="myModalLabel">Add a Persona</h4>
       </div>
       <div class="modal-body">
-      	<form class="form-horizontal" role="form" method="POST" action="/bmc/public/bmc/addPersona/<?php print $bmc_id.','.$owner; ?>">
+      	<form class="form-horizontal" role="form" method="POST" action="<?php print $path;?>/bmc/addPersona/<?php print $bmc_id.','.$owner; ?>">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="persona-View-table">
 					  <div class="panel-body table_text">
@@ -58,7 +69,7 @@
 			<div class="form-group">
 				<div class="col-md-8 col-md-offset-2">
 					<button type="submit" class="btn btn-primary">Add Persona/s</button>
-					<?php $view_type = 'viewBMC'; print '<a href="/bmc/public/persona/create/'.$view_type.','.$bmc_id.','.$project_id.','.$status.','.$owner.'"><button type="button" class="btn btn-default">Create new Persona</button></a>'; ?>
+					<?php $view_type = 'viewBMC'; print '<a href="'.$path.'/persona/create/'.$view_type.','.$bmc_id.','.$project_id.','.$status.','.$owner.'"><button type="button" class="btn btn-default">Create new Persona</button></a>'; ?>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
 				</div>
 			</div>

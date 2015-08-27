@@ -1,3 +1,14 @@
+<?php 
+	$posturl = "";
+	if(isset($user)) : $posturl = $user['id']; endif;
+ 
+	if($_SERVER['REMOTE_ADDR']=='127.0.0.1'){
+		$path = '/bmc/public';
+	}else{
+		$path = '';
+	}
+?>
+
 <!-- Help Modal - -->
 <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -102,7 +113,7 @@
       	<h4>Change the Title of Your BMC</h4>
       </div>
       <div class="modal-body">
-	      <form class="form-horizontal" role="form" method="POST" action="<?php print "/bmc/public/bmc/save/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view.','.$owner ?>">
+	      <form class="form-horizontal" role="form" method="POST" action="<?php print $path."/bmc/save/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view.','.$owner ?>">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		
 				<div class="form-group">
@@ -132,7 +143,7 @@
       	<h4>Change the Status of <?php print $bmc_name;?></h4>
       </div>
       <div class="modal-body">
-	      <form class="form-horizontal" role="form" method="POST" action="<?php print "/bmc/public/bmc/changeStatus/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view.','.$owner ?>">
+	      <form class="form-horizontal" role="form" method="POST" action="<?php print $path."/bmc/changeStatus/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view.','.$owner ?>">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		
 				<div class="form-group">

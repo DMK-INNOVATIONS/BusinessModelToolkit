@@ -1,6 +1,17 @@
 <!-- add Post-It Modal -->
 <?php $post_it_id = "null";?>
 
+<?php 
+	$posturl = "";
+	if(isset($user)) : $posturl = $user['id']; endif;
+ 
+	if($_SERVER['REMOTE_ADDR']=='127.0.0.1'){
+		$path = '/bmc/public';
+	}else{
+		$path = '';
+	}
+?>
+
 <?php print '<div class="modal fade" id="addPostItModal'.$boxId.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">'?>
 <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -18,7 +29,7 @@
 				</div>
 	    	</div>
  	 		<div class="col-md-8">
-				<form class="form-horizontal" role="form" method="POST" action="<?php print "/bmc/public/bmc/savePostIt/".$boxId.','.$bmc_id.','.$project_id.','.$status.','.$post_it_id.','.$owner ?>">
+				<form class="form-horizontal" role="form" method="POST" action="<?php print $path."/bmc/savePostIt/".$boxId.','.$bmc_id.','.$project_id.','.$status.','.$post_it_id.','.$owner ?>">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			
 					<div class="form-group">
