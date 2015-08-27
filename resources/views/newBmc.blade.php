@@ -1,6 +1,14 @@
 @extends('app')
 
 @section('content')
+<?php 
+		if($_SERVER['REMOTE_ADDR']=='127.0.0.1'){
+			$path = '/bmc/public';
+		}else{
+			$path = '';
+		}
+	?>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
@@ -26,7 +34,7 @@
 						
 					?>
 
-					<form class="form-horizontal" role="form" method="POST" action="<?php print "/bmc/public/bmc/save/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view.','.true.','.$owner ?>">
+					<form class="form-horizontal" role="form" method="POST" action="<?php print $path."/bmc/save/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view.','.true.','.$owner ?>">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						
 						<?php 
@@ -51,7 +59,7 @@
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">Save</button></a>
-								<?php print '<a href="/bmc/public/projects/showBMCs/'.$project_id.','.$owner.'"><button type="button" class="btn btn-default">Back</button></a>';?>
+								<?php print '<a href="'.$path.'/projects/showBMCs/'.$project_id.','.$owner.'"><button type="button" class="btn btn-default">Back</button></a>';?>
 							</div>
 						</div>
 					</form>

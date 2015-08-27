@@ -5,6 +5,12 @@
 <?php 
 	$posturl = "";
 	if(isset($user)) : $posturl = $user['id']; endif;
+ 
+	if($_SERVER['REMOTE_ADDR']=='127.0.0.1'){
+		$path = '/bmc/public';
+	}else{
+		$path = '';
+	}
 ?>
 
 <div class="container-fluid">
@@ -17,7 +23,7 @@
 				<div class="panel-heading"><b>User Profile</b> <button type="button" data-toggle="modal" data-target="#helpModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button></div>
 				<div class="panel-body">
 				
-				<form class="form-horizontal" role="form" method="POST" action="/bmc/public/profile/save/<?php print $user['id'];?>">
+				<form class="form-horizontal" role="form" method="POST" action="<?php print $path;?>/profile/save/<?php print $user['id'];?>">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						
 						<div class="form-group">
