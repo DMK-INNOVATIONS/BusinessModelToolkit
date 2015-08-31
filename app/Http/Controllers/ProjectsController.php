@@ -82,7 +82,7 @@ class ProjectsController extends Controller {
 		$project = Project::find ( $id );
 		
 		return view ( 'newProject', [ 
-				'project' => json_decode ( $project, true ) 
+				'project' => json_decode ( $project, true ), 'error' => 0 
 		] );
 	}
 	
