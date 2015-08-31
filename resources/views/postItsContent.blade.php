@@ -92,7 +92,7 @@
 							    	<div class="col-md-4 Post-It_Image">
 							    		<div class="row">
 							    			<div class="col-md-12">
-												<img src="/bmc/public/img/Postit_gelb.jpg">
+												<img src="'.$path.'/img/Postit_gelb.jpg">
 											</div>
 										</div>
 							    	</div>
