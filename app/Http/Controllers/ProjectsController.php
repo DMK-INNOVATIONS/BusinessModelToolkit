@@ -8,6 +8,7 @@ use App\User;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Auth;
 use App\BMC;
+use App\Notice;
 
 class ProjectsController extends Controller {
 	
@@ -147,9 +148,46 @@ class ProjectsController extends Controller {
 	public function deleteProject($id) {
 		$project = Project::find ( $id );
 		
-		Project::destroy ( $id );
+		//alle bmc's des Projektes finden
+		$projectBMCs = $this-> getAllProjectBMCs($project['id']);
 		
-		return redirect ( 'projects' );
+		foreach($projectBMCs as $projectBMC){
+			//alle personas von BMC's finden und detachen
+			$bmc_personas = $projectBMC->personas()->get();
+			
+			foreach($bmc_personas as $bmc_persona){
+				$projectBMC->personas()->detach($bmc_persona['id']);
+			}
+			
+			//alle post-IT's finden und löschen
+			$bmcPostIts = $this->getBMCPostIts($projectBMC['id']);
+			
+			foreach($bmcPostIts as $bmcPostIt){
+				Notice::destroy($bmcPostIt['id']);
+			}
+			
+			//bmc löschen
+			BMC::destroy($projectBMC['id']);
+		}		
+		
+		//Projekt löschen		
+		Project::destroy ($id);
+		
+		return redirect ('projects');
+	}
+	
+	public function getBMCPostIts($bmc_id){
+		$getAllPostIts = Notice::all();
+		$bmcPostIts = array();
+	
+		$dbPostIts = json_decode($getAllPostIts, true);
+	
+		foreach ($dbPostIts as $dbPostIt){
+			if ($dbPostIt["bmc_id"] == $bmc_id){
+				array_push($bmcPostIts, $dbPostIt);
+			}
+		}
+		return $bmcPostIts;
 	}
 	
 	/**
