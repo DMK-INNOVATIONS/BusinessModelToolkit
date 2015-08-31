@@ -150,9 +150,16 @@
 				 	<label for="gender" class="col-md-2 control-label">Status</label>
 				 	<div class="col-md-8">
 					  <select class="form-control" id="status" name="status">
-					    <option>inWork</option>
-					    <option>approved</option>
-					    <option>rejected</option>
+					  	<?php 
+							switch ($bmc_status) {
+								case 'inWork':
+									print '<option selected>inWork</option><option>approved</option><option>rejected</option>';break;
+								case 'approved':
+									print '<option>inWork</option><option selected>approved</option><option>rejected</option>';break;
+								case 'rejected':
+									print '<option>inWork</option><option>approved</option><option selected>rejected</option>';break;
+							}
+					  	?>
 					  </select>
 					</div>
 				</div>
