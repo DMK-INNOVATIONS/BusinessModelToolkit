@@ -25,11 +25,11 @@ background-color: rgb(229, 229, 229);
 }
 
 .navbar-brand{
-padding: 0 0 0 12px;	
+padding: 10px;	
 }
 
 div.navbar-header > a > img{
-height: 50px;
+height: 35px;
 }
 
 .avatarImg{

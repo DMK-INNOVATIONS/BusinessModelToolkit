@@ -30,7 +30,7 @@
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle Navigation</span>
 				</button>
-				<a class="navbar-brand dmk" href="http://www.dmk-ebusiness.de/"><img alt="DMK E-Bussiness" src="{{ asset('img/dmk_e-business_logo.png') }}"></a>
+				<a class="navbar-brand" href="http://bmcounselor.project.dmknet.de/bmc"><img alt="DMK E-Bussiness" src="{{ asset('img/toolkit_builders_logo.png') }}"></a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
