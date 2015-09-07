@@ -21,10 +21,10 @@
 				<div class="panel-heading"><b><?php print $bmc['title'];?></b> <button type="button" data-toggle="modal" data-target="#helpModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button></div>
 				<div class="panel-body">
 					<div class="col-md-6 export">
-						<a href="<?php print '/bmc/public/export/export/'.$bmc["id"].','.$project["id"].',1'.',P';?>"><button type="button" class="btn btn-primary btn-lg">Portrait Format</button></a>
+						<a href="<?php print $path.'/export/export/'.$bmc["id"].','.$project["id"].',1'.',P';?>"><button type="button" class="btn btn-primary btn-lg">Portrait Format</button></a>
 					</div>
 	  				<div class="col-md-6 export">
-	  					<a href="<?php print '/bmc/public/export/export/'.$bmc["id"].','.$project["id"].',1'.',L';?>"><button type="button" class="btn btn-primary btn-lg">Landscape Format</button></a>
+	  					<a href="<?php print $path.'/export/export/'.$bmc["id"].','.$project["id"].',1'.',L';?>"><button type="button" class="btn btn-primary btn-lg">Landscape Format</button></a>
   					</div>
 					
 					<div class="col-md-12 col-sm-12 col-xs-12">
