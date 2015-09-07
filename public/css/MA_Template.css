@@ -82,6 +82,7 @@ top:0;
   border: 6px solid;  
   border-color: #dddddd transparent transparent #dddddd;  
   top: 78px;
+  left: 14px;
   }
   
 .persona_view_box_quote:after {  
@@ -226,15 +227,19 @@ a{
 	background-image: url(../img/gplaypattern.png);
 }
 
-.modal-dialog{
-	width: 800px;
-}
+/* .modal-dialog{ */
+/* 	width: 800px; */
+/* } */
 
-.modal-dialog.delete{
-	width: 400px;
-}
+/* .modal-dialog.delete{ */
+/* 	width: 400px; */
+/* } */
 
 .modal-content.delete{
+	text-align: center;
+}
+
+.export{
 	text-align: center;
 }
 

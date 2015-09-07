@@ -2,7 +2,7 @@
 
 @section('content')
 	<?php 
-		if($_SERVER['REMOTE_ADDR']=='127.0.0.1'){
+		if($_SERVER['SERVER_NAME']== 'localhost' || $_SERVER['REMOTE_ADDR']=='127.0.0.1'){
 			$path = '/bmc/public';
 		}else{
 			$path = '';

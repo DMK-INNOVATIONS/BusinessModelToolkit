@@ -21,7 +21,7 @@
 			<div class="col-md-4 col-xs-12">
 				<a href="#" class="thumbnail thumbnail_start"> <img
 					class="img-circle" src="{{ asset('img/latest_bmc.png') }}"
-					alt="latest BMC">
+					alt="My BMC">
 				</a>
 			</div>
 		</div>

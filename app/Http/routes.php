@@ -47,6 +47,9 @@ Route::post('persona/save/{id?}', 'PersonaController@save');
 Route::get('persona/edit/{id}', 'PersonaController@edit');
 Route::get('persona/delete/{id}','PersonaController@deletePersona');
 
+Route::get('export/{id}', 'ExportController@index');
+Route::get('export/export/{id}', 'ExportController@export');
+
 Route::get('profile', 'ProfileController@index');
 Route::post('profile/save/{id}', 'ProfileController@save');
 

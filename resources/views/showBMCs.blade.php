@@ -1,7 +1,8 @@
 @extends('app') @section('content')
 
 <?php 
-		if($_SERVER['REMOTE_ADDR']=='127.0.0.1'){
+
+		if($_SERVER['SERVER_NAME']== 'localhost' || $_SERVER['REMOTE_ADDR']=='127.0.0.1'){
 			$path = '/bmc/public';
 		}else{
 			$path = '';
@@ -81,7 +82,7 @@
 													<a href="'.$path.'/bmc/copyBmc/' . $bmc ["id"] . ',' . $project_id . ',1">
 															<span class="glyphicon glyphicon-file" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="duplicate"/>
 													</a>   
-													<a href="">
+													<a href="'.$path.'/export/'.$bmc ["id"]. ',' . $project_id.',1">
 															<span class="glyphicon glyphicon-export" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="export"/>
 													</a> 
 													<a data-toggle="modal" data-target="#deleteModal' . $bmc ['id'] . '">
