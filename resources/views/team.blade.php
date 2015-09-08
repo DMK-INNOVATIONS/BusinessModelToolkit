@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
 	<div class=" col-md-10 col-md-offset-1 col-sm-10 col-xs-12 page-header">
-	  <h1>Team View <br><small>In this Table you can see, add and edit all Connections between your Team Members an your Projects.</small></h1>
+	  <h1>Team View <br><small>View, add and edit all Connections between your Team Members and your Projects.</small></h1>
 	  
 	</div>
 	<div class="row">
@@ -27,8 +27,8 @@
 					  <!-- Table -->
 					  <div class="row table_head">
 					  		<div class="col-md-3 col-sm-3 col-xs-6">Name</div>
-					  		<div class="col-md-3 col-sm-3 col-xs-6">E-Mail</div>
-					  		<div class="col-md-3 col-sm-3 col-xs-6">Assigned Project</div>
+					  		<div class="col-md-3 col-sm-3 col-xs-6">Email</div>
+					  		<div class="col-md-3 col-sm-3 col-xs-6">Assigned Projects</div>
 					  		<div class="col-md-3 col-sm-3 col-xs-6">Tools</div>
 					  </div>
 					  <?php 

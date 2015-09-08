@@ -29,6 +29,9 @@ Route::post('bmc/changeStatus/{id}', 'BmcController@changeStatus');
 Route::post('bmc/changePostItStatus/{id}', 'BmcController@changePostItStatus');
 Route::post('bmc/addPersona/{id}', 'BmcController@addPersona');
 Route::get('bmc/deleteAssignedPersona/{id}', 'BmcController@deleteAssignedPersona');
+Route::get('bmc/models', 'BmcController@models');
+Route::get('bmc/createModel', 'BmcController@createModel');
+Route::post('bmc/saveModel', 'BmcController@saveModel');
 
 Route::get('projects', 'ProjectsController@index');
 Route::get('projects/create', 'ProjectsController@create');

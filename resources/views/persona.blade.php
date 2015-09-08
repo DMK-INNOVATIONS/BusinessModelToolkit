@@ -2,7 +2,7 @@
 
 @section('content')
 <div class=" col-md-10 col-md-offset-1 col-sm-10 col-xs-12 page-header">
-  	<h1>Persona View<br><small>In this Table you can create, edit and delete all your Personas.</small></h1>  
+  	<h1>Persona View<br><small>Create, edit and delete your Personas.</small></h1>  
 </div>
 
 <div class="container-fluid">
@@ -22,7 +22,7 @@
 					  		<div class="col-md-1 col-sm-1 col-xs-6">Age</div>
 					  		<div class="col-md-1 col-sm-1 col-xs-6">Gender</div>
 					  		<div class="col-md-2 col-sm-2 col-xs-6">Occupation</div>
-					  		<div class="col-md-2 col-sm-2 col-xs-6">updated at</div>
+					  		<div class="col-md-2 col-sm-2 col-xs-6">Updated at</div>
 					  		<div class="col-md-1 col-sm-1 col-xs-6">Tools</div>
 					  		<div class="col-md-2 col-sm-2 col-xs-6"></div>
 					  </div>
@@ -33,6 +33,13 @@
 							$bmc_status = 'null';
 						
 						foreach ($myPersonas as $myPersona){
+							$created_at = explode(' ', $myPersona["created_at"]);
+							$created_at_date = $created_at[0];
+							$created_at_time = $created_at[1];
+								
+							$updated_at = explode(' ', $myPersona["updated_at"]);
+							$updated_at_date = $updated_at[0];
+							$updated_at_time = $created_at[1];
 							
 							print	'<div class="row table_body">
 									  		<div class="col-md-1 col-sm-1 col-xs-6"><img class="avatarImg" src="'.$myPersona["avatarImg"].'" alt="Selfhtml" /></div>
@@ -46,7 +53,7 @@
 												print '<a data-toggle="modal" data-target="#deleteModal'.$myPersona['id'].'"><span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/></a>  ';
 							print'			</div>
 									  		<div class="col-md-2 col-sm-2 col-xs-6">';
-												print '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myPersona'.$myPersona["id"].'">show</button>';
+												print '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myPersona'.$myPersona["id"].'">Show Persona</button>';
 					  		print'			</div>
 									  </div>
 							';
@@ -149,7 +156,7 @@
 					</div>
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<br>
-						<?php print '<a href="persona/create/'.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.',0"><button type="button" class="btn btn-primary">new Persona</button></a>';?>
+						<?php print '<a href="persona/create/'.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.',0"><button type="button" class="btn btn-primary">New Persona</button></a>';?>
 					</div>
 				</div>
 			</div> 
@@ -174,58 +181,58 @@
 		      	</div>
 	      	</div>
       	</div>
-      	<div class="container-fluid">
-      		<div class="panel panel-default">
-      			<div class="panel-heading">Persona Structure</div>
-      			<div class="panel-body bmcViewBackground">
-      				<div class="row">
-      					<div class="col-md-4">
-      						<div class="col-md-12 panel panel-default"><b>John Doe</b></div>
-      						<div class="col-md-12 panel panel-default persona_view_box"><img alt="Persona Avatar" src="{{ asset('img/male_persona_default.png') }}" height="125px"></div>
-      					</div>
-      					<div class="col-md-8">
-      						<div class="col-md-12 persona_view_box_quote">
-      							<div class="col-md-12">
-      								<b>"I love playing with my Kids!"</b>
-      							</div>
-      						</div>
-      						<div class="col-md-12 panel panel-default">
-      							<div class="col-md-12"><b>Personality</b></div><br>
-      							<p>John lives in a small town near London with his wife and two kids. He loves to play with his two Children after work. Also he loves to hear Jazz Music in his study.</p>
-      						</div>
-      					</div>
-      				</div>
-      				<div class="row">
-      					<div class="col-md-4">
-	      					<div class="col-md-12 panel panel-default">
-	      						<div class="col-md-12 persona_view_box_content"><b>Age:</b> 30</div>
-	      						<div class="col-md-12 persona_view_box_content"><b>Marital Status:</b> married</div>
-	      						<div class="col-md-12 persona_view_box_content"><b>Occupation:</b> Salesman</div>
-	      						<div class="col-md-12 persona_view_box_content"><b>Nationality:</b> British</div>
-	      					</div>
-      					</div>
-      					<div class="col-md-4">
-	      					<div class="col-md-12 panel panel-default persona_view_box_content">
-	      						<div class="col-md-12"><b>Skills</b></div><br>
-	      						<ul>
-	      							<li>MS Office</li>
-	      							<li>BWL</li>
-	      						</ul>
-	      					</div>
-      					</div>
-      					<div class="col-md-4">
-	      					<div class="col-md-12 panel panel-default persona_view_box_content">
-	      						<div class="col-md-12"><b>Needs</b></div><br>
-	      						<ul>
-	      							<li>new Laptop</li>
-	      							<li>advanced training</li>
-	      						</ul>
-	      					</div>
-      					</div>	
-      				</div>
-		      	</div>
-      		</div>
-		</div>
+<!--       	<div class="container-fluid"> -->
+<!--       		<div class="panel panel-default"> -->
+<!--       			<div class="panel-heading">Persona Structure</div> -->
+<!--       			<div class="panel-body bmcViewBackground"> -->
+<!--       				<div class="row"> -->
+<!--       					<div class="col-md-4"> -->
+<!--       						<div class="col-md-12 panel panel-default"><b>John Doe</b></div> -->
+<!--       						<div class="col-md-12 panel panel-default persona_view_box"><img alt="Persona Avatar" src="{{ asset('img/male_persona_default.png') }}" height="125px"></div> -->
+<!--       					</div> -->
+<!--       					<div class="col-md-8"> -->
+<!--       						<div class="col-md-12 persona_view_box_quote"> -->
+<!--       							<div class="col-md-12"> -->
+<!--       								<b>"I love playing with my Kids!"</b> -->
+<!--       							</div> -->
+<!--       						</div> -->
+<!--       						<div class="col-md-12 panel panel-default"> -->
+<!--       							<div class="col-md-12"><b>Personality</b></div><br> -->
+<!--       							<p>John lives in a small town near London with his wife and two kids. He loves to play with his two Children after work. Also he loves to hear Jazz Music in his study.</p> -->
+<!--       						</div> -->
+<!--       					</div> -->
+<!--       				</div> -->
+<!--       				<div class="row"> -->
+<!--       					<div class="col-md-4"> -->
+<!-- 	      					<div class="col-md-12 panel panel-default"> -->
+<!-- 	      						<div class="col-md-12 persona_view_box_content"><b>Age:</b> 30</div> -->
+<!-- 	      						<div class="col-md-12 persona_view_box_content"><b>Marital Status:</b> married</div> -->
+<!-- 	      						<div class="col-md-12 persona_view_box_content"><b>Occupation:</b> Salesman</div> -->
+<!-- 	      						<div class="col-md-12 persona_view_box_content"><b>Nationality:</b> British</div> -->
+<!-- 	      					</div> -->
+<!--       					</div> -->
+<!--       					<div class="col-md-4"> -->
+<!-- 	      					<div class="col-md-12 panel panel-default persona_view_box_content"> -->
+<!-- 	      						<div class="col-md-12"><b>Skills</b></div><br> -->
+<!-- 	      						<ul> -->
+<!-- 	      							<li>MS Office</li> -->
+<!-- 	      							<li>BWL</li> -->
+<!-- 	      						</ul> -->
+<!-- 	      					</div> -->
+<!--       					</div> -->
+<!--       					<div class="col-md-4"> -->
+<!-- 	      					<div class="col-md-12 panel panel-default persona_view_box_content"> -->
+<!-- 	      						<div class="col-md-12"><b>Needs</b></div><br> -->
+<!-- 	      						<ul> -->
+<!-- 	      							<li>new Laptop</li> -->
+<!-- 	      							<li>advanced training</li> -->
+<!-- 	      						</ul> -->
+<!-- 	      					</div> -->
+<!--       					</div>	 -->
+<!--       				</div> -->
+<!-- 		      	</div> -->
+<!--       		</div> -->
+<!-- 		</div> -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

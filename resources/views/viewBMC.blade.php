@@ -17,20 +17,25 @@
 		<div class="col-md-12">
 			<div class="panel panel-default">
 				<div class="panel-heading"><b><?php print $bmc_name?></b>  
-					<button type="button" data-toggle="modal" data-target="#titleChangeModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>  
+					<?php 
+						if($owner != 0){
+							print '<button type="button" data-toggle="modal" data-target="#titleChangeModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>  ';	
+						}
+					?>
+					
 					<?php //Shows Button in Color of Status
 						$status;
 						switch ($bmc_status) {
 							case 'inWork':
-								print '<button type="button" data-toggle="modal" data-target="#statusChangeModal" class="btn btn-warning btn-sm viewBMCStatus">'.$bmc_status.'</button>'  ;
+								print '<button type="button" data-toggle="modal" data-target="#statusChangeModal" class="btn btn-warning btn-sm viewBMCStatus">unclear</button>'  ;
 								$status = 1;
 								break;
 							case 'approved':
-								print '<button type="button" data-toggle="modal" data-target="#statusChangeModal" class="btn btn-success btn-sm viewBMCStatus">'.$bmc_status.'</button>'  ;
+								print '<button type="button" data-toggle="modal" data-target="#statusChangeModal" class="btn btn-success btn-sm viewBMCStatus">validated</button>'  ;
 								$status = 2;
 								break;
 							case 'rejected':
-								print '<button type="button" data-toggle="modal" data-target="#statusChangeModal" class="btn btn-danger btn-sm viewBMCStatus">'.$bmc_status.'</button>'  ;
+								print '<button type="button" data-toggle="modal" data-target="#statusChangeModal" class="btn btn-danger btn-sm viewBMCStatus">invalidated</button>'  ;
 								$status = 3;
 								break;
 						}
@@ -123,7 +128,13 @@
 			    	</div>
     				<div class="col-md-10 col-sm-10 col-xs-10 col-md-offset-1">
 						<br>
-						<?php print '<a href="'.$path.'/projects/showBMCs/'.$project_id.','.$owner.'"><button type="button" class="btn btn-primary">Back to Project</button></a>';?>
+						<?php 
+							if($view_type == 'models'){
+								print '<a href="'.$path.'/bmc/models"><button type="button" class="btn btn-primary">Back to Model View</button></a>';
+							}else{
+								print '<a href="'.$path.'/projects/showBMCs/'.$project_id.','.$owner.'"><button type="button" class="btn btn-primary">Back to Project</button></a>';
+							}
+						?>
 					</div>
 			    	
 				</div>

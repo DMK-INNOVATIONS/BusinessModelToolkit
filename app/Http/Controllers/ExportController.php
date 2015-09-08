@@ -40,13 +40,14 @@ class ExportController extends Controller {
 		$bmc_id = $inserts[0];
 		$project_id = $inserts[1];
 		$owner = $inserts[2];
+		$view_type = $inserts[3];
 		
 		$getBMCProject = $this->getBMCProject($project_id);
 		$getBMC = $this->getBMC($bmc_id);
 		$getBMCNotices = $this->getBMCNotices($bmc_id);
 		$getBMCPersonas = $this->getBMCPersonas($bmc_id);
 		
-		return view ( 'export', ['project' => $getBMCProject, 'bmc' => $getBMC, 'notices' => $getBMCNotices, 'personas' =>$getBMCPersonas, 'owner' => $owner] );
+		return view ( 'export', ['project' => $getBMCProject, 'bmc' => $getBMC, 'notices' => $getBMCNotices, 'personas' =>$getBMCPersonas, 'owner' => $owner, 'view_type' => $view_type] );
 	}
 	
 	public function getBMCProject($id){

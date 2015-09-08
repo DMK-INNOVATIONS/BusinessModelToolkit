@@ -21,18 +21,26 @@
 					  
 					  <div class="row table_head" style="text-align: center;">
 					  		<div class="col-md-3 col-xs-12">Title</div>
-					  		<div class="col-md-3 col-xs-6">created at</div>
-					  		<div class="col-md-2 col-xs-6">updated at</div>
+					  		<div class="col-md-3 col-xs-6">Created at</div>
+					  		<div class="col-md-2 col-xs-6">Updated at</div>
 					  		<div class="col-md-2 col-xs-6">Tools</div>
-					  		<div class="col-md-2 col-xs-6">BMC's</div>
+					  		<div class="col-md-2 col-xs-6">Business Models</div>
 					  </div>
 
 							<?php 
 							foreach ($myProjects as $myProject){
+								$created_at = explode(' ', $myProject["created_at"]);
+								$created_at_date = $created_at[0];
+								$created_at_time = $created_at[1];
+								
+								$updated_at = explode(' ', $myProject["updated_at"]);
+								$updated_at_date = $updated_at[0];
+								$updated_at_time = $created_at[1];
+								
 								print '<div class="row table_body" style="text-align: center;">';
 									print '	<div class="col-md-3 col-xs-12 project_title-smal">'.$myProject["title"].'</div>
-							  				<div class="col-md-3 col-xs-6">'.$myProject["created_at"].'</div>
-							  				<div class="col-md-2 col-xs-6">'.$myProject["updated_at"].'</div>
+							  				<div class="col-md-3 col-xs-6">'.$created_at_date.', '.$created_at_time.'</div>
+							  				<div class="col-md-2 col-xs-6">'.$updated_at_date.', '.$updated_at_time.'</div>
 									  		<div class="col-md-2 col-xs-6">';
 											print '	<a href="projects/edit/'.$myProject["id"].'">
 														<span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/>
@@ -43,7 +51,7 @@
 									print '	</div>
 									  		<div class="col-md-2 col-xs-6">';
 											print '	<a href="projects/showBMCs/'.$myProject["id"].',1">
-							  							<button type="button" class="btn btn-default">show BMC\'s </button>
+							  							<button type="button" class="btn btn-default">Show Models </button>
 							  						</a>';
 							    			print'</div>';
 								print '</div>';			
@@ -70,7 +78,7 @@
 					</div>
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<br>
-						<a href="projects/create"><button type="button" class="btn btn-primary">new Project</button></a>
+						<a href="projects/create"><button type="button" class="btn btn-primary">New Project</button></a>
 					</div>
 				</div>
 			</div> 
@@ -89,7 +97,7 @@
 					  <div class="row table_head " style="text-align: center;">
 					  		<div class="col-md-5 col-xs-12">Title</div>			  		
 					  		<div class="col-md-5 col-xs-6">Owner</div>
-					  		<div class="col-md-2 col-xs-6">BMC's</div>
+					  		<div class="col-md-2 col-xs-6">Business Models</div>
 					  </div>
 					  
 					  <?php 
@@ -108,7 +116,7 @@
 									}
 									
 							  		print'<div class="col-md-2 col-xs-6">';
-									print '<a href="projects/showBMCs/'.$myAssignedProject["id"].',0"><button type="button" class="btn btn-default">show BMC\'s </button></a>';
+									print '<a href="projects/showBMCs/'.$myAssignedProject["id"].',0"><button type="button" class="btn btn-default">show Models </button></a>';
 					    			print'</div>';
 								print '</div>';							
 							}

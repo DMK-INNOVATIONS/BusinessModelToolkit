@@ -17,7 +17,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">add Post-It</h4>
+        <h4 class="modal-title" id="myModalLabel">Add Sticky Note</h4>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -48,9 +48,9 @@
 					 	<label for="test_status" class="col-md-4 control-label">Test Status</label>
 					 	<div class="col-md-8">
 						  <select class="form-control" id="status" name="status">
-						    <option>inWork</option>
-						    <option>approved</option>
-						    <option>rejected</option>
+						    <option value="inWork">unclear</option>
+						    <option value="approved">validated</option>
+						    <option value="rejected">invalidated</option>
 						  </select>
 						</div>
 					</div>

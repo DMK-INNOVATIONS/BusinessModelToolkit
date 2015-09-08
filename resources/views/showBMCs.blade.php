@@ -12,8 +12,7 @@
 <div class="container-fluid">
 	<div class=" col-md-10 col-md-offset-1 col-sm-10 col-xs-12 page-header">
 		<h1><?php print $project_name;?><br>
-			<small>Here you can see, add and edit all Business Model Canvas of
-				this Project.</small>
+			<small>View, add and edit the Business Models of this Project.</small>
 		</h1>
 	</div>
 	<div class="row">
@@ -35,14 +34,22 @@
 							<div class="col-md-2 col-sm-12 col-xs-12">Title</div>
 							<div class="col-md-1 col-sm-6 col-xs-6">Status</div>
 							<div class="col-md-1 col-sm-6 col-xs-6">Version</div>
-							<div class="col-md-2 col-sm-6 col-xs-6">created at</div>
-							<div class="col-md-2 col-sm-6 col-xs-6">updated at</div>
+							<div class="col-md-2 col-sm-6 col-xs-6">Created at</div>
+							<div class="col-md-2 col-sm-6 col-xs-6">Updated at</div>
 							<div class="col-md-2 col-sm-6 col-xs-6">Tools</div>
-							<div class="col-md-2 col-sm-6 col-xs-6"></div>
+							<div class="col-md-2 col-sm-6 col-xs-6">Business Models</div>
 						</div>
 
 					  	<?php
 								foreach ( $bmcs as $bmc ) {
+									
+									$created_at = explode(' ', $bmc["created_at"]);
+									$created_at_date = $created_at[0];
+									$created_at_time = $created_at[1];
+									
+									$updated_at = explode(' ', $bmc["updated_at"]);
+									$updated_at_date = $updated_at[0];
+									$updated_at_time = $created_at[1];
 									
 									$new_bmc_view = true;
 									$posturl = $bmc ["id"];
@@ -52,37 +59,37 @@
 											<div class="col-md-1 col-sm-6 col-xs-6">';
 									switch ($bmc ["status"]) {
 										case 'inWork' :
-											print '<button type="button" data-toggle="modal" data-target="#statusChangeModal' . $bmc ["id"] . '" class="btn btn-warning showBMCStatus disabled">' . $bmc ["status"] . '</button>';
+											print '<button type="button" class="btn btn-warning showBMCStatus disabled">unclear</button>';
 											break;
 										case 'approved' :
-											print '<button type="button" data-toggle="modal" data-target="#statusChangeModal' . $bmc ["id"] . '" class="btn btn-success showBMCStatus disabled">' . $bmc ["status"] . '</button>';
+											print '<button type="button" class="btn btn-success showBMCStatus disabled">validated</button>';
 											break;
 										case 'rejected' :
-											print '<button type="button" data-toggle="modal" data-target="#statusChangeModal' . $bmc ["id"] . '" class="btn btn-danger showBMCStatus disabled">' . $bmc ["status"] . '</button>';
+											print '<button type="button" class="btn btn-danger showBMCStatus disabled">invalidated</button>';
 											break;
 									}
 									print '		</div>
 											<div class="col-md-1 col-sm-6 col-xs-6" style="height: 35px;">' . $bmc ["version"] . '</div>
-											<div class="col-md-2 col-sm-6 col-xs-6">' . $bmc ["created_at"] . '</div>
-											<div class="col-md-2 col-sm-6 col-xs-6">' . $bmc ["updated_at"] . '</div>
+											<div class="col-md-2 col-sm-6 col-xs-6">' . $created_at_date .', '.$created_at_time. '</div>
+											<div class="col-md-2 col-sm-6 col-xs-6">' . $updated_at_date .', '.$updated_at_time. '</div>
 											<div class="col-md-2 col-sm-6 col-xs-6">
 										';
 									
 									if ($owner == 0) {
 										print '   
-													<a href="">
+													<a href="'.$path.'/export/'.$bmc ["id"]. ',' . $project_id.',0"">
 															<span class="glyphicon glyphicon-export" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="export"/>
 													</a> 	
 												';
 									} else {
 										print '
-													<a href="'.$path.'/bmc/edit/' . $bmc ["id"] . ',1">
+													<a href="'.$path.'/bmc/edit/' . $bmc ["id"] . ',1,showBMCs">
 															<span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/>
 													</a>   
-													<a href="'.$path.'/bmc/copyBmc/' . $bmc ["id"] . ',' . $project_id . ',1">
+													<a href="'.$path.'/bmc/copyBmc/' . $bmc ["id"] . ',' . $project_id . ',1,showBMCs">
 															<span class="glyphicon glyphicon-file" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="duplicate"/>
 													</a>   
-													<a href="'.$path.'/export/'.$bmc ["id"]. ',' . $project_id.',1">
+													<a href="'.$path.'/export/'.$bmc ["id"]. ',' . $project_id.',1,showBMCs">
 															<span class="glyphicon glyphicon-export" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="export"/>
 													</a> 
 													<a data-toggle="modal" data-target="#deleteModal' . $bmc ['id'] . '">
@@ -93,17 +100,17 @@
 									
 									print '		</div>
 											<div class="col-md-2 col-sm-6 col-xs-6">';
-									$temp_status;
-									
-									if ($bmc ["status"] == 'inWork') {
-										$temp_status = 1;
-									} elseif ($bmc ["status"] == 'approved') {
-										$temp_status = 2;
-									} elseif ($bmc ["status"] == 'rejected') {
-										$temp_status = 3;
-									}
-									print '<a href="'.$path.'/bmc/viewBMC/' . $bmc ["id"] . ',' . $project_id . ',' . $temp_status . ',' . $owner . '"><button type="button" class="btn btn-default">show BMC</button></a>';
-									print '		</div>
+												$temp_status;
+												
+												if ($bmc ["status"] == 'inWork') {
+													$temp_status = 1;
+												} elseif ($bmc ["status"] == 'approved') {
+													$temp_status = 2;
+												} elseif ($bmc ["status"] == 'rejected') {
+													$temp_status = 3;
+												}
+												print '<a href="'.$path.'/bmc/viewBMC/' . $bmc ["id"] . ',' . $project_id . ',' . $temp_status . ',' . $owner . ',showBMCs"><button type="button" class="btn btn-default">Show Model</button></a>';
+								print '		</div>
 										</div>';
 									
 									print '
@@ -115,7 +122,7 @@
 										        <h4 class="modal-title">Do you want to delete ' . $bmc ["title"] . '?</h4>
 										      </div>
 										      <div class="modal-footer delete col-md-12">
-									      		<div class="col-md-6"><a href="'.$path.'/bmc/delete/' . $bmc ["id"] . ',' . $project_id . ',1"><button type="button" class="btn btn-primary btn-lg">Yes</button></a></div>
+									      		<div class="col-md-6"><a href="'.$path.'/bmc/delete/' . $bmc ["id"] . ',' . $project_id . ',1,showBMCs"><button type="button" class="btn btn-primary btn-lg">Yes</button></a></div>
 								  				<div class="col-md-6"><button type="button" class="btn btn-default btn-lg" data-dismiss="modal">No</button></div>
 										      </div>
 										    </div>
@@ -129,7 +136,7 @@
 						<br>
 						<?php
 						if ($owner == 1) {
-							print '<a href="'.$path.'/bmc/create/' . $project_id . ',' . $owner . '"><button type="button" class="btn btn-primary">New BMC</button></a>';
+							print '<a href="'.$path.'/bmc/create/' . $project_id . ',' . $owner . '"><button type="button" class="btn btn-primary">New Model</button></a>';
 						}
 						?>
 						<a href="{{ url('/projects') }}"><button type="button" class="btn btn-default">Back to Projects</button></a>

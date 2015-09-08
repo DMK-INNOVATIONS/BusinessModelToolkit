@@ -45,7 +45,7 @@
 					    <div class="modal-content">
 					      <div class="modal-header">
 					        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					      	<h4>Change the Status of your Post-It</h4>
+					      	<h4>Change the status of your Sticky Note</h4>
 					      </div>
 					      <div class="modal-body">
 						      <form class="form-horizontal" role="form" method="POST" action="'.$path.'/bmc/changePostItStatus/'.$project_id.','.$bmc_id.','.$bmc_status.','.$bmc_postIt["id"].','.$owner.'">
@@ -58,11 +58,11 @@
 											';
 												switch ($bmc_postIt['status']) {
 													case 'inWork':
-														print '<option selected>inWork</option><option>approved</option><option>rejected</option>';break;
+														print '<option selected value="inWork">unclear</option><option value="approved">validated</option><option value="rejected">invalidated</option>';break;
 													case 'approved':
-														print '<option>inWork</option><option selected>approved</option><option>rejected</option>';break;
+														print '<option value="inWork">unclear</option><option selected value="approved">validated</option><option value="rejected">invalidated</option>';break;
 													case 'rejected':
-														print '<option>inWork</option><option>approved</option><option selected>rejected</option>';break;									
+														print '<option value="inWork">unclear</option><option value="approved">validated</option><option selected value="rejected">invalidated</option>';break;									
 												}
 											    print '
 											  </select>
@@ -172,28 +172,28 @@
 		if($empty){
 			switch ($boxId) {
 				case 1:
-					print '<div>What are your key partners to get competitive advantage?</div>';
+					print '<div class="viewBMCEmptyBox">Who are our Key Partners?<br>Who are our Key Suppliers?<br>Which Key Ressources are wo acquairing from partners?<br>Which Key Activities do partners perform?</div>';
 					break;
 				case 2:
-					print '<div>What are the key steps to move ahead to your customers?</div>';
+					print '<div class="viewBMCEmptyBox">What Key Activities do our Value Propositions require?<br>Our Distribution Channels?<br>Customer Relationships?<br>Revenue Streams?</div>';
 					break;
 				case 3:
-					print '<div>What resources do you need to make your idea work?</div>';
+					print '<div class="viewBMCEmptyBox">What Key Resources do our Value Propositions require?<br>Our Distribution Channels?<br>Customer Relationships?<br>Revenue Streams?</div>';
 					break;
 				case 4:
-					print "<div>How will you make your customers' life happier?</div>";
+					print '<div class="viewBMCEmptyBox">What Value Propositions do we deliver to the Customer?<br>Which one of our Customer\'s problems are we helping to solve?<br>What bundles of products and services are we offering to each Customer Segment?<br>Which customer needs are we satisfying?</div>';
 					break;
 				case 5:
-					print '<div>How often will you interact with your customers? Does your product imply one-time or multiple payments?</div>';
+					print '<div class="viewBMCEmptyBox">What type of relationship does each of our Customer Segments expect us to establish and maintain with them?<br>Which ones have we established?<br>how are thes integrated with the rest of our business model?<br>How costly are they?</div>';
 					break;
 				case 6:
-					print '<div>How are you going to reach your customers?</div>';
+					print '<div class="viewBMCEmptyBox">Through which Channels do our Customer Segments want to be reached?<br>How are we reaching them now?<br>How are our Channels integrated?<br>Which ones work best?<br>Which ones are most cost-efficient?<br>How are we integrating them with customer routines?</div>';
 					break;
 				case 8:
-					print '<div>How much are you planning to spend on the product development and marketing for a certain period?</div>';
+					print '<div class="viewBMCEmptyBox">What are the most Important costs Inherent in our business model?<br>Which Key Resources are most expensive?<br>Which Key Activities are most expensive?</div>';
 					break;
 				case 9:
-					print '<div>How much are you planning to earn in a certain period? Compare your costs & revenues.</div>';
+					print '<div class="viewBMCEmptyBox">For what value are our customers really willing to pay?<br>For what do they currently pay?<br>How are they currently paying?<br>How would they prefer to pay?<br>How much does each Revenue Stream contribute to overall revenues?</div>';
 					break;
 			}
 		}

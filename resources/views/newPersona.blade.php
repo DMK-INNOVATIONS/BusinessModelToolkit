@@ -59,7 +59,7 @@
 							</div>
 	
 							<div class="form-group">
-								<label class="col-md-2 control-label">Avatar Image</label>
+								<label class="col-md-2 control-label">Persona Image</label>
 								<div class="col-md-8">
 									<?php if(isset($persona)) : ?>
 										<input type="text" class="form-control" name="avatarImg" value="{{ $persona['avatarImg'] }}">
@@ -149,10 +149,10 @@
 								<label class="col-md-2 control-label">Personality</label>
 								<div class="col-md-8">								
 									<?php if(isset($persona)) : ?>
-										<textarea type="text" class="form-control" rows="5" name="personality" ><?php print $persona['personality'];?></textarea>
+										<textarea type="text" class="form-control" rows="3" name="personality" ><?php print $persona['personality'];?></textarea>
 									<?php else : ?>
 										<div class="input-group col-md-12">
-											<textarea type="text" class="form-control" rows="5" name="personality"></textarea>
+											<textarea type="text" class="form-control" rows="3" name="personality"></textarea>
 										</div>
 									<?php endif; ?>
 								</div>
@@ -162,10 +162,10 @@
 								<label class="col-md-2 control-label">Skills</label>
 								<div class="col-md-8">
 									<?php if(isset($persona)) : ?>
-										<input type="text" class="form-control" name="skills" value="{{ $persona['skills'] }}">
+										<textarea type="text" class="form-control" rows="3" name="skills" ><?php print $persona['skills']; ?></textarea>
 									<?php else : ?>
 										<div class="input-group">
-											<input type="text" class="form-control" name="skills">
+											<textarea type="text" class="form-control" rows="3" name="skills"></textarea>
 											<span class="input-group-addon glyphicon glyphicon-question-sign persona_formular_help" data-toggle="tooltip" data-placement="right" title="Please divide your inserts with a semicolon."/>	
 										</div>
 									<?php endif; ?>
@@ -176,10 +176,10 @@
 								<label class="col-md-2 control-label">Needs</label>
 								<div class="col-md-8">
 									<?php if(isset($persona)) : ?>
-										<input type="text" class="form-control" name="needs" value="{{ $persona['needs'] }}">
+										<textarea type="text" class="form-control" rows="3" name="needs"><?php print $persona['needs'];?></textarea>
 									<?php else : ?>
 										<div class="input-group">
-											<input type="text" class="form-control" name="needs">
+											<textarea type="text" class="form-control" rows="3" name="needs"></textarea>
 											<span class="input-group-addon glyphicon glyphicon-question-sign persona_formular_help" data-toggle="tooltip" data-placement="right" title="Please divide your inserts with a semicolon."/>	
 										</div>
 									<?php endif; ?>

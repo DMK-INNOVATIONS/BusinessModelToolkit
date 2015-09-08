@@ -128,7 +128,7 @@
 		}
 
 	if($empty){
-		print '<div>Who are your customers? Coose from your Personas.</div>';	
+		print '<div class="viewBMCEmptyBox">For whom are we creating value?<br>Who are our most important customers?</div>';	
 	}
 	?>
 

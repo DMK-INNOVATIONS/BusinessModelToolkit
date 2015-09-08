@@ -28,7 +28,13 @@
   					</div>
 					
 					<div class="col-md-12 col-sm-12 col-xs-12">
-						<a href="<?php print $path.'/projects/showBMCs/'.$project["id"].','.$owner;?>"><button type="button" class="btn btn-default">Back to Project View</button></a>
+						<?php 
+							if($view_type == 'models'){
+								print '<a href="'.$path.'/bmc/models"><button type="button" class="btn btn-default">Back to Model View</button></a>';
+							}else{
+								print '<a href="'.$path.'/projects/showBMCs/'.$project["id"].','.$owner.'"><button type="button" class="btn btn-default">Back to Project View</button></a>';
+							}
+						?>
 					</div>
 				</div>
 			</div>

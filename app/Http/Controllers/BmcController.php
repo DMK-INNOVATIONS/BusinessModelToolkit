@@ -4,6 +4,7 @@ use App\BMC;
 use App\Status;
 use App\Project;
 use App\Persona;
+use App\User;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Auth;
 use App\Notice;
@@ -48,6 +49,11 @@ class BmcController extends Controller {
 		return view('newBmc',['project_id' => $project_id, 'error' => false, 'owner' => $owner]);
 	}
 	
+	public function createModel(){
+		$myProjects = $this->getMyProjects();
+		return view('createModel',['myProjects' => $myProjects]);
+	}
+	
 	public function changeStatus($id){
 		$inserts = explode(",", $id);
 		
@@ -86,6 +92,19 @@ class BmcController extends Controller {
 		
 	}
 	
+	public function saveModel(){
+		$bmc = new BMC();
+		
+		$bmc->title = $_POST["title"];
+		$bmc->status = Status::IN_WORK;
+		$bmc->version = 1;
+		$bmc->project_id = $_POST["projects"];
+		$bmc->save();
+		
+		$view = 'bmc/models';
+		return redirect($view);
+	}
+	
 	public function save($id){
 		$inserts= explode(",", $id); 
 		
@@ -94,6 +113,7 @@ class BmcController extends Controller {
 		$bmc_status = $inserts[2];
 		$view_type = $inserts[3]; //1 - showBMC.blade, 0 - viewBMC.blade
 		$owner = $inserts[4];
+		$view_type_main = $inserts[6]; // 'models' || 'showBMCs'
 		
 		$title = $_POST["title"];
 	
@@ -101,8 +121,7 @@ class BmcController extends Controller {
 			return view('newBmc',['project_id' => $id, 'error' => true]);
 	
 		}else{
-			//noch prüfen ob Titel schon in DB vorhanden ist in Kombi mit diesem Assignee
-	
+				
 			if($bmc_id=='null'){
 				$bmc = new BMC();
 			} else {
@@ -130,9 +149,13 @@ class BmcController extends Controller {
 			$bmc->project_id = $project_id;
 			$bmc->save();
 			
-			if($view_type == 1){ //redirects to project BMCs View or to BMC View
-				$view = 'projects/showBMCs/'.$project_id.','.$owner;
-			}else{
+			if($view_type == 1){ //redirects to showBMCs
+				if($view_type_main == 'models'){
+					$view = 'bmc/models';
+				}else{
+					$view = 'projects/showBMCs/'.$project_id.','.$owner;
+				}
+			}else{ //redirects to viewBMC
 				$view = '/bmc/viewBMC/'.$bmc_id.','.$project_id.','.$status.','.$owner;
 			}
 
@@ -155,6 +178,7 @@ class BmcController extends Controller {
 		$project_id = $inserts[1];
 		$bmc_status_id = $inserts[2];
 		$owner = $inserts[3];
+		$view_type = $inserts[4];
 		
 		$bmc_postIts = $this->getBMCPostIts($bmc_id);
 		
@@ -173,7 +197,7 @@ class BmcController extends Controller {
 				break;
 		}
 	
-		return view('viewBMC', ['bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_name' => $bmc_name, 'bmc_status' => $bmc_status, 'bmc_postIts' => $bmc_postIts, 'myPersonas' =>$myPersonas, 'myAssignedPersonas' => $myAssignedPersonas, 'owner' => $owner]);
+		return view('viewBMC', ['bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_name' => $bmc_name, 'bmc_status' => $bmc_status, 'bmc_postIts' => $bmc_postIts, 'myPersonas' =>$myPersonas, 'myAssignedPersonas' => $myAssignedPersonas, 'owner' => $owner, 'view_type' => $view_type]);
 	}
 	
 	public function getAllPersonas() {
@@ -219,10 +243,11 @@ class BmcController extends Controller {
 		
 		$bmc_id = $inserts[0];
 		$owner = $inserts[1];
+		$view_type = $inserts[2];
 		
 		$bmc = BMC::find($bmc_id);
 		
-		return view('newBmc',['bmc' =>json_decode($bmc, true) ,'project_id' => $bmc['project_id'], 'error' => false, 'owner' => $owner]);
+		return view('newBmc',['bmc' =>json_decode($bmc, true) ,'project_id' => $bmc['project_id'], 'error' => false, 'owner' => $owner, 'view_type' => $view_type]);
 	}
 	
 	public function copyBmc($id){
@@ -231,6 +256,7 @@ class BmcController extends Controller {
 		$bmc_original_id = $inserts[0];
 		$project_id = $inserts[1];
 		$owner = $inserts[2];
+		$view_type = $inserts[3];
 	
 		$bmc_original = BMC::find($bmc_original_id);
 		$bmc_original_PostIts = $this->getBMCPostIts($bmc_original_id);
@@ -264,8 +290,12 @@ class BmcController extends Controller {
 			$bmc_copy = BMC::find($bmc_copy['id']);
 			$bmc_copy->personas()->attach($assignedPersona['id']);	
 		}
-	
-		$view = 'projects/showBMCs/'.$project_id.','.$owner;
+		
+		if($view_type == 'models'){ //redirects to Models View or to BMC View
+			$view = 'bmc/models';
+		}else{
+			$view = 'projects/showBMCs/'.$project_id.','.$owner;
+		}
 		return redirect($view);
 	}
 	
@@ -280,6 +310,7 @@ class BmcController extends Controller {
 		$bmc_id = $inserts[0];
 		$project_id = $inserts[1];
 		$owner = $inserts[2];
+		$view_type = $inserts[3];
 		
 		$bmc = BMC::find($bmc_id);
 		
@@ -300,8 +331,12 @@ class BmcController extends Controller {
 		//BMC löschen
 		BMC::destroy($bmc_id);
 		
-		$view = 'projects/showBMCs/'.$project_id.','.$owner;
-			
+		if($view_type == 'models'){ //redirects to Models View or to BMC View
+			$view = 'bmc/models';
+		}else{
+			$view = 'projects/showBMCs/'.$project_id.','.$owner;
+		}
+		
 		return redirect($view);
 	}
 	
@@ -480,5 +515,83 @@ class BmcController extends Controller {
 		$view = '/bmc/viewBMC/'.$bmc->id.','.$project_id.','.$bmc_status.','.$owner;
 		
 		return redirect($view);
+	}
+	
+	public function models(){
+		$my_projects = $this->getMyProjects();
+		$my_bmcs = $this->getMyBMC($my_projects);
+		
+		$my_assigned_Projects = $this->getMyAssignedProjects();
+		$my_assigned_Projects_Owners = $this->getAssignedProjectsOwner();
+		$my_assigned_BMCs = $this->getMyBMC($my_assigned_Projects);
+		
+		return view('models',['projects' => $my_projects, 'bmcs' => $my_bmcs, 'my_assigned_Projects' => $my_assigned_Projects, 'my_assigned_Projects_Owners' => $my_assigned_Projects_Owners, 'my_assigned_BMCs' => $my_assigned_BMCs]);
+	}
+	
+	public function getAllProjects() {
+		return Project::all ();
+	}
+	
+	public function getMyAssignedProjects(){
+		$allProjects = $this->getAllProjects();
+		$user_id = Auth::user()->id;
+	
+		$myAssignedProjects = array();
+	
+		foreach($allProjects as $aProject){
+			$project = Project::find($aProject['id']);
+			$assignedTeamMembers = $project->members()->get();
+	
+			foreach ($assignedTeamMembers as $assignedTeamMember){
+				if($assignedTeamMember['id'] == $user_id){
+					array_push($myAssignedProjects, $project);
+				}
+			}
+		}
+		return $myAssignedProjects;
+	}
+	
+	public function getAssignedProjectsOwner(){
+		$myAssignedProjects = $this->getMyAssignedProjects();
+	
+		$owner = array();
+	
+		foreach($myAssignedProjects as $myAssignedProject){
+	
+			$owner_array= User::find($myAssignedProject['assignee_id']);
+			array_push($owner, $owner_array);
+		}
+	
+		return $owner;
+	}
+	
+	public function getMyProjects() {
+		$allProjects = $this->getAllProjects ();
+		$projects = json_decode ( $allProjects, true );
+	
+		$user_id = Auth::user ()->id;
+		$myProjects = array ();
+	
+		foreach ( $projects as $project ) {
+				
+			$assigne_id = $project ["assignee_id"];
+				
+			if ($user_id == $assigne_id) {
+				array_push ( $myProjects, $project );
+			}
+		}
+	
+		return $myProjects;
+	}
+	
+	public function getMyBMC($projects){
+		$my_bmcs = array();
+		foreach($projects as $project){
+			$project_DB = Project::find($project['id']);
+			
+			$bmcs= $project_DB->bmcs()->get();
+			array_push($my_bmcs, $bmcs);
+		}
+		return $my_bmcs;
 	}
 }

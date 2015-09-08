@@ -30,28 +30,28 @@
 						$posturl = "null";
 						$new_bmc_view = 1;
 						$bmc_status = 'inWork';
-						if(isset($bmc)) : $posturl = $bmc['id']; endif;
 					?>
 					
-					<form class="form-horizontal" role="form" method="POST" action="<?php print $path."/bmc/save/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view.','.true.','.$owner.','.$view_type ?>">
+					<form class="form-horizontal" role="form" method="POST" action="<?php print $path.'/bmc/saveModel'; ?>">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-						
-						<?php 
-						
-							if($error==true){
-								print '<div class="alert alert-danger" role="alert">You <strong>must</strong> insert a Title.</div>';
-							}
-						
-						?>
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Title</label>
 							<div class="col-md-6">
-								<?php if(isset($bmc)) : ?>
-									<input type="text" class="form-control" name="title" value="{{ $bmc['title'] }}">
-								<?php else : ?>
 									<input type="text" class="form-control" name="title">
-								<?php endif; ?>
+							</div>
+						</div>
+						
+						<div class="form-group">
+						 	<label for="projects" class="col-md-4 control-label">Project</label>
+						 	<div class="col-md-6">
+							  <select class="form-control" name="projects">
+							  	<?php 
+							  		foreach ($myProjects as $project){
+							  			print '<option value="'.$project['id'].'">'.$project['title'].'</option>';
+							  		}
+							  	?>
+							  </select>
 							</div>
 						</div>
 
@@ -59,11 +59,7 @@
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">Save</button></a>
 								<?php 
-									if($view_type == 'models'){
-										print '<a href="'.$path.'/bmc/models"><button type="button" class="btn btn-default">Back</button></a>';
-									}else{
-										print '<a href="'.$path.'/projects/showBMCs/'.$project_id.','.$owner.'"><button type="button" class="btn btn-default">Back</button></a>';
-									}
+									print '<a href="'.$path.'/bmc/models"><button type="button" class="btn btn-default">Back</button></a>';
 								?>
 							</div>
 						</div>
