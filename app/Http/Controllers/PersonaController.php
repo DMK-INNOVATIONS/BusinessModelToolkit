@@ -93,6 +93,7 @@ class PersonaController extends Controller {
 		$project_id = $inserts[3];
 		$bmc_status = $inserts[4];	
 		$owner = $inserts[5];
+		$view_type_main = $inserts[6];
 		
 		$name = $_POST["name"];
 		
@@ -131,7 +132,7 @@ class PersonaController extends Controller {
 			if($view_type == 'persona'){
 				return redirect('persona');
 			}else {
-				$view = '../public/bmc/viewBMC/'.$bmc_id.','.$project_id.','.$bmc_status.','.$owner;
+				$view = '../public/bmc/viewBMC/'.$bmc_id.','.$project_id.','.$bmc_status.','.$owner.','.$view_type_main;
 					
 				return redirect($view);
 			}
@@ -152,8 +153,9 @@ class PersonaController extends Controller {
 		$project_id = $inserts[2];
 		$bmc_status = $inserts[3];
 		$owner = $inserts[4];
+		$view_type_main = $inserts[5];
 		
-		return view('newPersona', ['view_type' => $view_type, 'bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_status' =>$bmc_status, 'owner' => $owner]);
+		return view('newPersona', ['view_type' => $view_type, 'bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_status' =>$bmc_status, 'owner' => $owner, 'view_type_main' => $view_type_main]);
 	}
 	
 	/**

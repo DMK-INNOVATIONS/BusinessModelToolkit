@@ -63,6 +63,7 @@ class BmcController extends Controller {
 		$bmc_status = $title = $_POST["status"];
 		$view_type = $inserts[2];
 		$owner = $inserts[3];
+		$view_type =$inserts[4];
 		
 		$bmc = BMC::find($bmc_id);
 			
@@ -86,7 +87,7 @@ class BmcController extends Controller {
 		if($view_type == 1){ //redirects to project BMCs View or to BMC View
 			$view = 'projects/showBMCs/'.$project_id.','.$owner;
 		}else{
-			$view = '/bmc/viewBMC/'.$bmc_id.','.$project_id.','.$status.','.$owner;
+			$view = '/bmc/viewBMC/'.$bmc_id.','.$project_id.','.$status.','.$owner.','.$view_type;
 		}
 		
 		return redirect($view);
@@ -350,6 +351,7 @@ class BmcController extends Controller {
 		$bmc_status = $inserts[3];
 		$post_it_id = $inserts[4];
 		$owner = $inserts[5];
+		$view_type = $inserts[6];
 		
 		$sort_anz = $this->getNoticeCount($canvas_box_id.$bmc_id);
 
@@ -388,7 +390,7 @@ class BmcController extends Controller {
 
  			$postIt->save();
  			
- 			$view = '/bmc/viewBMC/'.$bmc_id.','.$project_id.','.$bmc_status.','.$owner;
+ 			$view = '/bmc/viewBMC/'.$bmc_id.','.$project_id.','.$bmc_status.','.$owner.','.$view_type;
 			
  			return redirect($view);
 		}
@@ -421,10 +423,11 @@ class BmcController extends Controller {
 		$project_id = $inserts[2];
 		$bmc_status = $inserts[3];
 		$owner = $inserts[4];
+		$view_type = $inserts[5];
 
 		Notice::destroy($post_it_id);
 		
-		$view = '/bmc/viewBMC/'.$bmc_id.','.$project_id.','.$bmc_status.','.$owner;
+		$view = '/bmc/viewBMC/'.$bmc_id.','.$project_id.','.$bmc_status.','.$owner.','.$view_type;
 			
  		return redirect($view);
 	}
@@ -437,6 +440,7 @@ class BmcController extends Controller {
 		$bmc_status = $inserts[2];
 		$postIt_id = $inserts[3];
 		$owner = $inserts[4];
+		$view_type = $inserts[5];
 		
 		$postIt_status = $_POST["postIt_status"];
 	
@@ -456,7 +460,7 @@ class BmcController extends Controller {
 	
 		$postIt->save();
 		
-		$view = '/bmc/viewBMC/'.$bmc_id.','.$project_id.','.$bmc_status.','.$owner;
+		$view = '/bmc/viewBMC/'.$bmc_id.','.$project_id.','.$bmc_status.','.$owner.','.$view_type;
 	
 		return redirect($view);
 	}
@@ -465,6 +469,7 @@ class BmcController extends Controller {
 		$inserts = explode(",", $id);
 		$bmc_id = $inserts[0];
 		$owner = $inserts[1];
+		$view_type = $inserts[2];
 		
 		$bmc = BMC::find($bmc_id);
 		
@@ -491,7 +496,7 @@ class BmcController extends Controller {
 				break;
 		}
 		
-		$view = '/bmc/viewBMC/'.$bmc->id.','.$bmc->project->id.','.$status.','.$owner;
+		$view = '/bmc/viewBMC/'.$bmc->id.','.$bmc->project->id.','.$status.','.$owner.','.$view_type;
 		
 		return redirect($view);
 	}
@@ -509,11 +514,12 @@ class BmcController extends Controller {
 		$bmc_status = $inserts[2];
 		$persona_id = $inserts[3];
 		$owner = $inserts[4];
+		$view_type = $inserts[5];
 		
 		$bmc = BMC::find($bmc_id);
 		$bmc->personas()->detach($persona_id);
 		
-		$view = '/bmc/viewBMC/'.$bmc->id.','.$project_id.','.$bmc_status.','.$owner;
+		$view = '/bmc/viewBMC/'.$bmc->id.','.$project_id.','.$bmc_status.','.$owner.','.$view_type;
 		
 		return redirect($view);
 	}

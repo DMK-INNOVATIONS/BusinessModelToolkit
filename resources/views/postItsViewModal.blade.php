@@ -29,7 +29,7 @@
 				</div>
 	    	</div>
  	 		<div class="col-md-8">
-				<form class="form-horizontal" role="form" method="POST" action="<?php print $path."/bmc/savePostIt/".$boxId.','.$bmc_id.','.$project_id.','.$status.','.$post_it_id.','.$owner ?>">
+				<form class="form-horizontal" role="form" method="POST" action="<?php print $path."/bmc/savePostIt/".$boxId.','.$bmc_id.','.$project_id.','.$status.','.$post_it_id.','.$owner.',viewBMC'; ?>">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			
 					<div class="form-group">

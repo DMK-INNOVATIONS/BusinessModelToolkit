@@ -44,7 +44,7 @@
 						<?php endif; ?>
 					</div>
 					<div class="col-md-9">
-						<form class="form-horizontal" role="form" method="POST" action="{{ url('/persona/save/'.$posturl.','.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.','.$owner) }}">
+						<form class="form-horizontal" role="form" method="POST" action="{{ url('/persona/save/'.$posturl.','.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.','.$owner.','.$view_type_main) }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	
 							<div class="form-group">

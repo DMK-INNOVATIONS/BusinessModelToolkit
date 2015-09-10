@@ -41,7 +41,7 @@
 					        <h4 class="modal-title">Do you want to remove '.$assignedPersona["name"].' from your BMC?</h4>
 					      </div>
 					      <div class="modal-footer delete col-md-12">
-				      		<div class="col-md-6"><a href="'.$path.'/bmc/deleteAssignedPersona/'.$bmc_id.','.$project_id.','.$status.','.$assignedPersona["id"].','.$owner.'"><button type="button" class="btn btn-primary btn-lg">Yes</button></a></div>
+				      		<div class="col-md-6"><a href="'.$path.'/bmc/deleteAssignedPersona/'.$bmc_id.','.$project_id.','.$status.','.$assignedPersona["id"].','.$owner.',viewBMC"><button type="button" class="btn btn-primary btn-lg">Yes</button></a></div>
 			  				<div class="col-md-6"><button type="button" class="btn btn-default btn-lg" data-dismiss="modal">No</button></div>
 					      </div>
 					    </div>

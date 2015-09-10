@@ -48,7 +48,7 @@
 					      	<h4>Change the status of your Sticky Note</h4>
 					      </div>
 					      <div class="modal-body">
-						      <form class="form-horizontal" role="form" method="POST" action="'.$path.'/bmc/changePostItStatus/'.$project_id.','.$bmc_id.','.$bmc_status.','.$bmc_postIt["id"].','.$owner.'">
+						      <form class="form-horizontal" role="form" method="POST" action="'.$path.'/bmc/changePostItStatus/'.$project_id.','.$bmc_id.','.$bmc_status.','.$bmc_postIt["id"].','.$owner.',viewBMC">
 									<input type="hidden" name="_token" value="'.csrf_token().'">
 							
 									<div class="form-group">
@@ -97,7 +97,7 @@
 										</div>
 							    	</div>
 						 	 		<div class="col-md-8">
-										<form class="form-horizontal" role="form" method="POST" action="'.$path.'/bmc/savePostIt/'.$boxId.','.$bmc_id.','.$project_id.','.$status.','.$bmc_postIt['id'].','.$owner.'">
+										<form class="form-horizontal" role="form" method="POST" action="'.$path.'/bmc/savePostIt/'.$boxId.','.$bmc_id.','.$project_id.','.$status.','.$bmc_postIt['id'].','.$owner.',viewBMC">
 											<input type="hidden" name="_token" value="'. csrf_token() .'">
 									
 											<div class="form-group">
@@ -159,7 +159,7 @@
 					        <h4 class="modal-title">Do you want to delete ' . $bmc_postIt ["title"] . '?</h4>
 					      </div>
 					      <div class="modal-footer delete col-md-12">
-				      		<div class="col-md-6"><a href="'.$path.'/bmc/deletePostIt/'.$bmc_postIt['id'].','.$bmc_id.','.$project_id.','.$status.','.$owner.'"><button type="button" class="btn btn-primary btn-lg">Yes</button></a></div>
+				      		<div class="col-md-6"><a href="'.$path.'/bmc/deletePostIt/'.$bmc_postIt['id'].','.$bmc_id.','.$project_id.','.$status.','.$owner.',viewBMC"><button type="button" class="btn btn-primary btn-lg">Yes</button></a></div>
 			  				<div class="col-md-6"><button type="button" class="btn btn-default btn-lg" data-dismiss="modal">No</button></div>
 					      </div>
 					    </div>

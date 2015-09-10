@@ -111,7 +111,7 @@
       	<h4>Change the Title of Your BMC</h4>
       </div>
       <div class="modal-body">
-	      <form class="form-horizontal" role="form" method="POST" action="<?php print $path."/bmc/save/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view.','.$owner ?>">
+	      <form class="form-horizontal" role="form" method="POST" action="<?php print $path."/bmc/save/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view.','.$owner.',viewBMC' ?>">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		
 				<div class="form-group">
@@ -141,7 +141,7 @@
       	<h4>Change the Status of <?php print $bmc_name;?></h4>
       </div>
       <div class="modal-body">
-	      <form class="form-horizontal" role="form" method="POST" action="<?php print $path."/bmc/changeStatus/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view.','.$owner ?>">
+	      <form class="form-horizontal" role="form" method="POST" action="<?php print $path."/bmc/changeStatus/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view.','.$owner.',viewBMC' ?>">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		
 				<div class="form-group">
