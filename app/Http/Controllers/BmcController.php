@@ -63,7 +63,7 @@ class BmcController extends Controller {
 		$bmc_status = $title = $_POST["status"];
 		$view_type = $inserts[2];
 		$owner = $inserts[3];
-		$view_type =$inserts[4];
+		$view_type_main = $inserts[4];
 		
 		$bmc = BMC::find($bmc_id);
 			
@@ -83,11 +83,15 @@ class BmcController extends Controller {
 		}
 
 		$bmc->save();
-			
-		if($view_type == 1){ //redirects to project BMCs View or to BMC View
-			$view = 'projects/showBMCs/'.$project_id.','.$owner;
-		}else{
-			$view = '/bmc/viewBMC/'.$bmc_id.','.$project_id.','.$status.','.$owner.','.$view_type;
+		
+		if($view_type == 1){ //redirects to showBMCs
+			if($view_type_main == 'models'){
+				$view = 'bmc/models';
+			}else{
+				$view = 'projects/showBMCs/'.$project_id.','.$owner;
+			}
+		}else{ //redirects to viewBMC
+			$view = '/bmc/viewBMC/'.$bmc_id.','.$project_id.','.$status.','.$owner.','.$view_type_main;
 		}
 		
 		return redirect($view);

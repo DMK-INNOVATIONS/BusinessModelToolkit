@@ -143,6 +143,9 @@
 								        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 								        <h4 class="modal-title">Do you want to delete '.$myPersona["name"].'?</h4>
 								      </div>
+	      							  <div class="modal-body col-md-12">
+							      			If you delete a Persona you will also delete any Connections of this Persona to your Models. 
+	      							  </div>
 								      <div class="modal-footer delete col-md-12">
 							      		<div class="col-md-6"><a href="persona/delete/'.$myPersona["id"].'"><button type="button" class="btn btn-primary btn-lg">Yes</button></a></div>
 						  				<div class="col-md-6"><button type="button" class="btn btn-default btn-lg" data-dismiss="modal">No</button></div>
@@ -156,7 +159,7 @@
 					</div>
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<br>
-						<?php print '<a href="persona/create/'.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.',0"><button type="button" class="btn btn-primary">New Persona</button></a>';?>
+						<?php print '<a href="persona/create/'.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.',0,Persona"><button type="button" class="btn btn-primary">New Persona</button></a>';?>
 					</div>
 				</div>
 			</div> 

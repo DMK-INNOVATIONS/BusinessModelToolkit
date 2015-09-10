@@ -4,9 +4,11 @@
 namespace App\Http\Controllers;
 
 use App\Persona;
+use App\Project;
 use App\User;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Auth;
+use App\BMC;
 
 class PersonaController extends Controller {
 	
@@ -78,9 +80,56 @@ class PersonaController extends Controller {
 	}
 	
 	public function deletePersona($id){
+		$bmc_persona_connections = $this->getPersonaConnection($id);	
+		
+		foreach($bmc_persona_connections as $bmc_persona_connection){
+			$bmc = BMC::find($bmc_persona_connection['pivot']['bmc_id']);
+			$bmc->personas()->detach($id);
+		}
+		
 		Persona::destroy($id);
-	
+
 		return redirect('persona');
+	}
+	
+	public function getPersonaConnection($id){
+		
+		$bmcs = BMC::all();
+		$user_id = Auth::user()->id;
+		
+		$myBMCs = array();
+		$bmc_connections = array();
+		$bmc_persona_connection = array();
+		
+		foreach ($bmcs as $bmc){ //finden aller bmc des Users
+			
+			$project = Project::find($bmc['project_id']);
+			
+			if($project['assignee_id'] == $user_id){
+				array_push($myBMCs, $bmc);
+			}
+		}
+		
+		foreach($myBMCs as $myBMC){
+			$bmc = BMC::find($myBMC['id']);
+			
+			$persona_connection = $bmc->personas()->get();
+			
+			if(!empty($persona_connection)){
+				
+				foreach ($persona_connection as $connection){
+					array_push($bmc_connections, $connection);
+				}
+			}
+		}
+		
+		foreach($bmc_connections as $bmc_connection){
+			if($bmc_connection['pivot']['persona_id'] == $id){
+				array_push($bmc_persona_connection, $bmc_connection);
+			}
+		}
+		
+		return $bmc_persona_connection;
 	}
 	
 	public function save($id){
