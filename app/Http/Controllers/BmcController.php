@@ -45,8 +45,9 @@ class BmcController extends Controller {
 		$inserts = explode(",", $id);
 		$project_id = $inserts[0];
 		$owner = $inserts[1];
+		$view_type = $inserts[2];
 		
-		return view('newBmc',['project_id' => $project_id, 'error' => false, 'owner' => $owner]);
+		return view('newBmc',['project_id' => $project_id, 'error' => false, 'owner' => $owner, 'view_type' => $view_type]);
 	}
 	
 	public function createModel(){

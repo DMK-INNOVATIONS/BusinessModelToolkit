@@ -136,7 +136,7 @@
 						<br>
 						<?php
 						if ($owner == 1) {
-							print '<a href="'.$path.'/bmc/create/' . $project_id . ',' . $owner . '"><button type="button" class="btn btn-primary">New Model</button></a>';
+							print '<a href="'.$path.'/bmc/create/' . $project_id . ',' . $owner . ',showBMCs"><button type="button" class="btn btn-primary">New Model</button></a>';
 						}
 						?>
 						<a href="{{ url('/projects') }}"><button type="button" class="btn btn-default">Back to Projects</button></a>
