@@ -151,11 +151,11 @@
 					  	<?php 
 							switch ($bmc_status) {
 								case 'inWork':
-									print '<option selected>inWork</option><option>approved</option><option>rejected</option>';break;
+									print '<option selected value="inWork">unclear</option><option value="approved">validated</option><option value="rejected">invalidated</option>';break;
 								case 'approved':
-									print '<option>inWork</option><option selected>approved</option><option>rejected</option>';break;
+									print '<option value="inWork">unclear</option><option selected value="approved">validated</option><option value="rejected">invalidated</option>';break;
 								case 'rejected':
-									print '<option>inWork</option><option>approved</option><option selected>rejected</option>';break;
+									print '<option value="inWork">unclear</option><option value="approved">validated</option><option selected value="rejected">invalidated</option>';break;
 							}
 					  	?>
 					  </select>

@@ -10,6 +10,34 @@
 	}else{
 		$path = '';
 	}
+	
+	switch ($boxId) {
+		case 1:
+			$canvas_box_name ='Key Partners';
+			break;
+		case 2:
+			$canvas_box_name ='Key Activities';
+			break;
+		case 3:
+			$canvas_box_name ='Key Ressources';
+			break;
+		case 4:
+			$canvas_box_name ='Value Propositions';
+			break;
+		case 5:
+			$canvas_box_name ='Customer Relationships';
+			break;
+		case 6:
+			$canvas_box_name ='Channels';
+			break;
+		case 8:
+			$canvas_box_name ='Cost Structure';
+			break;
+		case 9:
+			$canvas_box_name ='Revenue Streams';
+			break;
+	}
+	
 ?>
 
 <?php print '<div class="modal fade" id="addPostItModal'.$boxId.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">'?>
@@ -17,7 +45,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Sticky Note</h4>
+        <h4 class="modal-title" id="myModalLabel">Add Sticky Note in <?php print $canvas_box_name;?></h4>
       </div>
       <div class="modal-body">
         <div class="row">
