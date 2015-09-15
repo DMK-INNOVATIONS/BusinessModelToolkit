@@ -1,8 +1,8 @@
 <?php
 
-if($_SERVER['REMOTE_ADDR'] == "127.0.0.1"){
-	$DB_HOST = 'localhost';	
-	$DB_DATABASE = 'ersatz';	
+if (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] == "127.0.0.1"){
+	$DB_HOST = 'localhost';
+	$DB_DATABASE = 'ersatz';
 	$DB_USERNAME = 'bmc';
 	$DB_PASSWORD = 'bmc_test';
 }else{
@@ -55,7 +55,7 @@ return [
 	| choice installed on your machine before you begin development.
 	|
 	*/
-		
+
 	'connections' => [
 
 		'sqlite' => [
