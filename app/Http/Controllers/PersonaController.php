@@ -73,10 +73,11 @@ class PersonaController extends Controller {
 		$project_id = $inserts[3];
 		$bmc_status = $inserts[4];
 		$owner = $inserts[5];
+		$view_type_main = $inserts[6];
 		
 		$persona = Persona::find($id);
 		
-		return view('newPersona', ['view_type' => $view_type, 'bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_status' =>$bmc_status, 'persona' => $persona, 'owner' => $owner]);
+		return view('newPersona', ['view_type' => $view_type, 'bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_status' =>$bmc_status, 'persona' => $persona, 'owner' => $owner, 'view_type_main' => $view_type_main]);
 	}
 	
 	public function deletePersona($id){
