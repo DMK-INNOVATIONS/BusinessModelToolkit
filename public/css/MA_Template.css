@@ -1,5 +1,150 @@
 @CHARSET "ISO-8859-1";
 
+/***********************************************/
+/********* GENERAL *****************************/
+/***********************************************/
+@font-face {
+  font-family: 'Asap';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Asap'), local('Asap-Regular'), url(../fonts/asap.woff2) format('woff2');
+}
+body {
+	background-color: #dfe4e6;
+	color: #7f939b;
+	font-family: 'Asap', sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+} 
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: 'Asap', sans-serif;
+}
+h2 .btn-primary{
+	color: #5ac8f0;
+}
+.btn-primary{
+	background-color: #5ac8f0;
+	color: #FFFFFF;
+	border-color: #5ac8f0;
+	border-radius:25px;
+	padding: 10px 25px;
+	font-weight: bold;
+	margin:10px;
+}
+.btn-default{
+	color: #5ac8f0;
+	border-color: #5ac8f0;
+	border-radius:25px;
+	padding: 10px 25px;
+	font-weight: bold;
+	margin:10px;
+}
+h3 a{
+	color: #2d7893;
+	padding: 10px;
+}
+h1, h4, h5{
+	color: #2d7893;
+}
+h1{
+	color: #002837;
+	line-height: 30px;
+	font-size: 24px;
+	margin:20px 0 10px 0;
+}
+h2{
+	margin: 10px 0 10px 0;
+	font-size: 20px;
+	color: #2d7893;
+	line-height: 24px;
+	font-weight: bold;
+}
+
+h3{
+	margin: 15px 0 10px 0;
+	font-size: 16px;
+	line-height: 20px; 
+	color: #2d7893;
+	font-weight: bold;
+}
+h4{
+	margin: 10px 0 5px 0;
+	font-size: 14px;
+	line-height: 20px; 
+	color: #002837;
+}
+h5{
+	margin: 5px 0 5px 0;
+	font-size: 12px;
+	line-height: 20px; 
+	color: #002837;
+}
+h6{
+	margin: 5px 0 5px 0;
+	font-size: 12px;
+	line-height: 20px; 
+}
+h6 p{
+	color: #7f939b;
+}
+icon{
+	color: #bfc9cd;
+}
+label{
+	border: 1px solid #dfe4e6;
+	background-color: #eff1f2;
+}
+.progress{
+	color: #fbb03b;
+}
+.approved{
+	color: #39b54a;
+}
+.rejected {
+	color: #f15a24;
+}
+.light{
+	color: #bfc9cd;
+}
+p{
+	margin: 5px 0 5px 0;
+	font-size: 14px;
+	line-height: 20px; 
+}
+/***********************************************/
+/********* Navigation***************************/
+/***********************************************/
+.navbar-default{
+	background-color: #FFFFFF;
+}
+a.loggin{
+	font-weight: normal;
+}
+.loggin h3{
+	float: left;
+	margin-right: 10px;
+}
+.dropdown span.icon_more{
+	background: transparent url("../img/icbt_30x30_showmore.png") no-repeat scroll 0 2px;
+    border: 1px solid #bfc9cd;
+    border-radius: 25px;
+    float: right;
+    padding: 16px;
+    margin-top: 10px;
+}
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus{
+	background-color: #FFFFFF;
+	outline: none;	
+}
+.open span.icon_more{
+	background: transparent url("../img/icbt_30x30_showless.png") no-repeat scroll 0 2px;
+}
+/***********************************************/
+/********* Projects ****************************/
+/***********************************************/
+
 .tableBorder{
 border-style: solid;
 border-color: rgb(229, 229, 229);
@@ -220,9 +365,9 @@ width: 150px;
 	padding: 5px 0;
 }
 
-a{
+/*a{
 	color: brown;
-}
+}*/
 
 .page-header{
 	margin-top: 0px;
