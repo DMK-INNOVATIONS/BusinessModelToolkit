@@ -1,7 +1,7 @@
 @extends('app') @section('content')
 <div class="container-fluid">
 	<div class=" col-md-10 col-md-offset-1 col-sm-10 col-xs-12 page-header">
-		<h1>Welcome back, {{ Auth::user()->name }}!</h1>
+		<h1>You are very welcome back, {{ Auth::user()->name }}!</h1>
 	</div>
 
 	<div class="row">
