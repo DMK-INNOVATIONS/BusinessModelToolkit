@@ -10,7 +10,7 @@ if (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] == "127.0.0.1"){
 	$DB_DATABASE = 'bmcounselor_1';
 	$DB_USERNAME = 'bmcounselor';
 	$DB_PASSWORD = 'qTFzz6YtsE6Su2HV';
-}
+} */
 
 return [
 
