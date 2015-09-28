@@ -117,12 +117,10 @@ p{
 .navbar-default{
 	background-color: #FFFFFF;
 }
-a.loggin{
-	font-weight: normal;
-}
 .loggin h3{
 	float: left;
 	margin-right: 10px;
+	font-weight: normal;
 }
 .dropdown span.icon_more{
 	background: transparent url("../img/icbt_30x30_showmore.png") no-repeat scroll 0 2px;

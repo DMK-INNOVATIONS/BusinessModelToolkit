@@ -36,11 +36,11 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/projects') }}">Projects</a></li>
-					<li><a href="{{ url('/bmc/models') }}">Models</a></li>
+					<li><h3><a href="{{ url('/projects') }}">Projects</a><h3></li>
+					<li><h3><a href="{{ url('/bmc/models') }}">Models</a><h3></li>
 <!-- 					<li><a href="{{ url('/cSegments') }}">Customer Segments</a></li> -->
-					<li><a href="{{ url('/persona') }}">Personas</a></li>
-					<li><a href="{{ url('/team') }}">Team</a></li>
+					<li><h3><a href="{{ url('/persona') }}">Personas</a><h3></li>
+					<li><h3><a href="{{ url('/team') }}">Team</a><h3></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -49,7 +49,7 @@
 						<li><a href="{{ url('/auth/register') }}">Register</a></li>
 					@else
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">You are logged in as {{ Auth::user()->name }} <span class="caret"></span></a>
+							<a class="loggin" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><h3>You are logged in as {{ Auth::user()->name }} </h3><span class="icon_more"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/profile') }}">User Profile</a></li>
 								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
