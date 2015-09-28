@@ -1,17 +1,5 @@
 <?php
 
-// if (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] == "127.0.0.1"){
-// 	$DB_HOST = 'localhost';
-// 	$DB_DATABASE = 'ersatz';
-// 	$DB_USERNAME = 'bmc';
-// 	$DB_PASSWORD = 'bmc_test';
-// }else{
-// 	$DB_HOST = 'bmcounselor.project.dmknet.de';
-// 	$DB_DATABASE = 'bmcounselor_1';
-// 	$DB_USERNAME = 'bmcounselor';
-// 	$DB_PASSWORD = 'qTFzz6YtsE6Su2HV';
-// }
-
 return [
 
 	/*
