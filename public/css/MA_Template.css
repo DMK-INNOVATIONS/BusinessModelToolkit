@@ -111,6 +111,150 @@ p{
 	font-size: 14px;
 	line-height: 20px; 
 }
+.inside{
+	height: 820px;
+}
+.inside .col-md-2-4,.col-lg-2-4,.col-sm-2-4{
+	padding-left: 0;
+	padding-right: 10px;
+}  
+.primary h2{
+	margin: 10px 0;
+	color: #5ac8f0;
+	letter-spacing: -1px;
+}
+.primary h4{
+	margin: 10px 0;
+	color: #2d7893;
+	font-weight: bold;
+}
+.primary h1, .primary h5{
+	color: #002837;
+}
+.primary h6{
+	color: #7f939b;
+	font-weight: normal;
+}
+.panel-default {
+    border: 1px solid #bfc9cd;
+    border-radius: 5px;
+}
+.panel-body.primary{
+	padding:0 10px;
+}
+.panel-heading.primary{
+	padding:0 10px;
+	background-color: inherit;
+	border: initial;
+}
+.panel-body.primary {
+    background-color: #eff1f2;
+    border: 1px solid #dfe4e6;
+    border-radius: 5px;
+    margin: 15px 5px 10px;
+}
+.services{
+	padding: 0 0 25px 0;
+}
+.splitline{
+	border-bottom: 1px solid #dfe4e6;
+    float: left;
+    margin: 15px 40px;
+    overflow: visible;
+    position: absolute;
+    /* Firefox */
+	width: -moz-calc(100% - 95px);
+	/* WebKit */
+	width: -webkit-calc(100% - 95px);
+	/* Opera */
+	width: -o-calc(100% - 95px);
+	/* Standard */
+	width: calc(100% - 95px);
+}
+.more {
+    background: rgba(0, 0, 0, 0) url("../img/icbt_30x30_showmore.png") no-repeat scroll -1px -1px;
+    border: 1px solid #dfe4e6;
+    border-radius: 25px;
+    color: #8f8571;
+    content: "";
+    float: right;
+    font-weight: bold;
+    margin-right: 5px;
+    padding: 14px;
+}
+.add{
+    background: rgb(90, 200, 240) url("../img/icbt_30x30_add.png") no-repeat scroll -3px -4px;
+    border: 1px solid #5ac8f0;
+    border-radius: 25px;
+    color: #5ac8f0;
+    content: "";
+    float: left;
+    font-weight: bold;
+    margin: 5px;
+    padding: 12px;
+}
+.edit-icon{
+	background: rgb(239, 241, 242) url("../img/icbt_30x30_editor_bearbeiten.png") no-repeat scroll 0 -1px;
+    border: 1px solid #dfe4e6;
+    border-radius: 25px;
+    color: #dfe4e6;
+    content: "";
+    float: left;
+    font-weight: bold;
+    margin: 15px 10px 15px 0;
+    padding: 15px;
+}
+.edit-icon:HOVER{
+	background: rgb(239, 241, 242) url("../img/icbt_30x30_editor_bearbeiten_hover.png") no-repeat scroll 0 -1px;
+}
+.delete-icon{
+	background: rgb(239, 241, 242) url("../img/icbt_30x30_editor_loeschen.png") no-repeat scroll 0 -1px;
+    border: 1px solid #dfe4e6;
+    border-radius: 25px;
+    color: #dfe4e6;
+    content: "";
+    float: left;
+    font-weight: bold;
+    margin: 15px 10px 15px 0;
+    padding: 15px;
+}
+.delete-icon:HOVER{
+	background: rgb(239, 241, 242) url("../img/icbt_30x30_editor_loeschen_hover.png") no-repeat scroll 0 -1px;
+}
+.group-icons {
+ 	background-color: white;
+    border: 1px solid #bfc9cd;
+    border-radius: 15px;
+    display: inline-block;
+    float: right;
+    margin-top: 18px;
+    width: auto;
+}
+.icon-minus{
+	border: 1px solid #dfe4e6;
+    border-radius: 15px;
+    border-spacing: 0;
+    float: left;
+    height: 6px;
+    line-height: 4px;
+    margin: 8px 12px;
+    text-indent: -1px;
+}
+.icon-triangle{
+	border: 1px solid #bfc9cd;
+    border-radius: 25px;
+    color: #bfc9cd;
+    margin: -2px -1px 0 -4px;
+    padding: 5px;
+}
+.no-paddingleft{
+	padding-left: 0;
+	padding-right: 5px;
+}
+.no-paddingright{
+	padding-right: 0;
+	padding-left: 5px;
+}
 /***********************************************/
 /********* Navigation***************************/
 /***********************************************/
@@ -123,11 +267,11 @@ p{
 	font-weight: normal;
 }
 .dropdown span.icon_more{
-	background: transparent url("../img/icbt_30x30_showmore.png") no-repeat scroll 0 2px;
+	background: transparent url("../img/icbt_30x30_showmore.png") no-repeat scroll -1px 1px;
     border: 1px solid #bfc9cd;
     border-radius: 25px;
     float: right;
-    padding: 16px;
+    padding: 14px;
     margin-top: 10px;
 }
 .navbar-default .navbar-nav > .open > a, 
@@ -137,12 +281,11 @@ p{
 	outline: none;	
 }
 .open span.icon_more{
-	background: transparent url("../img/icbt_30x30_showless.png") no-repeat scroll 0 2px;
+	background: transparent url("../img/icbt_30x30_showless.png") no-repeat scroll -1px 1px;
 }
 /***********************************************/
 /********* Projects ****************************/
 /***********************************************/
-
 .tableBorder{
 border-style: solid;
 border-color: rgb(229, 229, 229);

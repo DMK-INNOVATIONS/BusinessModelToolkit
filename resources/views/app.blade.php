@@ -6,12 +6,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>BMCounselor</title>
 
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+	<!--<link href="{{ asset('/css/app.css') }}" rel="stylesheet">-->
+	<link href="{{ asset('/css/five.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/MA_Template.css') }}" rel="stylesheet">
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 	
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	
 
 	<!-- Fonts -->
 	<!-- <link href='https://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'> 
