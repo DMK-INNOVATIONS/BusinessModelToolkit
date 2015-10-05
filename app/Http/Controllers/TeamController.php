@@ -35,28 +35,38 @@ class TeamController extends Controller {
 	 */
 	public function index()
 	{
-		$assignedTeamMembers = $this->getAssignedTeamMembers();
+		$assignedTeamMembers = $this->getAssignedTeamMembers();	
 		$myProjects = $this->getMyProjects();
 		
 		return view('team', ['assignedTeamMembers' => $assignedTeamMembers, 'myProjects' => $myProjects]);
 	}
 	
 	public function getAssignedTeamMembers(){
-		$allProjects = $this->getMyProjects();
+		$allProjects = Project::all();
 		$user_id = Auth::user()->id;
-		
 		$myAssignedTeamMembers = array();
 		
-		foreach($allProjects as $aProject){
-			$project = Project::find($aProject['id']);
-			$assignedTeamMembers = $project->members()->get();
-			
-			foreach($assignedTeamMembers as $assignedTeamMember){
-				if($assignedTeamMember['id'] == true){
-					array_push($myAssignedTeamMembers, $assignedTeamMembers);
-				}	
+		foreach($allProjects as $project){
+			if($project['assignee_id'] == $user_id){
+				$projekt = Project::find($project['id']);
+				$assignedTeamMembers = $projekt->members()->get();
+				
+				$project_id = 'n';
+				
+				foreach($assignedTeamMembers as $assignedTeamMember){
+					
+					if($assignedTeamMember['pivot']['project_id'] == $project['id']){
+						if($project_id != $project['id']){
+							array_push($myAssignedTeamMembers, $assignedTeamMembers);
+							$project_id = $project['id'];
+						}
+						
+					}
+					
+				}
 			}
 		}
+				
 		return $myAssignedTeamMembers;
 	}
 	
@@ -94,7 +104,7 @@ class TeamController extends Controller {
 		$projects = json_decode($allProjects, true);
 	
 		$user_id = Auth::user()->id;
-		$myProjects = array();
+		$myProjects = array();		
 	
 		foreach ($projects as $project){
 				

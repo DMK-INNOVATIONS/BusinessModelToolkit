@@ -162,7 +162,7 @@ class BmcController extends Controller {
 					$view = 'projects/showBMCs/'.$project_id.','.$owner;
 				}
 			}else{ //redirects to viewBMC
-				$view = '/bmc/viewBMC/'.$bmc_id.','.$project_id.','.$status.','.$owner;
+				$view = '/bmc/viewBMC/'.$bmc_id.','.$project_id.','.$status.','.$owner.',0';
 			}
 
 			return redirect($view);

@@ -31,19 +31,20 @@
 					  		<div class="col-md-3 col-sm-3 col-xs-6">Assigned Projects</div>
 					  		<div class="col-md-3 col-sm-3 col-xs-6">Tools</div>
 					  </div>
-					  <?php 
+					  <?php
+							$teamMember_id = 'n';
+							$project_id = 'n';
+					  
 							foreach ($assignedTeamMembers as $assignedTeamMember){
+								
 								foreach ($assignedTeamMember as $teamMember){
-									$project_title = '';
-									$project_id = '';
-									
 									print '<div class="row table_body">';
 										print '<div class="col-md-3 col-sm-3 col-xs-6">'.$teamMember['name'].'</div>
 								  		<div class="col-md-3 col-sm-3 col-xs-6">'.$teamMember['email'].'</div>';
 										foreach($myProjects as $myProject){
 											if($teamMember['pivot']['project_id'] == $myProject['id']){
 												print '<div class="col-md-3 col-sm-3 col-xs-6">'.$myProject['title'].'</div>';	
-												$project_title = $myProject['title'];
+												$teamMember_id = $teamMember['pivot']['user_id'];
 												$project_id = $myProject['id'];
 											}	
 										}
@@ -106,7 +107,7 @@
       		</p>
       		<p>
       			<span class="glyphicon glyphicon-hand-right col-md-1" aria-hidden="true"></span> 
-      			<div class="col-md-11" style="padding: 0 0 15px 0;">Also you can create new projects with the <button type="button" class="btn btn-primary disabled">Add Team Member</button> Button.</div>
+      			<div class="col-md-11" style="padding: 0 0 15px 0;">Also you can create new Team Connections with the <button type="button" class="btn btn-primary disabled">Add Team Member</button> Button.</div>
       		</p>    
       </div>
       <div class="modal-footer col-md-12">

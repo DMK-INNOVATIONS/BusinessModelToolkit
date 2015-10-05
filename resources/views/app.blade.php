@@ -65,5 +65,14 @@
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script>
+		function showStuff(id, btn) {
+			if(document.getElementById(id).style.display == 'block'){
+				document.getElementById(id).style.display = 'none';
+			}else{
+				document.getElementById(id).style.display = 'block';
+			}
+		}
+	  </script>
 </body>
 </html>

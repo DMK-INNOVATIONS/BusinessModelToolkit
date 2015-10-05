@@ -1,0 +1,95 @@
+/***********************************************/
+/********* GENERAL *****************************/
+/***********************************************/
+@font-face {
+  font-family: 'Asap';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Asap'), local('Asap-Regular'), url(../fonts/asap.woff2) format('woff2');
+}
+body {
+	background-color: #dfe4e6;
+	color: #7f939b;
+	font-family: 'Asap', sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+} 
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: 'Asap', sans-serif;
+}
+h2, .btn-primary{
+	color: #5ac8f0;
+}
+h3, a.primary{
+	color: #2d7893;
+}
+h1, h4, h5{
+	color: #2d7893;
+}
+h6, p{
+	color: #7f939b;
+}
+icon{
+	color: #bfc9cd;
+}
+label{
+	border: 1px solid #dfe4e6;
+	background-color: #eff1f2;
+}
+h2.progress{
+	color: #fbb03b;
+}
+h3.approved, a.approved{
+	color: #39b54a;
+}
+h1{
+	color: #002837;
+	line-height: 30px;
+	font-size: 24px;
+	margin:20px 0 10px 0;
+}
+h1.rejected, h4.rejected, h5.rejected{
+	color: #f15a24;
+}
+h1.light{
+	color: #bfc9cd;
+}
+h2{
+	margin: 10px 0 10px 0;
+}
+}
+h2.bold{
+	font-size: 20px;
+	color: #2d7893;
+	line-height: 24px; 
+}
+h3{
+	margin: 15px 0 10px 0;
+}
+h3.bold{
+	font-size: 20px;
+	line-height: 20px; 
+	color: #2d7893;
+}
+h4{
+	margin: 10px 0 5px 0;
+	font-size: 14px;
+	line-height: 20px; 
+	color: #002837;
+}
+h5{
+	margin: 5px 0 5px 0;
+	font-size: 12px;
+	line-height: 20px; 
+	color: #002837;
+}
+h6{
+	margin: 5px 0 5px 0;
+	font-size: 12px;
+	line-height: 20px; 
+}
+p{
+	margin: 5px 0 5px 0;
+	font-size: 14px;
+	line-height: 20px; 
+}

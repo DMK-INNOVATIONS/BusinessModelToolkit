@@ -165,7 +165,7 @@
 						aria-hidden="true"></span>
 				
 				
-				<div class="col-md-11">This View contains all BMC of your choosen
+				<div class="col-md-11">This View contains all Model of your choosen
 					project.</div>
 				</p>
 
@@ -174,29 +174,29 @@
 						aria-hidden="true"></span>
 				
 				
-				<div class="col-md-11">You can use the following Tools on the BMC's
+				<div class="col-md-11">You can use the following Tools on the Models
 					of this Project:</div>
 				</p>
 			<?php
 			if ($owner == 0) {
 				print '
 			      		<p>
-				      		<span class="glyphicon glyphicon-export col-md-offset-2" aria-hidden="true"></span> - export: Used to export a BMC.
+				      		<span class="glyphicon glyphicon-export col-md-offset-2" aria-hidden="true"></span> - export: Used to export a Model.
 			      		</p>
 					';
 			} else {
 				print '
 						<p>
-				      		<span class="glyphicon glyphicon-pencil col-md-offset-2" aria-hidden="true"></span> - edit: Used to change the Title of the BMC.
+				      		<span class="glyphicon glyphicon-pencil col-md-offset-2" aria-hidden="true"></span> - edit: Used to change the Title of the Model.
 			      		</p>
 			      		<p>
-				      		<span class="glyphicon glyphicon-file col-md-offset-2" aria-hidden="true"></span> - duplicate: Used to duplicate a BMC.
+				      		<span class="glyphicon glyphicon-file col-md-offset-2" aria-hidden="true"></span> - duplicate: Used to duplicate a Model.
 			      		</p>
 			      		<p>
-				      		<span class="glyphicon glyphicon-export col-md-offset-2" aria-hidden="true"></span> - export: Used to export a BMC.
+				      		<span class="glyphicon glyphicon-export col-md-offset-2" aria-hidden="true"></span> - export: Used to export a Model.
 			      		</p>
 				      	<p>
-				      		<span class="glyphicon glyphicon-trash col-md-offset-2" aria-hidden="true"></span> - delete: Used to delete no longer used BMC.
+				      		<span class="glyphicon glyphicon-trash col-md-offset-2" aria-hidden="true"></span> - delete: Used to delete no longer used Model.
 			      		</p>	
 					';
 			}
@@ -208,7 +208,7 @@
 				
 				<div class="col-md-11" style="padding: 0 0 15px 0;">
 					To show the edit View of a Business Model Canvas click the
-					<button type="button" class="btn btn-default disabled">show BMC</button>
+					<button type="button" class="btn btn-default disabled">show Model</button>
 					Button.
 				</div>
 				</p>
@@ -218,7 +218,7 @@
 									print '
 	      				<p>
 		      				<span class="glyphicon glyphicon-hand-right col-md-1" aria-hidden="true"></span>
-		      				<div class="col-md-11" style="padding: 0 0 15px 0;">Also you can create new BMC in this project when you click the <button type="button" class="btn btn-primary disabled">New Project</button> Button.</div>
+		      				<div class="col-md-11" style="padding: 0 0 15px 0;">Also you can create new Model in this project when you click the <button type="button" class="btn btn-primary disabled">New Model</button> Button.</div>
 	      				</p>  
 					';
 								}

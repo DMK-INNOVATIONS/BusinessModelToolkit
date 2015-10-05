@@ -15,21 +15,20 @@
 	$empty = true;
 
 		foreach ($myAssignedPersonas as $assignedPersona){
-			print '	<div class="col-md-12 col-sm-12 post_It">
+			print'
+				<div class="panel-body primary">
+					<h4>'.$assignedPersona["name"].'</h4>
 						<div class="col-md-6 col-xs-6 col-sm-12 persona_bmc_view_content">
-							<div class="persona-bmc-headder">'.$assignedPersona["name"].'</div>
 							<div>'.$assignedPersona["age"].'</div>
 							<div>'.$assignedPersona["occupation"].'</div>		
 						</div>
 						<div class="col-md-6 col-xs-6 col-sm-12 persona_bmc_view_img">
 							<img class="avatarImg" src="'.$assignedPersona["avatarImg"].'" alt="avatarImg">
 						</div>
-						<div class="persona-bmc-footer col-md-6 col-sm-12 col-md-offset-6">
-							<a data-toggle="modal" data-target="#myPersona'.$assignedPersona['id'].'"><span class="glyphicon glyphicon-search" aria-hidden="true"/></a>
-							<a data-toggle="modal" data-target="#deleteModal'.$assignedPersona['id'].'"><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a> 
-						</div>
-					</div>
-				';
+					<a class="search-icon" data-toggle="modal" data-target="#myPersona'.$assignedPersona['id'].'"><span class="glyphicon glyphicon-search" aria-hidden="true"/></a>
+					<a class="delete-icon" data-toggle="modal" data-target="#deleteModal'.$assignedPersona['id'].'"></a>
+				</div>
+			';
 			$empty = false;
 			
 			print '
@@ -50,9 +49,9 @@
   				';
 		}
 
-	if($empty){
-		print '<div class="viewBMCEmptyBox">For whom are we creating value?<br>Who are our most important customers?</div>';	
-	}
+// 	if($empty){
+// 		print '<div class="viewBMCEmptyBox">For whom are we creating value?<br>Who are our most important customers?</div>';	
+// 	}
 	?>
 
 </div>

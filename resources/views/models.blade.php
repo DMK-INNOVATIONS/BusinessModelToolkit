@@ -149,7 +149,7 @@
 		
 		<div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
 			<div class="panel panel-default">
-				<div class="panel-heading"><b>My assigned Models</b> <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button></div>
+				<div class="panel-heading"><b>My assigned Models</b></div>
 				<div class="panel-body">
 					
 					<div class="panel panel-default">
@@ -265,5 +265,52 @@
 		</div>
 		
 	</div>
+</div>
+
+<!-- Help Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content col-md-12">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Models View Help</h4>
+      </div>
+      <div class="modal-body">
+			<p>
+				<span class="glyphicon glyphicon-hand-right col-md-1" aria-hidden="true"></span> 
+				<div class="col-md-11">The Models View contains all your created and assigned Models, sorted by their projects.</div>
+			</p> 
+			<p>
+				<span class="glyphicon glyphicon-hand-right col-md-1" aria-hidden="true"></span> 
+				<div class="col-md-11">While you can only export assigned Models, you can use the following Tools on your own Models: </div>
+			</p>
+	      	<p>
+	      		<span class="glyphicon glyphicon-pencil col-md-offset-2" aria-hidden="true"></span> - edit: Used to change the Title of the Model.
+      		</p>
+      		<p>
+	      		<span class="glyphicon glyphicon-file col-md-offset-2" aria-hidden="true"></span> - duplicate: Used to duplicate a Model.
+      		</p>
+      		<p>
+	      		<span class="glyphicon glyphicon-export col-md-offset-2" aria-hidden="true"></span> - export: Used to export a Model.
+      		</p>
+	      	<p>
+	      		<span class="glyphicon glyphicon-trash col-md-offset-2" aria-hidden="true"></span> - delete: Used to delete no longer used Model.
+      		</p>
+		
+      	
+      		<p>
+      			<span class="glyphicon glyphicon-hand-right col-md-1" aria-hidden="true"></span> 
+      			<div class="col-md-11">To show a Model use the <button type="button" class="btn btn-default disabled">show Model </button> Button.</div>
+      		</p>
+      		<p>
+      			<span class="glyphicon glyphicon-hand-right col-md-1" aria-hidden="true"></span> 
+      			<div class="col-md-11" style="padding: 0 0 15px 0;">Also you can create new Model with the <button type="button" class="btn btn-primary disabled">New Model</button> Button.</div>
+      		</p>    			
+      </div>
+      <div class="modal-footer col-md-12" style="margin: 0;">
+        <p><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></p>
+      </div>
+    </div>
+  </div>
 </div>
 @endsection
