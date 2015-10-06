@@ -111,7 +111,8 @@ class ExportController extends Controller {
 		$html2pdf->pdf->SetDisplayMode('fullpage');
 		$html2pdf->writeHTML($doc, false);
 		$datei=$bmc['title'].'-'.$date.'.pdf';
-		$html2pdf->Output($datei, 'D');
+		$html2pdf->Output($datei, 'I');
+// 		$html2pdf->Output($datei, 'D');
 	}
 	
 	public function getStatusColor($status){
@@ -141,14 +142,14 @@ class ExportController extends Controller {
 		$notices = $this->getBMCNotices($bmc_id);
 		$personas = $this->getBMCPersonas($bmc_id);
 		
-		if($canvas_box_id == 7){
+		if($canvas_box_id == 7){ //Customer Segments
 			$content = '<div style="background-color:#ffffff; padding:5px; margin: 5px; width:'.$box_width.';"></div>';
 			foreach($personas as $persona){
 				if($content == '<div style="background-color:#ffffff; padding:5px; margin: 5px; width:'.$box_width.';"></div>'){
-					$temp = '<div style="background-color:#ffffff; padding:5px; margin: 5px; border:1px solid #000000; color: #000000; border-radius:5px; width:'.$box_width.';"><b>'.$persona['name'].'</b><br>'.$persona['age'].'</div>';
+					$temp = '<div style="background-color:#ffffff; padding:5px; margin: 5px; border:1px solid #000000; color: #000000; border-radius:5px; width:'.$box_width.';"><b>'.$persona['name'].'</b><br>'.$persona['age'].'<br>'.$persona['occupation'].'</div>';
 					$content = $temp;
 				}else{
-					$temp = $content.'<div style="background-color:#ffffff; padding:5px; margin: 5px; border:1px solid #000000; color: #000000; border-radius:5px; width:'.$box_width.';"><b>'.$persona['name'].'</b><br>'.$persona['age'].'</div>';
+					$temp = $content.'<div style="background-color:#ffffff; padding:5px; margin: 5px; border:1px solid #000000; color: #000000; border-radius:5px; width:'.$box_width.';"><b>'.$persona['name'].'</b><br>'.$persona['age'].'<br>'.$persona['occupation'].'</div>';
 					$content = $temp;
 				}
 			}
@@ -186,6 +187,10 @@ class ExportController extends Controller {
 		$bmc = $this->getBMC($bmc_id);
 		$project = $this->getBMCProject($project_id);
 		
+		$created_at = explode(' ', $bmc["created_at"]);
+		$created_at_date = $created_at[0];
+		$created_at_time = $created_at[1];
+		
 		$user = User::find($project['assignee_id']);
 		
 		$canvas_box_1 = $this->getContent($bmc_id.',1,100px');
@@ -200,17 +205,17 @@ class ExportController extends Controller {
 		
 		$content ='
 		<page backtop="7mm" backbottom="7mm" backleft="10mm" backright="10mm">
-			<table style="border: 1 solid #dddddd; border-radius: 4px; vertical-align: top; background: url(img/gplaypattern.png);">
+			<table style="border: 1 solid #7f939b; border-radius: 4px; vertical-align: top; background-color: #dfe4e6; color:#7f939b;">
 				<tr>
-					<td colspan="5" style="background-color: #f5f5f5; border: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>'.$bmc['title'].'</b></td>
+					<td colspan="5" style="background-color: #f5f5f5; border: 1 solid #7f939b; padding: 10px 15px; text-align:center;"><b>'.$bmc['title'].'</b></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">
 						<table>
 							<tr>
 								<td>
-									<div style="background-color: #ffffff; border: 1 solid #dddddd; border-radius: 4px;">
-										<div style="background-color: #f5f5f5; border-bottom: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>Key <br>Partners</b></div>
+									<div style="background-color: #ffffff; border: 1 solid #7f939b; border-radius: 4px;">
+										<div style="background-color: #f5f5f5; border-bottom: 1 solid #7f939b; padding: 2px 10px; text-align:center;"><b>Key <br>Partners</b></div>
 										'.$canvas_box_1.'	
 									</div>
 								</td>
@@ -222,16 +227,16 @@ class ExportController extends Controller {
 						<table>
 							<tr>
 								<td>
-									<div style="border: 1 solid #dddddd; border-radius: 3px; vertical-align: top; background:#ffffff;">
-										<div style="background-color: #f5f5f5; border-bottom: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>Key <br>Activities</b></div>
+									<div style="border: 1 solid #7f939b; border-radius: 3px; vertical-align: top; background:#ffffff;">
+										<div style="background-color: #f5f5f5; border-bottom: 1 solid #7f939b; padding: 2px 10px; text-align:center;"><b>Key <br>Activities</b></div>
 										'.$canvas_box_2.'
 									</div>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<div style="border: 1 solid #dddddd; border-radius: 3px; vertical-align: top; background:#ffffff;">
-										<div style="background-color: #f5f5f5; border-bottom: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>Key <br>Ressources</b></div>
+									<div style="border: 1 solid #7f939b; border-radius: 3px; vertical-align: top; background:#ffffff;">
+										<div style="background-color: #f5f5f5; border-bottom: 1 solid #7f939b; padding: 2px 10px; text-align:center;"><b>Key <br>Ressources</b></div>
 										'.$canvas_box_3.'
 									</div>
 								</td>
@@ -243,8 +248,8 @@ class ExportController extends Controller {
 						<table>
 							<tr>
 								<td>
-									<div style="border: 1 solid #dddddd; border-radius: 3px; vertical-align: top; background:#ffffff;">
-										<div style="background-color: #f5f5f5; border-bottom: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>Value<br>Propositions</b></div>
+									<div style="border: 1 solid #7f939b; border-radius: 3px; vertical-align: top; background:#ffffff;">
+										<div style="background-color: #f5f5f5; border-bottom: 1 solid #7f939b; padding: 2px 10px; text-align:center;"><b>Value<br>Propositions</b></div>
 										'.$canvas_box_4.'
 									</div>
 								</td>
@@ -256,16 +261,16 @@ class ExportController extends Controller {
 						<table>
 							<tr>
 								<td>
-									<div style="background-color: #ffffff; border: 1 solid #dddddd; border-radius: 4px;">
-										<div style="background-color: #f5f5f5; border-bottom: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>Customer<br>Relationships</b></div>
+									<div style="background-color: #ffffff; border: 1 solid #7f939b; border-radius: 4px;">
+										<div style="background-color: #f5f5f5; border-bottom: 1 solid #7f939b; padding: 2px 10px; text-align:center;"><b>Customer<br>Relationships</b></div>
 										'.$canvas_box_5.'
 									</div>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<div style="background-color: #ffffff; border: 1 solid #dddddd; border-radius: 4px;">
-										<div style="background-color: #f5f5f5; border-bottom: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>Channels</b><br><br></div>
+									<div style="background-color: #ffffff; border: 1 solid #7f939b; border-radius: 4px;">
+										<div style="background-color: #f5f5f5; border-bottom: 1 solid #7f939b; padding: 2px 10px; text-align:center;"><b>Channels</b><br><br></div>
 										'.$canvas_box_6.'
 									</div>
 								</td>
@@ -277,8 +282,8 @@ class ExportController extends Controller {
 						<table>
 							<tr>
 								<td>
-									<div style="border: 1 solid #dddddd; border-radius: 3px; vertical-align: top; background:#ffffff;">
-										<div style="background-color: #f5f5f5; border-bottom: 1 solid #dddddd; padding: 10px 15px; text-align:center; width:100px;"><b>Customer<br>Segments</b></div>
+									<div style="border: 1 solid #7f939b; border-radius: 3px; vertical-align: top; background:#ffffff;">
+										<div style="background-color: #f5f5f5; border-bottom: 1 solid #7f939b; padding: 2px 10px; text-align:center; width:100px;"><b>Customer<br>Segments</b></div>
 										'.$canvas_box_7.'
 									</div>
 								</td>
@@ -291,21 +296,20 @@ class ExportController extends Controller {
 						<table>
 							<tr style="vertical-align:top; width:250px;">
 								<td>
-									<div style="background-color: #ffffff; border: 1 solid #dddddd; border-radius: 4px;">
-										<div style="background-color: #f5f5f5; border-bottom: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>Cost Structure</b></div>
+									<div style="background-color: #ffffff; border: 1 solid #7f939b; border-radius: 4px;">
+										<div style="background-color: #f5f5f5; border-bottom: 1 solid #7f939b; padding: 2px 10px; text-align:center;"><b>Cost Structure</b></div>
 										'.$canvas_box_8.'
 									</div>
 								</td>
 							</tr>
 						</table>
 					</td>
-					<td></td>
 					<td colspan="2">
 						<table>
 							<tr style="vertical-align:top; width:250px;">
 								<td>
-									<div style="background-color: #ffffff; border: 1 solid #dddddd; border-radius: 4px;">
-										<div style="background-color: #f5f5f5; border-bottom: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>Revenue Streams</b></div>
+									<div style="background-color: #ffffff; border: 1 solid #7f939b; border-radius: 4px;">
+										<div style="background-color: #f5f5f5; border-bottom: 1 solid #7f939b; padding: 2px 10px; text-align:center;"><b>Revenue Streams</b></div>
 										'.$canvas_box_9.'
 									</div>
 								</td>
@@ -315,7 +319,7 @@ class ExportController extends Controller {
 			    </tr>
 		
 				<tr>
-					<td colspan="5" style="background-color: #ffffff; border: 1 solid #dddddd; padding: 5px; text-align:center; font-size:10px; color: grey;">Project Title: '.$project['title'].', Created by: '.$user['name'].', Created on: '.$bmc['created_at'].'</td>
+					<td colspan="5" style="background-color: #ffffff; color:#7f939b; border: 1 solid #7f939b; padding: 5px; text-align:center; font-size:10px; color: grey;">Project Title: '.$project['title'].', Created by: '.$user['name'].', Created on: '.$created_at_date.', '.$created_at_time.'</td>
 				</tr>
 			</table>
 		</page>
@@ -333,6 +337,10 @@ class ExportController extends Controller {
 		$bmc = $this->getBMC($bmc_id);
 		$project = $this->getBMCProject($project_id);
 		
+		$created_at = explode(' ', $bmc["created_at"]);
+		$created_at_date = $created_at[0];
+		$created_at_time = $created_at[1];
+		
 		$user = User::find($project['assignee_id']);
 		
 		$canvas_box_1 = $this->getContent($bmc_id.',1,160px');
@@ -347,17 +355,17 @@ class ExportController extends Controller {
 		
 		$content='
 		<page backtop="7mm" backbottom="7mm" backleft="10mm" backright="10mm">
-			<table style="border: 1 solid #dddddd; border-radius: 4px; vertical-align: top; background: url(img/gplaypattern.png); width:100%; font-size: 11px;">
+			<table style="border: 1 solid #7f939b; border-radius: 4px; vertical-align: top; background-color: #dfe4e6; color:#7f939b; width:100%; font-size: 11px;">
 				<tr>
-					<td colspan="5" style="background-color: #f5f5f5; border: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>Titel BMC</b></td>
+					<td colspan="5" style="background-color: #f5f5f5; border: 1 solid #7f939b; padding: 10px 15px; text-align:center; font-size: 15px;"><b>'.$bmc['title'].'</b></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: top;">
 						<table>
 							<tr>
 								<td>
-									<div style="background-color: #ffffff; border: 1 solid #dddddd; border-radius: 4px;">
-										<div style="background-color: #f5f5f5; border-bottom: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>Key <br>Partners</b></div>
+									<div style="background-color: #ffffff; border: 1 solid #7f939b; border-radius: 4px;">
+										<div style="background-color: #f5f5f5; border-bottom: 1 solid #7f939b; padding: 10px 15px; text-align:center; font-size: 15px;"><b>Key <br>Partners</b></div>
 										'.$canvas_box_1.'
 									</div>
 								</td>
@@ -369,16 +377,16 @@ class ExportController extends Controller {
 						<table>
 							<tr>
 								<td>
-									<div style="border: 1 solid #dddddd; border-radius: 3px; vertical-align: top; background:#ffffff;">
-										<div style="background-color: #f5f5f5; border-bottom: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>Key <br>Activities</b></div>
+									<div style="border: 1 solid #7f939b; border-radius: 3px; vertical-align: top; background:#ffffff;">
+										<div style="background-color: #f5f5f5; border-bottom: 1 solid #7f939b; padding: 10px 15px; text-align:center; font-size: 15px;"><b>Key <br>Activities</b></div>
 										'.$canvas_box_2.'
 									</div>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<div style="border: 1 solid #dddddd; border-radius: 3px; vertical-align: top; background:#ffffff;">
-										<div style="background-color: #f5f5f5; border-bottom: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>Key <br>Ressources</b></div>
+									<div style="border: 1 solid #7f939b; border-radius: 3px; vertical-align: top; background:#ffffff;">
+										<div style="background-color: #f5f5f5; border-bottom: 1 solid #7f939b; padding: 10px 15px; text-align:center; font-size: 15px;"><b>Key <br>Ressources</b></div>
 										'.$canvas_box_3.'
 									</div>
 								</td>
@@ -390,8 +398,8 @@ class ExportController extends Controller {
 						<table>
 							<tr>
 								<td>
-									<div style="border: 1 solid #dddddd; border-radius: 3px; vertical-align: top; background:#ffffff;">
-										<div style="background-color: #f5f5f5; border-bottom: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>Value<br>Propositions</b></div>
+									<div style="border: 1 solid #7f939b; border-radius: 3px; vertical-align: top; background:#ffffff;">
+										<div style="background-color: #f5f5f5; border-bottom: 1 solid #7f939b; padding: 10px 15px; text-align:center; font-size: 15px;"><b>Value<br>Propositions</b></div>
 										'.$canvas_box_4.'
 									</div>
 								</td>
@@ -403,16 +411,16 @@ class ExportController extends Controller {
 						<table>
 							<tr>
 								<td>
-									<div style="background-color: #ffffff; border: 1 solid #dddddd; border-radius: 4px;">
-										<div style="background-color: #f5f5f5; border-bottom: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>Customer<br>Relationships</b></div>
+									<div style="background-color: #ffffff; border: 1 solid #7f939b; border-radius: 4px;">
+										<div style="background-color: #f5f5f5; border-bottom: 1 solid #7f939b; padding: 10px 15px; text-align:center; font-size: 15px;"><b>Customer<br>Relationships</b></div>
 										'.$canvas_box_5.'
 									</div>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<div style="background-color: #ffffff; border: 1 solid #dddddd; border-radius: 4px;">
-										<div style="background-color: #f5f5f5; border-bottom: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>Channels</b><br><br></div>
+									<div style="background-color: #ffffff; border: 1 solid #7f939b; border-radius: 4px;">
+										<div style="background-color: #f5f5f5; border-bottom: 1 solid #7f939b; padding: 10px 15px; text-align:center; font-size: 15px;"><b>Channels</b><br><br></div>
 										'.$canvas_box_6.'
 									</div>
 								</td>
@@ -424,8 +432,8 @@ class ExportController extends Controller {
 						<table>
 							<tr>
 								<td>
-									<div style="border: 1 solid #dddddd; border-radius: 3px; vertical-align: top; background:#ffffff;">
-										<div style="background-color: #f5f5f5; border-bottom: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>Customer<br>Segments</b></div>
+									<div style="border: 1 solid #7f939b; border-radius: 3px; vertical-align: top; background:#ffffff;">
+										<div style="background-color: #f5f5f5; border-bottom: 1 solid #7f939b; padding: 10px 15px; text-align:center; font-size: 15px;"><b>Customer<br>Segments</b></div>
 										'.$canvas_box_7.'
 									</div>
 								</td>
@@ -438,8 +446,8 @@ class ExportController extends Controller {
 						<table>
 							<tr style="vertical-align:top;">
 								<td>
-									<div style="background-color: #ffffff; border: 1 solid #dddddd; border-radius: 4px;">
-										<div style="background-color: #f5f5f5; border-bottom: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>Cost Structure</b></div>
+									<div style="background-color: #ffffff; border: 1 solid #7f939b; border-radius: 4px;">
+										<div style="background-color: #f5f5f5; border-bottom: 1 solid #7f939b; padding: 10px 15px; text-align:center; font-size: 15px;"><b>Cost Structure</b></div>
 										'.$canvas_box_8.'
 									</div>
 								</td>
@@ -451,8 +459,8 @@ class ExportController extends Controller {
 						<table>
 							<tr style="vertical-align:top;">
 								<td>
-									<div style="background-color: #ffffff; border: 1 solid #dddddd; border-radius: 4px;">
-										<div style="background-color: #f5f5f5; border-bottom: 1 solid #dddddd; padding: 10px 15px; text-align:center;"><b>Revenue Streams</b></div>
+									<div style="background-color: #ffffff; border: 1 solid #7f939b; border-radius: 4px;">
+										<div style="background-color: #f5f5f5; border-bottom: 1 solid #7f939b; padding: 10px 15px; text-align:center; font-size: 15px;"><b>Revenue Streams</b></div>
 										'.$canvas_box_9.'
 									</div>
 								</td>
@@ -462,7 +470,7 @@ class ExportController extends Controller {
 			    </tr>
 			
 				<tr>
-					<td colspan="5" style="background-color: #ffffff; border: 1 solid #dddddd; padding: 5px; text-align:center; font-size:10px; color: grey;">Project Title: '.$project['title'].', Created by: '.$user['name'].', Created on: '.$bmc['created_at'].'</td>
+					<td colspan="5" style="background-color: #ffffff; border: 1 solid #7f939b; padding: 5px; text-align:center; font-size:10px; color: grey;">Project Title: '.$project['title'].', Created by: '.$user['name'].', Created on: '.$created_at_date.', '.$created_at_time.'</td>
 				</tr>
 			</table>
 		</page>
