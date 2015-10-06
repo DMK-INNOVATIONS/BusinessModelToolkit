@@ -111,8 +111,7 @@ class ExportController extends Controller {
 		$html2pdf->pdf->SetDisplayMode('fullpage');
 		$html2pdf->writeHTML($doc, false);
 		$datei=$bmc['title'].'-'.$date.'.pdf';
-		$html2pdf->Output($datei, 'I');
-// 		$html2pdf->Output($datei, 'D');
+		$html2pdf->Output($datei, 'D');
 	}
 	
 	public function getStatusColor($status){
