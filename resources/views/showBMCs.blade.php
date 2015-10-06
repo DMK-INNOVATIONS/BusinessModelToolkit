@@ -59,13 +59,13 @@
 											<div class="col-md-1 col-sm-6 col-xs-6">';
 									switch ($bmc ["status"]) {
 										case 'inWork' :
-											print '<button type="button" class="btn btn-warning showBMCStatus disabled">unclear</button>';
+											print '<button type="button" class="btn btn-warning showBMCStatus disabled">inProgress</button>';
 											break;
 										case 'approved' :
-											print '<button type="button" class="btn btn-success showBMCStatus disabled">validated</button>';
+											print '<button type="button" class="btn btn-success showBMCStatus disabled">approved</button>';
 											break;
 										case 'rejected' :
-											print '<button type="button" class="btn btn-danger showBMCStatus disabled">invalidated</button>';
+											print '<button type="button" class="btn btn-danger showBMCStatus disabled">rejected</button>';
 											break;
 									}
 									print '		</div>

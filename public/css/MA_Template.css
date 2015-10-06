@@ -258,6 +258,9 @@ p{
 	font-style: normal;
 	text-decoration: initial !important; 
 }
+a:HOVER{
+	text-decoration: none !important;
+}
 .bmc_group-icons{
 	background-color: inherit !important;
 }
