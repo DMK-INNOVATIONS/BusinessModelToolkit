@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 
@@ -213,14 +212,14 @@ class PersonaController extends Controller {
 	 * Validierung der Nutzereingaben vor der Speicheroperation.
 	 * TODO Sollte man sicherlich noch einbauen!
 	 */
-	public function eingabeKorrekt(){
-		$validator = Validator::make(Input::all(), array(
-				'title' => '$project_title'
-		));
+// 	public function eingabeKorrekt(){
+// 		$validator = Validator::make(Input::all(), array(
+// 				'title' => '$project_title'
+// 		));
 	
-		if($validator->fails){
-			return Redirect::action(NewProjectController::index());
-		}
-		return Redirect::action(NewProjectController::createNewProject());
-	}
+// 		if($validator->fails){
+// 			return Redirect::action(NewProjectController::index());
+// 		}
+// 		return Redirect::action(NewProjectController::createNewProject());
+// 	}
 }

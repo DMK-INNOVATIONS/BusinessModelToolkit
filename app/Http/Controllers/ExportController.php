@@ -90,7 +90,7 @@ class ExportController extends Controller {
 		$project_id = $inserts[1];
 		$owner = $inserts[2];
 		$format = $inserts[3];
-		$date = date('F_m_Y');
+		$date = date('Y_m_d');
 		
 		$bmc = $this->getBMC($bmc_id);
 		$project = $this->getBMCProject($project_id);
@@ -103,7 +103,8 @@ class ExportController extends Controller {
 			$doc = $this->landscape($bmc_id.','.$project_id);
 		}
 			
-		$html2pdf = new HTML2PDF($format,'A4','de', false, 'UTF-8');
+		$html2pdf = new HTML2PDF($format,'A4','de', true, 'UTF-8');
+   	 	$html2pdf->setDefaultFont('arialunicid0');
 		$html2pdf->pdf->SetTitle($bmc['title']);
 		$html2pdf->pdf->SetAuthor($user['name']);
 		$html2pdf->setDefaultFont('Arial');

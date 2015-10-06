@@ -1,7 +1,7 @@
 @extends('app') @section('content')
 <div class="container-fluid">
 	<div class=" col-md-10 col-md-offset-1 col-sm-10 col-xs-12 page-header">
-		<h1>You are very welcome back, {{ Auth::user()->name }}!</h1>
+		<h1>Welcome back, {{ Auth::user()->name }}!</h1>
 	</div>
 
 	<div class="row">
@@ -19,8 +19,8 @@
 				</a>
 			</div>
 			<div class="col-md-4 col-xs-12">
-				<a href="{{ url('/bmc/models') }}" class="thumbnail thumbnail_start">
-					<img class="img-circle" src="{{ asset('img/my_bmcs.png') }}"
+				<a href="{{ url('/bmc/models') }}" class="thumbnail thumbnail_start"> <img
+					class="img-circle" src="{{ asset('img/my_bmcs.png') }}"
 					alt="My BMC">
 				</a>
 			</div>

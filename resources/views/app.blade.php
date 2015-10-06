@@ -6,18 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>BMCounselor</title>
 
-	<!--<link href="{{ asset('/css/app.css') }}" rel="stylesheet">-->
-	<link href="{{ asset('/css/five.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/MA_Template.css') }}" rel="stylesheet">
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 	
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-	
 
 	<!-- Fonts -->
-	<!-- <link href='https://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'> 
-	<link href='https://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'>-->
+	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,11 +35,11 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><h3><a href="{{ url('/projects') }}">Projects</a><h3></li>
-					<li><h3><a href="{{ url('/bmc/models') }}">Models</a><h3></li>
+					<li><a href="{{ url('/projects') }}">Projects</a></li>
+					<li><a href="{{ url('/bmc/models') }}">Models</a></li>
 <!-- 					<li><a href="{{ url('/cSegments') }}">Customer Segments</a></li> -->
-					<li><h3><a href="{{ url('/persona') }}">Personas</a><h3></li>
-					<li><h3><a href="{{ url('/team') }}">Team</a><h3></li>
+					<li><a href="{{ url('/persona') }}">Personas</a></li>
+					<li><a href="{{ url('/team') }}">Team</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -51,7 +48,7 @@
 						<li><a href="{{ url('/auth/register') }}">Register</a></li>
 					@else
 						<li class="dropdown">
-							<a class="loggin" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><h3>You are logged in as {{ Auth::user()->name }} </h3><span class="icon_more"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">You are logged in as {{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/profile') }}">User Profile</a></li>
 								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
