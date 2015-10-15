@@ -40,10 +40,6 @@ Route::get('projects/edit/{id}', 'ProjectsController@edit');
 Route::get('projects/delete/{id}','ProjectsController@deleteProject');
 Route::get('projects/showBMCs/{id}', 'ProjectsController@showBMCs');
 
-Route::get('notice/save/{id?}', 'NoticeController@save');
-Route::get('notice/edit/{id}', 'NoticeController@edit');
-Route::get('notice/delete/{id}','NoticeController@deleteProject');
-
 Route::get('persona', 'PersonaController@index');
 Route::get('persona/create/{id}', 'PersonaController@create');
 Route::post('persona/save/{id?}', 'PersonaController@save');
@@ -55,8 +51,6 @@ Route::get('export/export/{id}', 'ExportController@export');
 
 Route::get('profile', 'ProfileController@index');
 Route::post('profile/save/{id}', 'ProfileController@save');
-
-Route::get('project_bmc_view', 'ProjectBmcViewController@index');
 
 Route::get('team', 'TeamController@index');
 Route::get('team/create', 'TeamController@create');

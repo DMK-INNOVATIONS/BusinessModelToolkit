@@ -22,6 +22,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 h2 .btn-primary{
 	color: #5ac8f0;
 }
+h4{
+	word-wrap: break-word;
+}
 .btn-primary{
 	background-color: #5ac8f0;
 	color: #FFFFFF;
@@ -208,9 +211,6 @@ p{
 	cursor:pointer;
 	background: rgb(239, 241, 242) url("../img/icbt_30x30_showmore.png") no-repeat scroll -1px -1px;
 }
-.group-icons{
-	cursor:pointer;
-}
 .icon-triangle:HOVER{
 	cursor:pointer;
 	background: rgb(239, 241, 242);
@@ -321,6 +321,9 @@ a:HOVER{
     float: right;
     margin-top: 18px;
     width: auto;
+    margin-bottom:10px;
+    cursor:pointer;
+    text-align:center;
 }
 .icon-minus{
 	border: 1px solid #dfe4e6;
@@ -568,6 +571,7 @@ width: 150px;
 	border-color: #dddddd;
 	padding: 5px 0; 
 	margin: 0;	
+	word-wrap: break-word;
 }
 
 .table_body_last{
@@ -591,6 +595,7 @@ width: 150px;
 .persona_bmc_view_content{
 	margin:0;
 	padding: 5px 0 0;
+	word-wrap: break-word;
 }
 
 .persona-bmc-footer{

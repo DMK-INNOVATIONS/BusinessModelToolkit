@@ -25,12 +25,12 @@
 					  </div>
 					  
 					  <div class="row table_head table_center">
-					  		<div class="col-md-1"></div>
-					  		<div class="col-md-2">Avatar</div>
-					  		<div class="col-md-3">Name</div>
-					  		<div class="col-md-1">Age</div>
-					  		<div class="col-md-3">Occupation</div>
-					  		<div class="col-md-1"></div>
+					  		<div class="col-md-1 col-sm-1 col-sm-offset-0 col-xs-1 col-xs-offset-1"></div>
+					  		<div class="col-md-2 col-sm-2 col-xs-7">Avatar</div>
+					  		<div class="col-md-3 col-sm-3 col-xs-4">Name</div>
+					  		<div class="col-md-1 col-sm-1 col-xs-4">Age</div>
+					  		<div class="col-md-3 col-sm-3 col-xs-4">Occupation</div>
+					  		<div class="col-md-1 col-sm-1 col-xs-12"></div>
 					  </div>
 				
 					<?php 
@@ -38,26 +38,26 @@
 						foreach ($myPersonas as $myPersona){
 							print '<div class="row table_body table_center">';
 							print '
-									<div class="col-md-1">
+									<div class="col-md-1 col-sm-1 col-sm-offset-0 col-xs-1 col-xs-offset-1">
 										<div class="checkbox">
 										  <label>
 										    <input type="checkbox" name="selectedPersona[]" value="'.$myPersona['id'].'" aria-label="...">
 										  </label>
 										</div>
 									</div>	
-									<div class="col-md-2 col-sm-2 col-xs-2">
+									<div class="col-md-2 col-sm-2 col-xs-7">
 								    	<img class="avatarImg" src="'.$myPersona["avatarImg"].'" alt="avatarImg">	
 									</div>	
-									<div class="col-md-3 col-sm-3 col-xs-3">
+									<div class="col-md-3 col-sm-3 col-xs-4">
 										'.$myPersona["name"].'	
 									</div>	
-									<div class="col-md-1 col-sm-1 col-xs-1">
+									<div class="col-md-1 col-sm-1 col-xs-4">
 										'.$myPersona["age"].'	
 									</div>
-									<div class="col-md-3 col-sm-2 col-xs-2">
+									<div class="col-md-3 col-sm-3 col-xs-4">
 										'.$myPersona["occupation"].'	
 									</div>
-									<div class="col-md-1 col-sm-1 col-xs-1">
+									<div class="col-md-1 col-sm-1 col-xs-12">
 										<button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#myPersona'.$myPersona["id"].'">show</button>
 									</div>
 							';

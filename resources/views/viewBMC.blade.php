@@ -16,8 +16,8 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default bmc_view_background">
-				<div class="panel-heading bmc_view_Header col-md-10 col-sm-10 col-md-offset-1">
-					<div class="col-md-3 col-sm-3">
+				<div class="panel-heading bmc_view_Header col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10">
+					<div class="col-md-3 col-sm-12">
 						<?php 
 							if($view_type == 'models'){
 								print '<a href="'.$path.'/bmc/models"><button type="button" class="btn btn-default">Back to Model View</button></a>';
@@ -26,7 +26,7 @@
 							}
 						?>
 					</div>
-					<div class="col-md-5 col-sm-5">
+					<div class="col-md-5 col-sm-8">
 						<?php 
 							if($owner != 0){
 								print '<a type="button" class="edit-icon-header" data-toggle="modal" data-target="#titleChangeModal" class="btn btn-default btn-sm"></a>  ';	
@@ -34,7 +34,7 @@
 						?>
 						<h1><?php print $bmc_name?></h1>
 					</div>
-					<div class="col-md-2 col-sm-2">
+					<div class="col-md-3 col-sm-4">
 						<div class="group-icons bmc_group-icons">
 							<?php //Shows Button in Color of Status
 								$status;
@@ -56,10 +56,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-1 col-sm-1">
+				<div class="col-md-1 col-sm-1 col-xs-1">
 					<a class="help-icon" data-toggle="modal" data-target="#helpModal"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"/></a>
 				</div>	
-				<div class="panel-body bmcViewBackground">
+				<div class="panel-body bmcViewBackground col-xs-12">
 					<div class="viewBMC_body">					
 				    	<div class="col-md-12 col-sm-12">
 				    		<div class="col-md-2 col-sm-2 col-md-offset-1">
