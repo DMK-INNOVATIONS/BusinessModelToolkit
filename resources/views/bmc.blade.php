@@ -251,4 +251,23 @@
 		</div>
 	</div>
 </div>
+<script>
+var height=0;
+var h=0;
+var count_panel=0; 
+$(".inside .col-md-2-4").each(function(){
+	count_panel=$(this).children().length;
+	console.log(count_panel);
+	h=$(this).height();
+	if(h>height)
+	{
+		height=h;
+	}
+});
+	count_panel=$(".col-md-2-4").children().length;
+	console.log("panel:"+count_panel);
+
+
+console.log("max height"+ height);
+</script>
 @endsection

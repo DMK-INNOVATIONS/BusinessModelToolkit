@@ -137,10 +137,7 @@
 									<?php if(isset($persona)) : ?>
 										<input type="text" class="form-control" name="quote" value="{{ $persona['quote'] }}">
 									<?php else : ?>
-										<div class="input-group">
-											<input type="text" class="form-control" name="quote">
-											<span class="input-group-addon glyphicon glyphicon-question-sign persona_formular_help" data-toggle="tooltip" data-placement="right" title="Please divide your inserts with a semicolon."/>	
-										</div>
+										<input type="text" class="form-control" name="quote">	
 									<?php endif; ?>
 								</div>
 							</div>

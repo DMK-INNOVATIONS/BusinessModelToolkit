@@ -4,12 +4,13 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>BMCounselor</title>
+	<title>Business Model Toolkit</title>
 
 	<!--<link href="{{ asset('/css/app.css') }}" rel="stylesheet">-->
 	<link href="{{ asset('/css/five.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/MA_Template.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 	
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -68,5 +69,14 @@
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script>
+		function showStuff(id, btn) {
+			if(document.getElementById(id).style.display == 'block'){
+				document.getElementById(id).style.display = 'none';
+			}else{
+				document.getElementById(id).style.display = 'block';
+			}
+		}
+	  </script>
 </body>
 </html>

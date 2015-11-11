@@ -83,7 +83,7 @@
 			</p> 
 			<p>
 				<span class="glyphicon glyphicon-hand-right col-md-1" aria-hidden="true"></span> 
-				<div class="col-md-11">You can change your Name, E-Mail Address and Password by typing in the columns. To save the changes Date press the <button type="button" class="btn btn-primary disabled">Save Changes</button> Button.</div>
+				<div class="col-md-11">You can change your Name, E-Mail Address and Password by typing in the columns. To save changes press the <button type="button" class="btn btn-primary disabled">Save Changes</button> Button.</div>
 			</p>
       </div>
       <div class="modal-footer col-md-12">

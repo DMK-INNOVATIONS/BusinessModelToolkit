@@ -90,9 +90,15 @@ h6 p{
 icon{
 	color: #bfc9cd;
 }
-label{
-	border: 1px solid #dfe4e6;
-	background-color: #eff1f2;
+/* label{ */
+/* 	border: 1px solid #dfe4e6; */
+/* 	background-color: #eff1f2; */
+/* } */
+
+.checkbox label{
+	min-height: 0px;
+	padding:0px;
+	
 }
 .progress{
 	color: #fbb03b;
@@ -171,6 +177,22 @@ p{
 	/* Standard */
 	width: calc(100% - 95px);
 }
+
+.bmc_view_Header.splitline{
+	border-bottom: 1px solid #dfe4e6;
+    float: left;
+    margin: 15px 40px;
+    overflow: visible;
+    position: absolute;
+    /* Firefox */
+	width: -moz-calc(100% - 95px);
+	/* WebKit */
+	width: -webkit-calc(100% - 95px);
+	/* Opera */
+	width: -o-calc(100% - 95px);
+	/* Standard */
+	width: calc(100% - 95px);
+}
 .more {
     background: rgba(0, 0, 0, 0) url("../img/icbt_30x30_showmore.png") no-repeat scroll -1px -1px;
     border: 1px solid #dfe4e6;
@@ -181,6 +203,17 @@ p{
     font-weight: bold;
     margin-right: 5px;
     padding: 14px;
+}
+.more:HOVER{
+	cursor:pointer;
+	background: rgb(239, 241, 242) url("../img/icbt_30x30_showmore.png") no-repeat scroll -1px -1px;
+}
+.group-icons{
+	cursor:pointer;
+}
+.icon-triangle:HOVER{
+	cursor:pointer;
+	background: rgb(239, 241, 242);
 }
 .add{
     background: rgb(90, 200, 240) url("../img/icbt_30x30_add.png") no-repeat scroll -3px -4px;
@@ -207,6 +240,31 @@ p{
 .edit-icon:HOVER{
 	background: rgb(239, 241, 242) url("../img/icbt_30x30_editor_bearbeiten_hover.png") no-repeat scroll 0 -1px;
 }
+.edit-icon-header{
+	background: url("../img/icbt_30x30_editor_bearbeiten.png") no-repeat scroll 0 -1px;
+	border: 1px solid #dfe4e6;
+    border-radius: 25px;
+    content: "";
+    float: left;
+    font-weight: bold;
+    margin: 15px 10px 15px 0;
+    padding: 15px;
+}
+.edit-icon-header:HOVER{
+	background: url("../img/icbt_30x30_editor_bearbeiten_hover.png") no-repeat scroll 0 -1px;
+}
+.bmc_view_status_modal{
+	padding: 0px 10px 0px 0px;
+	font-style: normal;
+	text-decoration: initial !important; 
+}
+.bmc_group-icons{
+	background-color: inherit !important;
+}
+.bmc_group-icons:HOVER{
+	background: rgb(239, 241, 242) !important;
+	text-decoration: initial !important; 
+}
 .delete-icon{
 	background: rgb(239, 241, 242) url("../img/icbt_30x30_editor_loeschen.png") no-repeat scroll 0 -1px;
     border: 1px solid #dfe4e6;
@@ -220,6 +278,37 @@ p{
 }
 .delete-icon:HOVER{
 	background: rgb(239, 241, 242) url("../img/icbt_30x30_editor_loeschen_hover.png") no-repeat scroll 0 -1px;
+}
+.search-icon{
+    border: 1px solid #dfe4e6;
+    border-radius: 25px;
+    color: rgb(175, 168, 151);
+    content: "";
+    float: left;
+    font-weight: bold;
+    margin: 15px 10px 15px 0;
+    padding: 5px 9px;
+}
+.search-icon:HOVER{
+	background: rgb(239, 241, 242);
+	color: red;
+}
+
+.help-icon{
+	border: 1px solid #bfc9cd;
+    border-radius: 25px;
+    color: rgb(175, 168, 151);
+    content: "";
+    float: left;
+    font-weight: bold;
+    margin: 15px 10px 15px 0;
+    padding: 5px 9px;
+}
+.help-icon:HOVER{
+	border: 1px solid #bfc9cd;
+    border-radius: 25px;
+	background: rgb(239, 241, 242);
+	color: red;
 }
 .group-icons {
  	background-color: white;
@@ -239,6 +328,7 @@ p{
     line-height: 4px;
     margin: 8px 12px;
     text-indent: -1px;
+    font-size: 1.5em;
 }
 .icon-triangle{
 	border: 1px solid #bfc9cd;
@@ -514,9 +604,23 @@ width: 150px;
 	margin-top: 0px;
 }
 
-.bmcViewBackground{
-	background-image: url(../img/gplaypattern.png);
+.bmc_view_background{
+	background-color:inherit;
+	border:0;
+	box-shadow: inherit;
 }
+
+.bmc_view_Header{
+	background-color:inherit !important;
+	border-bottom:1px solid #7f939b !important;
+	padding: 15px 10px 0px 10px;
+	margin-bottom: 15px;
+	box-shadow: inherit;
+}
+
+/* .bmcViewBackground{ */
+/* 	background-image: url(../img/gplaypattern.png); */
+/* } */
 
 /* .modal-dialog{ */
 /* 	width: 800px; */
@@ -538,8 +642,13 @@ width: 150px;
 	text-align:center;
 }
 
+.modal-backdrop{
+	z-index: 0;
+}
+
 .viewBMCEmptyBox{
 	font-size:10px;
+	margin: 5px;
 }
 
 .modal .modal-body {
@@ -549,4 +658,8 @@ width: 150px;
 
 .test{
 	border:1px solid #000000;
+}
+
+div.viewBMC_body .panel-default{
+	margin: 2px;
 }

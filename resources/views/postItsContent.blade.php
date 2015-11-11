@@ -15,31 +15,28 @@
 		foreach ($bmc_postIts as $bmc_postIt){
 			if($bmc_postIt['canvas_box_id']==$boxId){
 				$empty = false;
-				print '	<div class="col-md-12 col-xs-12 post_It">
-							<div class="post-it-headder">
-								<div class="col-md-8 col-xs-8 post_It_content">'.$bmc_postIt['title'].'</div>
-								<div class="col-md-4 col-xs-4 post_It_content">';	
-									switch ($bmc_postIt['status']) {
-										case 'inWork':
-											print '   <button type="button" data-toggle="modal" data-target="#statusChangeModal_Post-IT'.$bmc_postIt['id'].'" class="btn btn-warning btn-sm post-it-status"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"/></button>';
-											break;
-										case 'approved':
-											print '   <button type="button" data-toggle="modal" data-target="#statusChangeModal_Post-IT'.$bmc_postIt['id'].'" class="btn btn-success btn-sm post-it-status"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"/></button>';
-											break;
-										case 'rejected':
-											print '   <button type="button" data-toggle="modal" data-target="#statusChangeModal_Post-IT'.$bmc_postIt['id'].'" class="btn btn-danger btn-sm post-it-status"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"/></button>';
-											break;
-									}
-				print '			</div>
-							</div>
-							<div class="col-md-12 col-xs-12 post_It_content">'.$bmc_postIt['content'].'</div>
-							<div class="row post-it-footer col-md-12 col-xs-12">
-								<a href="#editPostItModal'.$boxId.$bmc_postIt['id'].'" role="button" data-toggle="modal"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>  
-								<a data-toggle="modal" data-target="#deleteModal'.$bmc_postIt['id'].'"><span class="glyphicon glyphicon-trash" aria-hidden="true"/></a>
-							</div>
+				print '	
+						<div class="panel-body primary">
+							<h4>'.$bmc_postIt['title'].'</h4>
+							<p>'.$bmc_postIt['content'].'</p>
+							<a class="edit-icon" href="#editPostItModal'.$boxId.$bmc_postIt['id'].'" role="button" data-toggle="modal"></a>
+							<a class="delete-icon" data-toggle="modal" data-target="#deleteModal'.$bmc_postIt['id'].'"></a>
+							<div class="group-icons">';
+					switch ($bmc_postIt['status']) {
+						case 'inWork':
+							print '   <a class="show-icon" type="button" data-toggle="modal" data-target="#statusChangeModal_Post-IT'.$bmc_postIt['id'].'"><i class="icon-minus progress glyphicon glyphicon-minus"></i><i button type="button" class="icon-triangle glyphicon glyphicon-question-sign"></i></a>';
+							break;
+						case 'approved':
+							print '   <a class="show-icon" type="button" data-toggle="modal" data-target="#statusChangeModal_Post-IT'.$bmc_postIt['id'].'"><i class="icon-minus approved glyphicon glyphicon-minus"></i><i button type="button" class="icon-triangle glyphicon glyphicon-ok-sign"></i></a>';
+							break;
+						case 'rejected':
+							print '   <a class="show-icon" type="button" data-toggle="modal" data-target="#statusChangeModal_Post-IT'.$bmc_postIt['id'].'"><i class="icon-minus rejected glyphicon glyphicon-minus"></i><i button type="button" class="icon-triangle glyphicon glyphicon-remove-sign"></i></a>';
+							break;
+					}
+			
+				print'		</div>
 						</div>
-
-										
+								
 					<div class="modal fade" id="statusChangeModal_Post-IT'.$bmc_postIt['id'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 					  <div class="modal-dialog" role="document">
 					    <div class="modal-content">
@@ -119,11 +116,11 @@
 												';
 													switch ($bmc_postIt['status']) {
 														case 'inWork':
-															print '<option selected>inWork</option><option>approved</option><option>rejected</option>';break;
+															print '<option selected value="inWork">unclear</option><option value="approved">validated</option><option value="rejected">invalidated</option>';break;
 														case 'approved':
-															print '<option>inWork</option><option selected>approved</option><option>rejected</option>';break;
+															print '<option value="inWork">unclear</option><option selected value="approved">validated</option><option value="rejected">invalidated</option>';break;
 														case 'rejected':
-															print '<option>inWork</option><option>approved</option><option selected>rejected</option>';break;									
+															print '<option value="inWork">unclear</option><option value="approved">validated</option><option selected value="rejected">invalidated</option>';break;									
 													}
 												    print '
 												  </select>
@@ -169,34 +166,34 @@
 			}
 		}
 		
-		if($empty){
-			switch ($boxId) {
-				case 1:
-					print '<div class="viewBMCEmptyBox">Who are our Key Partners?<br>Who are our Key Suppliers?<br>Which Key Ressources are wo acquairing from partners?<br>Which Key Activities do partners perform?</div>';
-					break;
-				case 2:
-					print '<div class="viewBMCEmptyBox">What Key Activities do our Value Propositions require?<br>Our Distribution Channels?<br>Customer Relationships?<br>Revenue Streams?</div>';
-					break;
-				case 3:
-					print '<div class="viewBMCEmptyBox">What Key Resources do our Value Propositions require?<br>Our Distribution Channels?<br>Customer Relationships?<br>Revenue Streams?</div>';
-					break;
-				case 4:
-					print '<div class="viewBMCEmptyBox">What Value Propositions do we deliver to the Customer?<br>Which one of our Customer\'s problems are we helping to solve?<br>What bundles of products and services are we offering to each Customer Segment?<br>Which customer needs are we satisfying?</div>';
-					break;
-				case 5:
-					print '<div class="viewBMCEmptyBox">What type of relationship does each of our Customer Segments expect us to establish and maintain with them?<br>Which ones have we established?<br>how are thes integrated with the rest of our business model?<br>How costly are they?</div>';
-					break;
-				case 6:
-					print '<div class="viewBMCEmptyBox">Through which Channels do our Customer Segments want to be reached?<br>How are we reaching them now?<br>How are our Channels integrated?<br>Which ones work best?<br>Which ones are most cost-efficient?<br>How are we integrating them with customer routines?</div>';
-					break;
-				case 8:
-					print '<div class="viewBMCEmptyBox">What are the most Important costs Inherent in our business model?<br>Which Key Resources are most expensive?<br>Which Key Activities are most expensive?</div>';
-					break;
-				case 9:
-					print '<div class="viewBMCEmptyBox">For what value are our customers really willing to pay?<br>For what do they currently pay?<br>How are they currently paying?<br>How would they prefer to pay?<br>How much does each Revenue Stream contribute to overall revenues?</div>';
-					break;
-			}
-		}
+// 		if($empty){
+// 			switch ($boxId) {
+// 				case 1:
+// 					print '<div class="viewBMCEmptyBox">Who are our Key Partners?<br>Who are our Key Suppliers?<br>Which Key Ressources are wo acquairing from partners?<br>Which Key Activities do partners perform?</div>';
+// 					break;
+// 				case 2:
+// 					print '<div class="viewBMCEmptyBox">What Key Activities do our Value Propositions require?<br>Our Distribution Channels?<br>Customer Relationships?<br>Revenue Streams?</div>';
+// 					break;
+// 				case 3:
+// 					print '<div class="viewBMCEmptyBox">What Key Resources do our Value Propositions require?<br>Our Distribution Channels?<br>Customer Relationships?<br>Revenue Streams?</div>';
+// 					break;
+// 				case 4:
+// 					print '<div class="viewBMCEmptyBox">What Value Propositions do we deliver to the Customer?<br>Which one of our Customer\'s problems are we helping to solve?<br>What bundles of products and services are we offering to each Customer Segment?<br>Which customer needs are we satisfying?</div>';
+// 					break;
+// 				case 5:
+// 					print '<div class="viewBMCEmptyBox">What type of relationship does each of our Customer Segments expect us to establish and maintain with them?<br>Which ones have we established?<br>how are thes integrated with the rest of our business model?<br>How costly are they?</div>';
+// 					break;
+// 				case 6:
+// 					print '<div class="viewBMCEmptyBox">Through which Channels do our Customer Segments want to be reached?<br>How are we reaching them now?<br>How are our Channels integrated?<br>Which ones work best?<br>Which ones are most cost-efficient?<br>How are we integrating them with customer routines?</div>';
+// 					break;
+// 				case 8:
+// 					print '<div class="viewBMCEmptyBox">What are the most Important costs Inherent in our business model?<br>Which Key Resources are most expensive?<br>Which Key Activities are most expensive?</div>';
+// 					break;
+// 				case 9:
+// 					print '<div class="viewBMCEmptyBox">For what value are our customers really willing to pay?<br>For what do they currently pay?<br>How are they currently paying?<br>How would they prefer to pay?<br>How much does each Revenue Stream contribute to overall revenues?</div>';
+// 					break;
+// 			}
+// 		}
 	
 	?>
 </div>
