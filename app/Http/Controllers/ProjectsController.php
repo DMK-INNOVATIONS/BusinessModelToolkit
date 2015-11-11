@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 use App\Project;
@@ -13,11 +12,7 @@ use App\Notice;
 class ProjectsController extends Controller {
 	
 	/*
-	 * |--------------------------------------------------------------------------
-	 * | Persona Controller
-	 * |--------------------------------------------------------------------------
-	 * |
-	 * |
+	 * |-------------------------------------------------------------------------- | Persona Controller |-------------------------------------------------------------------------- | |
 	 */
 	
 	/**
@@ -37,14 +32,20 @@ class ProjectsController extends Controller {
 	public function index() {
 		$user_name = Auth::user ()->name;
 		$getMyProjects = $this->getMyProjects ();
-		$myAssignedProjects = $this->getMyAssignedProjects();
-		$assignedProjectsOwners = $this->getAssignedProjectsOwner();
+		$myAssignedProjects = $this->getMyAssignedProjects ();
+		$assignedProjectsOwners = $this->getAssignedProjectsOwner ();
 		
-		return view ( 'projects', ['myProjects' => $getMyProjects, 'user_name' => $user_name, 'myAssignedProjects' => $myAssignedProjects, 'assignedProjectsOwners' =>$assignedProjectsOwners] );
+		return view ( 'projects', [ 
+				'myProjects' => $getMyProjects,
+				'user_name' => $user_name,
+				'myAssignedProjects' => $myAssignedProjects,
+				'assignedProjectsOwners' => $assignedProjectsOwners,
+		] );
 	}
 	
 	/**
 	 * Gets all the projects.
+	 * 
 	 * @return Ambigous <\Illuminate\Database\Eloquent\Collection, multitype:\Illuminate\Database\Eloquent\static >
 	 */
 	public function getAllProjects() {
@@ -53,6 +54,7 @@ class ProjectsController extends Controller {
 	
 	/**
 	 * Gets my project.
+	 * 
 	 * @return multitype:
 	 */
 	public function getMyProjects() {
@@ -76,26 +78,29 @@ class ProjectsController extends Controller {
 	
 	/**
 	 * Edit a project.
-	 * @param unknown $id
+	 * 
+	 * @param unknown $id        	
 	 * @return \Illuminate\View\View
 	 */
 	public function edit($id) {
 		$project = Project::find ( $id );
 		
 		return view ( 'newProject', [ 
-				'project' => json_decode ( $project, true ), 'error' => 0 
+				'project' => json_decode ( $project, true ),
+				'error' => 0 
 		] );
 	}
 	
 	/**
 	 * Shows all bmcs of a project.
-	 * @param unknown $id
+	 * 
+	 * @param unknown $id        	
 	 * @return \Illuminate\View\View
 	 */
 	public function showBMCs($id) {
-		$inserts = explode(",", $id);
+		$inserts = explode ( ",", $id );
 		
-		$project_id = $inserts[0];
+		$project_id = $inserts [0];
 		$project_name = $this->getProjectName ( $id );
 		$allProjectBMCs = $this->getAllProjectBMCs ( $id );
 		
@@ -103,13 +108,14 @@ class ProjectsController extends Controller {
 				'bmcs' => $allProjectBMCs,
 				'project_id' => $project_id,
 				'project_name' => $project_name,
-				'owner' => $inserts[1]
+				'owner' => $inserts [1] 
 		] );
 	}
 	
 	/**
 	 * Gets the project name.
-	 * @param unknown $id
+	 * 
+	 * @param unknown $id        	
 	 * @return \App\Http\Controllers\Ambigous
 	 */
 	public function getProjectName($id) {
@@ -124,7 +130,8 @@ class ProjectsController extends Controller {
 	
 	/**
 	 * Gets all the bmcs of a project.
-	 * @param unknown $id
+	 * 
+	 * @param unknown $id        	
 	 * @return multitype:
 	 */
 	public function getAllProjectBMCs($id) {
@@ -142,49 +149,49 @@ class ProjectsController extends Controller {
 	
 	/**
 	 * Deletes the project.
-	 * @param unknown $id
+	 * 
+	 * @param unknown $id        	
 	 * @return Ambigous <\Illuminate\Routing\Redirector, \Illuminate\Http\RedirectResponse>
 	 */
 	public function deleteProject($id) {
 		$project = Project::find ( $id );
 		
-		//alle bmc's des Projektes finden
-		$projectBMCs = $this-> getAllProjectBMCs($project['id']);
+		// alle bmc's des Projektes finden
+		$projectBMCs = $this->getAllProjectBMCs ( $project ['id'] );
 		
-		foreach($projectBMCs as $projectBMC){
-			//alle personas von BMC's finden und detachen
-			$bmc_personas = $projectBMC->personas()->get();
+		foreach ( $projectBMCs as $projectBMC ) {
+			// alle personas von BMC's finden und detachen
+			$bmc_personas = $projectBMC->personas ()->get ();
 			
-			foreach($bmc_personas as $bmc_persona){
-				$projectBMC->personas()->detach($bmc_persona['id']);
+			foreach ( $bmc_personas as $bmc_persona ) {
+				$projectBMC->personas ()->detach ( $bmc_persona ['id'] );
 			}
 			
-			//alle post-IT's finden und löschen
-			$bmcPostIts = $this->getBMCPostIts($projectBMC['id']);
+			// alle post-IT's finden und löschen
+			$bmcPostIts = $this->getBMCPostIts ( $projectBMC ['id'] );
 			
-			foreach($bmcPostIts as $bmcPostIt){
-				Notice::destroy($bmcPostIt['id']);
+			foreach ( $bmcPostIts as $bmcPostIt ) {
+				Notice::destroy ( $bmcPostIt ['id'] );
 			}
 			
-			//bmc löschen
-			BMC::destroy($projectBMC['id']);
-		}		
+			// bmc löschen
+			BMC::destroy ( $projectBMC ['id'] );
+		}
 		
-		//Projekt löschen		
-		Project::destroy ($id);
+		// Projekt löschen
+		Project::destroy ( $id );
 		
-		return redirect ('projects');
+		return redirect ( 'projects' );
 	}
-	
-	public function getBMCPostIts($bmc_id){
-		$getAllPostIts = Notice::all();
-		$bmcPostIts = array();
-	
-		$dbPostIts = json_decode($getAllPostIts, true);
-	
-		foreach ($dbPostIts as $dbPostIt){
-			if ($dbPostIt["bmc_id"] == $bmc_id){
-				array_push($bmcPostIts, $dbPostIt);
+	public function getBMCPostIts($bmc_id) {
+		$getAllPostIts = Notice::all ();
+		$bmcPostIts = array ();
+		
+		$dbPostIts = json_decode ( $getAllPostIts, true );
+		
+		foreach ( $dbPostIts as $dbPostIt ) {
+			if ($dbPostIt ["bmc_id"] == $bmc_id) {
+				array_push ( $bmcPostIts, $dbPostIt );
 			}
 		}
 		return $bmcPostIts;
@@ -192,26 +199,29 @@ class ProjectsController extends Controller {
 	
 	/**
 	 * Saves or updated a project.
-	 * @param string $id
+	 * 
+	 * @param string $id        	
 	 * @return \Illuminate\View\View
 	 */
 	public function save($id = null) {
 		$title = $_POST ["title"];
 		
 		if ($title == '') {
-			return view ( 'newProject', ['error' => 1]);
+			return view ( 'newProject', [ 
+					'error' => 1 
+			] );
 		} else {
 			
-			$myProjects = $this->getMyProjects();
+			$myProjects = $this->getMyProjects ();
 			$title_is_identical = false;
 			
-			foreach($myProjects as $myProject){
-				if($title == $myProject["title"]){
+			foreach ( $myProjects as $myProject ) {
+				if ($title == $myProject ["title"]) {
 					$title_is_identical = true;
 				}
 			}
 			
-			if($title_is_identical == false){
+			if ($title_is_identical == false) {
 				if (is_null ( $id )) {
 					$project = new Project ();
 				} else {
@@ -225,8 +235,10 @@ class ProjectsController extends Controller {
 				$project->save ();
 				
 				return redirect ( 'projects' );
-			}else{
-				return view ( 'newProject', ['error' => 2]);
+			} else {
+				return view ( 'newProject', [ 
+						'error' => 2 
+				] );
 			}
 		}
 	}
@@ -237,7 +249,9 @@ class ProjectsController extends Controller {
 	 * @return Response
 	 */
 	public function create() {
-		return view ( 'newProject', ['error' => 0]);
+		return view ( 'newProject', [ 
+				'error' => 0 
+		] );
 	}
 	
 	/**
@@ -254,35 +268,33 @@ class ProjectsController extends Controller {
 		}
 		return Redirect::action ( NewProjectController::createNewProject () );
 	}
-	
-	public function getMyAssignedProjects(){
-		$allProjects = $this->getAllProjects();
-		$user_id = Auth::user()->id;
-	
-		$myAssignedProjects = array();
-	
-		foreach($allProjects as $aProject){
-			$project = Project::find($aProject['id']);
-			$assignedTeamMembers = $project->members()->get();
-				
-			foreach ($assignedTeamMembers as $assignedTeamMember){
-				if($assignedTeamMember['id'] == $user_id){
-					array_push($myAssignedProjects, $project);
+	public function getMyAssignedProjects() {
+		$allProjects = $this->getAllProjects ();
+		$user_id = Auth::user ()->id;
+		
+		$myAssignedProjects = array ();
+		
+		foreach ( $allProjects as $aProject ) {
+			$project = Project::find ( $aProject ['id'] );
+			$assignedTeamMembers = $project->members ()->get ();
+			
+			foreach ( $assignedTeamMembers as $assignedTeamMember ) {
+				if ($assignedTeamMember ['id'] == $user_id) {
+					array_push ( $myAssignedProjects, $project );
 				}
 			}
 		}
 		return $myAssignedProjects;
 	}
-	
-	public function getAssignedProjectsOwner(){
-		$myAssignedProjects = $this->getMyAssignedProjects();
+	public function getAssignedProjectsOwner() {
+		$myAssignedProjects = $this->getMyAssignedProjects ();
 		
-		$owner = array();
+		$owner = array ();
 		
-		foreach($myAssignedProjects as $myAssignedProject){
-
-			$owner_array= User::find($myAssignedProject['assignee_id']);
-			array_push($owner, $owner_array);
+		foreach ( $myAssignedProjects as $myAssignedProject ) {
+			
+			$owner_array = User::find ( $myAssignedProject ['assignee_id'] );
+			array_push ( $owner, $owner_array );
 		}
 		
 		return $owner;

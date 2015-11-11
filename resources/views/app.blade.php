@@ -29,23 +29,32 @@
 </head>
 <body data-spy="scroll" data-target=".navbar-default">
 	<nav class="navbar navbar-default">
-		<div class="container-fluid" style="margin: 5px;">
+		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle Navigation</span>
 				</button>
-				<a class="navbar-brand" href="http://bmcounselor.project.dmknet.de/bmc"><img alt="DMK E-Bussiness" src="{{ asset('img/toolkit_builders_logo.png') }}"></a>
 			</div>
-
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<div class="col-md-3">
+					<a class="navbar-brand" href="http://bmcounselor.project.dmknet.de/bmc"><img alt="DMK E-Bussiness" src="{{ asset('img/toolkit_builders_logo.png') }}"></a>
+				</div>
+				<div class="col-md-6">
 				<ul class="nav navbar-nav">
-					<li><h3><a href="{{ url('/projects') }}">Projects</a><h3></li>
-					<li><h3><a href="{{ url('/bmc/models') }}">Models</a><h3></li>
+					<li class="dropdown_project {{ Auth::user()->name }} {{{ (Request::is('projects') ? 'active' : '') }}}">
+						<h3 class="header_drop">
+							<a href="{{ url('/projects') }}">Projects</a>
+						</h3>
+						<div class="divider_vertical"></div>
+						<span class="icon_more"></span>
+					</li>
+					<li class="{{{ (Request::is('bmc/models') ? 'active ' : '') }}}" ><h3><a href="{{ url('/bmc/models') }}">Models</a></h3></li>
 <!-- 					<li><a href="{{ url('/cSegments') }}">Customer Segments</a></li> -->
-					<li><h3><a href="{{ url('/persona') }}">Personas</a><h3></li>
-					<li><h3><a href="{{ url('/team') }}">Team</a><h3></li>
+					<li class="{{{ (Request::is('persona') ? 'active' : '') }}}" ><h3><a href="{{ url('/persona') }}">Personas</a></h3></li>
+					<li class="{{{ (Request::is('team') ? 'active' : '') }}}" ><h3><a href="{{ url('/team') }}">Team</a></h3></li>
 				</ul>
-
+				</div>
+				<div class="col-md-3">
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 						<li><a href="{{ url('/auth/login') }}">Login</a></li>
@@ -60,12 +69,11 @@
 						</li>
 					@endif
 				</ul>
+				</div>
 			</div>
 		</div>
 	</nav>
-	
-	@yield('content')
-
+		@yield('content')
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>

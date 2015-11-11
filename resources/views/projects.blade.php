@@ -1,15 +1,15 @@
 @extends('app')
 
 @section('content')
-<div class="container-fluid">
-	<div class=" col-md-10 col-md-offset-1 col-sm-10 col-xs-12 page-header">
+<div class="container">
+	<div class=" col-md-12 col-sm-12 col-xs-12 page-header">
 	  <h1>Projects View <br><small>This View shows your own Projects and the Projects your Team Members assigned to you.</small></h1>
 	</div>
 	<div class="row">
 	
 		<!-- User Projects Table - Start -->
 		
-		<div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="panel panel-default">
 				<div class="panel-heading"><b>My Projects</b> <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button></div>
 				<div class="panel-body">
@@ -85,7 +85,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="panel panel-default">
 				<div class="panel-heading"><b>My Assigned Projects</b></div>
 				<div class="panel-body">

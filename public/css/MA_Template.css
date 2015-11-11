@@ -15,6 +15,10 @@ body {
 	font-family: 'Asap', sans-serif;
 	font-size: 14px;
 	line-height: 20px;
+}
+.container{
+	width: 80%;
+	padding: 0;
 } 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-family: 'Asap', sans-serif;
@@ -144,6 +148,9 @@ p{
 .panel-default {
     border: 1px solid #bfc9cd;
     border-radius: 5px;
+}
+.panel-default > .panel-heading {
+    border: none;
 }
 .panel-body.primary{
 	padding:0 10px;
@@ -345,6 +352,17 @@ p{
 	padding-right: 0;
 	padding-left: 5px;
 }
+.help_info {
+    display: inline-block;
+    float: right;
+    margin: 15px 25px 0 0;
+}
+.divider_style_1 {
+	border-top: 1px solid #7f939b;
+	margin-top: 10px;
+	padding-bottom: 20px;
+	clear: both;
+}
 /***********************************************/
 /********* Navigation***************************/
 /***********************************************/
@@ -356,6 +374,43 @@ p{
 	margin-right: 10px;
 	font-weight: normal;
 }
+.navbar-nav > li > a.loggin{
+	padding-top:0;
+}
+.navbar-nav > li > h3{
+	margin-bottom: 15px;
+}
+.navbar-nav > li.active{
+	height: 60px;
+	background-color: #eff1f2; 
+	border: 1px solid #dfe4e6;
+	color: #002837; 
+}
+.navbar-nav h3 > a{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.navbar-nav h3 > a:HOVER{
+	color: #5ac8f0;
+}
+.navbar-nav h3 > a:ACTIVE{
+	color: #002837;
+}
+li.dropdown_project{
+	height: 60px;
+	/*background-color: #eff1f2;
+	border: 1px solid #dfe4e6;*/
+	border-radius: 5px; 
+	display: inline;
+	padding-right: 10px;
+}
+li.dropdown_project.active {
+    background-color: #eff1f2;
+    border: 1px solid #dfe4e6;
+}
+.navbar-nav > li.active h3 > a{
+	color: #002837;	
+}
 .dropdown span.icon_more{
 	background: transparent url("../img/icbt_30x30_showmore.png") no-repeat scroll -1px 1px;
     border: 1px solid #bfc9cd;
@@ -363,6 +418,32 @@ p{
     float: right;
     padding: 14px;
     margin-top: 10px;
+}
+.dropdown_project span.icon_more{
+	background: transparent url("../img/icbt_30x30_showmore.png") no-repeat scroll -1px 1px;
+    border: 1px solid #bfc9cd;
+    border-radius: 25px;
+    float: right;
+    padding: 14px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.navbar-collapse > div{
+	height: 60px;
+}
+.header_drop{
+	display: inline-block;
+    float: left;
+}
+.header_drop a{
+	padding: 0 20px 0 10px;
+}
+.divider_vertical{
+	border-left: 1px solid #dfe4e6;
+	float: left;
+    height: 100%;
+	width: 1px;
+	display: inline-block;
 }
 .navbar-default .navbar-nav > .open > a, 
 .navbar-default .navbar-nav > .open > a:hover, 
@@ -612,10 +693,11 @@ width: 150px;
 
 .bmc_view_Header{
 	background-color:inherit !important;
-	border-bottom:1px solid #7f939b !important;
+	/*
 	padding: 15px 10px 0px 10px;
 	margin-bottom: 15px;
 	box-shadow: inherit;
+	*/
 }
 
 /* .bmcViewBackground{ */

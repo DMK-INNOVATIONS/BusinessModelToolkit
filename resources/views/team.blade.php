@@ -1,13 +1,13 @@
 @extends('app')
 
 @section('content')
-<div class="container-fluid">
-	<div class=" col-md-10 col-md-offset-1 col-sm-10 col-xs-12 page-header">
+<div class="container">
+	<div class=" col-md-12 page-header">
 	  <h1>Team View <br><small>View, add and edit all Connections between your Team Members and your Projects.</small></h1>
 	  
 	</div>
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+		<div class="col-md-12 col-sm-12 col-xs-12">
 
 			@if(session('error'))
 				<div class="panel panel-danger">

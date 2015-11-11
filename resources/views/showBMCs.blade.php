@@ -9,14 +9,14 @@
 		}
 	?>
 
-<div class="container-fluid">
-	<div class=" col-md-10 col-md-offset-1 col-sm-10 col-xs-12 page-header">
+<div class="container">
+	<div class=" col-md-12 col-xs-12 page-header">
 		<h1><?php print $project_name;?><br>
 			<small>View, add and edit the Business Models of this Project.</small>
 		</h1>
 	</div>
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1 col-sm-10 col-xs-12">
+		<div class="col-md-12 col-xs-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<b>All BMC's of <?php print $project_name;?></b>

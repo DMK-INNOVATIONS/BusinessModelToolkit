@@ -5,9 +5,9 @@
   	<h1>Persona View<br><small>Create, edit and delete your Personas.</small></h1>  
 </div>
 
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1 col-sm-12">
+		<div class="col-md-12">
 			<div class="panel panel-default">
 				<div class="panel-heading"><b>My Personas</b> <button type="button" data-toggle="modal" data-target="#helpModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button></div>
 				<div class="panel-body">
