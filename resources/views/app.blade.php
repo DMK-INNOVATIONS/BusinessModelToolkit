@@ -48,7 +48,7 @@
 						<div class="divider_vertical"></div>
 						<span class="icon_more"></span>
 					</li>
-					<li class="{{{ (Request::is('bmc/models') ? 'active ' : '') }}}" ><h3><a href="{{ url('/bmc/models') }}">Models</a></h3></li>
+<!--					<li class="{{{ (Request::is('bmc/models') ? 'active ' : '') }}}" ><h3><a href="{{ url('/bmc/models') }}">Models</a></h3></li>-->
 <!-- 					<li><a href="{{ url('/cSegments') }}">Customer Segments</a></li> -->
 					<li class="{{{ (Request::is('persona') ? 'active' : '') }}}" ><h3><a href="{{ url('/persona') }}">Personas</a></h3></li>
 					<li class="{{{ (Request::is('team') ? 'active' : '') }}}" ><h3><a href="{{ url('/team') }}">Team</a></h3></li>
@@ -72,6 +72,8 @@
 				</div>
 			</div>
 		</div>
+		<div class="divider_style_2 no_space"></div>
+		<div class="divider_style_1 no_space"></div>
 	</nav>
 		@yield('content')
 	<!-- Scripts -->

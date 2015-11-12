@@ -14,7 +14,7 @@
 Route::get('/', 'BmcController@index');
 Route::get('home', 'BmcController@index');
 
-Route::get('test', 'TestController@index');
+/*Route::get('test', 'TestController@index');*/
 
 Route::get('bmc', 'BmcController@index');
 Route::get('bmc/create/{id?}', 'BmcController@create');

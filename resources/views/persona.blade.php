@@ -1,11 +1,13 @@
 @extends('app')
 
 @section('content')
-<div class=" col-md-10 col-md-offset-1 col-sm-10 col-xs-12 page-header">
-  	<h1>Persona View<br><small>Create, edit and delete your Personas.</small></h1>  
-</div>
-
 <div class="container">
+	<div class=" col-md-12 col-sm-12 col-xs-12">
+	  		<!-- <h1>Persona View<br><small>Create, edit and delete your Personas.</small></h1> -->
+	  		<h1>Persona View</h1>
+	  		<h4>Create, edit and delete your Personas.</h4>  
+	</div>
+	<div class="divider_style_1"></div>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
@@ -53,7 +55,7 @@
 												print '<a data-toggle="modal" data-target="#deleteModal'.$myPersona['id'].'"><span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/></a>  ';
 							print'			</div>
 									  		<div class="col-md-2 col-sm-2 col-xs-6">';
-												print '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myPersona'.$myPersona["id"].'">Show Persona</button>';
+												print '<button type="button" class="btn btn-primary btn-secundar" data-toggle="modal" data-target="#myPersona'.$myPersona["id"].'">Show Persona</button>';
 					  		print'			</div>
 									  </div>
 							';

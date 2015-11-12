@@ -24,13 +24,13 @@
 							<div class="group-icons">';
 					switch ($bmc_postIt['status']) {
 						case 'inWork':
-							print '   <a class="show-icon" type="button" data-toggle="modal" data-target="#statusChangeModal_Post-IT'.$bmc_postIt['id'].'"><i class="icon-minus progress glyphicon glyphicon-minus"></i><i button type="button" class="icon-triangle glyphicon glyphicon-question-sign"></i></a>';
+							print '   <a class="show-icon" type="button" data-toggle="modal" data-target="#statusChangeModal_Post-IT'.$bmc_postIt['id'].'"><i class="icon-minus progress glyphicon glyphicon-minus"></i><i button type="button" class="icon-triangle"></i></a>';
 							break;
 						case 'approved':
-							print '   <a class="show-icon" type="button" data-toggle="modal" data-target="#statusChangeModal_Post-IT'.$bmc_postIt['id'].'"><i class="icon-minus approved glyphicon glyphicon-minus"></i><i button type="button" class="icon-triangle glyphicon glyphicon-ok-sign"></i></a>';
+							print '   <a class="show-icon" type="button" data-toggle="modal" data-target="#statusChangeModal_Post-IT'.$bmc_postIt['id'].'"><i class="icon-minus approved glyphicon glyphicon-minus"></i><i button type="button" class="icon-triangle"></i></a>';
 							break;
 						case 'rejected':
-							print '   <a class="show-icon" type="button" data-toggle="modal" data-target="#statusChangeModal_Post-IT'.$bmc_postIt['id'].'"><i class="icon-minus rejected glyphicon glyphicon-minus"></i><i button type="button" class="icon-triangle glyphicon glyphicon-remove-sign"></i></a>';
+							print '   <a class="show-icon" type="button" data-toggle="modal" data-target="#statusChangeModal_Post-IT'.$bmc_postIt['id'].'"><i class="icon-minus rejected glyphicon glyphicon-minus"></i><i button type="button" class="icon-triangle"></i></a>';
 							break;
 					}
 			

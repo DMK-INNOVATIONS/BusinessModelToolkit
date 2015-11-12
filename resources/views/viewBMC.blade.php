@@ -30,7 +30,7 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 						if ($view_type == 'models') {
 							print '<a href="' . $path . '/bmc/models"><button type="button" class="btn btn-default">Back to Model View</button></a>';
 						} else {
-							print '<a href="' . $path . '/projects/showBMCs/' . $project_id . ',' . $owner . '"><button type="button" class="btn btn-default">Back to Project</button></a>';
+							print '<a href="' . $path . '/projects/showBMCs/' . $project_id . ',' . $owner . '"><button type="button" class="btn btn-primary btn-secundar no-margin-left">Back to Project</button></a>';
 						}
 						?>
 					</div>
@@ -40,16 +40,16 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 							print '<a type="button" class="edit-icon-header" data-toggle="modal" data-target="#titleChangeModal" class="btn btn-default btn-sm"></a>  ';
 						}
 						?>
-						<h1><?php print $bmc_name?></h1>
+						<h1 style="margin-top: 10px;"><?php print $bmc_name?></h1>
 					</div>
-					<div class="col-md-2 col-sm-2">
+					<div class="col-md-3 col-sm-3">
 						<div class="group-icons bmc_group-icons">
 							<?php
 							// Shows Button in Color of Status
 							$status;
 							switch ($bmc_status) {
 								case 'inWork' :
-									print '<a class="show-icon" type="button" data-toggle="modal" data-target="#statusChangeModal"><i class="icon-minus progress glyphicon glyphicon-minus"></i><i class="bmc_view_status_modal">inProgress</i><i button type="button" class="icon-triangle glyphicon glyphicon-question-sign"></i></a>';
+									print '<a class="show-icon" type="button" data-toggle="modal" data-target="#statusChangeModal"><i class="icon-minus progress glyphicon glyphicon-minus"></i><i class="bmc_view_status_modal">in progress</i><i button type="button" class="icon-triangle glyphicon glyphicon-question-sign"></i></a>';
 									$status = 1;
 									break;
 								case 'approved' :
@@ -291,5 +291,15 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 		</div>
 	</div>
 </div>
-
+<script>
+$(function ($) {
+	console.log("viewBmc");
+	var obj=$('.bmcViewBackground .col-md-12 .canvas_box');
+	var ob=$.makeArray(obj.length);
+	$.each(obj,function(i,v){
+		console.log(i+" "+$(v).height());
+		});
+		
+});
+</script>
 @include('viewBMCModals') @endsection

@@ -51,7 +51,7 @@
 									print '	</div>
 									  		<div class="col-md-2 col-xs-6">';
 											print '	<a href="projects/showBMCs/'.$myProject["id"].',1">
-							  							<button type="button" class="btn btn-default">Show Models </button>
+							  							<button type="button" class="btn btn-primary btn-secundar">Show Models </button>
 							  						</a>';
 							    			print'</div>';
 								print '</div>';			
@@ -116,7 +116,7 @@
 									}
 									
 							  		print'<div class="col-md-2 col-xs-6">';
-									print '<a href="projects/showBMCs/'.$myAssignedProject["id"].',0"><button type="button" class="btn btn-default">show Models </button></a>';
+									print '<a href="projects/showBMCs/'.$myAssignedProject["id"].',0"><button type="button" class="btn btn-primary btn-secundar">show Models </button></a>';
 					    			print'</div>';
 								print '</div>';							
 							}

@@ -30,11 +30,35 @@ h2 .btn-primary{
 	background-color: #5ac8f0;
 	color: #FFFFFF;
 	border-color: #5ac8f0;
-	border-radius:25px;
-	padding: 10px 25px;
+	border-radius:15px;
+	padding: 0 20px;
 	font-weight: bold;
-	margin:10px;
+	margin:10px 15px;
+	font-size: 16px;
+	line-height: 20px;
+	height: 30px;
 }
+.btn.btn-primary:ACTIVE{
+	color:#5ac8f0;
+}
+.btn-secundar{
+	background-color: #5ac8f0;
+	border: 1px solid #5ac8f0;
+	color: #5ac8f0;
+	background-color: #FFFFFF;
+}
+
+.btn.btn-primary.btn-secundar:ACTIVE,.btn.btn-primary.btn-secundar:FOCUS{
+	background-color:#dfe4e6;
+	color: #2d7893;
+	border: 1px solid #2d7893;
+}
+.btn-secundar:HOVER{
+	border: 1px solid #2d7893;
+	color: #2d7893;
+	background-color: #FFFFFF;
+}
+
 .btn-default{
 	color: #5ac8f0;
 	border-color: #5ac8f0;
@@ -75,8 +99,16 @@ h4{
 	margin: 10px 0 5px 0;
 	font-size: 14px;
 	line-height: 20px; 
+	color: #2d7893;
+	font-weight: bold;
+}
+/*h4:HOVER{
+	color: #5ac8f0;
+}
+h4:ACTIVE{
 	color: #002837;
 }
+*/
 h5{
 	margin: 5px 0 5px 0;
 	font-size: 12px;
@@ -86,7 +118,8 @@ h5{
 h6{
 	margin: 5px 0 5px 0;
 	font-size: 12px;
-	line-height: 20px; 
+	line-height: 20px;
+	color:#7f939b; 
 }
 h6 p{
 	color: #7f939b;
@@ -172,17 +205,17 @@ p{
 .splitline{
 	border-bottom: 1px solid #dfe4e6;
     float: left;
-    margin: 15px 40px;
+    margin: 19px 42px;
     overflow: visible;
     position: absolute;
     /* Firefox */
-	width: -moz-calc(100% - 95px);
+	width: -moz-calc(100% - 120px);
 	/* WebKit */
-	width: -webkit-calc(100% - 95px);
+	width: -webkit-calc(100% - 120px);
 	/* Opera */
-	width: -o-calc(100% - 95px);
+	width: -o-calc(100% - 120px);
 	/* Standard */
-	width: calc(100% - 95px);
+	width: calc(100% - 120px);
 }
 
 .bmc_view_Header.splitline{
@@ -201,19 +234,22 @@ p{
 	width: calc(100% - 95px);
 }
 .more {
-    background: rgba(0, 0, 0, 0) url("../img/icbt_30x30_showmore.png") no-repeat scroll -1px -1px;
-    border: 1px solid #dfe4e6;
-    border-radius: 25px;
+    background: rgba(0, 0, 0, 0) url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
+   	margin-top: 5px;
     color: #8f8571;
     content: "";
     float: right;
     font-weight: bold;
     margin-right: 5px;
-    padding: 14px;
+    padding: 15px;
 }
 .more:HOVER{
 	cursor:pointer;
-	background: rgb(239, 241, 242) url("../img/icbt_30x30_showmore.png") no-repeat scroll -1px -1px;
+	background: rgba(0, 0, 0, 0) url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
+}
+.more:ACTIVE{
+	cursor:pointer;
+	background: rgba(0, 0, 0, 0) url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
 }
 .group-icons{
 	cursor:pointer;
@@ -223,68 +259,86 @@ p{
 	background: rgb(239, 241, 242);
 }
 .add{
-    background: rgb(90, 200, 240) url("../img/icbt_30x30_add.png") no-repeat scroll -3px -4px;
-    border: 1px solid #5ac8f0;
-    border-radius: 25px;
+    background: transparent url("../img/icbt_add_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
     color: #5ac8f0;
     content: "";
     float: left;
     font-weight: bold;
     margin: 5px;
-    padding: 12px;
+    padding: 15px;
+}
+.add:HOVER{
+	background: transparent url("../img/icbt_add_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
+}
+.add:ACTIVE{
+	background: transparent url("../img/icbt_add_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
 }
 .edit-icon{
-	background: rgb(239, 241, 242) url("../img/icbt_30x30_editor_bearbeiten.png") no-repeat scroll 0 -1px;
-    border: 1px solid #dfe4e6;
-    border-radius: 25px;
+	/*background: rgb(239, 241, 242) url("../img/icbt_30x30_editor_bearbeiten.png") no-repeat scroll 0 -1px;*/
+	background: rgb(239, 241, 242) url("../img/icbt_edit_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
+    /*border: 1px solid #dfe4e6;
+    border-radius: 25px;*/
     color: #dfe4e6;
     content: "";
     float: left;
     font-weight: bold;
-    margin: 15px 10px 15px 0;
+    margin: 10px 10px 15px 0;
     padding: 15px;
 }
 .edit-icon:HOVER{
-	background: rgb(239, 241, 242) url("../img/icbt_30x30_editor_bearbeiten_hover.png") no-repeat scroll 0 -1px;
+	background: rgb(239, 241, 242) url("../img/icbt_edit_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
+}
+.edit-icon:ACTIVE{
+	background: rgb(239, 241, 242) url("../img/icbt_edit_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
 }
 .edit-icon-header{
-	background: url("../img/icbt_30x30_editor_bearbeiten.png") no-repeat scroll 0 -1px;
+	background: url("../img/icbt_edit_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
 	border: 1px solid #dfe4e6;
     border-radius: 25px;
     content: "";
     float: left;
     font-weight: bold;
     margin: 15px 10px 15px 0;
-    padding: 15px;
+    padding: 14px;
 }
 .edit-icon-header:HOVER{
-	background: url("../img/icbt_30x30_editor_bearbeiten_hover.png") no-repeat scroll 0 -1px;
+	background: url("../img/icbt_edit_sprite_3vertikal_30x30.png") no-repeat scroll -1px -30px;
+}
+.edit-icon-header:ACTIVE{
+	background: url("../img/icbt_edit_sprite_3vertikal_30x30.png") no-repeat scroll -1px -60px;
 }
 .bmc_view_status_modal{
 	padding: 0px 10px 0px 0px;
 	font-style: normal;
 	text-decoration: initial !important; 
 }
-.bmc_group-icons{
+.group-icons.bmc_group-icons{
 	background-color: inherit !important;
+	margin-top: 10px;
+	float: left;
+	margin-left: 24%;
 }
 .bmc_group-icons:HOVER{
 	background: rgb(239, 241, 242) !important;
 	text-decoration: initial !important; 
 }
 .delete-icon{
-	background: rgb(239, 241, 242) url("../img/icbt_30x30_editor_loeschen.png") no-repeat scroll 0 -1px;
-    border: 1px solid #dfe4e6;
-    border-radius: 25px;
+	/*background: rgb(239, 241, 242) url("../img/icbt_30x30_editor_loeschen.png") no-repeat scroll 0 -1px;*/
+	background: rgb(239, 241, 242) url("../img/icbt_delete_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
+    /*border: 1px solid #dfe4e6;
+    border-radius: 25px;*/
     color: #dfe4e6;
     content: "";
     float: left;
     font-weight: bold;
-    margin: 15px 10px 15px 0;
+    margin: 10px 10px 10px 5px;
     padding: 15px;
 }
 .delete-icon:HOVER{
-	background: rgb(239, 241, 242) url("../img/icbt_30x30_editor_loeschen_hover.png") no-repeat scroll 0 -1px;
+	background: rgb(239, 241, 242) url("../img/icbt_delete_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
+}
+.delete-icon:ACTIVE{
+	background: rgb(239, 241, 242) url("../img/icbt_delete_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
 }
 .search-icon{
     border: 1px solid #dfe4e6;
@@ -318,13 +372,14 @@ p{
 	color: red;
 }
 .group-icons {
- 	background-color: white;
+ 	background-color: #eff1f2;
     border: 1px solid #bfc9cd;
     border-radius: 15px;
     display: inline-block;
     float: right;
-    margin-top: 18px;
+    margin-top: 10px;
     width: auto;
+    overflow: hidden;
 }
 .icon-minus{
 	border: 1px solid #dfe4e6;
@@ -333,16 +388,27 @@ p{
     float: left;
     height: 6px;
     line-height: 4px;
-    margin: 8px 12px;
+    margin: 7px 12px 5px 12px;
     text-indent: -1px;
     font-size: 1.5em;
 }
-.icon-triangle{
-	border: 1px solid #bfc9cd;
-    border-radius: 25px;
+.canvas_box .icon-triangle{
+	background: transparent url("../img/icbt_dropdown_sprite_3vertikal_30x30.png") no-repeat scroll 0 0 / 100% auto;
+	/*border: 1px solid #bfc9cd;
+    border-radius: 25px;*/
     color: #bfc9cd;
-    margin: -2px -1px 0 -4px;
-    padding: 5px;
+    /*margin: -2px -1px 0 -4px;*/
+    padding: 11px;
+    float: left;
+}
+.canvas_box .icon-triangle:HOVER{
+	background: transparent url("../img/icbt_dropdown_sprite_3vertikal_30x30.png") no-repeat scroll 105% 50% / 100% auto;
+}
+.canvas_box .icon-triangle:ACTIVE{
+	background: transparent url("../img/icbt_dropdown_sprite_3vertikal_30x30.png") no-repeat scroll 0 100% / 100% auto;
+}
+.canvas_box .group-icons:HOVER{
+	border: 1px solid #5ac8f0;
 }
 .no-paddingleft{
 	padding-left: 0;
@@ -362,6 +428,52 @@ p{
 	margin-top: 10px;
 	padding-bottom: 20px;
 	clear: both;
+}
+.divider_style_2 {
+	border-top: 1px solid #bfc9cd;
+	margin-top: 5px;
+	padding-bottom: 5px;
+	clear: both;
+}
+.divider_style_2.extra_space{
+	border-bottom: 1px solid #bfc9cd;
+	border-top:none;
+	padding-top:15px;
+	margin-bottom: 15px;
+	clear: both;
+}
+.divider_style_3 {
+	border-top: 1px solid #eff1f2;
+	margin-top: 5px;
+	padding-bottom: 5px;
+	clear: both;
+}
+.divider_style_2.no_space, 
+.divider_style_1.no_space{
+	padding: 0;
+	margin: 0;
+}
+.first_screen{
+	height: 60px;
+	width: 50%;
+	color: #fff;
+	background-color: #5AC8F0;
+	border-radius:15px;
+	vertical-align: middle;
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
+    margin-top:20px;
+    margin-bottom:20px;
+    font-size: 24px;
+    font-weight:bold;
+    padding-top: 18px;
+}
+.first_screen:HOVER{
+	text-decoration: none;
+}
+.row div.text-center:first-child{
+	margin-bottom:20px;
 }
 /***********************************************/
 /********* Navigation***************************/
@@ -392,6 +504,7 @@ p{
 }
 .navbar-nav h3 > a:HOVER{
 	color: #5ac8f0;
+	text-decoration: none;
 }
 .navbar-nav h3 > a:ACTIVE{
 	color: #002837;
@@ -411,6 +524,7 @@ li.dropdown_project.active {
 .navbar-nav > li.active h3 > a{
 	color: #002837;	
 }
+
 .dropdown span.icon_more{
 	background: transparent url("../img/icbt_30x30_showmore.png") no-repeat scroll -1px 1px;
     border: 1px solid #bfc9cd;
@@ -744,4 +858,7 @@ width: 150px;
 
 div.viewBMC_body .panel-default{
 	margin: 2px;
+}
+.btn.btn-primary.btn-secundar.no-margin-left{
+	margin-left: -30px;
 }

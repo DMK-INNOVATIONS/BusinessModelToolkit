@@ -109,7 +109,7 @@
 												} elseif ($bmc ["status"] == 'rejected') {
 													$temp_status = 3;
 												}
-												print '<a href="'.$path.'/bmc/viewBMC/' . $bmc ["id"] . ',' . $project_id . ',' . $temp_status . ',' . $owner . ',showBMCs"><button type="button" class="btn btn-default">Show Model</button></a>';
+												print '<a href="'.$path.'/bmc/viewBMC/' . $bmc ["id"] . ',' . $project_id . ',' . $temp_status . ',' . $owner . ',showBMCs"><button type="button" class="btn btn-primary btn-secundar">Show Model</button></a>';
 								print '		</div>
 										</div>';
 									
@@ -139,7 +139,7 @@
 							print '<a href="'.$path.'/bmc/create/' . $project_id . ',' . $owner . ',showBMCs"><button type="button" class="btn btn-primary">New Model</button></a>';
 						}
 						?>
-						<a href="{{ url('/projects') }}"><button type="button" class="btn btn-default">Back to Projects</button></a>
+						<a href="{{ url('/projects') }}"><button type="button" class="btn btn-primary btn-secundar">Back to Projects</button></a>
 					</div>
 				</div>
 			</div>
