@@ -41,7 +41,7 @@
 				</div>
 				<div class="col-md-6">
 				<ul class="nav navbar-nav">
-					<li class="dropdown_project {{ Auth::user()->name }} {{{ (Request::is('projects') ? 'active' : '') }}}">
+					<li class="dropdown_project {{{ (Request::is('projects') ? 'active' : '') }}}">
 						<h3 class="header_drop">
 							<a href="{{ url('/projects') }}">Projects</a>
 						</h3>
