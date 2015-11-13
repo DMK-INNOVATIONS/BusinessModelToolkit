@@ -487,10 +487,11 @@ p{
 	font-weight: normal;
 }
 .navbar-nav > li > a.loggin{
-	padding-top:0;
+	padding-top:5px;
 }
 .navbar-nav > li > h3{
 	margin-bottom: 15px;
+	line-height: 30px;
 }
 .navbar-nav > li.active{
 	height: 60px;
@@ -539,8 +540,14 @@ li.dropdown_project.active {
     border-radius: 25px;
     float: right;
     padding: 14px;
-    margin-top: 10px;
+    margin-top: 15px;
     margin-left: 10px;
+}
+button#dropdown_navbar{
+	margin: 0;
+	padding: 0;
+	border:0;
+	background-color: transparent;
 }
 .navbar-collapse > div{
 	height: 60px;
