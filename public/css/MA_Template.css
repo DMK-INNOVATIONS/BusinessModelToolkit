@@ -974,10 +974,9 @@ div.viewBMC_body .panel-default{
 	line-height: 30px;
 	color: #2d7893;
 	background: #eff1f2 url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 90px -1px;
-	width: auto;
+	width: 120px;
 	border: 1px solid #bfc9cd;
 	border-radius: 15px;
-	width: 25%;
 	padding: 6px;
 	height:30px;
 	-webkit-appearance:none;
