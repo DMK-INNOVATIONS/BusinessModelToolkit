@@ -12,7 +12,7 @@
 	  <h4>View, add and edit all Connections between your Team Members and your Projects.</h4>
 	</div>
 	<div class="divider_style_1"></div>
-	<div class="row">
+	<div class="row" style="margin-top: 10px;">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 
 			@if(session('error'))

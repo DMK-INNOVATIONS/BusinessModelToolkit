@@ -19,7 +19,7 @@
 	  <h4>View, add and edit the Business Models of this Project.</h4>
 	</div>
 	<div class="divider_style_1"></div>
-	<div class="row">
+	<div class="row" style="margin-top: 10px;">
 		<div class="col-md-12 col-xs-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">

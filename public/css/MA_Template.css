@@ -124,6 +124,9 @@ h6{
 h6 p{
 	color: #7f939b;
 }
+.light_color{
+	color: #bfc9cd;
+}
 icon{
 	color: #bfc9cd;
 }
@@ -275,7 +278,7 @@ p{
 }
 .edit-icon{
 	/*background: rgb(239, 241, 242) url("../img/icbt_30x30_editor_bearbeiten.png") no-repeat scroll 0 -1px;*/
-	background: rgb(239, 241, 242) url("../img/icbt_edit_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
+	background: transparent url("../img/icbt_edit_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
     /*border: 1px solid #dfe4e6;
     border-radius: 25px;*/
     color: #dfe4e6;
@@ -286,10 +289,10 @@ p{
     padding: 15px;
 }
 .edit-icon:HOVER{
-	background: rgb(239, 241, 242) url("../img/icbt_edit_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
+	background: transparent url("../img/icbt_edit_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
 }
 .edit-icon:ACTIVE{
-	background: rgb(239, 241, 242) url("../img/icbt_edit_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
+	background: transparent url("../img/icbt_edit_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
 }
 .edit-icon-header{
 	background: url("../img/icbt_edit_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
@@ -323,10 +326,7 @@ p{
 	text-decoration: initial !important; 
 }
 .delete-icon{
-	/*background: rgb(239, 241, 242) url("../img/icbt_30x30_editor_loeschen.png") no-repeat scroll 0 -1px;*/
-	background: rgb(239, 241, 242) url("../img/icbt_delete_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
-    /*border: 1px solid #dfe4e6;
-    border-radius: 25px;*/
+	background: transparent url("../img/icbt_delete_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
     color: #dfe4e6;
     content: "";
     float: left;
@@ -335,10 +335,10 @@ p{
     padding: 15px;
 }
 .delete-icon:HOVER{
-	background: rgb(239, 241, 242) url("../img/icbt_delete_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
+	background: transparent url("../img/icbt_delete_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
 }
 .delete-icon:ACTIVE{
-	background: rgb(239, 241, 242) url("../img/icbt_delete_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
+	background: transparent url("../img/icbt_delete_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
 }
 .search-icon{
     border: 1px solid #dfe4e6;
@@ -435,16 +435,16 @@ p{
     margin: 15px 45px 0 0;
 }
 .divider_style_1 {
-	border-top: 1px solid #7f939b;
+	border-bottom: 1px solid #7f939b;
 	margin-top: 10px;
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 	clear: both;
 }
 .divider_style_2 {
-	border-top: 1px solid #bfc9cd;
-	margin-top: 5px;
-	padding-bottom: 5px;
-	clear: both;
+	border-bottom: 1px solid #bfc9cd;
+    clear: both;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
 }
 .divider_style_2.extra_space{
 	border-bottom: 1px solid #bfc9cd;
@@ -485,6 +485,9 @@ p{
 }
 .row div.text-center:first-child{
 	margin-bottom:20px;
+}
+.extra_padding .divider_style_1{
+	margin: 0 0 25px 0;
 }
 /***********************************************/
 /********* Navigation***************************/
@@ -914,4 +917,80 @@ div.viewBMC_body .panel-default{
 }
 .btn.btn-primary.btn-secundar.no-margin-left{
 	margin-left: -30px;
+}
+.my_projects li{
+	list-style: none;
+}
+.dropdown_myprojects{
+	background: transparent url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
+	float: left;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    margin-top: 3px;
+    padding: 15px;
+}
+.dropdown_myprojects:HOVER{
+	background: transparent url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
+}
+.dropdown_myprojects:ACTIVE{
+	background: transparent url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
+}
+.element_float_left{
+	float: left;
+}
+.no_margin{
+	margin-left: 0;
+	margin-right: 0;
+}
+.my_project_list{
+	background-color: #FFFFFF;
+	border: 1px solid #bfc9cd;
+	border-radius:5px;
+	float: left;
+	margin-bottom: 10px;
+}
+.extra_padding{
+	padding: 0 15px 0 15px;
+}
+.no_background{
+	background-color: inherit;
+}
+.details_myprojects{
+	background: transparent url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
+    float: left;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    margin-top: 15px;
+    padding: 15px;
+}
+.details_myprojects:HOVER{
+	background: transparent url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
+}
+.details_myprojects:ACTIVE{
+		background: transparent url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
+}
+.selected.form-control{
+	font-size: 12px;
+	line-height: 30px;
+	color: #2d7893;
+	background: #eff1f2 url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 90px -1px;
+	width: auto;
+	border: 1px solid #bfc9cd;
+	border-radius: 15px;
+	width: 25%;
+	padding: 6px;
+	height:30px;
+	-webkit-appearance:none;
+  	-moz-appearance:none;
+  	margin-top:10px
+}
+.selected.form-control:HOVER{
+	background: #ffffff url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 90px -31px;
+	border: 1px solid #5ac8f0;
+	color: #5ac8f0;
+}
+.selected.form-control:ACTIVE{
+	background: #eff1f2 url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 90px -61px;
+	border: 1px solid #7f939b;
+	color: #002837;
 }

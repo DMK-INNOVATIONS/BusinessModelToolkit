@@ -7,15 +7,104 @@
 	</a>
 </div>
 <div class="container">
+	<!-- 
 	<div class=" col-md-12 col-sm-12 col-xs-12">
 	  <h1>Projects View</h1>
 	  <h4>This View shows your own Projects and the Projects your Team Members assigned to you.</h4>
 	</div>
 	<div class="divider_style_1"></div>
+	 -->
 	<div class="row">
 	
-		<!-- User Projects Table - Start -->
+		<!--New List Projects Table - Start -->
 		
+		
+		
+	<div class="row no_margin">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="col-md-4">
+				<h1>My Own Projects <span class="light_color">(<?php if(isset($myProjects)){ echo count($myProjects); }?>)</span></h1>
+			</div>
+			<div class="col-md-4">
+				<a href="projects/create"><button type="button" class="btn btn-primary">New Project</button></a>
+			</div>
+			<div class="col-md-4">
+				<!--<h6>Sort by</h6>-->
+				<select class="selected form-control">
+					<option>Updated</option>
+					<option>Created</option>
+				</select>
+				<!-- ToDo Icon upload -->
+			</div>
+			<div class="divider_style_2"></div>
+		</div>
+	</div>
+	<div class="row no_margin">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="col-md-4">
+				<h5>Title</h5>	
+			</div>
+			<div class="col-md-2 show_projects">
+				<h6 class="element_float_left">Show details for all</h6>
+				<ul class="my_projects">
+						<li class="dropdown_myprojects"><span class="icon_more"></span></li>
+				</ul>
+			</div>
+			<div class="col-md-2">
+				<div class="col-md-12"><h5>Updated</h5></div>
+				<div class="col-md-12"><h6>Created</h6></div>
+			</div>
+			<div class="col-md-4">
+				<div class="col-md-12"><h5>Tools</h5></div>
+			</div>
+		<div class="divider_style_2"></div>
+		</div>
+	</div>
+	<div class="row no_margin extra_padding">
+			<?php /* var_dump($myProject)*/ if(count($myProjects) > 0): ?>
+				<?php foreach ($myProjects as $myProject):	?>
+					<div class="col-md-12 my_project_list">			
+						<div class="col-md-4">
+						<h3>{{ $myProject['title'] }}</h3>
+						</div>
+						<div class="col-md-2">
+						 	<span class="details_myprojects" ></span>
+						</div>
+						<div class="col-md-2">
+							<div class="col-md-12"><h5>{{ $myProject['updated_at'] }}</h5></div>
+							<div class="col-md-12"><h6>{{ $myProject['created_at'] }}</h6></div>
+						</div>
+						<div class="col-md-2">
+							<div class="col-md-12">
+								<a href="projects/edit/{{ $myProject['id'] }}">
+									<span class="edit-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/>
+								</a>
+								<a data-toggle="modal" data-target="#deleteModal{{ $myProject['id'] }}">
+							    	<span class="delete-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/>
+							    </a>
+						   </div>
+						</div>
+						<div class="col-md-2">
+							<div class="col-md-12">
+								<a href="projects/showBMCs/{{ $myProject['id'] }},1">
+							  		<button type="button" class="btn btn-primary btn-secundar">Show Models </button>
+							  	</a>
+							</div>
+						</div>
+					</div>
+			<?php endforeach; ?>
+		<?php endif; ?>
+		<div class="divider_style_1"></div>
+	</div>
+	
+		
+		
+		
+		
+		<!--New List Projects Table - END -->
+		
+		<!-- User Projects Table - Start -->
+		<?php /*?>
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="panel panel-default">
 				<div class="panel-heading"><b>My Projects</b>
@@ -96,6 +185,7 @@
 			</div> 
 		</div>
 	</div>
+	<? */?>
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="panel panel-default">
