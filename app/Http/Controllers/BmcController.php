@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Notice;
 use App\App;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class BmcController extends Controller {
 	
@@ -26,6 +27,8 @@ class BmcController extends Controller {
 	 */
 	public function __construct() {
 		$this->middleware ( 'auth' );
+		$myProjects = $this->getMyProjects ();
+		View::share('myProjects', $myProjects);
 	}
 	
 	/**
@@ -34,7 +37,9 @@ class BmcController extends Controller {
 	 * @return Response
 	 */
 	public function index() {
-		return view ( 'bmc' );
+		$myProjects = $this->getMyProjects ();
+		return view ( 'bmc',[ 
+				'myProjects' => $myProjects]);
 	}
 	public function create($id) {
 		$inserts = explode ( ",", $id );

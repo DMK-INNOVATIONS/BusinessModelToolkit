@@ -1,9 +1,13 @@
 @extends('app')
 
 @section('content')
+<div class="help_info">
+	<a class="help-icon" data-toggle="modal" data-target="#helpModal">
+		<span class="icon-question" aria-hidden="true"></span>
+	</a>
+</div>
 <div class="container">
 	<div class=" col-md-12 col-sm-12 col-xs-12">
-	  		<!-- <h1>Persona View<br><small>Create, edit and delete your Personas.</small></h1> -->
 	  		<h1>Persona View</h1>
 	  		<h4>Create, edit and delete your Personas.</h4>  
 	</div>
@@ -11,7 +15,9 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
-				<div class="panel-heading"><b>My Personas</b> <button type="button" data-toggle="modal" data-target="#helpModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button></div>
+				<div class="panel-heading">
+					<b>My Personas</b>
+				</div>
 				<div class="panel-body">
 									
 					<!-- User Projects Table -->

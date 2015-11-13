@@ -356,21 +356,21 @@ p{
 }
 
 .help-icon{
-	border: 1px solid #bfc9cd;
+	/*border: 1px solid #bfc9cd;
     border-radius: 25px;
     color: rgb(175, 168, 151);
     content: "";
     float: left;
     font-weight: bold;
     margin: 15px 10px 15px 0;
-    padding: 5px 9px;
+    padding: 5px 9px;*/
 }
-.help-icon:HOVER{
+/*.help-icon:HOVER{
 	border: 1px solid #bfc9cd;
     border-radius: 25px;
 	background: rgb(239, 241, 242);
 	color: red;
-}
+}*/
 .group-icons {
  	background-color: #eff1f2;
     border: 1px solid #bfc9cd;
@@ -410,6 +410,17 @@ p{
 .canvas_box .group-icons:HOVER{
 	border: 1px solid #5ac8f0;
 }
+.help-icon .icon-question{
+	background: transparent url("../img/icbt_help_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
+	float: left;
+    padding: 15px;
+}
+.icon-question:HOVER{
+	background: transparent url("../img/icbt_help_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
+}
+.icon-question:ACTIVE,.icon-question:FOCUS{
+	background: transparent url("../img/icbt_help_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
+}
 .no-paddingleft{
 	padding-left: 0;
 	padding-right: 5px;
@@ -421,7 +432,7 @@ p{
 .help_info {
     display: inline-block;
     float: right;
-    margin: 15px 25px 0 0;
+    margin: 15px 45px 0 0;
 }
 .divider_style_1 {
 	border-top: 1px solid #7f939b;

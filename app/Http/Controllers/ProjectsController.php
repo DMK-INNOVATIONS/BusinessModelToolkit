@@ -103,12 +103,14 @@ class ProjectsController extends Controller {
 		$project_id = $inserts [0];
 		$project_name = $this->getProjectName ( $id );
 		$allProjectBMCs = $this->getAllProjectBMCs ( $id );
+		$getMyProjects = $this->getMyProjects ();
 		
 		return view ( 'showBMCs', [ 
 				'bmcs' => $allProjectBMCs,
 				'project_id' => $project_id,
 				'project_name' => $project_name,
-				'owner' => $inserts [1] 
+				'owner' => $inserts [1],
+				'myProjects' => $getMyProjects
 		] );
 	}
 	

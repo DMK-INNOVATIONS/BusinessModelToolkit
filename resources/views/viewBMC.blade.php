@@ -17,7 +17,7 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 ?>
 <div class="help_info">
 	<a class="help-icon" data-toggle="modal" data-target="#helpModal">
-		<span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+		<span class="icon-question" aria-hidden="true"></span>
 	</a>
 </div>
 <div class="container">

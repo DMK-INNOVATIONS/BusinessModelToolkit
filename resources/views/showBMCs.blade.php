@@ -8,22 +8,22 @@
 			$path = '';
 		}
 	?>
-
+<div class="help_info">
+	<a class="help-icon" data-toggle="modal" data-target="#helpModal">
+		<span class="icon-question" aria-hidden="true"></span>
+	</a>
+</div>
 <div class="container">
-	<div class=" col-md-12 col-xs-12 page-header">
-		<h1><?php print $project_name;?><br>
-			<small>View, add and edit the Business Models of this Project.</small>
-		</h1>
+	<div class=" col-md-12 col-sm-12 col-xs-12">
+	  <h1><?php print $project_name;;?></h1>
+	  <h4>View, add and edit the Business Models of this Project.</h4>
 	</div>
+	<div class="divider_style_1"></div>
 	<div class="row">
 		<div class="col-md-12 col-xs-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<b>All BMC's of <?php print $project_name;?></b>
-					<button type="button" data-toggle="modal" data-target="#helpModal"
-						class="btn btn-default btn-sm">
-						<span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
-					</button>
 				</div>
 				<div class="panel-body">
 

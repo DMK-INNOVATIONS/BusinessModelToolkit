@@ -46,14 +46,14 @@
 							<a href="{{ url('/projects') }}">Projects</a>
 						</h3>
 						<div class="divider_vertical"></div>
+						@if(isset($myProjects))
 						 <button type="button" id="dropdown_navbar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
 						  <ul class="dropdown-menu" aria-labelledby="dropdown_navbar">
-						    <li><a href="#">Action</a></li>
-						    <li><a href="#">Another action</a></li>
-						    <li><a href="#">Something else here</a></li>
-						    <li><a href="#">Separated link</a></li>
+						    @foreach($myProjects as $p)
+						      <li><a href="/projects/showBMCs/{{ $p['id'] }},1">{{ $p['title'] }}</a></li>
+						    @endforeach
 						  </ul>
-						
+						@endif
 					</li>
 <!--					<li class="{{{ (Request::is('bmc/models') ? 'active ' : '') }}}" ><h3><a href="{{ url('/bmc/models') }}">Models</a></h3></li>-->
 <!-- 					<li><a href="{{ url('/cSegments') }}">Customer Segments</a></li> -->

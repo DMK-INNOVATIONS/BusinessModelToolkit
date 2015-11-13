@@ -9,6 +9,7 @@ use App\User;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Auth;
 use App\BMC;
+use App\Http\Controllers\ProjectsController;
 
 class PersonaController extends Controller {
 	
@@ -36,8 +37,10 @@ class PersonaController extends Controller {
 	 */
 	public function index() {
 		$getMyPersonas = $this->getMyPersonas();
+		$my_project=new ProjectsController();
+		$getMyProjects =$my_project->getMyProjects();
 		
-		return view ( 'persona', ['myPersonas' => $getMyPersonas]);
+		return view ( 'persona', ['myPersonas' => $getMyPersonas,'myProjects' => $getMyProjects]);
 	}
 	
 	public function getAllPersonas() {
