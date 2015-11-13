@@ -527,27 +527,56 @@ li.dropdown_project.active {
 }
 
 .dropdown span.icon_more{
-	background: transparent url("../img/icbt_30x30_showmore.png") no-repeat scroll -1px 1px;
-    border: 1px solid #bfc9cd;
-    border-radius: 25px;
-    float: right;
-    padding: 14px;
+	background: transparent url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
+   	float: left;
     margin-top: 10px;
+    padding: 15px;
+}
+.dropdown span.icon_more:HOVER{
+	background: transparent url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
+}
+.dropdown span.icon_more:ACTIVE{
+	background: transparent url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
+}
+.open span.icon_more{
+	background: transparent url("../img/icbt_detail_less_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
+}
+.open span.icon_more:HOVER{
+	background: transparent url("../img/icbt_detail_less_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
+}
+.open span.icon_more:ACTIVE{
+	background: transparent url("../img/icbt_detail_less_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
 }
 .dropdown_project span.icon_more{
 	background: transparent url("../img/icbt_30x30_showmore.png") no-repeat scroll -1px 1px;
     border: 1px solid #bfc9cd;
     border-radius: 25px;
-    float: right;
-    padding: 14px;
     margin-top: 15px;
     margin-left: 10px;
+    float: right;
+    padding: 15px;
 }
 button#dropdown_navbar{
-	margin: 0;
-	padding: 0;
+	background: transparent url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
+	margin-top: 15px;
+	padding: 15px;
+	margin-left: 10px;
 	border:0;
-	background-color: transparent;
+}
+button#dropdown_navbar:HOVER{
+	background: transparent url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
+}
+button#dropdown_navbar:ACTIVE{
+	background: transparent url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
+}
+.dropdown_project.open button#dropdown_navbar{
+	background: transparent url("../img/icbt_detail_less_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
+}
+.dropdown_project.open button#dropdown_navbar:HOVER{
+	background: transparent url("../img/icbt_detail_less_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
+}
+.dropdown_project.open button#dropdown_navbar:ACTIVE{
+	background: transparent url("../img/icbt_detail_less_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
 }
 .navbar-collapse > div{
 	height: 60px;
@@ -556,8 +585,9 @@ button#dropdown_navbar{
 	display: inline-block;
     float: left;
 }
-.header_drop a{
-	padding: 0 20px 0 10px;
+.navbar-nav .header_drop a{
+	padding: 0 10px 0 10px;
+	margin-right: 5px;
 }
 .divider_vertical{
 	border-left: 1px solid #dfe4e6;
@@ -566,14 +596,16 @@ button#dropdown_navbar{
 	width: 1px;
 	display: inline-block;
 }
+.dropdown.open .dropdown-menu{
+	margin-top: 12px;
+}
+
+
 .navbar-default .navbar-nav > .open > a, 
 .navbar-default .navbar-nav > .open > a:hover, 
 .navbar-default .navbar-nav > .open > a:focus{
 	background-color: #FFFFFF;
 	outline: none;	
-}
-.open span.icon_more{
-	background: transparent url("../img/icbt_30x30_showless.png") no-repeat scroll -1px 1px;
 }
 /***********************************************/
 /********* Projects ****************************/
