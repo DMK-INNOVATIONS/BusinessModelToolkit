@@ -578,6 +578,9 @@ button#dropdown_navbar:ACTIVE{
 .dropdown_project.open button#dropdown_navbar:ACTIVE{
 	background: transparent url("../img/icbt_detail_less_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
 }
+.dropdown_project.open .dropdown-menu{
+	margin-top: 2px;
+} 
 .navbar-collapse > div{
 	height: 60px;
 }
