@@ -28,24 +28,26 @@
 			<div class="col-md-4">
 				<a href="projects/create"><button type="button" class="btn btn-primary">New Project</button></a>
 			</div>
-			<div class="col-md-4">
-				<!--<h6>Sort by</h6>-->
+			<div class="col-md-4 sortProject">
+				<h6>Sort by</h6>
 				<select class="selected form-control">
 					<option>Updated</option>
 					<option>Created</option>
 				</select>
 				<!-- ToDo Icon upload -->
 			</div>
-			<div class="divider_style_2"></div>
+			<div class="divider_style_2_project"></div>
 		</div>
 	</div>
 	<div class="row no_margin">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<h5>Title</h5>	
 			</div>
 			<div class="col-md-2 show_projects">
-				<h6 class="element_float_left">Show details for all</h6>
+				<h6 class="text-right">Show details for all</h6>
+			</div>
+			<div class="col-md-1 show_projects">
 				<ul class="my_projects">
 						<li class="dropdown_myprojects"><span class="icon_more"></span></li>
 				</ul>
@@ -55,40 +57,40 @@
 				<div class="col-md-12"><h6>Created</h6></div>
 			</div>
 			<div class="col-md-4">
-				<div class="col-md-12"><h5>Tools</h5></div>
+				<h5>Tools</h5>
 			</div>
-		<div class="divider_style_2"></div>
+		<div class="divider_style_2_project"></div>
 		</div>
 	</div>
 	<div class="row no_margin extra_padding">
-			<?php /* var_dump($myProject)*/ if(count($myProjects) > 0): ?>
+			<?php if(count($myProjects) > 0): ?>
 				<?php foreach ($myProjects as $myProject):	?>
-					<div class="col-md-12 my_project_list">			
-						<div class="col-md-4">
-						<h3>{{ $myProject['title'] }}</h3>
-						</div>
-						<div class="col-md-2">
-						 	<span class="details_myprojects" ></span>
-						</div>
-						<div class="col-md-2">
-							<div class="col-md-12"><h5>{{ $myProject['updated_at'] }}</h5></div>
-							<div class="col-md-12"><h6>{{ $myProject['created_at'] }}</h6></div>
-						</div>
-						<div class="col-md-2">
-							<div class="col-md-12">
-								<a href="projects/edit/{{ $myProject['id'] }}">
-									<span class="edit-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/>
-								</a>
-								<a data-toggle="modal" data-target="#deleteModal{{ $myProject['id'] }}">
-							    	<span class="delete-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/>
-							    </a>
-						   </div>
-						</div>
-						<div class="col-md-2">
-							<div class="col-md-12">
-								<a href="projects/showBMCs/{{ $myProject['id'] }},1">
-							  		<button type="button" class="btn btn-primary btn-secundar">Show Models </button>
-							  	</a>
+					<div class="col-md-12 my_project_list">
+						<div class="row">			
+							<div class="col-md-5">
+							<h3>{{ $myProject['title'] }}</h3>
+							</div>
+							<div class="col-md-1">
+							 	<span class="details_myprojects" ></span>
+							</div>
+							<div class="col-md-2">
+								<div class="col-md-12"><h5>{{ $myProject['updated_at'] }}</h5></div>
+								<div class="col-md-12"><h6>{{ $myProject['created_at'] }}</h6></div>
+							</div>
+							<div class="col-md-2">
+								
+									<a href="projects/edit/{{ $myProject['id'] }}">
+										<span class="edit-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/>
+									</a>
+									<a data-toggle="modal" data-target="#deleteModal{{ $myProject['id'] }}">
+								    	<span class="delete-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/>
+								    </a>
+							   
+							</div>
+							<div class="col-md-2">
+									<a class="project_link" href="projects/showBMCs/{{ $myProject['id'] }},1">
+								  		<button type="button" class="btn btn-primary btn-secundar">Show Models </button>
+								  	</a>
 							</div>
 						</div>
 					</div>
@@ -97,137 +99,118 @@
 		<div class="divider_style_1"></div>
 	</div>
 	
-		
-		
-		
-		
-		<!--New List Projects Table - END -->
-		
-		<!-- User Projects Table - Start -->
-		<?php /*?>
+	<!-- Assign Projects Start-->
+
+	<!-- start new -->
+	
+	<div class="row no_margin">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="panel panel-default">
-				<div class="panel-heading"><b>My Projects</b>
-					<!--  <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-sm">
-						<span class="icon-question" aria-hidden="true"></span>
-					</button>
-					-->
+				<div class="col-md-8">
+					<h1>My Assigned Projects <span class="light_color">
+						<?php $count='';?>
+						<?php foreach ($myProjects as $my):	?>
+						<?php $count= count($my->members) ?>
+						<?php endforeach; ?>
+						({{$count}})					
+					</span></h1>
 				</div>
-				<div class="panel-body">
-					
-					<div class="panel panel-default">
-					  <div class="panel-body table_text">
-					    <p>This Table contains the Projects you own.</p>
-					  </div>
-					  
-					  <div class="row table_head" style="text-align: center;">
-					  		<div class="col-md-3 col-xs-12">Title</div>
-					  		<div class="col-md-3 col-xs-6">Created at</div>
-					  		<div class="col-md-2 col-xs-6">Updated at</div>
-					  		<div class="col-md-2 col-xs-6">Tools</div>
-					  		<div class="col-md-2 col-xs-6">Business Models</div>
-					  </div>
-
-							<?php 
-							foreach ($myProjects as $myProject){
-								$created_at = explode(' ', $myProject["created_at"]);
-								$created_at_date = $created_at[0];
-								$created_at_time = $created_at[1];
-								
-								$updated_at = explode(' ', $myProject["updated_at"]);
-								$updated_at_date = $updated_at[0];
-								$updated_at_time = $created_at[1];
-								
-								print '<div class="row table_body" style="text-align: center;">';
-									print '	<div class="col-md-3 col-xs-12 project_title-smal">'.$myProject["title"].'</div>
-							  				<div class="col-md-3 col-xs-6">'.$created_at_date.', '.$created_at_time.'</div>
-							  				<div class="col-md-2 col-xs-6">'.$updated_at_date.', '.$updated_at_time.'</div>
-									  		<div class="col-md-2 col-xs-6">';
-											print '	<a href="projects/edit/'.$myProject["id"].'">
-														<span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/>
-													</a>   ';
-											print '	<a data-toggle="modal" data-target="#deleteModal'.$myProject['id'].'">
-							    						<span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/>
-							    					</a>';
-									print '	</div>
-									  		<div class="col-md-2 col-xs-6">';
-											print '	<a href="projects/showBMCs/'.$myProject["id"].',1">
-							  							<button type="button" class="btn btn-primary btn-secundar">Show Models </button>
-							  						</a>';
-							    			print'</div>';
-								print '</div>';			
-
-								
-								print '
-					  					<div class="modal fade" id="deleteModal'.$myProject["id"].'" tabindex="-1" role="dialog">
-										  <div class="modal-dialog delete" role="document">
-										    <div class="modal-content delete col-md-12">
-										      <div class="modal-header col-md-12">
-										        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										        <h4 class="modal-title">Do you want to delete '.$myProject["title"].'?</h4>
-										      </div>
-										      <div class="modal-footer delete col-md-12">
-									      		<div class="col-md-6"><a href="projects/delete/'.$myProject["id"].'"><button type="button" class="btn btn-primary btn-lg">Yes</button></a></div>
-								  				<div class="col-md-6"><button type="button" class="btn btn-default btn-lg" data-dismiss="modal">No</button></div>
-										      </div>
-										    </div>
-										  </div>
-										</div>
-					  				';
-								}
-							?>   	
-					</div>
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<br>
-						<a href="projects/create"><button type="button" class="btn btn-primary">New Project</button></a>
-					</div>
+				<div class="col-md-4 sortProject">
+					<h6>Sort by</h6>
+					<select class="selected form-control">
+						<option>Updated</option>
+						<option>Created</option>
+					</select>
+					<!-- ToDo Icon upload -->
 				</div>
-			</div> 
+				<div class="divider_style_2_project"></div>
 		</div>
-	</div>
-	<? */?>
-	<div class="row">
+	</div>	
+	<div class="row no_margin">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="panel panel-default">
-				<div class="panel-heading"><b>My Assigned Projects</b></div>
-				<div class="panel-body">
-					<div class="panel panel-default">
-					  <div class="panel-body table_text">
-					    <p>This Table contains the Projects your Team Members assigned to you.</p>
-					  </div>
-					  
-					  <div class="row table_head " style="text-align: center;">
-					  		<div class="col-md-5 col-xs-12">Title</div>			  		
-					  		<div class="col-md-5 col-xs-6">Owner</div>
-					  		<div class="col-md-2 col-xs-6">Business Models</div>
-					  </div>
-					  
-					  <?php 
-							foreach ($myAssignedProjects as $myAssignedProject){
-								print '<div class="row table_body" style="text-align: center;">';
-									print '<div class="col-md-5 col-xs-12">'.$myAssignedProject["title"].'</div>';
-
-									$bereits_vorhanden = null;
-									foreach ($assignedProjectsOwners as $Owner){
-										if($myAssignedProject["assignee_id"] == $Owner['id']){
-											if($bereits_vorhanden != $Owner['id']){
-												print '<div class="col-md-5 col-xs-6">'.$Owner['name'].'</div>';
-												$bereits_vorhanden = $Owner['id'];
-											}
-										}
-									}
-									
-							  		print'<div class="col-md-2 col-xs-6">';
-									print '<a href="projects/showBMCs/'.$myAssignedProject["id"].',0"><button type="button" class="btn btn-primary btn-secundar">show Models </button></a>';
-					    			print'</div>';
-								print '</div>';							
-							}
-							?>   
-				  </div>
-				</div>
+			<div class="col-md-3">
+				<h5>Title</h5>	
 			</div>
+			<div class="col-md-2 show_projects">
+				<h6 class="text-right">Show details for all</h6>
+			</div>
+			<div class="col-md-1 show_projects">
+				<ul class="my_projects">
+						<li class="dropdown_myprojects"><span class="icon_more"></span></li>
+				</ul>
+			</div>
+			<div class="col-md-2">
+				<div class="col-md-12"><h5>Updated</h5></div>
+				<div class="col-md-12"><h6>Created</h6></div>
+			</div>
+			<div class="col-md-2">
+				<h5>Owner</h5>
+			</div>
+			<div class="col-md-2">
+				<h5>Tools</h5>
+			</div>
+		<div class="divider_style_2_project"></div>
 		</div>
 	</div>
+	<?php foreach ($myProjects as $my):	?>
+		<?php foreach ($my->members as $m):?>
+			<?php if($m->id == $user->id):?>
+				<div class="row no_margin extra_padding">
+					<div class="col-md-12 my_project_list">	
+						<div class="row">		
+						<div class="col-md-5">
+							<h3>{{ $my->title }}</h3>
+						</div>
+						<div class="col-md-1">
+						 	<span class="details_myprojects" ></span>
+						</div>
+						<div class="col-md-2">
+							<div class="col-md-12"><h5>{{ $my->updated_at }}</h5></div>
+							<div class="col-md-12"><h6>{{ $my->created_at }}</h6></div>
+						</div>
+						<div class="col-md-2">
+								<h5>{{$my->assignee->name}}</h5>
+						</div>
+						<div class="col-md-2">
+								<a class="project_link" href="projects/showBMCs/{{ $my->id }},1">
+							  		<button type="button" class="btn btn-primary btn-secundar">Show Models </button>
+							  	</a>	
+						</div>
+						<div class="divider_style_2_project"></div>
+						</div>
+					<?php $count=0;?>
+					<?php if(count($my->bmcs)>0):?>
+						<?php foreach ($my->bmcs as $b):?>
+							<?php $count++;?>
+							  <div class="row">
+								<div class="col-md-6">
+									<h4>{{ $b->title }}</h4>
+								</div>
+								<div class="col-md-2">
+									<h5 class="bmc_list">1</h5>
+							 		<div class="label_{{ $b->status }} label_project"><h5>{{ $b->status }}</h5></div>
+								</div>
+								<div class="col-md-2">
+							 		<!-- ?? waiting .... -->
+								</div>
+								<div class="col-md-2">
+									<a class="bmc_link" href="bmc/viewBMC/{{ $b->id }},{{ $my->id }},1,1,showBMCs">
+								  		<button type="button" class="btn btn-primary btn-secundar">View </button>
+								  	</a>
+								</div>
+								<?php if(count($my->bmcs)>$count):?>	
+									<div class="divider_style_3"></div>
+								<?php endif;?>
+							 </div>
+						<?php endforeach; ?>
+					<?php endif;?>
+					</div>
+				</div>
+			<?php endif;?>
+		<?php endforeach; ?>
+	<?php endforeach; ?>
+	<!-- end new -->
+	</div>
+	<!-- Assign Projects End-->	
 </div>
 
 <!-- Help Modal -->

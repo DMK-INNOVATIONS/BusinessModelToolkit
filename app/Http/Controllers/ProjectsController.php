@@ -30,22 +30,36 @@ class ProjectsController extends Controller {
 	 * @return Response
 	 */
 	public function index() {
-		$user_name = Auth::user ()->name;
-		$getMyProjects = $this->getMyProjects ();
+		$user = Auth::user ();
+		
+		// $getMyProjects = $this->getMyProjects ();
+		$getMyProjects = $this->getAllMyProjects ();
 		$myAssignedProjects = $this->getMyAssignedProjects ();
 		$assignedProjectsOwners = $this->getAssignedProjectsOwner ();
-		
 		return view ( 'projects', [ 
 				'myProjects' => $getMyProjects,
-				'user_name' => $user_name,
+				'user' => $user,
 				'myAssignedProjects' => $myAssignedProjects,
-				'assignedProjectsOwners' => $assignedProjectsOwners,
+				'assignedProjectsOwners' => $assignedProjectsOwners 
 		] );
+	}
+	public function getProjects() {
+		return Project::with ( 'members', 'assignee' )->get ();
+	}
+	public function getAllMyProjects() {
+		$getMyProjects = $this->getProjects ();
+		$myprojects = array ();
+		foreach ( $getMyProjects as $p ) {
+			if ($p->assignee_id == Auth::user ()->id){
+				$myprojects [] = $p;
+			}
+		}
+		return $myprojects;
 	}
 	
 	/**
 	 * Gets all the projects.
-	 * 
+	 *
 	 * @return Ambigous <\Illuminate\Database\Eloquent\Collection, multitype:\Illuminate\Database\Eloquent\static >
 	 */
 	public function getAllProjects() {
@@ -54,7 +68,7 @@ class ProjectsController extends Controller {
 	
 	/**
 	 * Gets my project.
-	 * 
+	 *
 	 * @return multitype:
 	 */
 	public function getMyProjects() {
@@ -78,7 +92,7 @@ class ProjectsController extends Controller {
 	
 	/**
 	 * Edit a project.
-	 * 
+	 *
 	 * @param unknown $id        	
 	 * @return \Illuminate\View\View
 	 */
@@ -93,7 +107,7 @@ class ProjectsController extends Controller {
 	
 	/**
 	 * Shows all bmcs of a project.
-	 * 
+	 *
 	 * @param unknown $id        	
 	 * @return \Illuminate\View\View
 	 */
@@ -110,13 +124,13 @@ class ProjectsController extends Controller {
 				'project_id' => $project_id,
 				'project_name' => $project_name,
 				'owner' => $inserts [1],
-				'myProjects' => $getMyProjects
+				'myProjects' => $getMyProjects 
 		] );
 	}
 	
 	/**
 	 * Gets the project name.
-	 * 
+	 *
 	 * @param unknown $id        	
 	 * @return \App\Http\Controllers\Ambigous
 	 */
@@ -132,7 +146,7 @@ class ProjectsController extends Controller {
 	
 	/**
 	 * Gets all the bmcs of a project.
-	 * 
+	 *
 	 * @param unknown $id        	
 	 * @return multitype:
 	 */
@@ -151,7 +165,7 @@ class ProjectsController extends Controller {
 	
 	/**
 	 * Deletes the project.
-	 * 
+	 *
 	 * @param unknown $id        	
 	 * @return Ambigous <\Illuminate\Routing\Redirector, \Illuminate\Http\RedirectResponse>
 	 */
@@ -201,7 +215,7 @@ class ProjectsController extends Controller {
 	
 	/**
 	 * Saves or updated a project.
-	 * 
+	 *
 	 * @param string $id        	
 	 * @return \Illuminate\View\View
 	 */
