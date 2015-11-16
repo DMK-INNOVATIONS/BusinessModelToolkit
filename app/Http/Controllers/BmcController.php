@@ -27,8 +27,6 @@ class BmcController extends Controller {
 	 */
 	public function __construct() {
 		$this->middleware ( 'auth' );
-		$myProjects = $this->getMyProjects ();
-		View::share('myProjects', $myProjects);
 	}
 	
 	/**
