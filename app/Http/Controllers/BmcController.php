@@ -203,6 +203,7 @@ class BmcController extends Controller {
 				$bmc_status = 'inWork';
 				break;
 		}
+		$myProjects = $this->getMyProjects ();
 		
 		return view ( 'viewBMC', [ 
 				'bmc_id' => $bmc_id,
@@ -213,7 +214,8 @@ class BmcController extends Controller {
 				'myPersonas' => $myPersonas,
 				'myAssignedPersonas' => $myAssignedPersonas,
 				'owner' => $owner,
-				'view_type' => $view_type 
+				'view_type' => $view_type,
+				'myProjects'=>$myProjects 
 		] );
 	}
 	public function getAllPersonas() {

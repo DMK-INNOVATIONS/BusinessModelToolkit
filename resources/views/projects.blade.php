@@ -173,7 +173,7 @@
 								  		<button type="button" class="btn btn-primary btn-secundar">Show Models </button>
 								  	</a>	
 							</div>
-							<?php if(count($my->bmcs)>$count):?>
+							<?php if(count($my->bmcs)>0):?>
 							<div class="divider_style_2_project"></div>
 							<?php endif;?>
 							</div>
