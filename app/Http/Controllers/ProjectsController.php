@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use App\BMC;
 use App\Notice;
 use Illuminate\Support\Facades\DB;
+//use App\Http\Requests\Request;
+use Illuminate\Support\Facades\Input;
+use Request;//You're not using the facade, replace use Illuminate\Http\Request; with use Request;
 
 class ProjectsController extends Controller {
 	
@@ -36,9 +39,23 @@ class ProjectsController extends Controller {
 		// $getMyProjects = $this->getMyProjects ();
 		$myAssignedProjects = $this->getMyAssignedProjects ();
 		$assignedProjectsOwners = $this->getAssignedProjectsOwner ();
+		
+		//send per ajax return parameter from sort
+		if(Request::ajax()) {
+			$sort_field=Input::get('sort_field');
+			$view= view ( 'projects', [ 
+				'myProjects' => $this->getAllMyAssignedMyProjects(),
+				'user' => $user,
+				'sort_field'=>$sort_field,
+				'myAssignedProjects' => $this->getAllMyAssignedMyProjects (),
+				'assignedProjectsOwners' => $assignedProjectsOwners 
+			])->renderSections();
+			return $view;
+		}
 		return view ( 'projects', [ 
 				'myProjects' => $this->getAllMyAssignedMyProjects(),
 				'user' => $user,
+				'sort_field'=>'',
 				'myAssignedProjects' => $this->getAllMyAssignedMyProjects (),
 				'assignedProjectsOwners' => $assignedProjectsOwners 
 		] );
@@ -47,11 +64,13 @@ class ProjectsController extends Controller {
 		return Project::with ( 'members', 'assignee' )->get ();
 	}
 	public function getAllMyAssignedMyProjects() {
+		$sort_field=Input::get('sort_field');
 		$user_id=Auth::user ()->id;
 		$projects=Project::with([
-				'members'=> function($q) use( $user_id) {$q->where('user_id','=',$user_id);},
+				'members'=> function($q) use( $user_id) {$q->where('user_id','=',$user_id)->orderBy('created_at', 'desc');},
 				'bmcs'
 		])->where ( 'assignee_id', $user_id )
+		->orderBy($sort_field ? $sort_field : 'updated_at', 'asc')
 		->get();
 		$myprojects = array ();
 		foreach ( $projects as $project  ) {

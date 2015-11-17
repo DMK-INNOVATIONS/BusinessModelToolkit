@@ -972,7 +972,7 @@ div.viewBMC_body .panel-default{
 .details_myprojects:ACTIVE{
 		background: transparent url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
 }
-.selected.form-control{
+.selected_sort.form-control{
 	font-size: 12px;
 	line-height: 30px;
 	color: #2d7893;
@@ -986,12 +986,12 @@ div.viewBMC_body .panel-default{
   	-moz-appearance:none;
   	margin-top:10px
 }
-.selected.form-control:HOVER{
+.selected_sort.form-control:HOVER{
 	background: #ffffff url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 90px -31px;
 	border: 1px solid #5ac8f0;
 	color: #5ac8f0;
 }
-.selected.form-control:ACTIVE{
+.selected_sort.form-control:ACTIVE{
 	background: #eff1f2 url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 90px -61px;
 	border: 1px solid #7f939b;
 	color: #002837;
