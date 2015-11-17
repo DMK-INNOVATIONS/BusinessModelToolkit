@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Auth;
 use App\BMC;
 use App\Notice;
+use Illuminate\Support\Facades\DB;
 
 class ProjectsController extends Controller {
 	
@@ -33,26 +34,29 @@ class ProjectsController extends Controller {
 		$user = Auth::user ();
 		
 		// $getMyProjects = $this->getMyProjects ();
-		$getMyProjects = $this->getAllMyProjects ();
 		$myAssignedProjects = $this->getMyAssignedProjects ();
 		$assignedProjectsOwners = $this->getAssignedProjectsOwner ();
 		return view ( 'projects', [ 
-				'myProjects' => $getMyProjects,
+				'myProjects' => $this->getAllMyAssignedMyProjects(),
 				'user' => $user,
-				'myAssignedProjects' => $myAssignedProjects,
+				'myAssignedProjects' => $this->getAllMyAssignedMyProjects (),
 				'assignedProjectsOwners' => $assignedProjectsOwners 
 		] );
 	}
 	public function getProjects() {
 		return Project::with ( 'members', 'assignee' )->get ();
 	}
-	public function getAllMyProjects() {
-		$getMyProjects = $this->getProjects ();
+	public function getAllMyAssignedMyProjects() {
+		$user_id=Auth::user ()->id;
+		$projects=Project::with([
+				'members'=> function($q) use( $user_id) {$q->where('user_id','=',$user_id);},
+				'bmcs'
+		])->where ( 'assignee_id', $user_id )
+		->get();
 		$myprojects = array ();
-		foreach ( $getMyProjects as $p ) {
-			if ($p->assignee_id == Auth::user ()->id){
-				$myprojects [] = $p;
-			}
+		foreach ( $projects as $project  ) {
+				$myprojects [$project->id] = $project;
+				
 		}
 		return $myprojects;
 	}

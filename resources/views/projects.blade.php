@@ -107,9 +107,9 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="col-md-8">
 					<h1>My Assigned Projects <span class="light_color">
-						<?php $count='';?>
+						<?php $count=0;?>
 						<?php foreach ($myProjects as $my):	?>
-						<?php $count= count($my->members) ?>
+						<?php 	$count+= count($my->members) ?>
 						<?php endforeach; ?>
 						({{$count}})					
 					</span></h1>
@@ -153,7 +153,7 @@
 	</div>
 	<?php foreach ($myProjects as $my):	?>
 		<?php foreach ($my->members as $m):?>
-			<?php if($m->id == $user->id):?>
+			<?php //if($m->id == $user->id):?>
 				<div class="row no_margin extra_padding">
 					<div class="col-md-12 my_project_list">	
 						<div class="row">		
@@ -175,7 +175,9 @@
 							  		<button type="button" class="btn btn-primary btn-secundar">Show Models </button>
 							  	</a>	
 						</div>
+						<?php if(count($my->bmcs)>$count):?>
 						<div class="divider_style_2_project"></div>
+						<?php endif;?>
 						</div>
 					<?php $count=0;?>
 					<?php if(count($my->bmcs)>0):?>
@@ -205,7 +207,7 @@
 					<?php endif;?>
 					</div>
 				</div>
-			<?php endif;?>
+			<?php //endif;?>
 		<?php endforeach; ?>
 	<?php endforeach; ?>
 	<!-- end new -->
