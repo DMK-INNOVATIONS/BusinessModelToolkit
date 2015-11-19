@@ -28,7 +28,7 @@
 				</div>
 				<div class="col-md-4 sortProject">
 					<h6>Sort by</h6>
-					<select class="myProjects selected_sort form-control">
+					<select id="custom_menu" class="myProjects selected_sort form-control">
 						<option value="updated_at" <?php echo $sort_field==='updated_at' ? 'selected' : ''?>>Updated</option>
 						<option value="created_at" <?php echo $sort_field==='created_at' ? 'selected' : ''?>>Created</option>
 					</select>
@@ -42,17 +42,17 @@
 				<div class="col-md-3">
 					<h5>Title</h5>	
 				</div>
-				<div class="col-md-2 show_projects">
+				<div class="col-md-2 show_projects no_padding_right">
 					<h6 class="text-right">Show details for all</h6>
 				</div>
-				<div class="col-md-1 show_projects">
+				<div class="col-md-1 show_projects no_padding_left">
 					<ul class="my_projects">
 							<li class="dropdown_myprojects"><span class="icon_more"></span></li>
 					</ul>
 				</div>
 				<div class="col-md-2">
-					<div class="col-md-12"><h5>Updated</h5></div>
-					<div class="col-md-12"><h6>Created</h6></div>
+					<div class="col-md-12"><h5 class="no_margin_top_bottom">Updated</h5></div>
+					<div class="col-md-12"><h6 class="no_margin_top_bottom">Created</h6></div>
 				</div>
 				<div class="col-md-4">
 					<h5>Tools</h5>
@@ -68,12 +68,12 @@
 								<div class="col-md-5">
 								<h3>{{ $myProject['title'] }}</h3>
 								</div>
-								<div class="col-md-1">
+								<div class="col-md-1 no_padding_left">
 								 	<span class="details_myprojects" ></span>
 								</div>
 								<div class="col-md-2">
-									<div class="col-md-12"><h5>{{ $myProject['updated_at'] }}</h5></div>
-									<div class="col-md-12"><h6>{{ $myProject['created_at'] }}</h6></div>
+									<div class="col-md-12"><h5 class="no_margin_bottom">{{date('l, d-m-Y | H:m', strtotime($myProject['updated_at'])) }}</h5></div>
+									<div class="col-md-12"><h6 class="no_margin_top">{{ date('Y-m-d | H:m', strtotime($myProject['created_at'])) }}</h6></div>
 								</div>
 								<div class="col-md-2">
 									
@@ -94,7 +94,7 @@
 						</div>
 				<?php endforeach; ?>
 			<?php endif; ?>
-			<div class="divider_style_1"></div>
+			<div class="divider_style_1_project"></div>
 		</div>
 		
 		<!-- Assign Projects Start-->
@@ -128,17 +128,17 @@
 				<div class="col-md-3">
 					<h5>Title</h5>	
 				</div>
-				<div class="col-md-2 show_projects">
+				<div class="col-md-2 show_projects no_padding_right">
 					<h6 class="text-right">Show details for all</h6>
 				</div>
-				<div class="col-md-1 show_projects">
+				<div class="col-md-1 show_projects no_padding_left">
 					<ul class="my_projects">
 							<li class="dropdown_myprojects"><span class="icon_more"></span></li>
 					</ul>
 				</div>
 				<div class="col-md-2">
-					<div class="col-md-12"><h5>Updated</h5></div>
-					<div class="col-md-12"><h6>Created</h6></div>
+					<div class="col-md-12"><h5 class="no_margin_top_bottom">Updated</h5></div>
+					<div class="col-md-12"><h6 class="no_margin_top_bottom">Created</h6></div>
 				</div>
 				<div class="col-md-2">
 					<h5>Owner</h5>
@@ -158,12 +158,12 @@
 							<div class="col-md-5">
 								<h3>{{ $my->title }}</h3>
 							</div>
-							<div class="col-md-1">
+							<div class="col-md-1 no_padding_left">
 							 	<span class="details_myprojects" ></span>
 							</div>
 							<div class="col-md-2">
-								<div class="col-md-12"><h5>{{ $my->updated_at }}</h5></div>
-								<div class="col-md-12"><h6>{{ $my->created_at }}</h6></div>
+								<div class="col-md-12"><h5 class="no_margin_bottom">{{ date('l, d-m-Y | H:m', strtotime($my->updated_at)) }}</h5></div>
+								<div class="col-md-12"><h6 class="no_margin_top">{{ date('Y-m-d | H:m', strtotime($my->created_at)) }}</h6></div>
 							</div>
 							<div class="col-md-2">
 									<h5>{{$my->assignee->name}}</h5>
@@ -187,7 +187,7 @@
 									</div>
 									<div class="col-md-2">
 										<h5 class="bmc_list">1</h5>
-								 		<div class="label_{{ $b->status }} label_project"><h5>{{ $b->status }}</h5></div>
+								 		<div class="label_{{ $b->status }} label_project"><h5 class="in_label_project">{{ $b->status }}</h5></div>
 									</div>
 									<div class="col-md-2">
 								 		<!-- ?? waiting .... -->
@@ -286,6 +286,30 @@ $(function() {
 		    }
 		});
 	});
+	var to_send=$("#custom_menu").val();
+	$("#custom_menu").on( "selectmenuchange", function() {
+					console.log("change"+$(this).val());
+					to_send=$(this).val();
+					$.ajax({
+					    url: '/projects',
+					    type: 'GET',
+					    data: {_token:"<?php echo csrf_token(); ?>",sort_field: to_send},
+					    async: "false",
+					    success: function (data) {
+						    $("#project_list").html(data.content);
+						    $("#custom_menu").selectmenu("destroy").selectmenu();
+						    //$("#custom_menu").on( "selectmenuselect", function( event, ui ) {} );;
+						    //console.log("succes");
+					    }
+					})
+					.done(function() {
+					    	$("#custom_menu").selectmenu();
+					      })
+				;
+	});
+	$("#custom_menu").selectmenu();
 });
+	 
+
 </script>
 @endsection
