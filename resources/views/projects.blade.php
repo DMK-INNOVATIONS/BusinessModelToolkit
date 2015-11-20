@@ -28,7 +28,7 @@
 				</div>
 				<div class="col-md-4 sortProject">
 					<h6>Sort by</h6>
-					<select id="custom_menu" class="myProjects selected_sort form-control">
+					<select id="custom_menu" custom_menu" class="myProjects selected_sort form-control">
 						<option value="updated_at" <?php echo $sort_field==='updated_at' ? 'selected' : ''?>>Updated</option>
 						<option value="created_at" <?php echo $sort_field==='created_at' ? 'selected' : ''?>>Created</option>
 					</select>
@@ -114,7 +114,7 @@
 					</div>
 					<div class="col-md-4 sortProject">
 						<h6>Sort by</h6>
-						<select class="assigned_select selected_sort form-control">
+						<select id="custom_menu_2" class="assigned_select selected_sort form-control">
 							<option value="updated_at" <?php echo $sort_field==='updated_at' ? 'selected' : ''?>>Updated</option>
 							<option value="created_at" <?php echo $sort_field==='created_at' ? 'selected' : ''?>>Created</option>
 						</select>
@@ -307,7 +307,29 @@ $(function() {
 					      })
 				;
 	});
+	var to_send2=$("#custom_menu_2").val();
+	$("#custom_menu_2").on( "selectmenuchange", function() {
+		console.log("change"+$(this).val());
+		to_send2=$(this).val();
+		$.ajax({
+		    url: '/projects',
+		    type: 'GET',
+		    data: {_token:"<?php echo csrf_token(); ?>",sort_field: to_send2},
+		    async: "false",
+		    success: function (data) {
+			    $("#project_list").html(data.content);
+			    $("#custom_menu_2").selectmenu("destroy").selectmenu();
+			    //$("#custom_menu").on( "selectmenuselect", function( event, ui ) {} );;
+			    //console.log("succes");
+		    }
+		})
+		.done(function() {
+		    	$("#custom_menu_2").selectmenu();
+		      })
+	;
+});
 	$("#custom_menu").selectmenu();
+	$("#custom_menu_2").selectmenu();
 });
 	 
 

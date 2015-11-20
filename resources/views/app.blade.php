@@ -9,7 +9,8 @@
 	<!--<link href="{{ asset('/css/app.css') }}" rel="stylesheet">-->
 	<link href="{{ asset('/css/five.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/MA_Template.css') }}" rel="stylesheet">
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link href="{{ asset('/css/jquery-ui.css') }}" rel="stylesheet">
+	<!--  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">-->
 	<link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 	
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
