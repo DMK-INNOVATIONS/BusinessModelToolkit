@@ -59,7 +59,7 @@
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">Save</button></a>
 								<?php 
-									print '<a href="'.$path.'/bmc/models"><button type="button" class="btn btn-default">Back</button></a>';
+									print '<a href="'.$path.'/bmc/models"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>';
 								?>
 							</div>
 						</div>

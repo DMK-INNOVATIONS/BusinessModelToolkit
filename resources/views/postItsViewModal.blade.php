@@ -30,6 +30,9 @@
 		case 6:
 			$canvas_box_name ='Channels';
 			break;
+		case 7:
+			$canvas_box_name ='Customer Segments';
+			break;
 		case 8:
 			$canvas_box_name ='Cost Structure';
 			break;
@@ -91,7 +94,7 @@
 					<div class="form-group">
 						<div class="col-md-8 col-md-offset-4">
 							<button type="submit" class="btn btn-primary">Save</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+							<button type="button" class="btn btn-primary btn-secundar" data-dismiss="modal">Back</button>
 						</div>
 					</div>
 				</form>

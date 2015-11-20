@@ -226,13 +226,14 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 												</h6>
 											</div>
 											<div class="services">
-												<a class="add" data-toggle="modal" href="#addPersonaModal"
+												<a class="add" data-toggle="modal" href="#addPostItModal7"
 													role="button"></a> <a class="more" role="button"
 													onclick="showStuff('CS', this); return false;"></a>
 												<div class="splitline"></div>
 											</div>
-											@include('personaContent', ['boxId' =>7])
-											@include('personaViewModal')
+											@include('postItsContent', ['boxId' =>7])
+											@include('postItsViewModal', ['boxId' =>7])
+											
 										</div>
 									</div>
 								</div>

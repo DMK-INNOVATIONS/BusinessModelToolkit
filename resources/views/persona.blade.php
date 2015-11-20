@@ -55,10 +55,14 @@
 									  		<div class="col-md-1 col-sm-1 col-xs-6">'.$myPersona["age"].'</div>
 									  		<div class="col-md-1 col-sm-1 col-xs-6">'.$myPersona["gender"].'</div>
 									  		<div class="col-md-2 col-sm-2 col-xs-6">'.$myPersona["occupation"].'</div>
-									  		<div class="col-md-2 col-sm-2 col-xs-6">'.$myPersona["updated_at"].'</div>
+									  		<div class="col-md-2 col-sm-2 col-xs-6">'.date('l, d-m-Y | H:m', strtotime($myPersona["updated_at"])).'</div>
 									  		<div class="col-md-1 col-sm-1 col-xs-6">';
-												print '<a href="persona/edit/'.$myPersona["id"].','.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.',0,Persona"><span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/></a>  ';
-												print '<a data-toggle="modal" data-target="#deleteModal'.$myPersona['id'].'"><span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/></a>  ';
+												print '<a href="persona/edit/'.$myPersona["id"].','.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.',0,Persona">
+					  									<span class="edit-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/></span>							
+					  								   </a>  ';
+												print '<a data-toggle="modal" data-target="#deleteModal'.$myPersona['id'].'">
+														<span class="delete-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/></span>
+													   </a>  ';
 							print'			</div>
 									  		<div class="col-md-2 col-sm-2 col-xs-6">';
 												print '<button type="button" class="btn btn-primary btn-secundar" data-toggle="modal" data-target="#myPersona'.$myPersona["id"].'">Show Persona</button>';

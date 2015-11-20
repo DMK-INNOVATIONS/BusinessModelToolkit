@@ -61,7 +61,9 @@
 										}
 										
 								  		print '<div class="col-md-3 col-sm-3 col-xs-6">';
-											print '<a data-toggle="modal" data-target="#deleteModal'.$teamMember['id'].'"><span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/></a>';
+											print '<a data-toggle="modal" data-target="#deleteModal'.$teamMember['id'].'">
+													<span class="delete-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/></span>
+												</a>';
 										print '</div>';
 									print '</div>';
 									
@@ -75,7 +77,7 @@
 										      </div>
 										      <div class="modal-footer delete col-md-12">
 									      		<div class="col-md-6"><a href="team/delete/'.$teamMember['pivot']['project_id'].','.$teamMember['id'].'"><button type="button" class="btn btn-primary btn-lg">Yes</button></a></div>
-								  				<div class="col-md-6"><button type="button" class="btn btn-default btn-lg" data-dismiss="modal">No</button></div>
+								  				<div class="col-md-6"><button type="button" class="btn btn-primary btn-secundar" data-dismiss="modal">No</button></div>
 										      </div>
 										    </div>
 										  </div>

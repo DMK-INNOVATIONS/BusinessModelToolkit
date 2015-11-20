@@ -128,6 +128,36 @@ class ProjectsController extends Controller {
 		] );
 	}
 	
+	public function getShowBMCs($id) {
+		$inserts = explode ( ",", $id );
+		$project_id=$inserts[0];
+		$sort_field=Input::get('sort_field');
+		$user_id=Auth::user ()->id;
+		/*
+		 $projects=Project::with([
+				'members'=> function($q) use( $user_id) {$q->where('user_id','=',$user_id)->orderBy('created_at', 'desc');},
+				'bmcs'=> function($p) use( $project_id) {$p->where('project_id','=',$project_id)->orderBy('created_at', 'desc');},
+			]
+		)
+		->where ( 'assignee_id', $user_id )
+		->orderBy($sort_field ? $sort_field : 'updated_at', 'asc')
+		->get();
+		*/
+		$projects=BMC::with([
+				'project'=> function($q) use( $project_id) {$q->where('id','=',$project_id)->orderBy('created_at', 'desc');},
+				]
+		)
+		->where ( 'project_id', $project_id )
+		->orderBy($sort_field ? $sort_field : 'updated_at', 'asc')
+		->get();
+		$myprojects = array ();
+		foreach ( $projects as $project  ) {
+			$myprojects [$project->id] = $project;
+		
+		}
+		return $myprojects;
+	}
+	
 	/**
 	 * Shows all bmcs of a project.
 	 *
@@ -136,18 +166,21 @@ class ProjectsController extends Controller {
 	 */
 	public function showBMCs($id) {
 		$inserts = explode ( ",", $id );
-		
+		$sort_field=Input::get('sort_field');
 		$project_id = $inserts [0];
 		$project_name = $this->getProjectName ( $id );
 		$allProjectBMCs = $this->getAllProjectBMCs ( $id );
 		$getMyProjects = $this->getMyProjects ();
-		
+		$newget=$this->getShowBMCs($project_id);
 		return view ( 'showBMCs', [ 
 				'bmcs' => $allProjectBMCs,
 				'project_id' => $project_id,
 				'project_name' => $project_name,
 				'owner' => $inserts [1],
-				'myProjects' => $getMyProjects 
+				'myProjects' => $getMyProjects,
+				'newget'=>$newget,
+				'sort_field'=>'',
+				 
 		] );
 	}
 	

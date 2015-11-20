@@ -68,7 +68,7 @@
 									<div class="form-group">
 										<div class="col-md-8 col-md-offset-2">
 											<button type="submit" class="btn btn-primary">Save</button>
-											<button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+											<button type="button" class="btn btn-primary btn-secundar" data-dismiss="modal">Back</button>
 										</div>
 									</div>
 								</form>
@@ -135,7 +135,7 @@
 											<div class="form-group">
 												<div class="col-md-8 col-md-offset-4">
 													<button type="submit" class="btn btn-primary">Save</button>
-													<button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+													<button type="button" class="btn btn-primary btn-secundar" data-dismiss="modal">Back</button>
 												</div>
 											</div>
 										</form>

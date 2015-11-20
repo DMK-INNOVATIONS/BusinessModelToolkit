@@ -1,150 +1,134 @@
 @extends('app') @section('content')
 
-<?php 
-
-		if($_SERVER['SERVER_NAME']== 'localhost' || $_SERVER['REMOTE_ADDR']=='127.0.0.1'){
-			$path = '/bmc/public';
-		}else{
-			$path = '';
-		}
-	?>
+<?php
+if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.0.0.1') {
+	$path = '/bmc/public';
+} else {
+	$path = '';
+}
+?>
 <div class="help_info">
-	<a class="help-icon" data-toggle="modal" data-target="#helpModal">
-		<span class="icon-question" aria-hidden="true"></span>
+	<a class="help-icon" data-toggle="modal" data-target="#helpModal"> <span
+		class="icon-question" aria-hidden="true"></span>
 	</a>
 </div>
 <div class="container">
-	<div class=" col-md-12 col-sm-12 col-xs-12">
-	  <h1><?php print $project_name;;?></h1>
-	  <h4>View, add and edit the Business Models of this Project.</h4>
-	</div>
-	<div class="divider_style_1"></div>
-	<div class="row" style="margin-top: 10px;">
-		<div class="col-md-12 col-xs-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<b>All BMC's of <?php print $project_name;?></b>
-				</div>
-				<div class="panel-body">
-
-					<!-- Team Member Table -->
-
-					<div class="panel panel-default" style="text-align: center;">
-						<div class="row table_head">
-							<div class="col-md-2 col-sm-12 col-xs-12">Title</div>
-							<div class="col-md-1 col-sm-6 col-xs-6">Status</div>
-							<div class="col-md-1 col-sm-6 col-xs-6">Version</div>
-							<div class="col-md-2 col-sm-6 col-xs-6">Created at</div>
-							<div class="col-md-2 col-sm-6 col-xs-6">Updated at</div>
-							<div class="col-md-2 col-sm-6 col-xs-6">Tools</div>
-							<div class="col-md-2 col-sm-6 col-xs-6">Business Models</div>
-						</div>
-
-					  	<?php
-								foreach ( $bmcs as $bmc ) {
-									
-									$created_at = explode(' ', $bmc["created_at"]);
-									$created_at_date = $created_at[0];
-									$created_at_time = $created_at[1];
-									
-									$updated_at = explode(' ', $bmc["updated_at"]);
-									$updated_at_date = $updated_at[0];
-									$updated_at_time = $created_at[1];
-									
-									$new_bmc_view = true;
-									$posturl = $bmc ["id"];
-									
-									print '<div class="row table_body" style="text-align:center;">
-											<div class="col-md-2 col-sm-12 col-xs-12">' . $bmc ["title"] . '</div>
-											<div class="col-md-1 col-sm-6 col-xs-6">';
-									switch ($bmc ["status"]) {
-										case 'inWork' :
-											print '<button type="button" class="btn btn-warning showBMCStatus disabled">unclear</button>';
-											break;
-										case 'approved' :
-											print '<button type="button" class="btn btn-success showBMCStatus disabled">validated</button>';
-											break;
-										case 'rejected' :
-											print '<button type="button" class="btn btn-danger showBMCStatus disabled">invalidated</button>';
-											break;
-									}
-									print '		</div>
-											<div class="col-md-1 col-sm-6 col-xs-6" style="height: 35px;">' . $bmc ["version"] . '</div>
-											<div class="col-md-2 col-sm-6 col-xs-6">' . $created_at_date .', '.$created_at_time. '</div>
-											<div class="col-md-2 col-sm-6 col-xs-6">' . $updated_at_date .', '.$updated_at_time. '</div>
-											<div class="col-md-2 col-sm-6 col-xs-6">
-										';
-									
-									if ($owner == 0) {
-										print '   
-													<a href="'.$path.'/export/'.$bmc ["id"]. ',' . $project_id.',0"">
-															<span class="glyphicon glyphicon-export" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="export"/>
-													</a> 	
-												';
-									} else {
-										print '
-													<a href="'.$path.'/bmc/edit/' . $bmc ["id"] . ',1,showBMCs">
-															<span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/>
-													</a>   
-													<a href="'.$path.'/bmc/copyBmc/' . $bmc ["id"] . ',' . $project_id . ',1,showBMCs">
-															<span class="glyphicon glyphicon-file" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="duplicate"/>
-													</a>   
-													<a href="'.$path.'/export/'.$bmc ["id"]. ',' . $project_id.',1,showBMCs">
-															<span class="glyphicon glyphicon-export" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="export"/>
-													</a> 
-													<a data-toggle="modal" data-target="#deleteModal' . $bmc ['id'] . '">
-															<span class="glyphicon glyphicon-trash" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/>
-													</a>
-												';
-									}
-									
-									print '		</div>
-											<div class="col-md-2 col-sm-6 col-xs-6">';
-												$temp_status;
-												
-												if ($bmc ["status"] == 'inWork') {
-													$temp_status = 1;
-												} elseif ($bmc ["status"] == 'approved') {
-													$temp_status = 2;
-												} elseif ($bmc ["status"] == 'rejected') {
-													$temp_status = 3;
-												}
-												print '<a href="'.$path.'/bmc/viewBMC/' . $bmc ["id"] . ',' . $project_id . ',' . $temp_status . ',' . $owner . ',showBMCs"><button type="button" class="btn btn-primary btn-secundar">Show Model</button></a>';
-								print '		</div>
-										</div>';
-									
-									print '
-					  					<div class="modal fade" id="deleteModal' . $bmc ["id"] . '" tabindex="-1" role="dialog">
-										  <div class="modal-dialog delete" role="document">
-										    <div class="modal-content delete col-md-12">
-										      <div class="modal-header col-md-12">
-										        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										        <h4 class="modal-title">Do you want to delete ' . $bmc ["title"] . '?</h4>
-										      </div>
-										      <div class="modal-footer delete col-md-12">
-									      		<div class="col-md-6"><a href="'.$path.'/bmc/delete/' . $bmc ["id"] . ',' . $project_id . ',1,showBMCs"><button type="button" class="btn btn-primary btn-lg">Yes</button></a></div>
-								  				<div class="col-md-6"><button type="button" class="btn btn-default btn-lg" data-dismiss="modal">No</button></div>
-										      </div>
-										    </div>
-										  </div>
-										</div>
-					  				';
-								}
-								?>   	
-					</div>
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<br>
-						<?php
-						if ($owner == 1) {
-							print '<a href="'.$path.'/bmc/create/' . $project_id . ',' . $owner . ',showBMCs"><button type="button" class="btn btn-primary">New Model</button></a>';
-						}
-						?>
-						<a href="{{ url('/projects') }}"><button type="button" class="btn btn-primary btn-secundar">Back to Projects</button></a>
-					</div>
-				</div>
+	<!-- new render -->
+	<div class="row no_margin">
+		<div class="col-md-6 col-sm-6 col-xs-6">
+			<h1><?php echo $project_name ?><span class="light_color">(<?php if(isset($newget)){ echo count($newget); }?>)</span>
+			</h1>
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-6">
+			<h5 class="participants">Participants</h5><span class="details_myprojects"></span>
+		</div>
+		<div class="col-md-12">
+			<div class="divider_style_2_project"></div>
+		</div>
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="col-md-4">
+				<a href="{{ url('/projects') }}"><button type="button"
+						class="btn btn-primary btn-secundar">Back to Projects</button></a>
 			</div>
+			<div class="col-md-4">
+				<a
+					href="bmc/create/<?php echo $project_id.','.$owner.',showBMCs' ?>"><button
+						type="button" class="btn btn-primary">New BMC</button></a>
+			</div>
+			<div class="col-md-4 sortProject">
+				<h6>Sort by</h6>
+				<select id="custom_menu"
+					custom_menu" class="myProjects selected_sort form-control">
+					<option value="updated_at"
+						<?php echo $sort_field==='updated_at' ? 'selected' : ''?>>Updated</option>
+					<option value="created_at"
+						<?php echo $sort_field==='created_at' ? 'selected' : ''?>>Created</option>
+				</select>
+				<!-- ToDo Icon upload -->
+			</div>
+			<div class="divider_style_2_project"></div>
 		</div>
 	</div>
+	<div class="row no_margin">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="col-md-4">
+				<h5>Title</h5>
+			</div>
+			<div class="col-md-2 show_projects no_padding_right">
+				<h5>Status</h6>
+			</div>
+			<div class="col-md-3">
+				<div class="col-md-12">
+					<h5 class="no_margin_top_bottom">Updated</h5>
+				</div>
+				<div class="col-md-12">
+					<h6 class="no_margin_top_bottom">Created</h6>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<h5>Tools</h5>
+			</div>
+			<div class="divider_style_2_project"></div>
+		</div>
+	</div>
+	<div class="row no_margin extra_padding">
+				<?php if(count($newget) > 0): ?>
+					<?php foreach ($newget as $myProject):	?>
+						<div class="col-md-12 my_project_list">
+			<div class="row">
+				<div class="col-md-4">
+					<h3>{{ $myProject['title'] }}</h3>
+				</div>
+				<div class="col-md-2" style="margin-top: 15px">
+					<div class="label_{{ $myProject['status'] }} label_project no_padding_leftno_margin_left">
+						<h5 class="in_label_project">{{ $myProject['status'] }}</h5>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="col-md-12">
+						<h5 class="no_margin_bottom">{{date('l, d-m-Y | H:m',
+							strtotime($myProject['updated_at'])) }}</h5>
+					</div>
+					<div class="col-md-12">
+						<h6 class="no_margin_top">{{ date('Y-m-d | H:m',
+							strtotime($myProject['created_at'])) }}</h6>
+					</div>
+				</div>
+				<div class="col-md-3 no_padding_right">
+					<?php if ($myProject['status'] == 'inWork') {
+										$temp_status = 1;
+									} elseif ($myProject['status'] == 'approved') {
+										$temp_status = 2;
+									} elseif ($myProject['status'] == 'rejected') {
+										$temp_status = 3;
+								}
+					?>
+					<a href="bmc/edit/{{ $myProject['id'] }},1,showBMCs"> 
+						<span class="edit-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit" />
+					</a>
+					<a href="bmc/copyBmc/{{ $myProject['id'] }},{{$myProject->project->id}},1,showBMCs"> 
+						<span class="edit-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="duplicate" />
+					</a>
+					<a href="export/{{ $myProject['id'] }},{{$myProject->project->id}},1,showBMCs"> 
+						<span class="export-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="export" />
+					</a>
+					<a data-toggle="modal"	data-target="#deleteModal{{ $myProject['id'] }}"> 
+						<span class="delete-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete" />
+					</a>
+					<a class="project_link" style="padding-left:15px" href="/bmc/viewBMC/{{ $myProject['id'] }},{{$myProject->project->id}},{{$temp_status}},1,showBMCs">
+							<button type="button" class="btn btn-primary btn-secundar text-left">View</button>
+					</a>
+				</div>
+				
+			</div>
+		</div>
+				<?php endforeach; ?>
+			<?php endif; ?>
+			<div class="divider_style_1_project"></div>
+	</div>
+
+
+	<!-- end new render -->
 </div>
 
 <!-- Help Modal -->

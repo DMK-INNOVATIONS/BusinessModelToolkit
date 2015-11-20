@@ -155,7 +155,8 @@ icon{
 p{
 	margin: 5px 0 5px 0;
 	font-size: 14px;
-	line-height: 20px; 
+	line-height: 20px;
+	color:#002837; 
 }
 .inside{
 	height: 820px;
@@ -420,6 +421,37 @@ p{
 }
 .icon-question:ACTIVE,.icon-question:FOCUS{
 	background: transparent url("../img/icbt_help_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
+}
+.duplicate-icon{
+	
+	background: transparent url("../img/icbt_duplicate_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
+    color: #dfe4e6;
+    content: "";
+    float: left;
+    font-weight: bold;
+    margin: 10px 10px 15px 0;
+    padding: 15px;
+}
+.duplicate-icon:HOVER{
+	background: transparent url("../img/icbt_duplicate_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
+}
+.duplicate-icon:ACTIVE{
+	background: transparent url("../img/icbt_duplicate_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
+}
+.export-icon{
+	background: transparent url("../img/icbt_export_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
+    color: #dfe4e6;
+    content: "";
+    float: left;
+    font-weight: bold;
+    margin: 10px 10px 15px 0;
+    padding: 15px;
+}
+.export-icon:HOVER{
+	background: transparent url("../img/icbt_export_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
+}
+.export-icon:ACTIVE{
+	background: transparent url("../img/icbt_export_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
 }
 .no-paddingleft{
 	padding-left: 0;
@@ -1090,7 +1122,14 @@ h5.no_margin_bottom{
 .no_padding_left{
 	padding-left: 0;
 }
+.no_margin_left{
+	margin-left: 0;
+}
 .no_padding_right{
+	padding-right: 0;
+}
+.no_padding_left_right{
+	padding-left: 0;
 	padding-right: 0;
 }
 .myProjects.selected_sort option {
@@ -1212,4 +1251,8 @@ h5.no_margin_bottom{
 .ui-menu .ui-state-focus:last-child,.ui-state-active:last-child .ui-menu .ui-menu-item:last-child:HOVER,.ui-menu .ui-menu-item:last-child:ACTIVE,.ui-menu .ui-menu-item:last-child:FOCUS{
 	border-bottom-left-radius: 15px !important;
     border-bottom-right-radius: 15px !important;
+}
+h5.participants{
+	float:left;
+	margin-top: 20px;
 }
