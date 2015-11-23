@@ -25,7 +25,7 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default bmc_view_background">
-				<div class="panel-heading bmc_view_Header">
+				<div class="panel-heading bmc_view_Header no_padding_right">
 					<div class="col-md-3 col-sm-4">
 						<?php
 						if ($view_type == 'models') {
