@@ -163,7 +163,8 @@ p{
 }
 .inside .col-md-2-4,.col-lg-2-4,.col-sm-2-4{
 	padding-left: 0;
-	padding-right: 10px;
+	padding-right: 0;
+	
 }  
 .primary h2{
 	margin: 10px 0;
@@ -213,13 +214,13 @@ p{
     overflow: visible;
     position: absolute;
     /* Firefox */
-	width: -moz-calc(100% - 120px);
+	width: -moz-calc(100% - 90px);
 	/* WebKit */
-	width: -webkit-calc(100% - 120px);
+	width: -webkit-calc(100% - 90px);
 	/* Opera */
-	width: -o-calc(100% - 120px);
+	width: -o-calc(100% - 90px);
 	/* Standard */
-	width: calc(100% - 120px);
+	width: calc(100% - 90px);
 }
 
 .bmc_view_Header.splitline{
@@ -1259,3 +1260,65 @@ h5.participants{
 .label_status_bmc{
 	margin-top: -2px;
 }
+/****************Canvas*************************/
+.canvas_box .panel-body.primary{
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 10px;
+}
+.status_project{
+	float:left;
+	background: #dfe4e6 url("../img/icbt_dropdown_sprite_3vertikal_30x30.png") no-repeat scroll 105px 0px;
+	border:1px solid #bfc9cd;
+	border-radius:15px; 
+}
+.status_project:HOVER{
+	background: #ffffff url("../img/icbt_dropdown_sprite_3vertikal_30x30.png") no-repeat scroll 105px -30px;
+    border: 1px solid #5ac8f0;
+    color: #5ac8f0;
+    cursor: pointer;
+}
+.status_project:ACTIVE{
+	background: #eff1f2 url("../img/icbt_dropdown_sprite_3vertikal_30x30.png") no-repeat scroll 105px -60px;
+    border: 1px solid #7f939b;
+    cursor: pointer;
+}
+
+.label_status_project::before{
+   	border: 2px solid white;
+    border-radius: 5px;
+    box-shadow: 0 0 0 1pt #dfe4e6;
+    content: "";
+    display: inline-block;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 11px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;	
+}
+
+.label_status_project.label_rejected::before{
+	background-color: #f15a24;
+}
+.label_status_project.label_inWork::before{
+	background-color: #fbb03b;
+}
+.label_status_project.label_approved::before{
+	background-color: #39b54a;
+}
+h5.text_status_bmc{
+	float: left;
+    margin-left: 0;
+    padding-right: 39px;
+    padding-left: 0;
+    width: 90px;
+}
+h5.text_status_bmc:HOVER {
+	color: #5ac8f0;
+}
+h5.text_status_bmc:ACTIVE {
+	color: #002837;
+}
+
