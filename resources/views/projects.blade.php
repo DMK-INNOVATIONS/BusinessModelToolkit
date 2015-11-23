@@ -174,7 +174,7 @@
 								  	</a>	
 							</div>
 							<?php if(count($my->bmcs)>0):?>
-							<div class="divider_style_1_project"></div>
+							<div class="divider_style_1_project_inside"></div>
 							<!-- <div class="divider_style_2_project"></div> -->
 							<?php endif;?>
 							</div>

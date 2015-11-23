@@ -1052,7 +1052,7 @@ a.bmc_link{
     margin-bottom: 5px;
     margin-top: 5px;
     padding-bottom: 5px;
-    width: 99%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -1095,6 +1095,16 @@ h5.bmc_list{
 	margin-left: 25px;
 }
 .divider_style_1_project{
+	border-bottom: 1px solid #7f939b;
+    clear: both;
+    margin-top: 10px;
+    margin-bottom:10px;    
+    padding-bottom: 10px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.divider_style_1_project_inside{
 	border-bottom: 1px solid #7f939b;
     clear: both;
     margin-top: 10px;
