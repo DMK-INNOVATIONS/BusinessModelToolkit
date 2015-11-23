@@ -174,7 +174,8 @@
 								  	</a>	
 							</div>
 							<?php if(count($my->bmcs)>0):?>
-							<div class="divider_style_2_project"></div>
+							<div class="divider_style_1_project"></div>
+							<!-- <div class="divider_style_2_project"></div> -->
 							<?php endif;?>
 							</div>
 						<?php $count=0;?>
@@ -197,9 +198,9 @@
 									  		<button type="button" class="btn btn-primary btn-secundar">View </button>
 									  	</a>
 									</div>
-									<?php if(count($my->bmcs)>$count):?>	
-										<div class="divider_style_3"></div>
-									<?php endif;?>
+									 <?php if(count($my->bmcs)>$count):?>
+										 <div class="divider_style_3"></div>
+									 <?php endif;?>
 								 </div>
 							<?php endforeach; ?>
 						<?php endif;?>

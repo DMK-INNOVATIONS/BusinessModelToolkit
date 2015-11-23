@@ -130,25 +130,16 @@ class ProjectsController extends Controller {
 	
 	public function getShowBMCs($id) {
 		$inserts = explode ( ",", $id );
-		$project_id=$inserts[0];
-		$sort_field=Input::get('sort_field');
+		$sort=Input::get('sort_field');
+		$project=Input::get('project_id');
+		
+		$sort_field=isset($sort) ? $sort : 'updated_at';
+		$project_id=isset($project) ? $project :$inserts[0];
 		$user_id=Auth::user ()->id;
-		/*
-		 $projects=Project::with([
-				'members'=> function($q) use( $user_id) {$q->where('user_id','=',$user_id)->orderBy('created_at', 'desc');},
-				'bmcs'=> function($p) use( $project_id) {$p->where('project_id','=',$project_id)->orderBy('created_at', 'desc');},
-			]
-		)
-		->where ( 'assignee_id', $user_id )
-		->orderBy($sort_field ? $sort_field : 'updated_at', 'asc')
-		->get();
-		*/
-		$projects=BMC::with([
-				'project'=> function($q) use( $project_id) {$q->where('id','=',$project_id)->orderBy('created_at', 'desc');},
-				]
-		)
+		
+		$projects=BMC::with('project')
 		->where ( 'project_id', $project_id )
-		->orderBy($sort_field ? $sort_field : 'updated_at', 'asc')
+		->orderBy($sort_field, 'asc')
 		->get();
 		$myprojects = array ();
 		foreach ( $projects as $project  ) {
@@ -165,21 +156,32 @@ class ProjectsController extends Controller {
 	 * @return \Illuminate\View\View
 	 */
 	public function showBMCs($id) {
+		$sort_field=Input::get('sort_field');
+		$project_id=Input::get('project_id');
 		$inserts = explode ( ",", $id );
 		$sort_field=Input::get('sort_field');
-		$project_id = $inserts [0];
-		$project_name = $this->getProjectName ( $id );
-		$allProjectBMCs = $this->getAllProjectBMCs ( $id );
-		$getMyProjects = $this->getMyProjects ();
-		$newget=$this->getShowBMCs($project_id);
-		return view ( 'showBMCs', [ 
-				'bmcs' => $allProjectBMCs,
+		$project_id = isset($project_id) ? $project_id :$inserts [0];
+				
+		if(Request::ajax()) {
+			$view= view ( 'showBMCs', [ 
+				'bmcs' => $this->getAllProjectBMCs ( $id ),
 				'project_id' => $project_id,
-				'project_name' => $project_name,
-				'owner' => $inserts [1],
-				'myProjects' => $getMyProjects,
-				'newget'=>$newget,
-				'sort_field'=>'',
+				'project_name' => $this->getProjectName ( $id ),
+				'owner' => $project_id,
+				'myProjects' => $this->getMyProjects (),
+				'newget'=>$this->getShowBMCs($project_id),
+				'sort_field'=>isset($sort_field) ? $sort_field :'',
+			])->renderSections();
+			return $view;
+		}
+		return view ( 'showBMCs', [ 
+				'bmcs' => $this->getAllProjectBMCs ( $id ),
+				'project_id' => $project_id,
+				'project_name' => $this->getProjectName ( $id ),
+				'owner' => $project_id,
+				'myProjects' => $this->getMyProjects (),
+				'newget'=>$this->getShowBMCs($project_id),
+				'sort_field'=>isset($sort_field) ? $sort_field :'',
 				 
 		] );
 	}

@@ -995,7 +995,7 @@ div.viewBMC_body .panel-default{
     float: left;
     margin-bottom: 10px;
     margin-left: 15px;
-    margin-top: 15px;
+    margin-top: 10px;
     padding: 15px;
 }
 .details_myprojects:HOVER{
@@ -1030,11 +1030,9 @@ div.viewBMC_body .panel-default{
 }
 a.project_link{
 	float: left;
-	margin-top: 5px;
 }
 a.bmc_link{
 	float: left;
-	margin-top: -5px;
 }
 .show_projects ul.my_projects{
 	padding-left: 4px;
@@ -1050,7 +1048,8 @@ a.bmc_link{
 .divider_style_2_project {
 	border-bottom: 1px solid #bfc9cd;
     clear: both;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
     padding-bottom: 5px;
     width: 99%;
     margin-left: auto;
@@ -1063,6 +1062,7 @@ a.bmc_link{
 	float: left;
 	margin-left: 15px;
 	padding-left: 15px;
+	margin-top: 5px;
 }
 .label_project::before {
     /*background-color: red;*/
@@ -1097,7 +1097,7 @@ h5.bmc_list{
 	border-bottom: 1px solid #7f939b;
     clear: both;
     margin-top: 10px;
-    margin-bottom:15px;    
+    margin-bottom:10px;    
     padding-bottom: 10px;
     width: 99%;
     margin-right: auto;
@@ -1254,5 +1254,8 @@ h5.no_margin_bottom{
 }
 h5.participants{
 	float:left;
-	margin-top: 20px;
+	margin-top: 15px;
+}
+.label_status_bmc{
+	margin-top: -2px;
 }
