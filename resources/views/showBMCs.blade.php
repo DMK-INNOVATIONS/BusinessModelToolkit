@@ -33,7 +33,7 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 				</div>
 				<div class="col-md-4">
 					<a
-						href="bmc/create/<?php echo $project_id.','.$owner.',showBMCs' ?>"><button
+						href="/bmc/create/<?php echo $project_id.','.$owner.',showBMCs' ?>"><button
 							type="button" class="btn btn-primary">New BMC</button></a>
 				</div>
 				<div class="col-md-4 sortProject">
