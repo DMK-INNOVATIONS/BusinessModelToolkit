@@ -9,8 +9,8 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 ?>
 <div id="project_list">
 	<div class="help_info">
-		<a class="help-icon" data-toggle="modal" data-target="#helpModal"> 
-			<span class="icon-question" aria-hidden="true"></span>
+		<a class="help-icon" data-toggle="modal" data-target="#helpModal"> <span
+			class="icon-question" aria-hidden="true"></span>
 		</a>
 	</div>
 	<div class="container">
@@ -21,7 +21,8 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 				</h1>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-6">
-				<h5 class="participants">Participants</h5><span class="details_myprojects"></span>
+				<h5 class="participants">Participants</h5>
+				<span class="details_myprojects"></span>
 			</div>
 			<div class="col-md-12">
 				<div class="divider_style_2_project"></div>
@@ -38,7 +39,8 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 				</div>
 				<div class="col-md-4 sortProject">
 					<h6>Sort by</h6>
-					<select id="custom_menu" class="myProjects selected_sort form-control">
+					<select id="custom_menu"
+						class="myProjects selected_sort form-control">
 						<option value="updated_at"
 							<?php echo $sort_field==='updated_at' ? 'selected' : ''?>>Updated</option>
 						<option value="created_at"
@@ -55,7 +57,10 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 					<h5>Title</h5>
 				</div>
 				<div class="col-md-2 show_projects no_padding_right">
-					<h5>Status</h6>
+					<h5>
+						Status
+						</h6>
+				
 				</div>
 				<div class="col-md-3">
 					<div class="col-md-12">
@@ -80,7 +85,8 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 						<h3>{{ $myProject['title'] }}</h3>
 					</div>
 					<div class="col-md-2" style="margin-top: 15px">
-						<div class="label_{{ $myProject['status'] }} label_project no_padding_left no_margin_left label_status_bmc">
+						<div
+							class="label_{{ $myProject['status'] }} label_project no_padding_left no_margin_left label_status_bmc">
 							<h5 class="in_label_project">{{ $myProject['status'] }}</h5>
 						</div>
 					</div>
@@ -95,31 +101,37 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 						</div>
 					</div>
 					<div class="col-md-3 no_padding_right">
-						<?php if ($myProject['status'] == 'inWork') {
-											$temp_status = 1;
-										} elseif ($myProject['status'] == 'approved') {
-											$temp_status = 2;
-										} elseif ($myProject['status'] == 'rejected') {
-											$temp_status = 3;
-									}
-						?>
-						<a href="bmc/edit/{{ $myProject['id'] }},1,showBMCs"> 
-							<span class="edit-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit" />
-						</a>
-						<a href="bmc/copyBmc/{{ $myProject['id'] }},{{$myProject->project->id}},1,showBMCs"> 
-							<span class="edit-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="duplicate" />
-						</a>
-						<a href="export/{{ $myProject['id'] }},{{$myProject->project->id}},1,showBMCs"> 
-							<span class="export-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="export" />
-						</a>
-						<a data-toggle="modal"	data-target="#deleteModal{{ $myProject['id'] }}"> 
+						<?php
+							
+if ($myProject ['status'] == 'inWork') {
+								$temp_status = 1;
+							} elseif ($myProject ['status'] == 'approved') {
+								$temp_status = 2;
+							} elseif ($myProject ['status'] == 'rejected') {
+								$temp_status = 3;
+							}
+							?>
+						<a href="/bmc/edit/{{ $myProject['id'] }},1,showBMCs"> <span
+							class="edit-icon no_background" aria-hidden="true"
+							data-toggle="tooltip" data-placement="bottom" title="edit" />
+						</a> <a
+							href="/bmc/copyBmc/{{ $myProject['id'] }},{{$myProject->project->id}},1,showBMCs">
+							<span class="duplicate-icon no_background" aria-hidden="true"
+							data-toggle="tooltip" data-placement="bottom" title="duplicate" />
+						</a> <a
+							href="/export/{{ $myProject['id'] }},{{$myProject->project->id}},1,showBMCs">
+							<span class="export-icon no_background" aria-hidden="true"
+							data-toggle="tooltip" data-placement="bottom" title="export" />
+						</a> 
+						<a data-toggle="modal" data-target="#deleteModal{{ $myProject['id'] }}">
 							<span class="delete-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete" />
-						</a>
-						<a class="project_link" style="padding-left:15px" href="/bmc/viewBMC/{{ $myProject['id'] }},{{$myProject->project->id}},{{$temp_status}},1,showBMCs">
-								<button type="button" class="btn btn-primary btn-secundar text-left">View</button>
+						</a> 
+						<a class="project_link" style="padding-left: 15px" href="/bmc/viewBMC/{{ $myProject['id'] }},{{$myProject->project->id}},{{$temp_status}},1,showBMCs">
+							<button type="button"
+								class="btn btn-primary btn-secundar text-left">View</button>
 						</a>
 					</div>
-					
+
 				</div>
 			</div>
 					<?php endforeach; ?>
@@ -130,6 +142,29 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 	</div>
 
 	<!-- Help Modal -->
+	<div class="modal fade" id="deleteModal{{ $myProject['id'] }}" tabindex="-1" role="dialog">
+		<div class="modal-dialog delete" role="document">
+			<div class="modal-content delete col-md-12">
+				<div class="modal-header col-md-12">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Do you want to delete {{$myProject['title']}}  </h4>
+				</div>
+				<div class="modal-footer delete col-md-12">
+					<div class="col-md-6">
+						<a href="/bmc/delete/{{ $myProject['id'] }},{{$myProject->project->id }},1,showBMCs"><button
+								type="button" class="btn btn-primary btn-lg">Yes</button></a>
+					</div>
+					<div class="col-md-6">
+						<button type="button" class="btn btn-primary btn-secundar" data-dismiss="modal">No</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="modal fade" id="helpModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
@@ -150,14 +185,14 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 					<div class="col-md-11">This View contains all Model of your choosen
 						project.</div>
 					</p>
-	
+
 					<p>
 						<span class="glyphicon glyphicon-hand-right col-md-1"
 							aria-hidden="true"></span>
 					
 					
-					<div class="col-md-11">You can use the following Tools on the Models
-						of this Project:</div>
+					<div class="col-md-11">You can use the following Tools on the
+						Models of this Project:</div>
 					</p>
 				<?php
 				if ($owner == 0) {
