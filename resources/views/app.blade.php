@@ -37,47 +37,49 @@
 				</button>
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<div class="col-md-3">
-					<a class="navbar-brand" href="http://app.toolkit.builders"><img alt="DMK E-Bussiness" src="{{ asset('img/toolkit_builders_logo.png') }}"></a>
-				</div>
-				<div class="col-md-6">
-				<ul class="nav navbar-nav">
-					<li class="dropdown_project {{{ (Request::is('projects') ? 'active' : '') }}}">
-						<h3 class="header_drop">
-							<a href="{{ url('/projects') }}">Projects</a>
-						</h3>
-						<div class="divider_vertical"></div>
-						@if(isset($myProjects))
-						 <button type="button" id="dropdown_navbar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
-						  <ul class="dropdown-menu" aria-labelledby="dropdown_navbar">
-						    @foreach($myProjects as $p)
-						      <li><a href="/projects/showBMCs/{{ $p['id'] }},1">{{ $p['title'] }}</a></li>
-						    @endforeach
-						  </ul>
-						@endif
-					</li>
-<!--					<li class="{{{ (Request::is('bmc/models') ? 'active ' : '') }}}" ><h3><a href="{{ url('/bmc/models') }}">Models</a></h3></li>-->
-<!-- 					<li><a href="{{ url('/cSegments') }}">Customer Segments</a></li> -->
-					<li class="{{{ (Request::is('persona') ? 'active' : '') }}}" ><h3><a href="{{ url('/persona') }}">Personas</a></h3></li>
-					<li class="{{{ (Request::is('team') ? 'active' : '') }}}" ><h3><a href="{{ url('/team') }}">Team</a></h3></li>
-				</ul>
-				</div>
-				<div class="col-md-3">
-				<ul class="nav navbar-nav navbar-right">
-					@if (Auth::guest())
-						<li><a href="{{ url('/auth/login') }}">Login</a></li>
-						<li><a href="{{ url('/auth/register') }}">Register</a></li>
-					@else
-						<li class="dropdown">
-							<a class="loggin" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><h3>You are logged in as {{ Auth::user()->name }} </h3><span class="icon_more"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/profile') }}">User Profile</a></li>
-								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
-							</ul>
+				<div class="row">
+					<div class="col-md-4 col-sm-6 col-xs-12 header_nav">
+						<a class="navbar-brand" href="http://app.toolkit.builders"><img class="img-responsive" alt="DMK E-Bussiness" src="{{ asset('img/toolkit_builders_logo.png') }}"></a>
+					</div>
+					<div class="col-md-5 col-sm-6 col-xs-6">
+					<ul class="nav navbar-nav">
+						<li class="dropdown_project {{{ (Request::is('projects') ? 'active' : '') }}}">
+							<h3 class="header_drop">
+								<a href="{{ url('/projects') }}">Projects</a>
+							</h3>
+							<div class="divider_vertical"></div>
+							@if(isset($myProjects))
+							 <button type="button" id="dropdown_navbar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
+							  <ul class="dropdown-menu" aria-labelledby="dropdown_navbar">
+							    @foreach($myProjects as $p)
+							      <li><a href="/projects/showBMCs/{{ $p['id'] }},1">{{ $p['title'] }}</a></li>
+							    @endforeach
+							  </ul>
+							@endif
 						</li>
-					@endif
-				</ul>
-				</div>
+	<!--					<li class="{{{ (Request::is('bmc/models') ? 'active ' : '') }}}" ><h3><a href="{{ url('/bmc/models') }}">Models</a></h3></li>-->
+	<!-- 					<li><a href="{{ url('/cSegments') }}">Customer Segments</a></li> -->
+						<li class="{{{ (Request::is('persona') ? 'active' : '') }}}" ><h3><a href="{{ url('/persona') }}">Personas</a></h3></li>
+						<li class="{{{ (Request::is('team') ? 'active' : '') }}}" ><h3><a href="{{ url('/team') }}">Team</a></h3></li>
+					</ul>
+					</div>
+					<div class="col-md-3 col-sm-12 header_nav col-xs-6">
+					<ul class="nav navbar-nav navbar-right">
+						@if (Auth::guest())
+							<li><a href="{{ url('/auth/login') }}">Login</a></li>
+							<li><a href="{{ url('/auth/register') }}">Register</a></li>
+						@else
+							<li class="dropdown">
+								<a class="loggin" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><h3 class="logged">You are logged in as {{ Auth::user()->name }} </h3><span class="icon_more"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="{{ url('/profile') }}">User Profile</a></li>
+									<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
+								</ul>
+							</li>
+						@endif
+					</ul>
+					</div>
+				</div>	
 			</div>
 		</div>
 		<div class="divider_style_2 no_space"></div>

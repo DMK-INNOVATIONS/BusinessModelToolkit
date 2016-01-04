@@ -525,6 +525,9 @@ p{
 .extra_padding .divider_style_1{
 	margin: 0 0 25px 0;
 }
+.header_nav{
+	height: 60px;
+}
 /***********************************************/
 /********* Navigation***************************/
 /***********************************************/
@@ -581,6 +584,8 @@ li.dropdown_project.active {
    	float: left;
     margin-top: 10px;
     padding: 15px;
+    position: absolute;
+    right: 15px;
 }
 .dropdown span.icon_more:HOVER{
 	background: transparent url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
@@ -659,6 +664,36 @@ button#dropdown_navbar:ACTIVE{
 .navbar-default .navbar-nav > .open > a:focus{
 	background-color: #FFFFFF;
 	outline: none;	
+}
+h3.logged{
+	margin-right: 35px;
+}
+@media only screen and (max-width: 1000px) {
+	.dropdown_project  #dropdown_navbar, .divider_vertical{
+		display: none;
+	}
+	li.dropdown_project {
+      display: block;
+      height: 0;
+      padding-right: 0;
+	}
+   .navbar-nav h3 a {
+   		float:left;
+   		padding: 0 5px;
+	}
+	.navbar-nav .header_drop a {
+   		margin-right: 5px;
+    	padding-left: 0;
+    	padding-right: 0;
+	}
+	.loggin h3 {
+    	float: right;
+    }
+    .dropdown.open .dropdown-menu{
+    	height: auto;
+    	max-height: 200px;
+    	overflow-x: hidden;
+    }
 }
 /***********************************************/
 /********* Projects ****************************/
