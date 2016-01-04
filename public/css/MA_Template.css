@@ -1331,4 +1331,19 @@ h5.text_status_bmc:HOVER {
 h5.text_status_bmc:ACTIVE {
 	color: #002837;
 }
+.primary.grey{
+	background-color: #dfe4e6;
+}
+.primary.blue{
+	background-color: #b4d4f9;
+}
+.primary.red{
+	background-color: #ff8678;
+}
+.primary.yellow{
+	background-color: #fff974;
+}
+.primary.green{
+	background-color: #b9f9b4;
+}
 

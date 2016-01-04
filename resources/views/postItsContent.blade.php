@@ -16,7 +16,7 @@
 			if($bmc_postIt['canvas_box_id']==$boxId){
 				$empty = false;
 				print '	
-						<div class="panel-body primary">
+						<div class="panel-body primary '.$bmc_postIt['color'].'">
 							<h4>'.$bmc_postIt['title'].'</h4>
 							<p>'.$bmc_postIt['content'].'</p>
 							<a class="edit-icon" href="#editPostItModal'.$boxId.$bmc_postIt['id'].'" role="button" data-toggle="modal"></a>
@@ -86,14 +86,7 @@
 						      </div>
 						      <div class="modal-body">
 						        <div class="row">
-							    	<div class="col-md-4 Post-It_Image">
-							    		<div class="row">
-							    			<div class="col-md-12">
-												<img src="'.$path.'/img/Postit_gelb.jpg">
-											</div>
-										</div>
-							    	</div>
-						 	 		<div class="col-md-8">
+						 	 		<div class="col-md-12">
 										<form class="form-horizontal" role="form" method="POST" action="'.$path.'/bmc/savePostIt/'.$boxId.','.$bmc_id.','.$project_id.','.$status.','.$bmc_postIt['id'].','.$owner.',viewBMC">
 											<input type="hidden" name="_token" value="'. csrf_token() .'">
 									
@@ -125,7 +118,24 @@
 												    print '
 												  </select>
 												</div>
-											</div>
+											</div>';
+											print '
+											<div class="form-group">
+											 	<label for="test_status" class="col-md-4 control-label">Background Color</label>
+											 	<div class="col-md-8">
+												  <select class="form-control" id="color" name="color"> <!-- todo get Color from Db-->
+												';	
+													print '<option value="blue"';isset($bmc_postIt['color']) && $bmc_postIt['color'] ==="blue" ? print 'selected="selected"' : ''; print '>blue</option>';
+													print '<option value="red"';isset($bmc_postIt['color']) && $bmc_postIt['color'] ==="red" ? print 'selected="selected"' : ''; print '>red</option>';
+													print '<option value="yellow"';isset($bmc_postIt['color']) && $bmc_postIt['color'] ==="yellow" ? print 'selected="selected"' : ''; print '>yellow</option>';
+													print '<option value="green"';isset($bmc_postIt['color']) && $bmc_postIt['color'] ==="green" ? print 'selected="selected"' : ''; print '>green</option>';
+													print '<option value="grey"';isset($bmc_postIt['color']) && $bmc_postIt['color'] ==="grey" ? print 'selected="selected"' : ''; print '>grey</option>';
+													
+											print '</select>
+												</div>
+											</div>						
+											';
+											print '
 											<div class="form-group">
 												<label class="col-md-4 control-label">Notice</label>
 												<div class="col-md-8">

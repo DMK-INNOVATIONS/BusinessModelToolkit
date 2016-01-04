@@ -52,6 +52,7 @@
       </div>
       <div class="modal-body">
         <div class="row">
+	    	<!-- 
 	    	<div class="col-md-4 Post-It_Image">
 	    		<div class="row">
 	    			<div class="col-md-12">
@@ -59,7 +60,8 @@
 					</div>
 				</div>
 	    	</div>
- 	 		<div class="col-md-8">
+	    	 -->
+ 	 		<div class="col-md-12">
 				<form class="form-horizontal" role="form" method="POST" action="<?php print $path."/bmc/savePostIt/".$boxId.','.$bmc_id.','.$project_id.','.$status.','.$post_it_id.','.$owner.',viewBMC'; ?>">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			
@@ -85,6 +87,20 @@
 						  </select>
 						</div>
 					</div>
+					
+					<div class="form-group">
+					 	<label for="test_status" class="col-md-4 control-label">Background Color</label>
+					 	<div class="col-md-8">
+						  <select class="form-control" id="color" name="color">
+						    <option value="blue">blue</option>
+						    <option value="red">red</option>
+						    <option value="yellow">yellow</option>
+						    <option value="green">green</option>
+						    <option value="grey">grey</option>
+						  </select>
+						</div>
+					</div>
+					
 					<div class="form-group">
 						<label class="col-md-4 control-label">Notice</label>
 						<div class="col-md-8">

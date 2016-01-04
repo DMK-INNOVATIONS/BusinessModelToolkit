@@ -38,7 +38,7 @@
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<div class="col-md-3">
-					<a class="navbar-brand" href="http://bmcounselor.project.dmknet.de/bmc"><img alt="DMK E-Bussiness" src="{{ asset('img/toolkit_builders_logo.png') }}"></a>
+					<a class="navbar-brand" href="http://app.toolkit.builders"><img alt="DMK E-Bussiness" src="{{ asset('img/toolkit_builders_logo.png') }}"></a>
 				</div>
 				<div class="col-md-6">
 				<ul class="nav navbar-nav">

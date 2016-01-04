@@ -375,6 +375,8 @@ class BmcController extends Controller {
 		
 		$title = $_POST ["title"];
 		$status = $_POST ["status"];
+		$color = $_POST ["color"];
+		
 		
 		if ($title == '') {
 			print 'falsch';
@@ -402,7 +404,7 @@ class BmcController extends Controller {
 			
 			$postIt->notice = $_POST ["notice"];
 			$postIt->sort = $sort_anz + 1;
-			$postIt->color = '';
+			$postIt->color = $color;
 			$postIt->canvas_box_id = $canvas_box_id;
 			$postIt->bmc_id = $bmc_id;
 			

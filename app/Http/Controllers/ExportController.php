@@ -130,6 +130,29 @@ class ExportController extends Controller {
 		return $color;
 	}
 	
+	public function getColorBmc($colors){
+		$color = '';
+		switch ($colors) {
+			case 'blue':
+				$color = '#b4d4f9,#9C6619,#9C6619'; //background-color,border-color,color
+				break;
+			case 'red':
+				$color = '#ff8678,#1E781E,#1E781E';
+				break;
+			case 'yellow':
+				$color = '#fff974,#83110E,#83110E';
+				break;
+			case 'green':
+				$color = '#b9f9b4,#83110E,#83110E';
+				break;
+			case 'grey':
+				$color = '#dfe4e6,#83110E,#83110E';
+				break;
+		}
+	
+		return $color;
+	}
+	
 	public function getContent($id){
 		$inserts = explode(",", $id);
 		
@@ -140,6 +163,7 @@ class ExportController extends Controller {
 		$notices = $this->getBMCNotices($bmc_id);
 		$personas = $this->getBMCPersonas($bmc_id);
 		
+		/*
 		if($canvas_box_id == 7){
 			$content = '<div style="background-color:#ffffff; padding:5px; margin: 5px; width:'.$box_width.';"></div>';
 			foreach($personas as $persona){
@@ -152,11 +176,12 @@ class ExportController extends Controller {
 				}
 			}
 		}else{
-			$content = '<div style="background-color:#ffffff; padding:5px; margin: 5px; width:'.$box_width.';"></div>'; //Inhalt wenn keine Notiz vorhanden
-			
+		*/
+		$content = '<div style="background-color:#ffffff; padding:5px; margin: 5px; width:'.$box_width.';"></div>'; //Inhalt wenn keine Notiz vorhanden
 			foreach($notices as $notice){
 				if($canvas_box_id == $notice['canvas_box_id']){
-					$status_colors = $this->getStatusColor($notice['status']);
+					//$status_colors = $this->getStatusColor($notice['status']);
+					$status_colors = isset($notice['color']) && !empty($notice['color']) ? $this->getColorBmc($notice['color']) : "#dfe4e6,#83110E,#83110E";
 					$colors = explode(",", $status_colors);
 					
 					$backgroundColor = $colors[0];
@@ -172,7 +197,7 @@ class ExportController extends Controller {
 					}	
 				}
 			}
-		}
+		/*} else */
 		return $content;
 	}
 	
