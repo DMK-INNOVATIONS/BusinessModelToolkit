@@ -35,11 +35,11 @@
 					<div class="col-md-2 col-md-offset-1">
 						<?php if(isset($persona)) : ?>
 							<a class="thumbnail">
-						      <img src="{{ $persona['avatarImg'] }}" alt="avatarImg">
+						      <img class="avatar" src="{{ $persona['avatarImg'] }}" alt="avatarImg">
 						    </a>
 						<?php else : ?>
 							<div class="thumbnail">
-						      <img src="{{ asset('img/male_persona_default_bg.png') }}" alt="avatarImg"> <!-- noch gegen default bild austauschen -->
+						      <img class="avatar" src="{{ asset('img/male_persona_default_bg.png') }}" alt="avatarImg"> <!-- noch gegen default bild austauschen -->
 						    </div>
 						<?php endif; ?>
 					</div>
@@ -202,4 +202,20 @@
 		</div>
 	</div>
 </div>
+<script>
+console.log("test");
+$("#gender").change(function() {
+    console.log($(this).val());
+    var avatar=$(this).val();
+    if(avatar==="male"){
+        $(".avatar").attr("src","{{ asset('img/male_persona_default_bg.png') }}");
+        }
+    if(avatar==="female"){
+        $(".avatar").attr("src","{{ asset('img/female_persona_default_bg.png') }}");
+        }
+    if(avatar==="other"){
+        $(".avatar").attr("src","{{ asset('img/gplaypattern.png') }}");
+        }
+    })
+</script>
 @endsection
