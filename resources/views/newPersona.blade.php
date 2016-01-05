@@ -203,7 +203,6 @@
 	</div>
 </div>
 <script>
-console.log("test");
 $("#gender").change(function() {
     var avatar=$(this).val();
     if(avatar==="male"){
