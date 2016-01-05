@@ -205,7 +205,6 @@
 <script>
 console.log("test");
 $("#gender").change(function() {
-    console.log($(this).val());
     var avatar=$(this).val();
     if(avatar==="male"){
         $(".avatar").attr("src","{{ asset('img/male_persona_default_bg.png') }}");
