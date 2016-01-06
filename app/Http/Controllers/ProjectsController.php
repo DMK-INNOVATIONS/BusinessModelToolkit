@@ -9,10 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use App\BMC;
 use App\Notice;
 use Illuminate\Support\Facades\DB;
-//use App\Http\Requests\Request;
+// use App\Http\Requests\Request;
 use Illuminate\Support\Facades\Input;
-use Request;//You're not using the facade, replace use Illuminate\Http\Request; with use Request;
-
+use Request; // You're not using the facade, replace use Illuminate\Http\Request; with use Request;
 class ProjectsController extends Controller {
 	
 	/*
@@ -38,44 +37,47 @@ class ProjectsController extends Controller {
 		
 		// $getMyProjects = $this->getMyProjects ();
 		$myAssignedProjects = $this->getMyAssignedProjects ();
+		$assignedProjects = $this->getAssignedProjects ();
+		
 		$assignedProjectsOwners = $this->getAssignedProjectsOwner ();
 		
-		//send per ajax return parameter from sort
-		if(Request::ajax()) {
-			$sort_field=Input::get('sort_field');
-			$view= view ( 'projects', [ 
-				'myProjects' => $this->getAllMyAssignedMyProjects(),
-				'user' => $user,
-				'sort_field'=>$sort_field,
-				'myAssignedProjects' => $this->getAllMyAssignedMyProjects (),
-				'assignedProjectsOwners' => $assignedProjectsOwners 
-			])->renderSections();
+		// send per ajax return parameter from sort
+		if (Request::ajax ()) {
+			$sort_field = Input::get ( 'sort_field' );
+			$view = view ( 'projects', [ 
+					'myProjects' => $this->getAllMyAssignedMyProjects (),
+					'user' => $user,
+					'sort_field' => $sort_field,
+					'myAssignedProjects' => $this->getAllMyAssignedMyProjects (),
+					'assignedProjectsOwners' => $assignedProjectsOwners,
+					'assignedProjects'=> $assignedProjects
+			] )->renderSections ();
 			return $view;
 		}
 		return view ( 'projects', [ 
-				'myProjects' => $this->getAllMyAssignedMyProjects(),
+				'myProjects' => $this->getAllMyAssignedMyProjects (),
 				'user' => $user,
-				'sort_field'=>'',
+				'sort_field' => '',
 				'myAssignedProjects' => $this->getAllMyAssignedMyProjects (),
-				'assignedProjectsOwners' => $assignedProjectsOwners 
+				'assignedProjectsOwners' => $assignedProjectsOwners,
+				'assignedProjects'=> $assignedProjects 
 		] );
 	}
 	public function getProjects() {
 		return Project::with ( 'members', 'assignee' )->get ();
 	}
 	public function getAllMyAssignedMyProjects() {
-		$sort_field=Input::get('sort_field');
-		$user_id=Auth::user ()->id;
-		$projects=Project::with([
-				'members'=> function($q) use( $user_id) {$q->where('user_id','=',$user_id)->orderBy('created_at', 'desc');},
-				'bmcs'
-		])->where ( 'assignee_id', $user_id )
-		->orderBy($sort_field ? $sort_field : 'updated_at', 'asc')
-		->get();
+		$sort_field = Input::get ( 'sort_field' );
+		$user_id = Auth::user ()->id;
+		$projects = Project::with ( [ 
+				'members' => function ($q) use($user_id) {
+					$q->where ( 'user_id', '=', $user_id )->orderBy ( 'created_at', 'desc' );
+				},
+				'bmcs' 
+		] )->where ( 'assignee_id', $user_id )->orderBy ( $sort_field ? $sort_field : 'updated_at', 'asc' )->get ();
 		$myprojects = array ();
-		foreach ( $projects as $project  ) {
-				$myprojects [$project->id] = $project;
-				
+		foreach ( $projects as $project ) {
+			$myprojects [$project->id] = $project;
 		}
 		return $myprojects;
 	}
@@ -127,24 +129,19 @@ class ProjectsController extends Controller {
 				'error' => 0 
 		] );
 	}
-	
 	public function getShowBMCs($id) {
 		$inserts = explode ( ",", $id );
-		$sort=Input::get('sort_field');
-		$project=Input::get('project_id');
+		$sort = Input::get ( 'sort_field' );
+		$project = Input::get ( 'project_id' );
 		
-		$sort_field=isset($sort) ? $sort : 'updated_at';
-		$project_id=isset($project) ? $project :$inserts[0];
-		$user_id=Auth::user ()->id;
+		$sort_field = isset ( $sort ) ? $sort : 'updated_at';
+		$project_id = isset ( $project ) ? $project : $inserts [0];
+		$user_id = Auth::user ()->id;
 		
-		$projects=BMC::with('project')
-		->where ( 'project_id', $project_id )
-		->orderBy($sort_field, 'asc')
-		->get();
+		$projects = BMC::with ( 'project' )->where ( 'project_id', $project_id )->orderBy ( $sort_field, 'asc' )->get ();
 		$myprojects = array ();
-		foreach ( $projects as $project  ) {
+		foreach ( $projects as $project ) {
 			$myprojects [$project->id] = $project;
-		
 		}
 		return $myprojects;
 	}
@@ -156,22 +153,22 @@ class ProjectsController extends Controller {
 	 * @return \Illuminate\View\View
 	 */
 	public function showBMCs($id) {
-		$sort_field=Input::get('sort_field');
-		$project_id=Input::get('project_id');
+		$sort_field = Input::get ( 'sort_field' );
+		$project_id = Input::get ( 'project_id' );
 		$inserts = explode ( ",", $id );
-		$sort_field=Input::get('sort_field');
-		$project_id = isset($project_id) ? $project_id :$inserts [0];
-				
-		if(Request::ajax()) {
-			$view= view ( 'showBMCs', [ 
-				'bmcs' => $this->getAllProjectBMCs ( $id ),
-				'project_id' => $project_id,
-				'project_name' => $this->getProjectName ( $id ),
-				'owner' => $project_id,
-				'myProjects' => $this->getMyProjects (),
-				'newget'=>$this->getShowBMCs($project_id),
-				'sort_field'=>isset($sort_field) ? $sort_field :'',
-			])->renderSections();
+		$sort_field = Input::get ( 'sort_field' );
+		$project_id = isset ( $project_id ) ? $project_id : $inserts [0];
+		
+		if (Request::ajax ()) {
+			$view = view ( 'showBMCs', [ 
+					'bmcs' => $this->getAllProjectBMCs ( $id ),
+					'project_id' => $project_id,
+					'project_name' => $this->getProjectName ( $id ),
+					'owner' => $project_id,
+					'myProjects' => $this->getMyProjects (),
+					'newget' => $this->getShowBMCs ( $project_id ),
+					'sort_field' => isset ( $sort_field ) ? $sort_field : '' 
+			] )->renderSections ();
 			return $view;
 		}
 		return view ( 'showBMCs', [ 
@@ -180,9 +177,8 @@ class ProjectsController extends Controller {
 				'project_name' => $this->getProjectName ( $id ),
 				'owner' => $project_id,
 				'myProjects' => $this->getMyProjects (),
-				'newget'=>$this->getShowBMCs($project_id),
-				'sort_field'=>isset($sort_field) ? $sort_field :'',
-				 
+				'newget' => $this->getShowBMCs ( $project_id ),
+				'sort_field' => isset ( $sort_field ) ? $sort_field : '' 
 		] );
 	}
 	
@@ -372,5 +368,25 @@ class ProjectsController extends Controller {
 		}
 		
 		return $owner;
+	}
+	public function getAssignedProjects() {
+		$allProjects = $this->getAllProjects ();
+		$user_id = Auth::user ()->id;
+		
+		$myAssignedProjects = array ();
+		$projects = Project::all ();
+		foreach ( $projects as $project ) {
+			foreach ( $project->members ()->get () as $assigned ) {
+				foreach ( $assigned->memberOf ()->get () as $a ) {
+					if ($assigned->id == $user_id) {
+						if (! in_array ( $project, $myAssignedProjects, true ))
+							array_push ( $myAssignedProjects, $project );
+					}
+				}
+			}
+		}
+		
+		
+		return $myAssignedProjects;
 	}
 }

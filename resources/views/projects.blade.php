@@ -124,11 +124,7 @@
 					<div class="col-md-8">
 						<h1>
 							My Assigned Projects <span class="light_color">
-							<?php $count=0;?>
-							<?php foreach ($myProjects as $my):	?>
-							<?php 	$count+= count($my->members)?>
-							<?php endforeach; ?>
-							({{$count}})					
+							<?php echo count($assignedProjects)?>
 						</span>
 						</h1>
 					</div>
@@ -176,8 +172,7 @@
 					<div class="divider_style_2_project"></div>
 				</div>
 			</div>
-		<?php foreach ($myProjects as $my):	?>
-			<?php foreach ($my->members as $m):?>
+		<?php foreach ($assignedProjects as $my):	?>
 				<?php //if($m->id == $user->id):?>
 					<div class="row no_margin extra_padding">
 				<div class="col-md-12 my_project_list">
@@ -245,7 +240,6 @@
 						</div>
 			</div>
 				<?php //endif;?>
-			<?php endforeach; ?>
 		<?php endforeach; ?>
 		<!-- end new -->
 		</div>
