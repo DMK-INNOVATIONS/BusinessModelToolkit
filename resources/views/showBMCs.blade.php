@@ -77,71 +77,77 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 			</div>
 		</div>
 		<div class="row no_margin extra_padding">
+		<?php count($newget)?>
 					<?php if(count($newget) > 0): ?>
 						<?php foreach ($newget as $myProject):	?>
 							<div class="col-md-12 my_project_list">
-				<div class="row">
-					<div class="col-md-4">
-						<h3>{{ $myProject['title'] }}</h3>
-					</div>
-					<div class="col-md-2" style="margin-top: 15px">
-						<div
-							class="label_{{ $myProject['status'] }} label_project no_padding_left no_margin_left label_status_bmc">
-							<h5 class="in_label_project">{{ $myProject['status'] }}</h5>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="col-md-12">
-							<h5 class="no_margin_bottom">{{date('l, d-m-Y | H:m',
-								strtotime($myProject['updated_at'])) }}</h5>
-						</div>
-						<div class="col-md-12">
-							<h6 class="no_margin_top">{{ date('Y-m-d | H:m',
-								strtotime($myProject['created_at'])) }}</h6>
-						</div>
-					</div>
-					<div class="col-md-3 no_padding_right">
-						<?php
-							
-if ($myProject ['status'] == 'inWork') {
-								$temp_status = 1;
-							} elseif ($myProject ['status'] == 'approved') {
-								$temp_status = 2;
-							} elseif ($myProject ['status'] == 'rejected') {
-								$temp_status = 3;
-							}
-							?>
-						<a href="/bmc/edit/{{ $myProject['id'] }},1,showBMCs"> <span
-							class="edit-icon no_background" aria-hidden="true"
-							data-toggle="tooltip" data-placement="bottom" title="edit" />
-						</a> <a
-							href="/bmc/copyBmc/{{ $myProject['id'] }},{{$myProject->project->id}},1,showBMCs">
-							<span class="duplicate-icon no_background" aria-hidden="true"
-							data-toggle="tooltip" data-placement="bottom" title="duplicate" />
-						</a> <a
-							href="/export/{{ $myProject['id'] }},{{$myProject->project->id}},1,showBMCs">
-							<span class="export-icon no_background" aria-hidden="true"
-							data-toggle="tooltip" data-placement="bottom" title="export" />
-						</a> 
-						<a data-toggle="modal" data-target="#deleteModal{{ $myProject['id'] }}">
-							<span class="delete-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete" />
-						</a> 
-						<a class="project_link" style="padding-left: 15px" href="/bmc/viewBMC/{{ $myProject['id'] }},{{$myProject->project->id}},{{$temp_status}},1,showBMCs">
-							<button type="button"
-								class="btn btn-primary btn-secundar text-left">View</button>
-						</a>
-					</div>
-
-				</div>
-			</div>
+								<div class="row">
+									<div class="col-md-4">
+										<h3>{{ $myProject['title'] }}</h3>
+									</div>
+									<div class="col-md-2" style="margin-top: 15px">
+										<div
+											class="label_{{ $myProject['status'] }} label_project no_padding_left no_margin_left label_status_bmc">
+											<h5 class="in_label_project">{{ $myProject['status'] }}</h5>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="col-md-12">
+											<h5 class="no_margin_bottom">{{date('l, d-m-Y | H:m',
+												strtotime($myProject['updated_at'])) }}</h5>
+										</div>
+										<div class="col-md-12">
+											<h6 class="no_margin_top">{{ date('Y-m-d | H:m',
+												strtotime($myProject['created_at'])) }}</h6>
+										</div>
+									</div>
+									<div class="col-md-3 no_padding_right">
+										<?php
+											
+											if ($myProject ['status'] == 'inWork') {
+												$temp_status = 1;
+											} elseif ($myProject ['status'] == 'approved') {
+												$temp_status = 2;
+											} elseif ($myProject ['status'] == 'rejected') {
+												$temp_status = 3;
+											}
+											?>
+										<a href="/bmc/edit/{{ $myProject['id'] }},1,showBMCs"> <span
+											class="edit-icon no_background" aria-hidden="true"
+											data-toggle="tooltip" data-placement="bottom" title="edit" />
+										</a> <a
+											href="/bmc/copyBmc/{{ $myProject['id'] }},{{$myProject->project->id}},1,showBMCs">
+											<span class="duplicate-icon no_background" aria-hidden="true"
+											data-toggle="tooltip" data-placement="bottom" title="duplicate" />
+										</a> <a
+											href="/export/{{ $myProject['id'] }},{{$myProject->project->id}},1,showBMCs">
+											<span class="export-icon no_background" aria-hidden="true"
+											data-toggle="tooltip" data-placement="bottom" title="export" />
+										</a> 
+										<a data-toggle="modal" data-target="#deleteModal{{ $myProject['id'] }}">
+											<span class="delete-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete" />
+										</a> 
+										<a class="project_link" style="padding-left: 15px" href="/bmc/viewBMC/{{ $myProject['id'] }},{{$myProject->project->id}},{{$temp_status}},1,showBMCs">
+											<button type="button"
+												class="btn btn-primary btn-secundar text-left">View</button>
+										</a>
+									</div>
+				
+								</div>
+							</div>
 					<?php endforeach; ?>
-				<?php endif; ?>
+				<?php else: ?>
+					<div class="col-md-12">
+						<div class="row">No models</div>
+					</div>
+				<?php endif;  ?>
 				<div class="divider_style_1_project"></div>
 		</div>
 		<!-- end new render -->
 	</div>
 
 	<!-- Help Modal -->
+	<?php if(isset($myProject) && !empty($myProject)):?>
 	<div class="modal fade" id="deleteModal{{ $myProject['id'] }}" tabindex="-1" role="dialog">
 		<div class="modal-dialog delete" role="document">
 			<div class="modal-content delete col-md-12">
@@ -164,7 +170,7 @@ if ($myProject ['status'] == 'inWork') {
 			</div>
 		</div>
 	</div>
-
+	<?php endif;?>
 	<div class="modal fade" id="helpModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
