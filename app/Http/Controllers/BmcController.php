@@ -69,11 +69,6 @@ class BmcController extends Controller {
 		$view_type_main = $inserts [4];
 		
 		$bmc = BMC::find ( $bmc_id );
-		dump($inserts);
-		echo "status:".$bmc_status;
-		echo "<br>owner:".$owner;
-
-		
 		
 		switch ($bmc_status) {
 			case 'inWork' :
@@ -95,14 +90,11 @@ class BmcController extends Controller {
 		if ($view_type == 1) { // redirects to showBMCs
 			if ($view_type_main == 'models') {
 				$view = 'bmc/models';
-				die('models');
 			} else {
 				$view = 'projects/showBMCs/' . $project_id . ',' . $owner;
-				die('owner');
 			}
 		} else { // redirects to viewBMC
 			$view = '/bmc/viewBMC/' . $bmc_id . ',' . $project_id . ',' . $status . ',' . $owner . ',' . $view_type_main;
-			die('view BMC');
 		}
 		
 		return redirect ( $view );

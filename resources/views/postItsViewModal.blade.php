@@ -81,9 +81,9 @@
 					 	<label for="test_status" class="col-md-4 control-label">Test Status</label>
 					 	<div class="col-md-8">
 						  <select class="form-control" id="status" name="status">
-						    <option value="inWork">unclear</option>
-						    <option value="approved">validated</option>
-						    <option value="rejected">invalidated</option>
+						  	<?php foreach ($status_option as $key=>$val):?>
+						  		<option value="{{$key}}">{{$val}}</option>
+							<?php endforeach;?>
 						  </select>
 						</div>
 					</div>

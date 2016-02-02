@@ -102,18 +102,15 @@
 											<div class="form-group">
 											 	<label for="test_status" class="col-md-4 control-label">Test Status</label>
 											 	<div class="col-md-8">
-												  <select class="form-control" id="status" name="status">
-												';
-													switch ($bmc_postIt['status']) {
-														case 'inWork':
-															print '<option selected value="inWork">unclear</option><option value="approved">validated</option><option value="rejected">invalidated</option>';break;
-														case 'approved':
-															print '<option value="inWork">unclear</option><option selected value="approved">validated</option><option value="rejected">invalidated</option>';break;
-														case 'rejected':
-															print '<option value="inWork">unclear</option><option value="approved">validated</option><option selected value="rejected">invalidated</option>';break;									
-													}
-												    print '
-												  </select>
+													<select class="form-control" id="status" name="status">
+													';
+														foreach ($status_option as $key=>$val){
+												  			echo '<option value="'.$key.'"';
+												  			echo ($key===$bmc_postIt['status']) ? 'selected="selected"' :"";
+												  			echo '>'.$val.'</option>';
+												  		}
+													print '
+													  </select>
 												</div>
 											</div>';
 											print '
