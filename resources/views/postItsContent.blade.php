@@ -53,15 +53,12 @@
 									 	<div class="col-md-8">									
 											<select class="form-control" id="postIt_status" name="postIt_status">
 											';
-												switch ($bmc_postIt['status']) {
-													case 'inWork':
-														print '<option selected value="inWork">unclear</option><option value="approved">validated</option><option value="rejected">invalidated</option>';break;
-													case 'approved':
-														print '<option value="inWork">unclear</option><option selected value="approved">validated</option><option value="rejected">invalidated</option>';break;
-													case 'rejected':
-														print '<option value="inWork">unclear</option><option value="approved">validated</option><option selected value="rejected">invalidated</option>';break;									
-												}
-											    print '
+												foreach ($status_option as $key=>$val){
+										  			echo '<option value="'.$key.'"';
+										  			echo ($key===$bmc_postIt['status']) ? 'selected="selected"' :"";
+										  			echo '>'.$val.'</option>';
+										  		}
+											print '
 											  </select>
 										</div>
 									</div>
@@ -137,7 +134,7 @@
 											';
 											print '
 											<div class="form-group">
-												<label class="col-md-4 control-label">Notice</label>
+												<label class="col-md-4 control-label">Note</label>
 												<div class="col-md-8">
 													<textarea class="form-control" rows="5" name="notice">'.$bmc_postIt['notice'].'</textarea>
 												</div>

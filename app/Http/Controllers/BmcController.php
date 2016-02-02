@@ -69,6 +69,11 @@ class BmcController extends Controller {
 		$view_type_main = $inserts [4];
 		
 		$bmc = BMC::find ( $bmc_id );
+		dump($inserts);
+		echo "status:".$bmc_status;
+		echo "<br>owner:".$owner;
+
+		
 		
 		switch ($bmc_status) {
 			case 'inWork' :
@@ -90,11 +95,14 @@ class BmcController extends Controller {
 		if ($view_type == 1) { // redirects to showBMCs
 			if ($view_type_main == 'models') {
 				$view = 'bmc/models';
+				die('models');
 			} else {
 				$view = 'projects/showBMCs/' . $project_id . ',' . $owner;
+				die('owner');
 			}
 		} else { // redirects to viewBMC
 			$view = '/bmc/viewBMC/' . $bmc_id . ',' . $project_id . ',' . $status . ',' . $owner . ',' . $view_type_main;
+			die('view BMC');
 		}
 		
 		return redirect ( $view );
@@ -203,19 +211,21 @@ class BmcController extends Controller {
 				$bmc_status = 'inWork';
 				break;
 		}
+		$status_option=self::getStatusOption();
 		$myProjects = $this->getMyProjects ();
 		
 		return view ( 'viewBMC', [ 
 				'bmc_id' => $bmc_id,
 				'project_id' => $project_id,
 				'bmc_name' => $bmc_name,
-				'bmc_status' => $bmc_status,
+				'bmc_status' => $bmc['status'],
 				'bmc_postIts' => $bmc_postIts,
 				'myPersonas' => $myPersonas,
 				'myAssignedPersonas' => $myAssignedPersonas,
 				'owner' => $owner,
 				'view_type' => $view_type,
-				'myProjects'=>$myProjects 
+				'myProjects'=>$myProjects,
+				'status_option'=>$status_option, 
 		] );
 	}
 	public function getAllPersonas() {
@@ -615,5 +625,12 @@ class BmcController extends Controller {
 			array_push ( $my_bmcs, $bmcs );
 		}
 		return $my_bmcs;
+	}
+	public static function getStatusOption(){
+		return array(
+			'inWork'=>'in work',
+			'rejected'=>'rejected',
+			'approved'=>'approved',
+		);
 	}
 }

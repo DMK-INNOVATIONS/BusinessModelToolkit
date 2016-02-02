@@ -229,6 +229,22 @@ class ProjectsController extends Controller {
 		// alle bmc's des Projektes finden
 		$projectBMCs = $this->getAllProjectBMCs ( $project ['id'] );
 		
+		//delete all BMCs
+		foreach ($project->bmcs as $bmc){
+			foreach (Notice::where(array('bmc_id'=>$bmc->id))->get() as $n)
+				{
+					//delete all Notices for BMCs
+					$notice=Notice::find($n->id);
+					$notice->delete();
+				}
+			$bmc->delete();
+		}
+		//delete all members for Project
+		foreach ($project->members as $member)
+				$project->members()->detach($member->id);
+		
+		$project->delete();
+		/*
 		foreach ( $projectBMCs as $projectBMC ) {
 			// alle personas von BMC's finden und detachen
 			$bmc_personas = $projectBMC->personas ()->get ();
@@ -250,7 +266,7 @@ class ProjectsController extends Controller {
 		
 		// Projekt löschen
 		Project::destroy ( $id );
-		
+		*/
 		return redirect ( 'projects' );
 	}
 	public function getBMCPostIts($bmc_id) {

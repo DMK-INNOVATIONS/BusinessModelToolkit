@@ -270,7 +270,7 @@ $(function() {
 					    success: function (data) {
 						    $("#project_list").html(data.content);
 						    $("#custom_menu").selectmenu("destroy").selectmenu();
-						    console.log("");
+						    //console.log("");
 						    //$("#custom_menu").on( "selectmenuselect", function( event, ui ) {} );;
 						    //console.log("succes");
 					    }

@@ -148,16 +148,9 @@
 				 	<label for="gender" class="col-md-2 control-label">Status</label>
 				 	<div class="col-md-8">
 					  <select class="form-control" id="status" name="status">
-					  	<?php 
-							switch ($bmc_status) {
-								case 'inWork':
-									print '<option selected value="inWork">unclear</option><option value="approved">validated</option><option value="rejected">invalidated</option>';break;
-								case 'approved':
-									print '<option value="inWork">unclear</option><option selected value="approved">validated</option><option value="rejected">invalidated</option>';break;
-								case 'rejected':
-									print '<option value="inWork">unclear</option><option value="approved">validated</option><option selected value="rejected">invalidated</option>';break;
-							}
-					  	?>
+					  	<?php foreach ($status_option as $key=>$val):?>
+					  		<option value="<?php echo $key?>" <?php echo ($key===$bmc_status) ? 'selected="selected"' :'' ?>><?php echo $val?></option>
+					  	<?php endforeach;?>
 					  </select>
 					</div>
 				</div>

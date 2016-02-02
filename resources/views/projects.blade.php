@@ -94,7 +94,8 @@
 							<a href="projects/edit/{{ $myProject['id'] }}"> <span
 								class="edit-icon no_background" aria-hidden="true"
 								data-toggle="tooltip" data-placement="bottom" title="edit" />
-							</a> <a data-toggle="modal"
+							</a>
+							 <a data-toggle="modal"
 								data-target="#deleteModal{{ $myProject['id'] }}"> <span
 								class="delete-icon no_background" aria-hidden="true"
 								data-toggle="tooltip" data-placement="bottom" title="delete" />
