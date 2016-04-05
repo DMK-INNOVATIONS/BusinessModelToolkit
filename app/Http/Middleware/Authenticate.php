@@ -32,18 +32,28 @@ class Authenticate {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if ($this->auth->guest())
-		{
+		if ($this->auth->guest()){
 			if ($request->ajax())
 			{
 				return response('Unauthorized.', 401);
-			}
-			else
-			{
+			}else{	//die('return login');
+				$this->auth->logout();
 				return redirect()->guest('auth/login');
 			}
 		}
+		
+		if($this->auth->user()){
+			if($this->auth->user()->status_enable!=0)
+				return $next($request);
+			$this->auth->logout();
+			return response()->view('errors.403');
+		}else{
+			$this->auth->logout();
+			return redirect()->guest('auth/login');
+		}
 
+		
+		
 		return $next($request);
 	}
 

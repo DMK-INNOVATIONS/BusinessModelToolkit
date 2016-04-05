@@ -127,7 +127,6 @@ class TeamController extends Controller {
 		
 		$teamMemberId = 'The User could not be found.';
 		$allreadyConnected = false;
-		
 		foreach($allUsers as $user){
 			if($user['email'] == $teamMemberEmail){
 				$teamMemberId = $user['id'];
@@ -158,7 +157,8 @@ class TeamController extends Controller {
 	}
 	
 	public function getAllUsers(){
-		return User::all();
+		return User::where('status_enable','1')->get();
+		
 	}
 	
 }

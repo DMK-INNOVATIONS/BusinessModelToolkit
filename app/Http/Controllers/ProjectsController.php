@@ -33,7 +33,8 @@ class ProjectsController extends Controller {
 	 * @return Response
 	 */
 	public function index() {
-		$user = Auth::user ();
+		//$user = Auth::user ();
+		$user = self::userEnable();
 		
 		// $getMyProjects = $this->getMyProjects ();
 		$myAssignedProjects = $this->getMyAssignedProjects ();
@@ -62,6 +63,10 @@ class ProjectsController extends Controller {
 				'assignedProjectsOwners' => $assignedProjectsOwners,
 				'assignedProjects'=> $assignedProjects 
 		] );
+	}
+	private function userEnable(){
+		if(Auth::user () && Auth::user ()->status_enable!=0)
+			return Auth::user ();
 	}
 	public function getProjects() {
 		return Project::with ( 'members', 'assignee' )->get ();
