@@ -54,7 +54,7 @@ return [
 	|
 	*/
 
-	'from' => ['address' => 'bmcAdmin@gmail.com', 'name' => 'BMC Portal'],
+	'from' => ['address' => 'bmcounselor@gmail.com', 'name' => 'Business Model Toolkit'],
 
 	/*
 	|--------------------------------------------------------------------------

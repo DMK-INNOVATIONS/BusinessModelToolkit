@@ -121,8 +121,8 @@ class TeamController extends Controller {
 	
 	public function addUserToProject(Request $request){
 		$allUsers = $this->getAllUsers();
-		$teamMemberEmail = $_POST["Email"];
-		$project_id = $_POST["projects"];
+		$teamMemberEmail = Input::get('Email');
+		$project_id = Input::get('projects');
 		$myProjects = $this->getMyProjects();
 		
 		$teamMemberId = 'The User could not be found.';
@@ -138,7 +138,7 @@ class TeamController extends Controller {
 			$assignedTeamMembers = $project->members()->get();
 			
 			foreach ($assignedTeamMembers as $assignedTeamMember){
-				if ($assignedTeamMember['id'] == $teamMemberId){ //prüfen ob User bereits mit Projekt verbunden ist
+				if ($assignedTeamMember['id'] == $teamMemberId){ //prï¿½fen ob User bereits mit Projekt verbunden ist
 					$errorMessage = 'There is already a connection between '.$assignedTeamMember['name'].' and your Project: '.$project['title'].'.';
 					$allreadyConnected = true;
 					

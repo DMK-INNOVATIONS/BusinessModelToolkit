@@ -148,14 +148,14 @@ class PersonaController extends Controller {
 		$owner = $inserts[5];
 		$view_type_main = $inserts[6];
 		
-		$name = $_POST["name"];
+		$name = Input::get('name');
 		
 		if($name == ''){
-			print 'Falsch!!!'; //noch Fehlermeldung einfügen
+			print 'Falsch!!!'; //noch Fehlermeldung einfï¿½gen
 			return view('newPersona');
 	
 		}else{
-			//noch prüfen ob Titel schon in DB vorhanden ist in Kombi mit diesem Assignee
+			//noch prï¿½fen ob Titel schon in DB vorhanden ist in Kombi mit diesem Assignee
 	
 			if($persona_id == 'null'){
 				$persona = new Persona();
@@ -163,23 +163,23 @@ class PersonaController extends Controller {
 				$persona = Persona::find($id);
 			}
 					
-			$persona->name = $_POST["name"];
+			$persona->name = Input::get('name');
 			$persona->assignee_id = Auth::user()->id;
 			
-			if (empty($_POST["avatarImg"])){
+			if (empty(Input::get('avatarImg'))){
 				$persona->avatarImg = 'img/male_persona_default_bg.png';
 			}else{
-				$persona->avatarImg = $_POST["avatarImg"];
+				$persona->avatarImg = Input::get('avatarImg');
 			}
-			$persona->age = $_POST["age"];
-			$persona->gender = $_POST["gender"];
-			$persona->occupation = $_POST["occupation"];
-			$persona->nationality = $_POST["nationality"];
-			$persona->marital_status = $_POST["marital_status"];
-			$persona->quote = $_POST["quote"];
-			$persona->personality = $_POST["personality"];
-			$persona->skills = $_POST["skills"];
-			$persona->needs = $_POST["needs"];
+			$persona->age = Input::get('age');
+			$persona->gender = Input::get('gender');
+			$persona->occupation = Input::get('occupation');
+			$persona->nationality = Input::get('nationality');
+			$persona->marital_status = Input::get('marital_status');
+			$persona->quote = Input::get('quote');
+			$persona->personality = Input::get('personality');
+			$persona->skills = Input::get('skills');
+			$persona->needs = Input::get('needs');
 			$persona->save();
 	
 			if($view_type == 'persona'){

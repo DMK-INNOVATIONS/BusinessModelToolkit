@@ -258,18 +258,18 @@ class ProjectsController extends Controller {
 				$projectBMC->personas ()->detach ( $bmc_persona ['id'] );
 			}
 			
-			// alle post-IT's finden und löschen
+			// alle post-IT's finden und lï¿½schen
 			$bmcPostIts = $this->getBMCPostIts ( $projectBMC ['id'] );
 			
 			foreach ( $bmcPostIts as $bmcPostIt ) {
 				Notice::destroy ( $bmcPostIt ['id'] );
 			}
 			
-			// bmc löschen
+			// bmc lï¿½schen
 			BMC::destroy ( $projectBMC ['id'] );
 		}
 		
-		// Projekt löschen
+		// Projekt lï¿½schen
 		Project::destroy ( $id );
 		*/
 		return redirect ( 'projects' );
@@ -295,7 +295,7 @@ class ProjectsController extends Controller {
 	 * @return \Illuminate\View\View
 	 */
 	public function save($id = null) {
-		$title = $_POST ["title"];
+		$title = Input::get('title');
 		
 		if ($title == '') {
 			return view ( 'newProject', [ 

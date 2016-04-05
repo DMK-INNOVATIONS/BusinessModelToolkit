@@ -13,6 +13,7 @@ use App\Notice;
 use App\App;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Input;
 
 class BmcController extends Controller {
 	
@@ -63,7 +64,7 @@ class BmcController extends Controller {
 		
 		$project_id = $inserts [0];
 		$bmc_id = $inserts [1];
-		$bmc_status = $title = $_POST ["status"];
+		$bmc_status = $title = Input::get('status');
 		$view_type = $inserts [2];
 		$owner = $inserts [3];
 		$view_type_main = $inserts [4];
@@ -102,10 +103,10 @@ class BmcController extends Controller {
 	public function saveModel() {
 		$bmc = new BMC ();
 		
-		$bmc->title = $_POST ["title"];
+		$bmc->title = Input::get('title');
 		$bmc->status = Status::IN_WORK;
 		$bmc->version = 1;
-		$bmc->project_id = $_POST ["projects"];
+		$bmc->project_id = Input::get('projects');
 		$bmc->save ();
 		
 		$view = 'bmc/models';
@@ -121,7 +122,7 @@ class BmcController extends Controller {
 		$owner = $inserts [4];
 		$view_type_main = $inserts [6]; // 'models' || 'showBMCs'
 		
-		$title = $_POST ["title"];
+		$title = Input::get('title');
 		
 		if ($title == '') {
 			return view ( 'newBmc', [ 
@@ -344,14 +345,14 @@ class BmcController extends Controller {
 			$bmc->personas ()->detach ( $assignedPersona ['id'] );
 		}
 		
-		// post-IT's löschen
+		// post-IT's lï¿½schen
 		$bmcPostIts = $this->getBMCPostIts ( $bmc_id );
 		
 		foreach ( $bmcPostIts as $bmcPostIt ) {
 			Notice::destroy ( $bmcPostIt ['id'] );
 		}
 		
-		// BMC löschen
+		// BMC lï¿½schen
 		BMC::destroy ( $bmc_id );
 		
 		if ($view_type == 'models') { // redirects to Models View or to BMC View
@@ -375,9 +376,9 @@ class BmcController extends Controller {
 		
 		$sort_anz = $this->getNoticeCount ( $canvas_box_id . $bmc_id );
 		
-		$title = $_POST ["title"];
-		$status = $_POST ["status"];
-		$color = $_POST ["color"];
+		$title = Input::get('title');
+		$status = Input::get('status');
+		$color = Input::get('color');
 		
 		
 		if ($title == '') {
@@ -390,7 +391,7 @@ class BmcController extends Controller {
 			}
 			
 			$postIt->title = $title;
-			$postIt->content = $_POST ["content"];
+			$postIt->content = Input::get('content');
 			
 			switch ($status) {
 				case 'inWork' :
@@ -404,7 +405,7 @@ class BmcController extends Controller {
 					break;
 			}
 			
-			$postIt->notice = $_POST ["notice"];
+			$postIt->notice = Input::get('notice');
 			$postIt->sort = $sort_anz + 1;
 			$postIt->color = $color;
 			$postIt->canvas_box_id = $canvas_box_id;
@@ -461,7 +462,7 @@ class BmcController extends Controller {
 		$owner = $inserts [4];
 		$view_type = $inserts [5];
 		
-		$postIt_status = $_POST ["postIt_status"];
+		$postIt_status = Input::get('postIt_status');
 		
 		$postIt = Notice::find ( $postIt_id );
 		

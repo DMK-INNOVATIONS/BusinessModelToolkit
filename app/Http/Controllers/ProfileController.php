@@ -35,16 +35,16 @@ class ProfileController extends Controller {
 	public function save($id) {
 		$user = User::find($id);
 
-		if(!empty($_POST ["name"])){
-			$user->name = $_POST ["name"];
+		if(!empty(Input::get('name'))){
+			$user->name = Input::get('name');
 		}
 		
 		if(!empty($_POST ["email"])){
-			$user->email = $_POST ["email"];
+			$user->email = Input::get('email');
 		}
 		
 		if(!empty($_POST ["password"])){
-			$user->password = bcrypt($_POST['password']);
+			$user->password = bcrypt(Input::get('password'));
 		}
 		
 		$user->save();
