@@ -187,6 +187,7 @@ class BmcController extends Controller {
 		$bmc_status_id = $inserts [2];
 		$owner = $inserts [3];
 		$view_type = $inserts [4];
+		(isset($inserts [5])? $error = $inserts [5]: $error = false);
 		
 		$bmc_postIts = $this->getBMCPostIts ( $bmc_id );
 		
@@ -219,6 +220,7 @@ class BmcController extends Controller {
 				'view_type' => $view_type,
 				'myProjects'=>$myProjects,
 				'status_option'=>$status_option, 
+				'error' => $error
 		] );
 	}
 	public function getAllPersonas() {
@@ -382,7 +384,9 @@ class BmcController extends Controller {
 		
 		
 		if ($title == '') {
-			print 'falsch';
+			$error = true;
+			$view = '/bmc/viewBMC/' . $bmc_id . ',' . $project_id . ',' . $bmc_status . ',' . $owner . ',' . $view_type. ',' .$error;
+			return redirect ( $view );
 		} else {
 			if ($post_it_id == 'null') {
 				$postIt = new Notice ();
@@ -483,7 +487,7 @@ class BmcController extends Controller {
 		$view = '/bmc/viewBMC/' . $bmc_id . ',' . $project_id . ',' . $bmc_status . ',' . $owner . ',' . $view_type;
 		
 		return redirect ( $view );
-	}
+	}/*
 	public function addPersona(Request $request, $id) {
 		$inserts = explode ( ",", $id );
 		$bmc_id = $inserts [0];
@@ -519,7 +523,7 @@ class BmcController extends Controller {
 		$view = '/bmc/viewBMC/' . $bmc->id . ',' . $bmc->project->id . ',' . $status . ',' . $owner . ',' . $view_type;
 		
 		return redirect ( $view );
-	}
+	}*/
 	public function getAssignedPersonas($id) {
 		$bmc = BMC::find ( $id );
 		return $bmc->personas ()->get ();

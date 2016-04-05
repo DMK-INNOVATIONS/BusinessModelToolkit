@@ -3,6 +3,10 @@
 @section('content')
 
 <?php
+
+if(!isset($error)){
+	$error = false;
+}
 $posturl = "";
 if (isset ( $user )) :
 	$posturl = $user ['id'];
@@ -78,6 +82,9 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 				</div>
 				<div class="divider_style_1"></div>
 				<div class="panel-body bmcViewBackground">
+					<?php if($error):?>
+						<div class="alert alert-warning" role="alert">You must enter a Title for your Post-It!</div>
+					<?php endif;?>
 					<div class="viewBMC_body">
 						<div class="row">
 							<div class="col-md-2-4 col-sm-2-4">
