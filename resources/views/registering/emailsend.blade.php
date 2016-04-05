@@ -25,6 +25,10 @@
 			.title {
 				font-size: 72px;
 				margin-bottom: 40px;
+				color: #36444b;
+			}
+			.text {
+				color: #36444b;
 			}
 		</style>
 	</head>
