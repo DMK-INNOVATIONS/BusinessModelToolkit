@@ -34,28 +34,27 @@ class AuthController extends Controller {
 	}
 	public function postRegister(Request $request) {
 		$validator = $this->registrar->validator ( $request->all () );
-		
+	
 		if ($validator->fails ()) {
 			$this->throwValidationException ( $request, $validator );
 		}
 		$token= $_POST['_token'];
 		$email= $_POST['email'];
 		$name= $_POST['name'];
-		
+	
 		$this->auth->login ( $this->registrar->create ( $request->all () ) );
-		
+	
 		$data['verification_code']  = $token;
-		
-		Mail::send('registering.register', $data, function($message) use ($email)
+			
+		Mail::send('registering.emailsend', ['token'=>$token, 'email'=>$email], function($message) use ($email)
 		{
-			$message->from('no-reply@toolkit.builders', "Toolkit Builders");
-			$message->subject("Welcome to App Toolkit Builders");
-			$message->to($email);
+			$message->from('no-reply@toolkit.builders', "Toolkit Builders")->to($email)->subject("Complete your toolkit.builders sign up");
 		});
-		
-		return response()->view('registering.register', [ 
+		return response()->view('registering.register', [
 				'name' => $name,
-				'email' => $email 
-		]);
+				'email' => $email,
+				'token'=> $token,
+					
+				]);
 	}
 }

@@ -27,7 +27,7 @@
 				padding: 0;
 				width: 100%;
 				height: 100%;
-				color: #36444b;
+				color: #B0BEC5;
 				display: table;
 				font-weight: 100;
 				font-family: 'Lato';
@@ -51,14 +51,12 @@
 		</style>
 	</head>
 	<body>
-	<div class="container">
+		<div class="container">
 			<div class="content">
-				<div class="row">
-					<div clas="col-md-12">
-						<div class="title">Thank you for your registration.</div>
-						<div class="text">You are one click away. Please verify your email address to authenticate.</div>
-					</div>
-				</div>
+								
+				<div class="title">Thank you for your registration.</div>
+				<div class="text"> Please verify your email address to authenticate.</div>
+					
 			</div>
 		</div>
 	</body>
