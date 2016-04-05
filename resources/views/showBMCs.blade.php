@@ -2,7 +2,7 @@
 
 <?php
 if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.0.0.1') {
-	$path = '/bmc/public';
+	$path = '/public';
 } else {
 	$path = '';
 }
@@ -34,7 +34,7 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 				</div>
 				<div class="col-md-4">
 					<a
-						href="/bmc/create/<?php echo $project_id.','.$owner.',showBMCs' ?>"><button
+						href="<?=$path ?>/bmc/create/<?php echo $project_id.','.$owner.',showBMCs' ?>"><button
 							type="button" class="btn btn-primary">New BMC</button></a>
 				</div>
 				<div class="col-md-4 sortProject">
@@ -112,22 +112,22 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 												$temp_status = 3;
 											}
 											?>
-										<a href="/bmc/edit/{{ $myProject['id'] }},1,showBMCs"> <span
+										<a href="<?=$path ?>/bmc/edit/{{ $myProject['id'] }},1,showBMCs"> <span
 											class="edit-icon no_background" aria-hidden="true"
 											data-toggle="tooltip" data-placement="bottom" title="edit" />
 										</a> <a
-											href="/bmc/copyBmc/{{ $myProject['id'] }},{{$myProject->project->id}},1,showBMCs">
+											href="<?=$path ?>/bmc/copyBmc/{{ $myProject['id'] }},{{$myProject->project->id}},1,showBMCs">
 											<span class="duplicate-icon no_background" aria-hidden="true"
 											data-toggle="tooltip" data-placement="bottom" title="duplicate" />
 										</a> <a
-											href="/export/{{ $myProject['id'] }},{{$myProject->project->id}},1,showBMCs">
+											href="<?=$path ?>/export/{{ $myProject['id'] }},{{$myProject->project->id}},1,showBMCs">
 											<span class="export-icon no_background" aria-hidden="true"
 											data-toggle="tooltip" data-placement="bottom" title="export" />
 										</a> 
 										<a data-toggle="modal" data-target="#deleteModal{{ $myProject['id'] }}">
 											<span class="delete-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete" />
 										</a> 
-										<a class="project_link" style="padding-left: 15px" href="/bmc/viewBMC/{{ $myProject['id'] }},{{$myProject->project->id}},{{$temp_status}},1,showBMCs">
+										<a class="project_link" style="padding-left: 15px" href="<?=$path?>/bmc/viewBMC/{{ $myProject['id'] }},{{$myProject->project->id}},{{$temp_status}},1,showBMCs">
 											<button type="button"
 												class="btn btn-primary btn-secundar text-left">View</button>
 										</a>
