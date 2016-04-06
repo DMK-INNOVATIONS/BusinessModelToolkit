@@ -48,7 +48,10 @@ class AuthController extends Controller {
 			
 		Mail::send('registering.emailsend', ['token'=>$token, 'email'=>$email], function($message) use ($email)
 		{
-			$message->from('support@toolkit.builders', 'Toolkit Builders')->to($email)->subject('Complete your toolkit.builders sign up');
+			$message->from('support@toolkit.builders', 'support@toolkit.builders');
+			$message->to($email);
+			$message->subject('Complete your toolkit.builders sign up');
+			
 		});
 		return response()->view('registering.register', [
 				'name' => $name,
