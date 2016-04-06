@@ -289,29 +289,25 @@
 							aria-hidden="true"></span>
 					
 					
-					<div class="col-md-11">The Projects View contains all your created
-						and assigned Projects.</div>
+					<div class="col-md-11">The Projects View contains all your created and assigned Projects.</div>
 					</p>
+					<!-- 
 					<img style="padding: 0 0 15px 0;" class="col-md-11 col-md-offset-1"
-						src="{{{ asset('img/help/projects_help.png') }}}">
+						src="{{{ asset('img/help/projects_help.png') }}}"> -->
 
 					<p>
 						<span class="glyphicon glyphicon-hand-right col-md-1"
 							aria-hidden="true"></span>
 					
-					
-					<div class="col-md-11">While you cannot alter any assigned
-						Projects, you can use the following Tools on your own Projects:</div>
+					<div class="col-md-11">Whilst you cannot alter any assigned Projects, you can use the following tools on your own Projects:</div>
 					</p>
 					<p>
 						<span class="glyphicon glyphicon-pencil col-md-offset-2"
-							aria-hidden="true"></span> - edit: Used to change the Title of
-						your project.
+							aria-hidden="true"></span> - edit: Used to change the title of your Project.
 					</p>
 					<p>
 						<span class="glyphicon glyphicon-trash col-md-offset-2"
-							aria-hidden="true"></span> - delete: Used to delete no longer
-						used projects.
+							aria-hidden="true"></span> - delete: Used to delete no longer used Projects.
 					</p>
 
 
@@ -322,8 +318,7 @@
 					
 					<div class="col-md-11">
 						To show the Business Model Canvas of a Project use the
-						<button type="button" class="btn btn-default disabled">show BMC's
-						</button>
+						<button type="button" class="btn btn-default">show BMC's</button>
 						Button.
 					</div>
 					</p>
@@ -333,8 +328,8 @@
 					
 					
 					<div class="col-md-11" style="padding: 0 0 15px 0;">
-						Also you can create new projects with the
-						<button type="button" class="btn btn-primary disabled">new Project</button>
+						You can also create new Projects with the
+						<button type="button" class="btn btn-primary">new Project</button>
 						Button.
 					</div>
 					</p>

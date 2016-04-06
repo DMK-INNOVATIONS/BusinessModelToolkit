@@ -185,8 +185,7 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 							aria-hidden="true"></span>
 					
 					
-					<div class="col-md-11">This View contains all Model of your choosen
-						project.</div>
+					<div class="col-md-11">This page contains all Models of your chosen project.</div>
 					</p>
 
 					<p>
@@ -194,8 +193,7 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 							aria-hidden="true"></span>
 					
 					
-					<div class="col-md-11">You can use the following Tools on the
-						Models of this Project:</div>
+					<div class="col-md-11">You can use the following tools on the Model of a Project:</div>
 					</p>
 				<?php
 				if ($owner == 0) {
@@ -207,7 +205,7 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 				} else {
 					print '
 							<p>
-					      		<span class="glyphicon glyphicon-pencil col-md-offset-2" aria-hidden="true"></span> - edit: Used to change the Title of the Model.
+					      		<span class="glyphicon glyphicon-pencil col-md-offset-2" aria-hidden="true"></span> - edit: Used to change the title of a Model.
 				      		</p>
 				      		<p>
 					      		<span class="glyphicon glyphicon-file col-md-offset-2" aria-hidden="true"></span> - duplicate: Used to duplicate a Model.
@@ -216,7 +214,7 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 					      		<span class="glyphicon glyphicon-export col-md-offset-2" aria-hidden="true"></span> - export: Used to export a Model.
 				      		</p>
 					      	<p>
-					      		<span class="glyphicon glyphicon-trash col-md-offset-2" aria-hidden="true"></span> - delete: Used to delete no longer used Model.
+					      		<span class="glyphicon glyphicon-trash col-md-offset-2" aria-hidden="true"></span> - delete: Used to delete no longer used Models.
 				      		</p>	
 						';
 				}
@@ -227,8 +225,8 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 					
 					
 					<div class="col-md-11" style="padding: 0 0 15px 0;">
-						To show the edit View of a Business Model Canvas click the
-						<button type="button" class="btn btn-default disabled">show Model</button>
+						To show the edited view of a Business Model Canvas click the
+						<button type="button" class="btn btn-default">show Model</button>
 						Button.
 					</div>
 					</p>
@@ -238,7 +236,7 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 										print '
 		      				<p>
 			      				<span class="glyphicon glyphicon-hand-right col-md-1" aria-hidden="true"></span>
-			      				<div class="col-md-11" style="padding: 0 0 15px 0;">Also you can create new Model in this project when you click the <button type="button" class="btn btn-primary disabled">New Model</button> Button.</div>
+			      				<div class="col-md-11" style="padding: 0 0 15px 0;">To create a new Business Model Canvas click the <button type="button" class="btn btn-primary">New BMC</button> Button.</div>
 		      				</p>  
 						';
 									}

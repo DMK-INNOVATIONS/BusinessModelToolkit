@@ -9,7 +9,7 @@
 <div class="container">
 	<div class=" col-md-12 col-sm-12 col-xs-12">
 	  <h1>Team View</h1>
-	  <h4>View, add and edit all Connections between your Team Members and your Projects.</h4>
+	  <h4>View, add and edit all Connections between your Team Members and Projects.</h4>
 	</div>
 	<div class="divider_style_1"></div>
 	<div class="row" style="margin-top: 10px;">
@@ -73,7 +73,7 @@
 										    <div class="modal-content delete col-md-12">
 										      <div class="modal-header col-md-12">
 										        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										        <h4 class="modal-title">Do you want to remove '.$teamMember["name"].' from your Team list?</h4>
+										        <h4 class="modal-title">Do you want to remove '.$teamMember["name"].' from your team list? </h4>
 										      </div>
 										      <div class="modal-footer delete col-md-12">
 									      		<div class="col-md-6"><a href="team/delete/'.$teamMember['pivot']['project_id'].','.$teamMember['id'].'"><button type="button" class="btn btn-primary btn-lg">Yes</button></a></div>
@@ -109,18 +109,18 @@
       <div class="modal-body col-md-12">
      		 <p>
 				<span class="glyphicon glyphicon-hand-right col-md-1" aria-hidden="true"></span> 
-				<div class="col-md-11">The Team View contains the Connections between your Projects and other User of the "BMCounselor".</div>
+				<div class="col-md-11">The Team View contains Connections between your Projects and other Users of "Business Model Toolkit".</div>
 			</p> 
 			<p>
 				<span class="glyphicon glyphicon-hand-right col-md-1" aria-hidden="true"></span> 
 				<div class="col-md-11">You can use the following Tools to edit Connections: </div>
 			</p>
 	      	<p>
-	      		<span class="glyphicon glyphicon-trash col-md-offset-2" aria-hidden="true"></span> - delete: Used to delete connections between a Teammember and your Projects.
+	      		<span class="glyphicon glyphicon-trash col-md-offset-2" aria-hidden="true"></span> - delete: Used to delete Connections between a team member and your Project.
       		</p>
       		<p>
       			<span class="glyphicon glyphicon-hand-right col-md-1" aria-hidden="true"></span> 
-      			<div class="col-md-11" style="padding: 0 0 15px 0;">Also you can create new Team Connections with the <button type="button" class="btn btn-primary disabled">Add Team Member</button> Button.</div>
+      			<div class="col-md-11" style="padding: 0 0 15px 0;">New Team Connections are created by clicking the <button type="button" class="btn btn-primary disabled">Add Team Member</button> Button.</div>
       		</p>    
       </div>
       <div class="modal-footer col-md-12">

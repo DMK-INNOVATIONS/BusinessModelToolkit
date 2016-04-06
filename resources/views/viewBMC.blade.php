@@ -92,9 +92,10 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 									<div class="panel-heading primary">
 										<h2>Key Partners</h2>
 										<h6 id="KP" style="display: none;">
-											Who are our Key Partners?<br>Who are our Key Suppliers?<br>Which
-											Key Ressources are wo acquairing from partners?<br>Which Key
-											Activities do partners perform?
+											Who are our Key Partners?<br>
+											Who are our Key Suppliers?<br>
+											Which Key Resources are we acquiring from partners?<br>
+											Which Key Activities do partners perform?
 										</h6>
 									</div>
 									<div class="services">
@@ -150,10 +151,10 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 									<div class="panel-heading primary">
 										<h2>Value Propositions</h2>
 										<h6 id="VP" style="display: none;">
-											What Value Propositions do we deliver to the Customer?<br>Which
-											one of our Customer\'s problems are we helping to solve?<br>What
-											bundles of products and services are we offering to each
-											Customer Segment?<br>Which customer needs are we satisfying?
+											What Value Propositions do we deliver to the Customer?<br>
+											Which one of our Customer's problems are we helping to solve?<br>
+											What bundle of products and services are we offering to each Customer Segment?<br>
+											Which customer needs are we satisfying?
 										</h6>
 									</div>
 									<div class="services">
@@ -171,10 +172,10 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 									<div class="panel-heading primary">
 										<h2>Customer Relationships</h2>
 										<h6 id="CR" style="display: none;">
-											What type of relationship does each of our Customer Segments
-											expect us to establish and maintain with them?<br>Which ones
-											have we established?<br>how are thes integrated with the rest
-											of our business model?<br>How costly are they?
+											What type of relationship does each of our Customer Segments expect us to establish and maintain with them?<br>
+											Which ones have we established?<br>
+											How are these integrated with the rest of our business model?<br>
+											How costly are they?
 										</h6>
 									</div>
 									<div class="services">
@@ -234,9 +235,9 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 										<div class="panel-heading primary">
 											<h2>Cost Structure</h2>
 											<h6 id="CO" style="display: none;">
-												What are the most Important costs Inherent in our business
-												model?<br>Which Key Resources are most expensive?<br>Which
-												Key Activities are most expensive?
+												What are the most important inherent costs  in our business model?<br>
+												Which Key Resources are most expensive?<br>
+												Which Key Activities are most expensive?
 											</h6>
 										</div>
 										<div class="services">

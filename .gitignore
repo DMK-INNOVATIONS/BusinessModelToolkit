@@ -5,3 +5,5 @@
 .buildpath
 .env.example
 .project
+.env_from_server
+.env_up_from webroot

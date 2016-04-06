@@ -192,7 +192,8 @@
       		<div class="panel panel-default">
 	      		<div class="panel-heading">Persona Description</div>
 		      	<div class="panel-body">
-		      		<p>Personas are fictional character profiles, which are created to represent a group of customers. They help developers, entrepreneurs and start-up's to understand their target audience. With the help of Personas you can see Problems through the eyes of your customers. <br> Also you can target and design your products and services for your Customers with Personas better, quicker and cheaper.</p>
+		      		<p>Personas are fictional character profiles, which are created to represent a certain group of customers. They help developers, entrepreneurs and start-ups to understand their target audience. With the use of Personas, you are able to see problems through the eyes of your customers. 
+In addition, using Personas lets you target and design your products and services quicker, cheaper and more efficiently.</p>
 		      	</div>
 	      	</div>
       	</div>
