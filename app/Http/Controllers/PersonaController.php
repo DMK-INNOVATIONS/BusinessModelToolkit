@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Auth;
 use App\BMC;
 use App\Http\Controllers\ProjectsController;
+use Illuminate\Support\Facades\Input;
 
 class PersonaController extends Controller {
 	
@@ -77,10 +78,11 @@ class PersonaController extends Controller {
 		$bmc_status = $inserts[4];
 		$owner = $inserts[5];
 		$view_type_main = $inserts[6];
+		$error = false;
 		
 		$persona = Persona::find($id);
 		
-		return view('newPersona', ['view_type' => $view_type, 'bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_status' =>$bmc_status, 'persona' => $persona, 'owner' => $owner, 'view_type_main' => $view_type_main]);
+		return view('newPersona', ['view_type' => $view_type, 'bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_status' =>$bmc_status, 'persona' => $persona, 'owner' => $owner, 'view_type_main' => $view_type_main, 'error' => $error]);
 	}
 	
 	public function deletePersona($id){
@@ -148,12 +150,20 @@ class PersonaController extends Controller {
 		$owner = $inserts[5];
 		$view_type_main = $inserts[6];
 		
-		$name = Input::get('name');
+		$persona_name = Input::get('name');
 		
-		if($name == ''){
-			print 'Falsch!!!'; //noch Fehlermeldung einf�gen
-			return view('newPersona');
-	
+		$validator = $this->eingabeKorrekt($persona_name);
+		
+		if(!$validator){
+			return view ( 'newPersona', [
+				'view_type' => $view_type,
+				'bmc_id' => $bmc_id,
+				'project_id' => $project_id,
+				'bmc_status' =>$bmc_status,
+				'owner' => $owner,
+				'view_type_main' => $view_type_main,
+				'error' => true
+			]);
 		}else{
 			//noch pr�fen ob Titel schon in DB vorhanden ist in Kombi mit diesem Assignee
 	
@@ -207,22 +217,23 @@ class PersonaController extends Controller {
 		$bmc_status = $inserts[3];
 		$owner = $inserts[4];
 		$view_type_main = $inserts[5];
+		(isset($inserts [6])? $error = $inserts [6]: $error = false);
 		
-		return view('newPersona', ['view_type' => $view_type, 'bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_status' =>$bmc_status, 'owner' => $owner, 'view_type_main' => $view_type_main]);
+		return view('newPersona', ['view_type' => $view_type, 'bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_status' =>$bmc_status, 'owner' => $owner, 'view_type_main' => $view_type_main, 'error' => $error]);
 	}
 	
 	/**
 	 * Validierung der Nutzereingaben vor der Speicheroperation.
-	 * TODO Sollte man sicherlich noch einbauen!
 	 */
-	public function eingabeKorrekt(){
-		$validator = Validator::make(Input::all(), array(
-				'title' => '$project_title'
-		));
-	
-		if($validator->fails){
-			return Redirect::action(NewProjectController::index());
+	public function eingabeKorrekt($title){
+		if(empty($title)){
+			return false;
+		}else{
+			if(is_string($title)){
+				return true;
+			}else{
+				return false;
+			}
 		}
-		return Redirect::action(NewProjectController::createNewProject());
 	}
 }

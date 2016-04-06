@@ -32,6 +32,9 @@
 					?>
 			
 				<div class="row">
+					<?php if($error):?>
+						<div class="alert alert-warning col-md-12" role="alert">You must enter a Title for your Persona!</div>
+					<?php endif;?>
 					<div class="col-md-2 col-md-offset-1">
 						<?php if(isset($persona)) : ?>
 							<a class="thumbnail">

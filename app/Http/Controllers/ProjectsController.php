@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 // use App\Http\Requests\Request;
 use Illuminate\Support\Facades\Input;
 use Request; // You're not using the facade, replace use Illuminate\Http\Request; with use Request;
+use Illuminate\Validation\Validator;
 class ProjectsController extends Controller {
 	
 	/*
@@ -297,7 +298,9 @@ class ProjectsController extends Controller {
 	public function save($id = null) {
 		$title = Input::get('title');
 		
-		if ($title == '') {
+		$validator = $this->eingabeKorrekt($title);
+		
+		if (!$validator) {
 			return view ( 'newProject', [ 
 					'error' => 1 
 			] );
@@ -347,17 +350,17 @@ class ProjectsController extends Controller {
 	
 	/**
 	 * Validierung der Nutzereingaben vor der Speicheroperation.
-	 * TODO Sollte man sicherlich noch einbauen!
 	 */
-	public function eingabeKorrekt() {
-		$validator = Validator::make ( Input::all (), array (
-				'title' => '$project_title' 
-		) );
-		
-		if ($validator->fails) {
-			return Redirect::action ( NewProjectController::index () );
+	public function eingabeKorrekt($title) {
+		if(empty($title)){
+			return false;
+		}else{
+			if(is_string($title)){
+				return true;
+			}else{
+				return false;
+			}
 		}
-		return Redirect::action ( NewProjectController::createNewProject () );
 	}
 	public function getMyAssignedProjects() {
 		$allProjects = $this->getAllProjects ();
