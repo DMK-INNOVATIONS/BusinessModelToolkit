@@ -60,9 +60,9 @@
 								<button type="submit" class="btn btn-primary">Save</button></a>
 								<?php 
 									if($view_type == 'models'){
-										print '<a href="{{$path}}}/bmc/models"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>';
+										print '<a href="'.$path.'/bmc/models"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>';
 									}else{
-										print '<a href="{{{$path}}}/projects/showBMCs/{{{$project_id}}},{{{$owner}}}"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>';
+										print '<a href="'.$path.'/projects/showBMCs/'.$project_id.','.$owner.'"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>';
 									}
 								?>
 							</div>

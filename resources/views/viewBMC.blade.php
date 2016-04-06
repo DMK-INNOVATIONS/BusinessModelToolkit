@@ -33,9 +33,9 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 					<div class="col-md-3 col-sm-4">
 						<?php
 						if ($view_type == 'models') {
-							print '<a href="{{{$path}}}/bmc/models"><button type="button" class="btn btn-default">Back to Model View</button></a>';
+							print '<a href="'.$path.'/bmc/models"><button type="button" class="btn btn-default">Back to Model View</button></a>';
 						} else {
-							print '<a href="{{{$path}}}/projects/showBMCs/{{{$project_id}}},{{{$owner}}}"><button type="button" class="btn btn-primary btn-secundar no-margin-left">Back to Project</button></a>';
+							print '<a href="'.$path.'/projects/showBMCs/'.$project_id.','.$owner.'"><button type="button" class="btn btn-primary btn-secundar no-margin-left">Back to Project</button></a>';
 						}
 						?>
 					</div>

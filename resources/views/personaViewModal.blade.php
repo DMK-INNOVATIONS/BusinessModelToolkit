@@ -69,7 +69,7 @@
 			<div class="form-group">
 				<div class="col-md-8 col-md-offset-2">
 					<button type="submit" class="btn btn-primary">Add Persona/s</button>
-					<a href="{{{$path}}}/persona/create/viewBMC,{{{$bmc_id}}},{{{$project_id}}},{{{$status}}},{{{$owner}}},viewBMC"><button type="button" class="btn btn-default">Create new Persona</button></a>
+					<a href="<?=$path ?>/persona/create/viewBMC,{{{$bmc_id}}},{{{$project_id}}},{{{$status}}},{{{$owner}}},viewBMC"><button type="button" class="btn btn-default">Create new Persona</button></a>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
 				</div>
 			</div>

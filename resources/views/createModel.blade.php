@@ -58,7 +58,7 @@
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">Save</button>
-								<a href="{{{$path}}}/bmc/models"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>
+								<a href="<?=$path ?>/bmc/models"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>
 							</div>
 						</div>
 					</form>

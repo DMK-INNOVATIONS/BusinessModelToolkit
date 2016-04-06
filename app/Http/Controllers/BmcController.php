@@ -43,8 +43,9 @@ class BmcController extends Controller {
 	public function create($id) {
 		$inserts = explode ( ",", $id );
 		$project_id = $inserts [0];
-		$owner = $inserts [1];
 		$view_type = $inserts [2];
+		
+		$owner = $this->getBMCOwnerID($project_id);
 		
 		return view ( 'newBmc', [ 
 				'project_id' => $project_id,
@@ -52,6 +53,10 @@ class BmcController extends Controller {
 				'owner' => $owner,
 				'view_type' => $view_type 
 		] );
+	}
+	public function getBMCOwnerID($project_id){
+		$project = Project::find($project_id);
+		return $project['assignee_id'];
 	}
 	public function createModel() {
 		$myProjects = $this->getMyProjects ();
@@ -66,10 +71,10 @@ class BmcController extends Controller {
 		$bmc_id = $inserts [1];
 		$bmc_status = $title = Input::get('status');
 		$view_type = $inserts [2];
-		$owner = $inserts [3];
 		$view_type_main = $inserts [4];
 		
 		$bmc = BMC::find ( $bmc_id );
+		$owner = $this->getBMCOwnerID($bmc['project_id']);
 		
 		switch ($bmc_status) {
 			case 'inWork' :
@@ -119,8 +124,10 @@ class BmcController extends Controller {
 		$bmc_id = $inserts [1];
 		$bmc_status = $inserts [2];
 		$view_type = $inserts [3]; // 1 - showBMC.blade, 0 - viewBMC.blade
-		$owner = $inserts [4];
 		$view_type_main = $inserts [6]; // 'models' || 'showBMCs'
+		
+		$bmc = BMC::find ( $bmc_id );
+		$owner = $this->getBMCOwnerID($bmc['project_id']);
 		
 		$title = Input::get('title');
 		
@@ -185,8 +192,11 @@ class BmcController extends Controller {
 		$bmc_id = $inserts [0];
 		$project_id = $inserts [1];
 		$bmc_status_id = $inserts [2];
-		$owner = $inserts [3];
 		$view_type = $inserts [4];
+		
+		$bmc = BMC::find ( $bmc_id );
+		$owner = $this->getBMCOwnerID($bmc['project_id']);
+		
 		(isset($inserts [5])? $error = $inserts [5]: $error = false);
 		
 		$bmc_postIts = $this->getBMCPostIts ( $bmc_id );
@@ -262,10 +272,10 @@ class BmcController extends Controller {
 		$inserts = explode ( ",", $id );
 		
 		$bmc_id = $inserts [0];
-		$owner = $inserts [1];
 		$view_type = $inserts [2];
 		
 		$bmc = BMC::find ( $bmc_id );
+		$owner = $this->getBMCOwnerID($bmc['project_id']);
 		
 		return view ( 'newBmc', [ 
 				'bmc' => json_decode ( $bmc, true ),
@@ -280,8 +290,10 @@ class BmcController extends Controller {
 		
 		$bmc_original_id = $inserts [0];
 		$project_id = $inserts [1];
-		$owner = $inserts [2];
 		$view_type = $inserts [3];
+		
+		$bmc = BMC::find ( $bmc_original_id );
+		$owner = $this->getBMCOwnerID($bmc['project_id']);
 		
 		$bmc_original = BMC::find ( $bmc_original_id );
 		$bmc_original_PostIts = $this->getBMCPostIts ( $bmc_original_id );
@@ -335,10 +347,10 @@ class BmcController extends Controller {
 		
 		$bmc_id = $inserts [0];
 		$project_id = $inserts [1];
-		$owner = $inserts [2];
 		$view_type = $inserts [3];
 		
 		$bmc = BMC::find ( $bmc_id );
+		$owner = $this->getBMCOwnerID($bmc['project_id']);
 		
 		// personas detachen
 		$assignedPersonas = $this->getAssignedPersonas ( $bmc_id );
@@ -373,8 +385,10 @@ class BmcController extends Controller {
 		$project_id = $inserts [2];
 		$bmc_status = $inserts [3];
 		$post_it_id = $inserts [4];
-		$owner = $inserts [5];
 		$view_type = $inserts [6];
+		
+		$bmc = BMC::find ( $bmc_id );
+		$owner = $this->getBMCOwnerID($bmc['project_id']);
 		
 		$sort_anz = $this->getNoticeCount ( $canvas_box_id . $bmc_id );
 		
@@ -447,8 +461,10 @@ class BmcController extends Controller {
 		$bmc_id = $inserts [1];
 		$project_id = $inserts [2];
 		$bmc_status = $inserts [3];
-		$owner = $inserts [4];
 		$view_type = $inserts [5];
+		
+		$bmc = BMC::find ( $bmc_id );
+		$owner = $this->getBMCOwnerID($bmc['project_id']);
 		
 		Notice::destroy ( $post_it_id );
 		
@@ -463,8 +479,10 @@ class BmcController extends Controller {
 		$bmc_id = $inserts [1];
 		$bmc_status = $inserts [2];
 		$postIt_id = $inserts [3];
-		$owner = $inserts [4];
 		$view_type = $inserts [5];
+		
+		$bmc = BMC::find ( $bmc_id );
+		$owner = $this->getBMCOwnerID($bmc['project_id']);
 		
 		$postIt_status = Input::get('postIt_status');
 		
@@ -535,10 +553,10 @@ class BmcController extends Controller {
 		$project_id = $inserts [1];
 		$bmc_status = $inserts [2];
 		$persona_id = $inserts [3];
-		$owner = $inserts [4];
 		$view_type = $inserts [5];
 		
 		$bmc = BMC::find ( $bmc_id );
+		$owner = $this->getBMCOwnerID($bmc['project_id']);
 		$bmc->personas ()->detach ( $persona_id );
 		
 		$view = '/bmc/viewBMC/' . $bmc->id . ',' . $project_id . ',' . $bmc_status . ',' . $owner . ',' . $view_type;

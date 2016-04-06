@@ -193,7 +193,7 @@
 										if($view_type == "viewBMC"){
 											print '<a href="/bmc/public/bmc/viewBMC/{{{$bmc_id}}},{{{$project_id}}},{{{$bmc_status}}},{{{$owner}}}"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>';	
 										}else{
-											print '<a href="{{{$path}}}/persona"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>';
+											print '<a href="'.$path.'/persona"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>';
 										}
 									?>
 								</div>
