@@ -57,7 +57,6 @@
 	<body>
 		<div class="container">
 			<div class="content">
-								
 				<div class="title">Thank you for your registration.</div>
 				<div class="text"> Please check your email and click activate account link in the message we just sent to <?php echo $email; ?>. Once your account is activated, you are able to use our service.</div>
 					
