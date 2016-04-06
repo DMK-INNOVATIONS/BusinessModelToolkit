@@ -171,7 +171,7 @@
 					</div>
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<br>
-						<?php print '<a href="persona/create/'.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.',0,Persona"><button type="button" class="btn btn-primary">New Persona</button></a>';?>
+						<a href="persona/create/{{{$view_type}}},{{{$bmc_id}}},{{{$project_id}}},{{{$bmc_status}}},0,Persona"><button type="button" class="btn btn-primary">New Persona</button></a>
 					</div>
 				</div>
 			</div> 
@@ -203,7 +203,7 @@
 <!--       				<div class="row"> -->
 <!--       					<div class="col-md-4"> -->
 <!--       						<div class="col-md-12 panel panel-default"><b>John Doe</b></div> -->
-<!--       						<div class="col-md-12 panel panel-default persona_view_box"><img alt="Persona Avatar" src="{{ asset('img/male_persona_default.png') }}" height="125px"></div> -->
+<!--       						<div class="col-md-12 panel panel-default persona_view_box"><img alt="Persona Avatar" src="{{{ asset('img/male_persona_default.png') }}}" height="125px"></div> -->
 <!--       					</div> -->
 <!--       					<div class="col-md-8"> -->
 <!--       						<div class="col-md-12 persona_view_box_quote"> -->

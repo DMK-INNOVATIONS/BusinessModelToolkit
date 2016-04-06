@@ -2,20 +2,20 @@
 <div class="container">
 	@if (Auth::user()->name)
 	<div class=" col-md-12 col-sm-12 col-xs-12 text-center">
-		<h1>Welcome back, {{ Auth::user()->name }}!</h1>
+		<h1>Welcome back, {{{ Auth::user()->name }}}!</h1>
 	</div>
 	<div class="divider_style_2 extra_space"></div>
 	@endif
 	<div class="row">
 		<div class="col-md-12 text-center"><h4>Choose from the following options:</h4></div>
 		<div class="col-md-12 text-center">
-			<a href="{{ url('/projects') }}" class="first_screen">Projects</a>
+			<a href="{{{ url('/projects') }}}" class="first_screen">Projects</a>
 		</div>
 		<div class="col-md-12 text-center">
-			<a href="{{ url('/persona') }}" class="first_screen">Persona</a>
+			<a href="{{{ url('/persona') }}}" class="first_screen">Persona</a>
 		</div>
 		<div class="col-md-12 text-center">
-			<a href="{{ url('/team') }}" class="first_screen">Team</a>
+			<a href="{{{ url('/team') }}}" class="first_screen">Team</a>
 		</div>
 	</div>
 </div>

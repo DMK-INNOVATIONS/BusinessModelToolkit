@@ -111,13 +111,13 @@
       	<h4>Change the Title of Your BMC</h4>
       </div>
       <div class="modal-body">
-	      <form class="form-horizontal" role="form" method="POST" action="<?php print $path."/bmc/save/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view.','.$owner.',viewBMC,viewBMC' ?>">
+	      <form class="form-horizontal" role="form" method="POST" action="{{{$path}}}/bmc/save/{{{$project_id}}},{{{$posturl}}},{{{$bmc_status}}},{{{$new_bmc_view}}},{{{$owner}}},viewBMC,viewBMC">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		
 				<div class="form-group">
 					<label class="col-md-4 control-label">Title</label>
 					<div class="col-md-6">
-						<input type="text" class="form-control" name="title" value="<?php print $bmc_name?>">
+						<input type="text" class="form-control" name="title" value="{{{$bmc_name}}}">
 					</div>
 				</div>
 				<div class="form-group">
@@ -138,10 +138,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      	<h4>Change the Status of <?php print $bmc_name;?></h4>
+      	<h4>Change the Status of {{{$bmc_name}}}</h4>
       </div>
       <div class="modal-body">
-	      <form class="form-horizontal" role="form" method="POST" action="<?php print $path."/bmc/changeStatus/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view.','.$owner.',viewBMC' ?>">
+	      <form class="form-horizontal" role="form" method="POST" action="{{{$path}}}/bmc/changeStatus/{{{$project_id}}},{{{$posturl}}},{{{$bmc_status}}},{{{$new_bmc_view}}},{{{$owner}}},viewBMC">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		
 				<div class="form-group">
@@ -149,7 +149,7 @@
 				 	<div class="col-md-8">
 					  <select class="form-control" id="status" name="status">
 					  	<?php foreach ($status_option as $key=>$val):?>
-					  		<option value="<?php echo $key?>" <?php echo ($key===$bmc_status) ? 'selected="selected"' :'' ?>><?php echo $val?></option>
+					  		<option value="{{{$key}}}" <?= ($key===$bmc_status) ? 'selected="selected"' :'' ?>>{{{$val}}}</option>
 					  	<?php endforeach;?>
 					  </select>
 					</div>

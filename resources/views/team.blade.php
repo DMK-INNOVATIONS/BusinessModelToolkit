@@ -18,7 +18,7 @@
 			@if(session('error'))
 				<div class="panel panel-danger">
 					<div class="panel-heading"></div>
-					<div class="panel-body">{{ session('error') }}</div>
+					<div class="panel-body">{{{ session('error') }}}</div>
 				</div>
 			@endif
 

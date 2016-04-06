@@ -12,14 +12,14 @@
 							<strong>Whoops!</strong> There were some problems with your input.<br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
+									<li>{{{ $error }}}</li>
 								@endforeach
 							</ul>
 						</div>
 					@endif
 				
 					<form class="form-horizontal" role="form" method="POST" action="<?php print './addUserToProject' ?>">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<input type="hidden" name="_token" value="{{{ csrf_token() }}}">
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Email Adress</label>
@@ -45,7 +45,7 @@
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">Save</button>
-								<a href="{{ url('/team') }}"><button type="button" class="btn btn-default">Back</button></a>
+								<a href="{{{ url('/team') }}}"><button type="button" class="btn btn-default">Back</button></a>
 							</div>
 						</div>
 					</form>

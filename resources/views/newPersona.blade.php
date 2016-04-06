@@ -20,7 +20,7 @@
 							<strong>Whoops!</strong> There were some problems with your input.<br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
+									<li>{{{ $error }}}</li>
 								@endforeach
 							</ul>
 						</div>
@@ -38,23 +38,23 @@
 					<div class="col-md-2 col-md-offset-1">
 						<?php if(isset($persona)) : ?>
 							<a class="thumbnail">
-						      <img class="avatar" src="{{ $persona['avatarImg'] }}" alt="avatarImg">
+						      <img class="avatar" src="{{{ $persona['avatarImg'] }}}" alt="avatarImg">
 						    </a>
 						<?php else : ?>
 							<div class="thumbnail">
-						      <img class="avatar" src="{{ asset('img/male_persona_default_bg.png') }}" alt="avatarImg"> <!-- noch gegen default bild austauschen -->
+						      <img class="avatar" src="{{{ asset('img/male_persona_default_bg.png') }}}" alt="avatarImg"> <!-- noch gegen default bild austauschen -->
 						    </div>
 						<?php endif; ?>
 					</div>
 					<div class="col-md-9">
-						<form class="form-horizontal" role="form" method="POST" action="{{ url('/persona/save/'.$posturl.','.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.','.$owner.','.$view_type_main) }}">
-							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<form class="form-horizontal" role="form" method="POST" action="{{{ url('/persona/save/'.$posturl.','.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.','.$owner.','.$view_type_main) }}}">
+							<input type="hidden" name="_token" value="{{{ csrf_token() }}}">
 	
 							<div class="form-group">
 								<label class="col-md-2 control-label">Name</label>
 								<div class="col-md-8">
 									<?php if(isset($persona)) : ?>
-										<input type="text" class="form-control" name="name" value="{{ $persona['name'] }}">
+										<input type="text" class="form-control" name="name" value="{{{ $persona['name'] }}}">
 									<?php else : ?>
 										<input type="text" class="form-control" name="name">
 									<?php endif; ?>
@@ -65,7 +65,7 @@
 								<label class="col-md-2 control-label">Persona Image</label>
 								<div class="col-md-8">
 									<?php if(isset($persona)) : ?>
-										<input type="text" class="form-control" name="avatarImg" value="{{ $persona['avatarImg'] }}">
+										<input type="text" class="form-control" name="avatarImg" value="{{{ $persona['avatarImg'] }}}">
 									<?php else : ?>
 										<div class="input-group">
 											<input type="text" class="form-control" name="avatarImg">
@@ -79,7 +79,7 @@
 								<label class="col-md-2 control-label">Age</label>
 								<div class="col-md-8">
 									<?php if(isset($persona)) : ?>
-										<input type="text" class="form-control" name="age" value="{{ $persona['age'] }}">
+										<input type="text" class="form-control" name="age" value="{{{ $persona['age'] }}}">
 									<?php else : ?>
 										<input type="text" class="form-control" name="age">
 									<?php endif; ?>
@@ -116,7 +116,7 @@
 								<label class="col-md-2 control-label">Occupation</label>
 								<div class="col-md-8">
 									<?php if(isset($persona)) : ?>
-										<input type="text" class="form-control" name="occupation" value="{{ $persona['occupation'] }}">
+										<input type="text" class="form-control" name="occupation" value="{{{ $persona['occupation'] }}}">
 									<?php else : ?>
 										<input type="text" class="form-control" name="occupation">
 									<?php endif; ?>
@@ -127,7 +127,7 @@
 								<label class="col-md-2 control-label">Nationality</label>
 								<div class="col-md-8">
 									<?php if(isset($persona)) : ?>
-										<input type="text" class="form-control" name="nationality" value="{{ $persona['nationality'] }}">
+										<input type="text" class="form-control" name="nationality" value="{{{ $persona['nationality'] }}}">
 									<?php else : ?>
 										<input type="text" class="form-control" name="nationality">
 									<?php endif; ?>
@@ -138,7 +138,7 @@
 								<label class="col-md-2 control-label">Quote</label>
 								<div class="col-md-8">
 									<?php if(isset($persona)) : ?>
-										<input type="text" class="form-control" name="quote" value="{{ $persona['quote'] }}">
+										<input type="text" class="form-control" name="quote" value="{{{ $persona['quote'] }}}">
 									<?php else : ?>
 										<input type="text" class="form-control" name="quote">	
 									<?php endif; ?>
@@ -149,7 +149,7 @@
 								<label class="col-md-2 control-label">Personality</label>
 								<div class="col-md-8">								
 									<?php if(isset($persona)) : ?>
-										<textarea type="text" class="form-control" rows="3" name="personality" ><?php print $persona['personality'];?></textarea>
+										<textarea type="text" class="form-control" rows="3" name="personality" ><?= $persona['personality'];?></textarea>
 									<?php else : ?>
 										<div class="input-group col-md-12">
 											<textarea type="text" class="form-control" rows="3" name="personality"></textarea>
@@ -162,7 +162,7 @@
 								<label class="col-md-2 control-label">Skills</label>
 								<div class="col-md-8">
 									<?php if(isset($persona)) : ?>
-										<textarea type="text" class="form-control" rows="3" name="skills" ><?php print $persona['skills']; ?></textarea>
+										<textarea type="text" class="form-control" rows="3" name="skills" ><?= $persona['skills']; ?></textarea>
 									<?php else : ?>
 										<div class="input-group">
 											<textarea type="text" class="form-control" rows="3" name="skills"></textarea>
@@ -176,7 +176,7 @@
 								<label class="col-md-2 control-label">Needs</label>
 								<div class="col-md-8">
 									<?php if(isset($persona)) : ?>
-										<textarea type="text" class="form-control" rows="3" name="needs"><?php print $persona['needs'];?></textarea>
+										<textarea type="text" class="form-control" rows="3" name="needs"><?= $persona['needs'];?></textarea>
 									<?php else : ?>
 										<div class="input-group">
 											<textarea type="text" class="form-control" rows="3" name="needs"></textarea>
@@ -191,9 +191,9 @@
 									<button type="submit" class="btn btn-primary">Save</button>
 									<?php 
 										if($view_type == "viewBMC"){
-											print '<a href="/bmc/public/bmc/viewBMC/'.$bmc_id.$project_id.$bmc_status.$owner.'"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>';	
+											print '<a href="/bmc/public/bmc/viewBMC/{{{$bmc_id}}},{{{$project_id}}},{{{$bmc_status}}},{{{$owner}}}"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>';	
 										}else{
-											print '<a href="'.$path.'/persona"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>';
+											print '<a href="{{{$path}}}/persona"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>';
 										}
 									?>
 								</div>
@@ -209,13 +209,13 @@
 $("#gender").change(function() {
     var avatar=$(this).val();
     if(avatar==="male"){
-        $(".avatar").attr("src","{{ asset('img/male_persona_default_bg.png') }}");
+        $(".avatar").attr("src","{{{ asset('img/male_persona_default_bg.png') }}}");
         }
     if(avatar==="female"){
-        $(".avatar").attr("src","{{ asset('img/female_persona_default_bg.png') }}");
+        $(".avatar").attr("src","{{{ asset('img/female_persona_default_bg.png') }}}");
         }
     if(avatar==="other"){
-        $(".avatar").attr("src","{{ asset('img/gplaypattern.png') }}");
+        $(".avatar").attr("src","{{{ asset('img/gplaypattern.png') }}}");
         }
     })
 </script>

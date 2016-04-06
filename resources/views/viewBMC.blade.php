@@ -33,9 +33,9 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 					<div class="col-md-3 col-sm-4">
 						<?php
 						if ($view_type == 'models') {
-							print '<a href="' . $path . '/bmc/models"><button type="button" class="btn btn-default">Back to Model View</button></a>';
+							print '<a href="{{{$path}}}/bmc/models"><button type="button" class="btn btn-default">Back to Model View</button></a>';
 						} else {
-							print '<a href="' . $path . '/projects/showBMCs/' . $project_id . ',' . $owner . '"><button type="button" class="btn btn-primary btn-secundar no-margin-left">Back to Project</button></a>';
+							print '<a href="{{{$path}}}/projects/showBMCs/{{{$project_id}}},{{{$owner}}}"><button type="button" class="btn btn-primary btn-secundar no-margin-left">Back to Project</button></a>';
 						}
 						?>
 					</div>
@@ -45,14 +45,14 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 							print '<a type="button" class="edit-icon-header" data-toggle="modal" data-target="#titleChangeModal" class="btn btn-default btn-sm"></a>  ';
 						}
 						?>
-						<h1 style="margin-top: 10px;"><?php print $bmc_name?></h1>
+						<h1 style="margin-top: 10px;">{{{$bmc_name}}}</h1>
 					</div>
 					<div class="col-md-2 col-sm-4 no_padding_right">
 						<div class="pull-right">
 						<div class="status_project">
 							<a class="show-icon" type="button" data-toggle="modal" data-target="#statusChangeModal">
-								<div class="label_{{$bmc_status}} label_status_project">
-									<h5 class="text_status_bmc">{{$bmc_status}}</h5>
+								<div class="label_{{{$bmc_status}}} label_status_project">
+									<h5 class="text_status_bmc">{{{$bmc_status}}}</h5>
 								</div>
 								<!--  <i button type="button" class="icon-triangle glyphicon glyphicon-question-sign"></i>-->
 							</a>

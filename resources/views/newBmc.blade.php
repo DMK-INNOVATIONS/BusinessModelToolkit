@@ -20,7 +20,7 @@
 							<strong>Whoops!</strong> There were some problems with your input.<br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
+									<li>{{{ $error }}}</li>
 								@endforeach
 							</ul>
 						</div>
@@ -33,8 +33,8 @@
 						if(isset($bmc)) : $posturl = $bmc['id']; endif;
 					?>
 					
-					<form class="form-horizontal" role="form" method="POST" action="<?php print $path."/bmc/save/".$project_id.','.$posturl.','.$bmc_status.','.$new_bmc_view.','.true.','.$owner.','.$view_type ?>">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<form class="form-horizontal" role="form" method="POST" action="{{{$path}}}/bmc/save/{{{$project_id}}},{{{$posturl}}},{{{$bmc_status}}},{{{$new_bmc_view}}},true,{{{$owner}}},{{{$view_type}}}">
+						<input type="hidden" name="_token" value="{{{ csrf_token() }}}">
 						
 						<?php 
 						
@@ -48,7 +48,7 @@
 							<label class="col-md-4 control-label">Title</label>
 							<div class="col-md-6">
 								<?php if(isset($bmc)) : ?>
-									<input type="text" class="form-control" name="title" value="{{ $bmc['title'] }}">
+									<input type="text" class="form-control" name="title" value="{{{ $bmc['title'] }}}">
 								<?php else : ?>
 									<input type="text" class="form-control" name="title">
 								<?php endif; ?>
@@ -60,9 +60,9 @@
 								<button type="submit" class="btn btn-primary">Save</button></a>
 								<?php 
 									if($view_type == 'models'){
-										print '<a href="'.$path.'/bmc/models"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>';
+										print '<a href="{{$path}}}/bmc/models"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>';
 									}else{
-										print '<a href="'.$path.'/projects/showBMCs/'.$project_id.','.$owner.'"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>';
+										print '<a href="{{{$path}}}/projects/showBMCs/{{{$project_id}}},{{{$owner}}}"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>';
 									}
 								?>
 							</div>

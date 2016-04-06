@@ -12,7 +12,7 @@
 							<strong>Whoops!</strong> There were some problems with your input.<br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
+									<li>{{{ $error }}}</li>
 								@endforeach
 							</ul>
 						</div>
@@ -33,14 +33,14 @@
 					
 					?>
 					
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/projects/save/'.$posturl) }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<form class="form-horizontal" role="form" method="POST" action="{{{ url('/projects/save/'.$posturl) }}}">
+						<input type="hidden" name="_token" value="{{{ csrf_token() }}}">
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Title</label>
 							<div class="col-md-6">
 								<?php if(isset($project)) : ?>
-									<input type="text" class="form-control" name="title" value="{{ $project['title'] }}">
+									<input type="text" class="form-control" name="title" value="{{{ $project['title'] }}}">
 								<?php else : ?>
 									<input type="text" class="form-control" name="title">
 								<?php endif; ?>
@@ -50,7 +50,7 @@
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">Save</button>
-								<a href="{{ url('/projects/') }}"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>
+								<a href="{{{ url('/projects/') }}}"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>
 							</div>
 						</div>
 					</form>

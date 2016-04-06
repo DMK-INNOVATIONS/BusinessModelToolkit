@@ -23,14 +23,14 @@
 				<div class="panel-heading"><b>User Profile</b> <button type="button" data-toggle="modal" data-target="#helpModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button></div>
 				<div class="panel-body">
 				
-				<form class="form-horizontal" role="form" method="POST" action="<?php print $path;?>/profile/save/<?php print $user['id'];?>">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<form class="form-horizontal" role="form" method="POST" action="{{{ $path }}}/profile/save/<?= $user['id'];?>">
+						<input type="hidden" name="_token" value="{{{ csrf_token() }}}">
 						
 						<div class="form-group">
 							<label class="col-md-4 control-label">Name</label>
 							<div class="col-md-6">
 								<?php if(isset($user)) : ?>
-									<input type="text" class="form-control" name="name" value="{{ $user['name'] }}">
+									<input type="text" class="form-control" name="name" value="{{{ $user['name'] }}}">
 								<?php else : ?>
 									<input type="text" class="form-control" name="name">
 								<?php endif; ?>
@@ -41,7 +41,7 @@
 							<label class="col-md-4 control-label">E-Mail Address</label>
 							<div class="col-md-6">
 								<?php if(isset($user)) : ?>
-									<input type="text" class="form-control" name="email" value="{{ $user['email'] }}">
+									<input type="text" class="form-control" name="email" value="{{{ $user['email'] }}}">
 								<?php else : ?>
 									<input type="text" class="form-control" name="email">
 								<?php endif; ?>
@@ -51,14 +51,14 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label">Password</label>
 							<div class="col-md-6">
-								<input type="password" class="form-control" name="password" value="{{ old('password') }}">
+								<input type="password" class="form-control" name="password" value="{{{ old('password') }}}">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">Save Changes</button>
-								<a href="{{ url('/bmc') }}"><button type="button" class="btn btn-default">Back</button></a>
+								<a href="{{{ url('/bmc') }}}"><button type="button" class="btn btn-default">Back</button></a>
 							</div>
 						</div>
 					</form>

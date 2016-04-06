@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\BMC;
 use App\Notice;
 use HTML2PDF;
+use Illuminate\Support\Facades\Input;
 
 class ExportController extends Controller {
 

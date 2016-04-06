@@ -17,8 +17,8 @@
         <h4 class="modal-title" id="myModalLabel">Add a Persona</h4>
       </div>
       <div class="modal-body">
-      	<form class="form-horizontal" role="form" method="POST" action="<?php print $path;?>/bmc/addPersona/<?php print $bmc_id.','.$owner.',viewBMC'; ?>">
-			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+      	<form class="form-horizontal" role="form" method="POST" action="{{{$path}}}/bmc/addPersona/{{{$bmc_id}}},{{{$owner}}},viewBMC">
+			<input type="hidden" name="_token" value="{{{ csrf_token() }}}">
 				<div class="persona-View-table">
 					  <div class="panel-body table_text">
 					    <p>Choose one or more personas from the list.</p>
@@ -69,7 +69,7 @@
 			<div class="form-group">
 				<div class="col-md-8 col-md-offset-2">
 					<button type="submit" class="btn btn-primary">Add Persona/s</button>
-					<?php $view_type = 'viewBMC'; print '<a href="'.$path.'/persona/create/'.$view_type.','.$bmc_id.','.$project_id.','.$status.','.$owner.',viewBMC"><button type="button" class="btn btn-default">Create new Persona</button></a>'; ?>
+					<a href="{{{$path}}}/persona/create/viewBMC,{{{$bmc_id}}},{{{$project_id}}},{{{$status}}},{{{$owner}}},viewBMC"><button type="button" class="btn btn-default">Create new Persona</button></a>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
 				</div>
 			</div>

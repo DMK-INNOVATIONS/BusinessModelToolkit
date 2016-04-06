@@ -74,29 +74,29 @@
 						<div class="col-md-12 my_project_list">
 					<div class="row">
 						<div class="col-md-5">
-							<h3>{{ $myProject['title'] }}</h3>
+							<h3>{{{ $myProject['title'] }}}</h3>
 						</div>
 						<div class="col-md-1 no_padding_left">
 							<span class="details_myprojects"></span>
 						</div>
 						<div class="col-md-2">
 							<div class="col-md-12">
-								<h5 class="no_margin_bottom">{{date('l, d-m-Y | H:m',
-									strtotime($myProject['updated_at'])) }}</h5>
+								<h5 class="no_margin_bottom">{{{date('l, d-m-Y | H:m',
+									strtotime($myProject['updated_at'])) }}}</h5>
 							</div>
 							<div class="col-md-12">
-								<h6 class="no_margin_top">{{ date('Y-m-d | H:m',
-									strtotime($myProject['created_at'])) }}</h6>
+								<h6 class="no_margin_top">{{{ date('Y-m-d | H:m',
+									strtotime($myProject['created_at'])) }}}</h6>
 							</div>
 						</div>
 						<div class="col-md-2">
 
-							<a href="projects/edit/{{ $myProject['id'] }}"> <span
+							<a href="projects/edit/{{{ $myProject['id'] }}}"> <span
 								class="edit-icon no_background" aria-hidden="true"
 								data-toggle="tooltip" data-placement="bottom" title="edit" />
 							</a>
 							 <a data-toggle="modal"
-								data-target="#deleteModal{{ $myProject['id'] }}"> <span
+								data-target="#deleteModal{{{ $myProject['id'] }}}"> <span
 								class="delete-icon no_background" aria-hidden="true"
 								data-toggle="tooltip" data-placement="bottom" title="delete" />
 							</a>
@@ -104,7 +104,7 @@
 						</div>
 						<div class="col-md-2">
 							<a class="project_link"
-								href="projects/showBMCs/{{ $myProject['id'] }},1">
+								href="projects/showBMCs/{{{ $myProject['id'] }}},1">
 								<button type="button" class="btn btn-primary btn-secundar">Show
 									Models</button>
 							</a>
@@ -179,26 +179,26 @@
 				<div class="col-md-12 my_project_list">
 					<div class="row">
 						<div class="col-md-5">
-							<h3>{{ $my->title }}</h3>
+							<h3>{{{ $my->title }}}</h3>
 						</div>
 						<div class="col-md-1 no_padding_left">
 							<span class="details_myprojects"></span>
 						</div>
 						<div class="col-md-2">
 							<div class="col-md-12">
-								<h5 class="no_margin_bottom">{{ date('l, d-m-Y | H:m',
-									strtotime($my->updated_at)) }}</h5>
+								<h5 class="no_margin_bottom">{{{ date('l, d-m-Y | H:m',
+									strtotime($my->updated_at)) }}}</h5>
 							</div>
 							<div class="col-md-12">
-								<h6 class="no_margin_top">{{ date('Y-m-d | H:m',
-									strtotime($my->created_at)) }}</h6>
+								<h6 class="no_margin_top">{{{ date('Y-m-d | H:m',
+									strtotime($my->created_at)) }}}</h6>
 							</div>
 						</div>
 						<div class="col-md-2">
-							<h5>{{$my->assignee->name}}</h5>
+							<h5>{{{$my->assignee->name}}}</h5>
 						</div>
 						<div class="col-md-2">
-							<a class="project_link" href="projects/showBMCs/{{ $my->id }},1">
+							<a class="project_link" href="projects/showBMCs/{{{ $my->id }}},1">
 								<button type="button" class="btn btn-primary btn-secundar">Show
 									Models</button>
 							</a>
@@ -214,12 +214,12 @@
 								<?php $count++;?>
 								  <div class="row">
 						<div class="col-md-6">
-							<h4>{{ $b->title }}</h4>
+							<h4>{{{ $b->title }}}</h4>
 						</div>
 						<div class="col-md-2">
 							<h5 class="bmc_list">1</h5>
-							<div class="label_{{ $b->status }} label_project">
-								<h5 class="in_label_project">{{ $b->status }}</h5>
+							<div class="label_{{{ $b->status }}} label_project">
+								<h5 class="in_label_project">{{{ $b->status }}}</h5>
 							</div>
 						</div>
 						<div class="col-md-2">
@@ -227,7 +227,7 @@
 						</div>
 						<div class="col-md-2">
 							<a class="bmc_link"
-								href="bmc/viewBMC/{{ $b->id }},{{ $my->id }},1,1,showBMCs">
+								href="bmc/viewBMC/{{{ $b->id }}},{{{ $my->id }}},1,1,showBMCs">
 								<button type="button" class="btn btn-primary btn-secundar">View
 								</button>
 							</a>
@@ -249,18 +249,18 @@
 
 	<!-- Help Modal -->
 	<?php foreach ($myProjects as $myProject):	?>
-	<div class="modal fade" id="deleteModal{{ $myProject['id'] }}" tabindex="-1" role="dialog">
+	<div class="modal fade" id="deleteModal{{{ $myProject['id'] }}}" tabindex="-1" role="dialog">
 		<div class="modal-dialog delete" role="document">
 			<div class="modal-content delete col-md-12">
 				<div class="modal-header col-md-12">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">Do you want to delete {{ $myProject['title'] }} ?</h4>
+					<h4 class="modal-title">Do you want to delete {{{ $myProject['title'] }}} ?</h4>
 				</div>
 				<div class="modal-footer delete col-md-12">
 					<div class="col-md-6">
-						<a href="projects/delete/{{ $myProject['id'] }}">
+						<a href="projects/delete/{{{ $myProject['id'] }}}">
 							<button type="button" class="btn btn-primary btn-lg">Yes</button>
 						</a>
 					</div>
@@ -293,7 +293,7 @@
 						and assigned Projects.</div>
 					</p>
 					<img style="padding: 0 0 15px 0;" class="col-md-11 col-md-offset-1"
-						src="{{ asset('img/help/projects_help.png') }}">
+						src="{{{ asset('img/help/projects_help.png') }}}">
 
 					<p>
 						<span class="glyphicon glyphicon-hand-right col-md-1"

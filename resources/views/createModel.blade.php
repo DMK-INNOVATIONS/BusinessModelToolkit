@@ -20,7 +20,7 @@
 							<strong>Whoops!</strong> There were some problems with your input.<br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
+									<li>{{{ $error }}}</li>
 								@endforeach
 							</ul>
 						</div>
@@ -32,8 +32,8 @@
 						$bmc_status = 'inWork';
 					?>
 					
-					<form class="form-horizontal" role="form" method="POST" action="<?php print $path.'/bmc/saveModel'; ?>">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<form class="form-horizontal" role="form" method="POST" action="{{{$path}}}/bmc/saveModel">
+						<input type="hidden" name="_token" value="{{{ csrf_token() }}}">
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Title</label>
@@ -57,10 +57,8 @@
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">Save</button></a>
-								<?php 
-									print '<a href="'.$path.'/bmc/models"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>';
-								?>
+								<button type="submit" class="btn btn-primary">Save</button>
+								<a href="{{{$path}}}/bmc/models"><button type="button" class="btn btn-primary btn-secundar">Back</button></a>
 							</div>
 						</div>
 					</form>

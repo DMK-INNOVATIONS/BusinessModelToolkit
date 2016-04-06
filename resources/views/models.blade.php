@@ -141,7 +141,7 @@
 						
 						<div class="col-md-12 col-sm-12 col-xs-12">
 							<br>
-							<a href="<?php print $path.'/bmc/createModel';?>"><button type="button" class="btn btn-primary">New Model</button></a>
+							<a href="{{{ $path }}}/bmc/createModel';?>"><button type="button" class="btn btn-primary">New Model</button></a>
 						</div>
 					</div>
 				</div> 
