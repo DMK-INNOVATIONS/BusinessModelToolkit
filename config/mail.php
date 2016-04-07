@@ -54,7 +54,7 @@ return [
 	|
 	*/
 
-	'from' => ['address' => 'bmcounselor@gmail.com', 'name' => 'Business Model Toolkit'],
+	'from' => ['address' => 'support@toolkit.builders', 'name' => 'Business Model Toolkit'],
 
 	/*
 	|--------------------------------------------------------------------------
