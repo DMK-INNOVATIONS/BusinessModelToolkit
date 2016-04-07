@@ -1,6 +1,5 @@
-<!-- 
-	allgemeiner Kontakt: support@toolkit.builders
- -->
+<!-- Kontaktadresse: support@toolkit.builders  -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
