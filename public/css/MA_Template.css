@@ -1103,7 +1103,6 @@ a.bmc_link{
 	border-radius:5px;
 	float: left;
 	margin-left: 15px;
-	padding-left: 15px;
 	margin-top: 5px;
 }
 .label_project::before {
@@ -1388,3 +1387,40 @@ h5.text_status_bmc:ACTIVE {
 	background-color: #b9f9b4;
 }
 
+/******************* Anpassungen Smartphones (col-xs) ********************/
+@media (max-width: 749px) {
+	
+}
+
+/******************* Anpassungen Tablet (col-sm) *************************/
+@media (min-width: 750px) and (max-width: 991px) {
+	.edit-icon{
+		margin: 10px 0px 15px 0;
+	}
+	.delete-icon{
+		margin: 10px 0px 10px 5px;
+	}
+	.help_info{
+		margin: 15px 20px 0 0;
+	}
+}
+
+/******************* Anpassungen Desktops klein (col-md) ***********************/
+@media (min-width: 992px) and (max-width: 1169px){
+	a.bmc_link {
+		float: right;
+	}
+	a.project_link {
+		float: right;
+	}
+}
+
+/******************* Anpassungen Desktops groﬂ (col-lg) ***********************/
+@media (min-width: 1169px){
+	a.bmc_link {
+		float: right;
+	}
+	a.project_link {
+		float: right;
+	}
+}
