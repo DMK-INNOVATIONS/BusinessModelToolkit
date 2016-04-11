@@ -1413,6 +1413,9 @@ h5.text_status_bmc:ACTIVE {
 	.help_info{
 		margin: 15px 20px 0 0;
 	}
+	.table_body{
+		word-wrap:break-word
+	}
 }
 
 /******************* Anpassungen Desktops klein (col-md) ***********************/
@@ -1433,6 +1436,9 @@ h5.text_status_bmc:ACTIVE {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+	.table_body{
+		word-wrap:break-word
 	}
 }
 

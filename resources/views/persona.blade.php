@@ -8,8 +8,8 @@
 </div>
 <div class="container">
 	<div class=" col-md-12 col-sm-12 col-xs-12">
-	  		<h1>Persona View</h1>
-	  		<h4>Create, edit and delete your Personas.</h4>  
+			<h1>Persona View</h1>
+			<h4>Create, edit and delete your Personas.</h4>  
 	</div>
 	<div class="divider_style_1"></div>
 	<div class="row" style="margin-top: 10px;">
@@ -23,17 +23,17 @@
 					<!-- User Projects Table -->
 					
 					<div class="panel panel-default">
-					  
-					  <div class="row table_head">
-					  		<div class="col-md-1 col-sm-1 col-xs-6">Avatar</div>
-					  		<div class="col-md-2 col-sm-2 col-xs-6">Name</div>
-					  		<div class="col-md-1 col-sm-1 col-xs-6">Age</div>
-					  		<div class="col-md-1 col-sm-1 col-xs-6">Gender</div>
-					  		<div class="col-md-2 col-sm-2 col-xs-6">Occupation</div>
-					  		<div class="col-md-2 col-sm-2 col-xs-6">Updated at</div>
-					  		<div class="col-md-1 col-sm-1 col-xs-6">Tools</div>
-					  		<div class="col-md-2 col-sm-2 col-xs-6"></div>
-					  </div>
+					
+					<div class="row table_head">
+							<div class="col-md-1 col-sm-1 col-xs-6">Avatar</div>
+							<div class="col-md-2 col-sm-2 col-xs-6">Name</div>
+							<div class="col-md-1 col-sm-1 col-xs-6">Age</div>
+							<div class="col-md-1 col-sm-1 col-xs-6">Gender</div>
+							<div class="col-md-2 col-sm-2 col-xs-6">Occupation</div>
+							<div class="col-md-2 col-sm-2 col-xs-6">Updated at</div>
+							<div class="col-md-1 col-sm-1 col-xs-6">Tools</div>
+							<div class="col-md-2 col-sm-2 col-xs-6"></div>
+					</div>
 						<?php 
 							$view_type= 'persona';
 							$bmc_id = 'null';
@@ -50,24 +50,24 @@
 							$updated_at_time = $created_at[1];
 							
 							print	'<div class="row table_body">
-									  		<div class="col-md-1 col-sm-1 col-xs-6"><img class="avatarImg" src="'.$myPersona["avatarImg"].'" alt="Selfhtml" /></div>
-									  		<div class="col-md-2 col-sm-2 col-xs-6">'.$myPersona["name"].'</div>
-									  		<div class="col-md-1 col-sm-1 col-xs-6">'.$myPersona["age"].'</div>
-									  		<div class="col-md-1 col-sm-1 col-xs-6">'.$myPersona["gender"].'</div>
-									  		<div class="col-md-2 col-sm-2 col-xs-6">'.$myPersona["occupation"].'</div>
-									  		<div class="col-md-2 col-sm-2 col-xs-6">'.date('l, d-m-Y | H:m', strtotime($myPersona["updated_at"])).'</div>
-									  		<div class="col-md-1 col-sm-1 col-xs-6">';
-												print '<a href="persona/edit/'.$myPersona["id"].','.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.',0,Persona">
-					  									<span class="edit-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/></span>							
-					  								   </a>  ';
-												print '<a data-toggle="modal" data-target="#deleteModal'.$myPersona['id'].'">
-														<span class="delete-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/></span>
-													   </a>  ';
-							print'			</div>
-									  		<div class="col-md-2 col-sm-2 col-xs-6">';
-												print '<button type="button" class="btn btn-primary btn-secundar" data-toggle="modal" data-target="#myPersona'.$myPersona["id"].'">Show Persona</button>';
-					  		print'			</div>
-									  </div>
+											<div class="col-md-1 col-sm-1 col-xs-6"><img class="avatarImg" src="'.$myPersona["avatarImg"].'" alt="Selfhtml" /></div>
+											<div class="col-md-2 col-sm-2 col-xs-6">'.$myPersona["name"].'</div>
+											<div class="col-md-1 col-sm-1 col-xs-6">'.$myPersona["age"].'</div>
+											<div class="col-md-1 col-sm-1 col-xs-6">'.$myPersona["gender"].'</div>
+											<div class="col-md-2 col-sm-2 col-xs-6">'.$myPersona["occupation"].'</div>
+											<div class="col-md-2 col-sm-2 col-xs-6">'.date('l, d-m-Y | H:m', strtotime($myPersona["updated_at"])).'</div>
+											<div class="col-md-1 col-sm-1 col-xs-6">
+												<a href="persona/edit/'.$myPersona["id"].','.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.',0,Persona">
+													<span class="edit-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"/></span>							
+												</a>
+												<a data-toggle="modal" data-target="#deleteModal'.$myPersona['id'].'">
+													<span class="delete-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/></span>
+												</a>
+											</div>
+											<div class="col-md-2 col-sm-2 col-xs-6">
+												<button type="button" class="btn btn-primary btn-secundar" data-toggle="modal" data-target="#myPersona'.$myPersona["id"].'">Show Persona</button>
+											</div>
+									</div>
 							';
 							
 							$skills = explode(';',$myPersona["skills"]);
