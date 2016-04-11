@@ -37,10 +37,10 @@
 					
 					  <!-- Table -->
 					  <div class="row table_head">
-					  		<div class="col-md-3 col-sm-3 col-xs-6">Name</div>
-					  		<div class="col-md-3 col-sm-3 col-xs-6">Email</div>
-					  		<div class="col-md-3 col-sm-3 col-xs-6">Assigned Projects</div>
-					  		<div class="col-md-3 col-sm-3 col-xs-6">Tools</div>
+					  		<div class="col-md-3 col-sm-3 col-xs-12">Name</div>
+					  		<div class="col-md-3 col-sm-3 col-xs-12">Email</div>
+					  		<div class="col-md-3 col-sm-3 col-xs-12">Assigned Projects</div>
+					  		<div class="col-md-3 col-sm-3 col-xs-12">Tools</div>
 					  </div>
 					  <?php
 							$teamMember_id = 'n';
@@ -50,17 +50,17 @@
 								
 								foreach ($assignedTeamMember as $teamMember){
 									print '<div class="row table_body">';
-										print '<div class="col-md-3 col-sm-3 col-xs-6">'.$teamMember['name'].'</div>
-								  		<div class="col-md-3 col-sm-3 col-xs-6">'.$teamMember['email'].'</div>';
+										print '<div class="col-md-3 col-sm-3 col-xs-12">'.$teamMember['name'].'</div>
+								  		<div class="col-md-3 col-sm-3 col-xs-12">'.$teamMember['email'].'</div>';
 										foreach($myProjects as $myProject){
 											if($teamMember['pivot']['project_id'] == $myProject['id']){
-												print '<div class="col-md-3 col-sm-3 col-xs-6">'.$myProject['title'].'</div>';	
+												print '<div class="col-md-3 col-sm-3 col-xs-12">'.$myProject['title'].'</div>';	
 												$teamMember_id = $teamMember['pivot']['user_id'];
 												$project_id = $myProject['id'];
 											}	
 										}
 										
-								  		print '<div class="col-md-3 col-sm-3 col-xs-6">';
+								  		print '<div class="col-md-3 col-sm-3 col-xs-12">';
 											print '<a data-toggle="modal" data-target="#deleteModal'.$teamMember['id'].'">
 													<span class="delete-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete"/></span>
 												</a>';
