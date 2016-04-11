@@ -66,8 +66,8 @@
 					<div class="divider_style_2_project"></div>
 				</div>
 			</div>
-@section('projects')
 			<div id="projects" class="row no_margin extra_padding">
+ @section('projects')
 				<?php if(count($myProjects) > 0): ?>
 					<?php foreach ($myProjects as $myProject):	?>
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 my_project_list">
@@ -113,8 +113,8 @@
 				<?php endforeach; ?>
 			<?php endif; ?>
 			<div class="divider_style_1_project"></div>
-			</div>
 @show
+		</div>
 			<!-- Assigned Projects Start-->
 
 			<!-- start new -->
@@ -376,7 +376,7 @@ $(function() {
 					    async: "false",
 					    dataType:"json",
 					    success: function (data) {
-						    $("#project_list #projects").html(data.projects);
+						    $("#projects").html(data.projects);
 						    $("#custom_menu").selectmenu("destroy").selectmenu();
 					    }
 					})
