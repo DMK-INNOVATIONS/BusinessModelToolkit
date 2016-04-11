@@ -1391,10 +1391,10 @@ h5.text_status_bmc:ACTIVE {
 	a.bmc_link {
 		float: right;
 	}
-	.edit-icon, .duplicate-icon, .delete-icon, .export-icon{
-		margin-bottom: 0px;
-		margin-right: 0;
-		margin-left: 0;
+	.modal_tools a{
+		margin: 0;
+		margin-left: 15px;
+		margin-top: 0px;
 	}
 	.modal-view-button{
 		display: flex;
@@ -1416,6 +1416,15 @@ h5.text_status_bmc:ACTIVE {
 	.table_body{
 		word-wrap:break-word
 	}
+	.modal_tools a{
+		margin-left: 10px;
+		margin-top: 10px;
+	}
+	.modal-view-button{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }
 
 /******************* Anpassungen Desktops klein (col-md) ***********************/
@@ -1426,8 +1435,8 @@ h5.text_status_bmc:ACTIVE {
 	a.project_link {
 		float: right;
 	}
-	.modal_tools a:first-child{
-		padding: 0;
+	.modal_tools a{
+		margin: 0px 5px;
 	}
 	.edit-icon, .duplicate-icon, .delete-icon, .export-icon{
 		margin-bottom: 0px;
@@ -1440,17 +1449,41 @@ h5.text_status_bmc:ACTIVE {
 	.table_body{
 		word-wrap:break-word
 	}
+	.modal_tools a{
+		margin: 0;
+		margin-left: 5px;
+		margin-top: 15px;
+		margin-bottom: 0;
+	}
 }
 
 /******************* Anpassungen Desktops groﬂ (col-lg) ***********************/
-@media (min-width: 1169px){
+@media (min-width: 1169px) and (max-width: 1422px){
 	a.bmc_link {
 		float: right;
 	}
 	a.project_link {
 		float: right;
 	}
-	.modal_tools a:first-child{
-		padding: 0;
+	.modal_tools a{
+		margin: 0;
+		margin-left: 0px;
+		margin-right: 20px;
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+}
+
+@media (min-width: 1423px){
+	a.bmc_link {
+		float: right;
+	}
+	a.project_link {
+		float: right;
+	}
+	.modal_tools a{
+		margin: 0;
+		margin-left: 5px;
+		margin-top: 15px;
 	}
 }

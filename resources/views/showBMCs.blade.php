@@ -104,21 +104,10 @@
 											?>
 											<div class="row">
 												<div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
-													<a href="{{{$path}}}/bmc/edit/{{{ $myProject['id'] }}},1,showBMCs" class="col-lg-1 col-md-1 col-sm-6 col-xs-3"> <span
-														class="edit-icon no_background" aria-hidden="true"
-														data-toggle="tooltip" data-placement="bottom" title="edit" />
-													</a> <a
-														href="{{{$path }}}/bmc/copyBmc/{{{ $myProject['id'] }}},{{{$myProject->project->id}}},1,showBMCs" class="col-lg-1 col-md-1 col-sm-6 col-xs-3">
-														<span class="duplicate-icon no_background" aria-hidden="true"
-														data-toggle="tooltip" data-placement="bottom" title="duplicate" />
-													</a> <a
-														href="{{{$path }}}/export/{{{ $myProject['id'] }}},{{{$myProject->project->id}}},1,showBMCs" class="col-lg-1 col-md-1 col-sm-6 col-xs-3">
-														<span class="export-icon no_background" aria-hidden="true"
-														data-toggle="tooltip" data-placement="bottom" title="export" />
-													</a> 
-													<a data-toggle="modal" data-target="#deleteModal{{{ $myProject['id'] }}}" class="col-lg-1 col-md-1 col-sm-6 col-xs-3">
-														<span class="delete-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete" />
-													</a> 
+													<a class="edit-icon no_background" href="{{{$path}}}/bmc/edit/{{{ $myProject['id'] }}},1,showBMCs" class="col-lg-1 col-md-1 col-sm-6 col-xs-3"></a> 
+													<a class="duplicate-icon no_background" href="{{{$path }}}/bmc/copyBmc/{{{ $myProject['id'] }}},{{{$myProject->project->id}}},1,showBMCs" class="col-lg-1 col-md-1 col-sm-6 col-xs-3"></a> 
+													<a class="export-icon no_background" href="{{{$path }}}/export/{{{ $myProject['id'] }}},{{{$myProject->project->id}}},1,showBMCs" class="col-lg-1 col-md-1 col-sm-6 col-xs-3"></a> 
+													<a class="delete-icon no_background" data-toggle="modal" data-target="#deleteModal{{{ $myProject['id'] }}}" class="col-lg-1 col-md-1 col-sm-6 col-xs-3"></a> 
 												</div>
 												<div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 modal-view-button">
 													<a class="project_link" style="padding-left: 15px" href="{{{$path}}}/bmc/viewBMC/{{{ $myProject['id'] }}},{{{$myProject->project->id}}},{{{$temp_status}}},1,showBMCs">
@@ -131,6 +120,30 @@
 				
 								</div>
 							</div>
+							<?php if(isset($myProject) && !empty($myProject)):?>
+								<div class="modal fade" id="deleteModal{{ $myProject['id'] }}" tabindex="-1" role="dialog">
+									<div class="modal-dialog delete" role="document">
+										<div class="modal-content delete col-md-12">
+											<div class="modal-header col-md-12">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+												<h4 class="modal-title">Do you want to delete {{{$myProject['title']}}}  </h4>
+											</div>
+											<div class="modal-footer delete col-md-12">
+												<div class="col-md-6">
+													<a href="{{{ $path}}}/bmc/delete/{{ $myProject['id'] }},{{{$myProject->project->id }}},1,showBMCs"><button
+															type="button" class="btn btn-primary btn-lg">Yes</button></a>
+												</div>
+												<div class="col-md-6">
+													<button type="button" class="btn btn-primary btn-secundar" data-dismiss="modal">No</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							<?php endif;?>
 					<?php endforeach; ?>
 				<?php else: ?>
 					<div class="col-lg-12 col-md-12 col-sm-12">
@@ -143,30 +156,6 @@
 	</div>
 
 	<!-- Help Modal -->
-	<?php if(isset($myProject) && !empty($myProject)):?>
-	<div class="modal fade" id="deleteModal{{ $myProject['id'] }}" tabindex="-1" role="dialog">
-		<div class="modal-dialog delete" role="document">
-			<div class="modal-content delete col-md-12">
-				<div class="modal-header col-md-12">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">Do you want to delete {{{$myProject['title']}}}  </h4>
-				</div>
-				<div class="modal-footer delete col-md-12">
-					<div class="col-md-6">
-						<a href="{{{ $path}}}/bmc/delete/{{ $myProject['id'] }},{{{$myProject->project->id }}},1,showBMCs"><button
-								type="button" class="btn btn-primary btn-lg">Yes</button></a>
-					</div>
-					<div class="col-md-6">
-						<button type="button" class="btn btn-primary btn-secundar" data-dismiss="modal">No</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<?php endif;?>
 	<div class="modal fade" id="helpModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
