@@ -40,8 +40,9 @@ class PersonaController extends Controller {
 		$getMyPersonas = $this->getMyPersonas();
 		$my_project=new ProjectsController();
 		$getMyProjects =$my_project->getMyProjects();
+		$path = $this->getPath();
 		
-		return view ( 'persona', ['myPersonas' => $getMyPersonas,'myProjects' => $getMyProjects]);
+		return view ( 'persona', ['myPersonas' => $getMyPersonas,'myProjects' => $getMyProjects,'path' => $path]);
 	}
 	
 	public function getAllPersonas() {
@@ -81,8 +82,9 @@ class PersonaController extends Controller {
 		$error = false;
 		
 		$persona = Persona::find($id);
+		$path = $this->getPath();
 		
-		return view('newPersona', ['view_type' => $view_type, 'bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_status' =>$bmc_status, 'persona' => $persona, 'owner' => $owner, 'view_type_main' => $view_type_main, 'error' => $error]);
+		return view('newPersona', ['view_type' => $view_type, 'bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_status' =>$bmc_status, 'persona' => $persona, 'owner' => $owner, 'view_type_main' => $view_type_main, 'error' => $error, 'path' => $path]);
 	}
 	
 	public function deletePersona($id){
@@ -149,6 +151,7 @@ class PersonaController extends Controller {
 		$bmc_status = $inserts[4];	
 		$owner = $inserts[5];
 		$view_type_main = $inserts[6];
+		$path = $this->getPath();
 		
 		$persona_name = Input::get('name');
 		
@@ -162,7 +165,8 @@ class PersonaController extends Controller {
 				'bmc_status' =>$bmc_status,
 				'owner' => $owner,
 				'view_type_main' => $view_type_main,
-				'error' => true
+				'error' => true,
+				'path' => $path
 			]);
 		}else{
 			//noch pr�fen ob Titel schon in DB vorhanden ist in Kombi mit diesem Assignee
@@ -217,9 +221,10 @@ class PersonaController extends Controller {
 		$bmc_status = $inserts[3];
 		$owner = $inserts[4];
 		$view_type_main = $inserts[5];
+		$path = $this->getPath();
 		(isset($inserts [6])? $error = $inserts [6]: $error = false);
 		
-		return view('newPersona', ['view_type' => $view_type, 'bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_status' =>$bmc_status, 'owner' => $owner, 'view_type_main' => $view_type_main, 'error' => $error]);
+		return view('newPersona', ['view_type' => $view_type, 'bmc_id' => $bmc_id, 'project_id' => $project_id, 'bmc_status' =>$bmc_status, 'owner' => $owner, 'view_type_main' => $view_type_main, 'error' => $error, 'path' => $path]);
 	}
 	
 	/**

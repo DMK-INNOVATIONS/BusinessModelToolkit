@@ -1,12 +1,6 @@
 <?php 
 	$posturl = "";
 	if(isset($user)) : $posturl = $user['id']; endif;
- 
-	if($_SERVER['SERVER_NAME']== 'localhost' || $_SERVER['REMOTE_ADDR']=='127.0.0.1'){
-		$path = '/public';
-	}else{
-		$path = '';
-	}
 ?>
 
 <div class="modal fade" id="addPersonaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

@@ -1,13 +1,6 @@
 @extends('app')
 
 @section('content')
-	<?php 
-		if($_SERVER['SERVER_NAME']== 'localhost' || $_SERVER['REMOTE_ADDR']=='127.0.0.1'){
-			$path = '/public';
-		}else{
-			$path = '';
-		}
-	?>
 
 <div class="container-fluid">
 	<div class="col-md-8 col-md-offset-2">

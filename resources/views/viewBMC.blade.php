@@ -13,12 +13,6 @@ if (isset ( $user )) :
 
 
  endif;
-
-if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.0.0.1') {
-	$path = '/public';
-} else {
-	$path = '';
-}
 ?>
 <div class="help_info">
 	<a class="help-icon" data-toggle="modal" data-target="#helpModal"> <span

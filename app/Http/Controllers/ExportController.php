@@ -47,8 +47,9 @@ class ExportController extends Controller {
 		$getBMC = $this->getBMC($bmc_id);
 		$getBMCNotices = $this->getBMCNotices($bmc_id);
 		$getBMCPersonas = $this->getBMCPersonas($bmc_id);
+		$path = $this->getPath();
 		
-		return view ( 'export', ['project' => $getBMCProject, 'bmc' => $getBMC, 'notices' => $getBMCNotices, 'personas' =>$getBMCPersonas, 'owner' => $owner, 'view_type' => $view_type] );
+		return view ( 'export', ['project' => $getBMCProject, 'bmc' => $getBMC, 'notices' => $getBMCNotices, 'personas' =>$getBMCPersonas, 'owner' => $owner, 'view_type' => $view_type, 'path' => $path] );
 	}
 	
 	public function getBMCProject($id){

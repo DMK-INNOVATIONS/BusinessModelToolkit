@@ -1,12 +1,5 @@
 @extends('app') @section('content')
 
-<?php
-if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.0.0.1') {
-	$path = '/public';
-} else {
-	$path = '';
-}
-?>
 <div id="project_list">
 	<div class="help_info">
 		<a class="help-icon" data-toggle="modal" data-target="#helpModal"> <span

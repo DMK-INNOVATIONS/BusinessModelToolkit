@@ -164,6 +164,7 @@ class ProjectsController extends Controller {
 		$inserts = explode ( ",", $id );
 		$sort_field = Input::get ( 'sort_field' );
 		$project_id = isset ( $project_id ) ? $project_id : $inserts [0];
+		$path = $this->getPath();
 		
 		if (Request::ajax ()) {
 			$view = view ( 'showBMCs', [ 
@@ -173,7 +174,8 @@ class ProjectsController extends Controller {
 					'owner' => $project_id,
 					'myProjects' => $this->getMyProjects (),
 					'newget' => $this->getShowBMCs ( $project_id ),
-					'sort_field' => isset ( $sort_field ) ? $sort_field : '' 
+					'sort_field' => isset ( $sort_field ) ? $sort_field : '',
+					'path' => $path
 			] )->renderSections ();
 			return $view;
 		}
@@ -184,7 +186,8 @@ class ProjectsController extends Controller {
 				'owner' => $project_id,
 				'myProjects' => $this->getMyProjects (),
 				'newget' => $this->getShowBMCs ( $project_id ),
-				'sort_field' => isset ( $sort_field ) ? $sort_field : '' 
+				'sort_field' => isset ( $sort_field ) ? $sort_field : '',
+				'path' => $path
 		] );
 	}
 	
@@ -299,10 +302,12 @@ class ProjectsController extends Controller {
 		$title = Input::get('title');
 		
 		$validator = $this->eingabeKorrekt($title);
+		$path = $this->getPath();
 		
 		if (!$validator) {
 			return view ( 'newProject', [ 
-					'error' => 1 
+					'error' => 1,
+					'path' => $path
 			] );
 		} else {
 			
@@ -331,7 +336,8 @@ class ProjectsController extends Controller {
 				return redirect ( 'projects' );
 			} else {
 				return view ( 'newProject', [ 
-						'error' => 2 
+						'error' => 2,
+						'path' => $path
 				] );
 			}
 		}

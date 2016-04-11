@@ -1,11 +1,3 @@
-<?php 
-	$posturl = "";
-	if($_SERVER['SERVER_NAME']== 'localhost' || $_SERVER['REMOTE_ADDR']=='127.0.0.1'){
-		$path = '/public';
-	}else{
-		$path = '';
-	}
-?>
 
 <!-- Help Modal - -->
 <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

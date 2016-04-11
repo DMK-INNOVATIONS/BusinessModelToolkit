@@ -2,15 +2,6 @@
 
 @section('content')
 
-<?php 
-	$posturl = "";
-	if($_SERVER['SERVER_NAME']== 'localhost' || $_SERVER['REMOTE_ADDR']=='127.0.0.1'){
-		$path = '/public';
-	}else{
-		$path = '';
-	}
-?>
-
 <div class="container-fluid">
 	<div class=" col-md-10 col-md-offset-1 col-sm-10 col-xs-12 page-header">
 	  <h1>Export</h1>

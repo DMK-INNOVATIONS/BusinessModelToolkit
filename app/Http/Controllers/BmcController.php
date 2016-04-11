@@ -37,8 +37,11 @@ class BmcController extends Controller {
 	 */
 	public function index() {
 		$myProjects = $this->getMyProjects ();
+		$path = $this->getPath();
 		return view ( 'bmc',[ 
-				'myProjects' => $myProjects]);
+				'myProjects' => $myProjects,
+				'path' => $path
+		]);
 	}
 	public function create($id) {
 		$inserts = explode ( ",", $id );
@@ -46,12 +49,14 @@ class BmcController extends Controller {
 		$view_type = $inserts [2];
 		
 		$owner = $this->getBMCOwnerID($project_id);
+		$path = $this->getPath();
 		
 		return view ( 'newBmc', [ 
 				'project_id' => $project_id,
 				'error' => false,
 				'owner' => $owner,
-				'view_type' => $view_type 
+				'view_type' => $view_type,
+				'path' => $path
 		] );
 	}
 	public function getBMCOwnerID($project_id){
@@ -60,8 +65,10 @@ class BmcController extends Controller {
 	}
 	public function createModel() {
 		$myProjects = $this->getMyProjects ();
+		$path = $this->getPath();
 		return view ( 'createModel', [ 
-				'myProjects' => $myProjects 
+				'myProjects' => $myProjects,
+				'path' => $path
 		] );
 	}
 	public function changeStatus($id) {
@@ -130,11 +137,13 @@ class BmcController extends Controller {
 		$owner = $this->getBMCOwnerID($bmc['project_id']);
 		
 		$title = Input::get('title');
+		$path = $this->getPath();
 		
 		if ($title == '') {
 			return view ( 'newBmc', [ 
 					'project_id' => $id,
-					'error' => true 
+					'error' => true,
+					'path' => $path
 			] );
 		} else {
 			
@@ -196,6 +205,7 @@ class BmcController extends Controller {
 		
 		$bmc = BMC::find ( $bmc_id );
 		$owner = $this->getBMCOwnerID($bmc['project_id']);
+		$path = $this->getPath();
 		
 		(isset($inserts [5])? $error = $inserts [5]: $error = false);
 		
@@ -230,7 +240,8 @@ class BmcController extends Controller {
 				'view_type' => $view_type,
 				'myProjects'=>$myProjects,
 				'status_option'=>$status_option, 
-				'error' => $error
+				'error' => $error,
+				'path' => $path
 		] );
 	}
 	public function getAllPersonas() {
@@ -276,13 +287,15 @@ class BmcController extends Controller {
 		
 		$bmc = BMC::find ( $bmc_id );
 		$owner = $this->getBMCOwnerID($bmc['project_id']);
+		$path = $this->getPath();
 		
 		return view ( 'newBmc', [ 
 				'bmc' => json_decode ( $bmc, true ),
 				'project_id' => $bmc ['project_id'],
 				'error' => false,
 				'owner' => $owner,
-				'view_type' => $view_type 
+				'view_type' => $view_type,
+				'path' => $path
 		] );
 	}
 	public function copyBmc($id) {
@@ -570,13 +583,15 @@ class BmcController extends Controller {
 		$my_assigned_Projects = $this->getMyAssignedProjects ();
 		$my_assigned_Projects_Owners = $this->getAssignedProjectsOwner ();
 		$my_assigned_BMCs = $this->getMyBMC ( $my_assigned_Projects );
+		$path = $this->getPath();
 		
 		return view ( 'models', [ 
 				'projects' => $my_projects,
 				'bmcs' => $my_bmcs,
 				'my_assigned_Projects' => $my_assigned_Projects,
 				'my_assigned_Projects_Owners' => $my_assigned_Projects_Owners,
-				'my_assigned_BMCs' => $my_assigned_BMCs 
+				'my_assigned_BMCs' => $my_assigned_BMCs,
+				'path' => $path
 		] );
 	}
 	public function getAllProjects() {
