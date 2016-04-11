@@ -1405,7 +1405,22 @@ h5.text_status_bmc:ACTIVE {
 	}
 }
 
-/******************* Anpassungen Desktops (col-md) ***********************/
-@media (min-width: 992px){
-	
+/******************* Anpassungen Desktops klein (col-md) ***********************/
+@media (min-width: 992px) and (max-width: 1169px){
+	a.bmc_link {
+		float: right;
+	}
+	a.project_link {
+		float: right;
+	}
+}
+
+/******************* Anpassungen Desktops groﬂ (col-lg) ***********************/
+@media (min-width: 1169px){
+	a.bmc_link {
+		float: right;
+	}
+	a.project_link {
+		float: right;
+	}
 }
