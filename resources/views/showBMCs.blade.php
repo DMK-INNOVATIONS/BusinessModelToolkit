@@ -16,28 +16,28 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 	<div class="container">
 		<!-- new render -->
 		<div class="row no_margin">
-			<div class="col-md-6 col-sm-6 col-xs-6">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 				<h1>{{{ $project_name }}}<span class="light_color">(<?php if(isset($newget)){ echo count($newget); }?>)</span>
 				</h1>
 			</div>
-			<div class="col-md-6 col-sm-6 col-xs-6">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 				<h5 class="participants">Participants</h5>
 				<span class="details_myprojects"></span>
 			</div>
-			<div class="col-md-12">
+			<div class="col-lg-12 col-md-12">
 				<div class="divider_style_2_project"></div>
 			</div>
-			<div class="col-md-12 col-sm-12 col-xs-12">
-				<div class="col-md-4">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 					<a href="{{ url('/projects') }}"><button type="button"
 							class="btn btn-primary btn-secundar">Back to Projects</button></a>
 				</div>
-				<div class="col-md-4">
+				<div class="col-lg-4 col-md-4 col-sm-3 col-xs-6">
 					<a
 						href="{{{$path}}}/bmc/create/{{{ $project_id }}},{{{$owner}}},showBMCs"><button
 							type="button" class="btn btn-primary">New BMC</button></a>
 				</div>
-				<div class="col-md-4 sortProject">
+				<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12 sortProject">
 					<h6>Sort by</h6>
 					<select id="custom_menu"
 						class="myProjects selected_sort form-control">
@@ -52,22 +52,22 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 			</div>
 		</div>
 		<div class="row no_margin">
-			<div class="col-md-12 col-sm-12 col-xs-12">
-				<div class="col-md-4">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="col-lg-4 col-md-4 col-sm-3 col-xs-6">
 					<h5>Title</h5>
 				</div>
-				<div class="col-md-2 show_projects no_padding_right">
+				<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 show_projects no_padding_right">
 					<h5>Status</h5>
 				</div>
-				<div class="col-md-3">
-					<div class="col-md-12">
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<h5 class="no_margin_top_bottom">Updated</h5>
 					</div>
-					<div class="col-md-12">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<h6 class="no_margin_top_bottom">Created</h6>
 					</div>
 				</div>
-				<div class="col-md-3">
+				<div class="col-lg-3 col-md-3 col-sm-2 col-xs-12 modal-view-button">
 					<h5>Tools</h5>
 				</div>
 				<div class="divider_style_2_project"></div>
@@ -77,28 +77,28 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 		<?php count($newget)?>
 					<?php if(count($newget) > 0): ?>
 						<?php foreach ($newget as $myProject):	?>
-							<div class="col-md-12 my_project_list">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 my_project_list">
 								<div class="row">
-									<div class="col-md-4">
+									<div class="col-lg-4 col-md-4 col-sm-3 col-xs-6">
 										<h3>{{ $myProject['title'] }}</h3>
 									</div>
-									<div class="col-md-2" style="margin-top: 15px">
+									<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6" style="margin-top: 15px">
 										<div
 											class="label_{{{ $myProject['status'] }}} label_project no_padding_left no_margin_left label_status_bmc">
 											<h5 class="in_label_project">{{{ $myProject['status'] }}}</h5>
 										</div>
 									</div>
-									<div class="col-md-3">
-										<div class="col-md-12">
+									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 											<h5 class="no_margin_bottom">{{{date('l, d-m-Y | H:m',
 												strtotime($myProject['updated_at'])) }}}</h5>
 										</div>
-										<div class="col-md-12">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 											<h6 class="no_margin_top">{{{ date('Y-m-d | H:m',
 												strtotime($myProject['created_at'])) }}}</h6>
 										</div>
 									</div>
-									<div class="col-md-3 no_padding_right">
+									<div class="col-lg-3 col-md-3 col-sm-2 col-xs-12 no_padding_right modal_tools">
 										<?php
 											
 											if ($myProject ['status'] == 'inWork') {
@@ -109,32 +109,38 @@ if ($_SERVER ['SERVER_NAME'] == 'localhost' || $_SERVER ['REMOTE_ADDR'] == '127.
 												$temp_status = 3;
 											}
 											?>
-										<a href="{{{$path}}}/bmc/edit/{{{ $myProject['id'] }}},1,showBMCs"> <span
-											class="edit-icon no_background" aria-hidden="true"
-											data-toggle="tooltip" data-placement="bottom" title="edit" />
-										</a> <a
-											href="{{{$path }}}/bmc/copyBmc/{{{ $myProject['id'] }}},{{{$myProject->project->id}}},1,showBMCs">
-											<span class="duplicate-icon no_background" aria-hidden="true"
-											data-toggle="tooltip" data-placement="bottom" title="duplicate" />
-										</a> <a
-											href="{{{$path }}}/export/{{{ $myProject['id'] }}},{{{$myProject->project->id}}},1,showBMCs">
-											<span class="export-icon no_background" aria-hidden="true"
-											data-toggle="tooltip" data-placement="bottom" title="export" />
-										</a> 
-										<a data-toggle="modal" data-target="#deleteModal{{{ $myProject['id'] }}}">
-											<span class="delete-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete" />
-										</a> 
-										<a class="project_link" style="padding-left: 15px" href="{{{$path}}}/bmc/viewBMC/{{{ $myProject['id'] }}},{{{$myProject->project->id}}},{{{$temp_status}}},1,showBMCs">
-											<button type="button"
-												class="btn btn-primary btn-secundar text-left">View</button>
-										</a>
+											<div class="row">
+												<div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+													<a href="{{{$path}}}/bmc/edit/{{{ $myProject['id'] }}},1,showBMCs" class="col-lg-1 col-md-1 col-sm-6 col-xs-3"> <span
+														class="edit-icon no_background" aria-hidden="true"
+														data-toggle="tooltip" data-placement="bottom" title="edit" />
+													</a> <a
+														href="{{{$path }}}/bmc/copyBmc/{{{ $myProject['id'] }}},{{{$myProject->project->id}}},1,showBMCs" class="col-lg-1 col-md-1 col-sm-6 col-xs-3">
+														<span class="duplicate-icon no_background" aria-hidden="true"
+														data-toggle="tooltip" data-placement="bottom" title="duplicate" />
+													</a> <a
+														href="{{{$path }}}/export/{{{ $myProject['id'] }}},{{{$myProject->project->id}}},1,showBMCs" class="col-lg-1 col-md-1 col-sm-6 col-xs-3">
+														<span class="export-icon no_background" aria-hidden="true"
+														data-toggle="tooltip" data-placement="bottom" title="export" />
+													</a> 
+													<a data-toggle="modal" data-target="#deleteModal{{{ $myProject['id'] }}}" class="col-lg-1 col-md-1 col-sm-6 col-xs-3">
+														<span class="delete-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="delete" />
+													</a> 
+												</div>
+												<div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 modal-view-button">
+													<a class="project_link" style="padding-left: 15px" href="{{{$path}}}/bmc/viewBMC/{{{ $myProject['id'] }}},{{{$myProject->project->id}}},{{{$temp_status}}},1,showBMCs">
+														<button type="button"
+															class="btn btn-primary btn-secundar text-left">View</button>
+													</a>
+												</div>
+											</div>
 									</div>
 				
 								</div>
 							</div>
 					<?php endforeach; ?>
 				<?php else: ?>
-					<div class="col-md-12">
+					<div class="col-lg-12 col-md-12 col-sm-12">
 						<div class="row">No models</div>
 					</div>
 				<?php endif;  ?>

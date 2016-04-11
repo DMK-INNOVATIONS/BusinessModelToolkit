@@ -287,7 +287,7 @@ p{
     content: "";
     float: left;
     font-weight: bold;
-    margin: 10px 10px 15px 0;
+    margin: 10px 10px 15px 5px;
     padding: 15px;
 }
 .edit-icon:HOVER{
@@ -333,7 +333,7 @@ p{
     content: "";
     float: left;
     font-weight: bold;
-    margin: 10px 10px 10px 5px;
+    margin: 10px 10px 15px 5px;
     padding: 15px;
 }
 .delete-icon:HOVER{
@@ -424,13 +424,12 @@ p{
 	background: transparent url("../img/icbt_help_sprite_3vertikal_30x30.png") no-repeat scroll 0 -60px;
 }
 .duplicate-icon{
-	
 	background: transparent url("../img/icbt_duplicate_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
     color: #dfe4e6;
     content: "";
     float: left;
     font-weight: bold;
-    margin: 10px 10px 15px 0;
+    margin: 10px 10px 15px 5px;
     padding: 15px;
 }
 .duplicate-icon:HOVER{
@@ -445,7 +444,7 @@ p{
     content: "";
     float: left;
     font-weight: bold;
-    margin: 10px 10px 15px 0;
+    margin: 10px 10px 15px 5px;
     padding: 15px;
 }
 .export-icon:HOVER{
@@ -1389,16 +1388,27 @@ h5.text_status_bmc:ACTIVE {
 
 /******************* Anpassungen Smartphones (col-xs) ********************/
 @media (max-width: 749px) {
-	
+	a.bmc_link {
+		float: right;
+	}
+	.edit-icon, .duplicate-icon, .delete-icon, .export-icon{
+		margin-bottom: 0px;
+		margin-right: 0;
+		margin-left: 0;
+	}
+	.modal-view-button{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }
 
 /******************* Anpassungen Tablet (col-sm) *************************/
 @media (min-width: 750px) and (max-width: 991px) {
-	.edit-icon{
-		margin: 10px 0px 15px 0;
-	}
-	.delete-icon{
-		margin: 10px 0px 10px 5px;
+	.edit-icon, .duplicate-icon, .delete-icon, .export-icon{
+		margin-bottom: 0px;
+		margin-right: 0;
+		margin-left: 0;
 	}
 	.help_info{
 		margin: 15px 20px 0 0;
@@ -1413,6 +1423,17 @@ h5.text_status_bmc:ACTIVE {
 	a.project_link {
 		float: right;
 	}
+	.modal_tools a:first-child{
+		padding: 0;
+	}
+	.edit-icon, .duplicate-icon, .delete-icon, .export-icon{
+		margin-bottom: 0px;
+	}
+	.modal-view-button{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }
 
 /******************* Anpassungen Desktops groﬂ (col-lg) ***********************/
@@ -1422,5 +1443,8 @@ h5.text_status_bmc:ACTIVE {
 	}
 	a.project_link {
 		float: right;
+	}
+	.modal_tools a:first-child{
+		padding: 0;
 	}
 }

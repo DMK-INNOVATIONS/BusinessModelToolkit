@@ -18,15 +18,15 @@
 			<!--New List Projects Table - Start -->
 			<div class="row no_margin">
 				<div class="col-md-12 col-sm-12 col-xs-12">
-					<div class="col-md-4 col-sm-4">
+					<div class="col-md-4 col-sm-4 col-xs-12">
 						<h1>
 							My Own Projects <span class="light_color">(<?php if(isset($myProjects)){ echo count($myProjects); }?>)</span>
 						</h1>
 					</div>
-					<div class="col-md-4 col-sm-4">
+					<div class="col-md-4 col-sm-4 col-xs-6">
 						<a href="projects/create"><button type="button" class="btn btn-primary">New Project</button></a>
 					</div>
-					<div class="col-md-4 col-sm-4 sortProject">
+					<div class="col-md-4 col-sm-4 col-xs-6 sortProject">
 						<h6>Sort by</h6>
 						<select id="custom_menu" class="myProjects selected_sort form-control">
 							<option value="updated_at"
@@ -41,26 +41,26 @@
 			</div>
 			<div class="row no_margin">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="col-lg-3 col-md-2 col-sm-1">
+					<div class="col-lg-3 col-md-2 col-sm-1 col-xs-5">
 						<h5>Title</h5>
 					</div>
-					<div class="col-lg-2 col-md-2 col-sm-3 show_projects no_padding_right">
+					<div class="col-lg-2 col-md-2 col-sm-3 col-xs-5 show_projects no_padding_right">
 						<h6 class="text-right">Show details for all</h6>
 					</div>
-					<div class="col-lg-1 col-md-1 col-sm-1 show_projects no_padding_left">
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 show_projects no_padding_left">
 						<ul class="my_projects">
 							<li class="dropdown_myprojects"><span class="icon_more"></span></li>
 						</ul>
 					</div>
-					<div class="col-lg-2 col-md-2 col-sm-2">
-						<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<h5 class="no_margin_top_bottom">Updated</h5>
 						</div>
-						<div class="col-lg-12 col-md-12 col-sm-12">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<h6 class="no_margin_top_bottom">Created</h6>
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-4 col-sm-5">
+					<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
 						<h5>Tools</h5>
 					</div>
 					<div class="divider_style_2_project"></div>
@@ -69,25 +69,25 @@
 			<div class="row no_margin extra_padding">
 				<?php if(count($myProjects) > 0): ?>
 					<?php foreach ($myProjects as $myProject):	?>
-					<div class="col-lg-12 col-md-12 col-sm-12 my_project_list">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 my_project_list">
 					<div class="row">
-						<div class="col-lg-5 col-md-4 col-sm-4">
+						<div class="col-lg-5 col-md-4 col-sm-4 col-xs-10">
 							<h3>{{{ $myProject['title'] }}}</h3>
 						</div>
-						<div class="col-lg-1 col-md-1 col-sm-1 no_padding_left">
+						<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 no_padding_left">
 							<span class="details_myprojects"></span>
 						</div>
-						<div class="col-lg-2 col-md-2 col-sm-2">
-							<div class="col-md-12 col-sm-12">
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+							<div class="col-md-12 col-sm-12 col-xs-12">
 								<h5 class="no_margin_bottom">{{{date('l, d-m-Y | H:m',
 									strtotime($myProject['updated_at'])) }}}</h5>
 							</div>
-							<div class="col-md-12 col-sm-12">
+							<div class="col-md-12 col-sm-12 col-xs-12">
 								<h6 class="no_margin_top">{{{ date('Y-m-d | H:m',
 									strtotime($myProject['created_at'])) }}}</h6>
 							</div>
 						</div>
-						<div class="col-lg-2 col-md-2 col-sm-2">
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
 
 							<a href="projects/edit/{{{ $myProject['id'] }}}"> <span
 								class="edit-icon no_background" aria-hidden="true"
@@ -100,7 +100,7 @@
 							</a>
 
 						</div>
-						<div class="col-lg-2 col-md-3 col-sm-3">
+						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
 							<a class="project_link"
 								href="projects/showBMCs/{{{ $myProject['id'] }}},1">
 								<button type="button" class="btn btn-primary btn-secundar">Show
@@ -120,10 +120,10 @@
 
 			<div class="row no_margin">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="col-lg-8 col-md-8 col-sm-8">
+					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 						<h1>My Assigned Projects <span class="light_color">(<?= count($assignedProjects)?>)</span></h1>
 					</div>
-					<div class="col-lg-4 col-md-4 col-sm-4 sortProject">
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 sortProject">
 						<h6>Sort by</h6>
 						<select id="custom_menu_2"
 							class="assigned_select selected_sort form-control">
@@ -139,30 +139,27 @@
 			</div>
 			<div class="row no_margin">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="col-lg-3 col-md-2 col-sm-1">
+					<div class="col-lg-3 col-md-2 col-sm-1 col-xs-5">
 						<h5>Title</h5>
 					</div>
-					<div class="col-lg-2 col-md-2 col-sm-3 show_projects no_padding_right">
+					<div class="col-lg-2 col-md-2 col-sm-3 col-xs-5 show_projects no_padding_right">
 						<h6 class="text-right">Show details for all</h6>
 					</div>
-					<div class="col-lg-1 col-md-1 col-sm-1 show_projects no_padding_left">
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 show_projects no_padding_left">
 						<ul class="my_projects">
 							<li class="dropdown_myprojects"><span class="icon_more"></span></li>
 						</ul>
 					</div>
-					<div class="col-lg-2 col-md-2 col-sm-2">
-						<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="col-lg-2 col-md-2 col-sm-2col-xs-12">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<h5 class="no_margin_top_bottom">Updated</h5>
 						</div>
-						<div class="col-lg-12 col-md-12 col-sm-12">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<h6 class="no_margin_top_bottom">Created</h6>
 						</div>
 					</div>
-					<div class="col-lg-2 col-md-2 col-sm-2">
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
 						<h5>Owner</h5>
-					</div>
-					<div class="col-lg-2 col-md-3 col-sm-3">
-						
 					</div>
 					<div class="divider_style_2_project"></div>
 				</div>
@@ -170,28 +167,28 @@
 		<?php foreach ($assignedProjects as $my):	?>
 				<?php //if($m->id == $user->id):?>
 				<div class="row no_margin extra_padding">
-				<div class="col-lg-12 col-md-12 col-sm-12 my_project_list">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 my_project_list">
 					<div class="row">
-						<div class="col-lg-5 col-md-4 col-sm-4">
+						<div class="col-lg-5 col-md-4 col-sm-4 col-xs-10">
 							<h3>{{{ $my->title }}}</h3>
 						</div>
-						<div class="col-lg-1 col-md-1 col-sm-1 no_padding_left">
+						<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 no_padding_left">
 							<span class="details_myprojects"></span>
 						</div>
-						<div class="col-lg-2 col-md-2 col-sm-2">
-							<div class="col-lg-12 col-md-12 col-sm-12">
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<h5 class="no_margin_bottom">{{{ date('l, d-m-Y | H:m',
 									strtotime($my->updated_at)) }}}</h5>
 							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<h6 class="no_margin_top">{{{ date('Y-m-d | H:m',
 									strtotime($my->created_at)) }}}</h6>
 							</div>
 						</div>
-						<div class="col-lg-2 col-md-2 col-sm-2">
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
 							<h5 class="no_margin_bottom">{{{$my->assignee->name}}}</h5>
 						</div>
-						<div class="col-lg-2 col-md-3 col-sm-3">
+						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
 							<a class="project_link" href="projects/showBMCs/{{{ $my->id }}},1">
 								<button type="button" class="btn btn-primary btn-secundar">Show Models</button>
 							</a>
@@ -206,15 +203,15 @@
 							<?php foreach ($my->bmcs as $b):?>
 								<?php $count++;?>
 								  <div class="row">
-						<div class="col-lg-6 col-md-5 col-sm-5">
+						<div class="col-lg-6 col-md-5 col-sm-5 col-xs-12">
 							<h4>{{{ $b->title }}}</h4>
 						</div>
-						<div class="col-lg-4 col-md-5 col-sm-5">
+						<div class="col-lg-4 col-md-5 col-sm-5 col-xs-6">
 							<div class="label_{{{ $b->status }}} label_project">
 								<h5 class="in_label_project">{{{ $b->status }}}</h5>
 							</div>
 						</div>
-						<div class="col-lg-2 col-md-2 col-sm-2">
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
 							<a class="bmc_link"
 								href="bmc/viewBMC/{{{ $b->id }}},{{{ $my->id }}},1,1,showBMCs">
 								<button type="button" class="btn btn-primary btn-secundar">View
