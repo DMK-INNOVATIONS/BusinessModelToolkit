@@ -68,7 +68,8 @@
 					<div class="divider_style_2_project"></div>
 				</div>
 			</div>
-			<div class="row no_margin extra_padding">
+@section('projects')
+			<div id="projects" class="row no_margin extra_padding">
 				<?php if(count($myProjects) > 0): ?>
 					<?php foreach ($myProjects as $myProject):	?>
 						<div class="col-md-12 my_project_list">
@@ -115,7 +116,7 @@
 			<?php endif; ?>
 			<div class="divider_style_1_project"></div>
 			</div>
-
+@show
 			<!-- Assign Projects Start-->
 
 			<!-- start new -->
@@ -173,75 +174,79 @@
 					<div class="divider_style_2_project"></div>
 				</div>
 			</div>
-		<?php foreach ($assignedProjects as $my):	?>
-				<?php //if($m->id == $user->id):?>
-					<div class="row no_margin extra_padding">
-				<div class="col-md-12 my_project_list">
-					<div class="row">
-						<div class="col-md-5">
-							<h3>{{{ $my->title }}}</h3>
-						</div>
-						<div class="col-md-1 no_padding_left">
-							<span class="details_myprojects"></span>
-						</div>
-						<div class="col-md-2">
-							<div class="col-md-12">
-								<h5 class="no_margin_bottom">{{{ date('l, d-m-Y | H:m',
-									strtotime($my->updated_at)) }}}</h5>
+@section('my_assign_projects')
+			<div id="my_assign_projects">
+			<?php foreach ($assignedProjects as $my):	?>
+					<?php //if($m->id == $user->id):?>
+						<div class="row no_margin extra_padding">
+					<div class="col-md-12 my_project_list">
+						<div class="row">
+							<div class="col-md-5">
+								<h3>{{{ $my->title }}}</h3>
 							</div>
-							<div class="col-md-12">
-								<h6 class="no_margin_top">{{{ date('Y-m-d | H:m',
-									strtotime($my->created_at)) }}}</h6>
+							<div class="col-md-1 no_padding_left">
+								<span class="details_myprojects"></span>
 							</div>
-						</div>
-						<div class="col-md-2">
-							<h5>{{{$my->assignee->name}}}</h5>
-						</div>
-						<div class="col-md-2">
-							<a class="project_link" href="projects/showBMCs/{{{ $my->id }}},1">
-								<button type="button" class="btn btn-primary btn-secundar">Show
-									Models</button>
-							</a>
-						</div>
+							<div class="col-md-2">
+								<div class="col-md-12">
+									<h5 class="no_margin_bottom">{{{ date('l, d-m-Y | H:m',
+										strtotime($my->updated_at)) }}}</h5>
+								</div>
+								<div class="col-md-12">
+									<h6 class="no_margin_top">{{{ date('Y-m-d | H:m',
+										strtotime($my->created_at)) }}}</h6>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<h5>{{{$my->assignee->name}}}</h5>
+							</div>
+							<div class="col-md-2">
+								<a class="project_link" href="projects/showBMCs/{{{ $my->id }}},1">
+									<button type="button" class="btn btn-primary btn-secundar">Show
+										Models</button>
+								</a>
+							</div>
+								<?php if(count($my->bmcs)>0):?>
+								<div class="divider_style_1_project_inside"></div>
+							<!-- <div class="divider_style_2_project"></div> -->
+								<?php endif;?>
+								</div>
+							<?php $count=0;?>
 							<?php if(count($my->bmcs)>0):?>
-							<div class="divider_style_1_project_inside"></div>
-						<!-- <div class="divider_style_2_project"></div> -->
+								<?php foreach ($my->bmcs as $b):?>
+									<?php $count++;?>
+									  <div class="row">
+							<div class="col-md-6">
+								<h4>{{{ $b->title }}}</h4>
+							</div>
+							<div class="col-md-2">
+								<h5 class="bmc_list">1</h5>
+								<div class="label_{{{ $b->status }}} label_project">
+									<h5 class="in_label_project">{{{ $b->status }}}</h5>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<!-- ?? waiting .... -->
+							</div>
+							<div class="col-md-2">
+								<a class="bmc_link"
+									href="bmc/viewBMC/{{{ $b->id }}},{{{ $my->id }}},1,1,showBMCs">
+									<button type="button" class="btn btn-primary btn-secundar">View
+									</button>
+								</a>
+							</div>
+										 <?php if(count($my->bmcs)>$count):?>
+											 <div class="divider_style_3"></div>
+										 <?php endif;?>
+									 </div>
+								<?php endforeach; ?>
 							<?php endif;?>
 							</div>
-						<?php $count=0;?>
-						<?php if(count($my->bmcs)>0):?>
-							<?php foreach ($my->bmcs as $b):?>
-								<?php $count++;?>
-								  <div class="row">
-						<div class="col-md-6">
-							<h4>{{{ $b->title }}}</h4>
-						</div>
-						<div class="col-md-2">
-							<h5 class="bmc_list">1</h5>
-							<div class="label_{{{ $b->status }}} label_project">
-								<h5 class="in_label_project">{{{ $b->status }}}</h5>
-							</div>
-						</div>
-						<div class="col-md-2">
-							<!-- ?? waiting .... -->
-						</div>
-						<div class="col-md-2">
-							<a class="bmc_link"
-								href="bmc/viewBMC/{{{ $b->id }}},{{{ $my->id }}},1,1,showBMCs">
-								<button type="button" class="btn btn-primary btn-secundar">View
-								</button>
-							</a>
-						</div>
-									 <?php if(count($my->bmcs)>$count):?>
-										 <div class="divider_style_3"></div>
-									 <?php endif;?>
-								 </div>
-							<?php endforeach; ?>
-						<?php endif;?>
-						</div>
-			</div>
-				<?php //endif;?>
-		<?php endforeach; ?>
+				</div>
+					<?php //endif;?>
+			<?php endforeach; ?>
+		</div>
+@show
 		<!-- end new -->
 		</div>
 		<!-- Assign Projects End-->
@@ -345,6 +350,7 @@
 </div>
 <script type="text/javascript">
 $(function() {
+/*
 	$('.myProjects.selected_sort').bind('change',function(){
 		var to_send=$(this).val();
 		//console.log(to_send);  
@@ -354,7 +360,7 @@ $(function() {
 		    data: {_token:"<?php echo csrf_token(); ?>",sort_field: to_send},
 		    async: "false",
 		    success: function (data) {
-			    $('#project_list').html(data.content);
+			    $('#my_projects').html(data.content);
 			    //console.log("succes");
 		    }
 		});
@@ -373,20 +379,19 @@ $(function() {
 		    }
 		});
 	});
+*/	
 	var to_send=$("#custom_menu").val();
 	$("#custom_menu").on( "selectmenuchange", function() {
-					console.log("change"+$(this).val());
 					to_send=$(this).val();
 					$.ajax({
 					    url: '/projects',
 					    type: 'GET',
 					    data: {_token:"<?php echo csrf_token(); ?>",sort_field: to_send},
 					    async: "false",
+					    dataType:"json",
 					    success: function (data) {
-						    $("#project_list").html(data.content);
+						    $("#project_list #projects").html(data.projects);
 						    $("#custom_menu").selectmenu("destroy").selectmenu();
-						    //$("#custom_menu").on( "selectmenuselect", function( event, ui ) {} );;
-						    //console.log("succes");
 					    }
 					})
 					.done(function() {
@@ -404,7 +409,7 @@ $(function() {
 		    data: {_token:"<?php echo csrf_token(); ?>",sort_field: to_send2},
 		    async: "false",
 		    success: function (data) {
-			    $("#project_list").html(data.content);
+			    $("#my_assign_projects").html(data.my_assign_projects);
 			    $("#custom_menu_2").selectmenu("destroy").selectmenu();
 			    //$("#custom_menu").on( "selectmenuselect", function( event, ui ) {} );;
 			    //console.log("succes");
