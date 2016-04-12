@@ -42,12 +42,12 @@ class ProjectsController extends Controller {
 		$assignedProjects = $this->getAssignedProjects ();
 		
 		$assignedProjectsOwners = $this->getAssignedProjectsOwner ();
-		
+		$myProjects=$this->getAllMyAssignedMyProjects ();
 		// send per ajax return parameter from sort
 		if (Request::ajax ()) {
 			$sort_field = Input::get ( 'sort_field' );
 			$view = view ( 'projects', [ 
-					'myProjects' => $this->getAllMyAssignedMyProjects (),
+					'myProjects' => $myProjects,
 					'user' => $user,
 					'sort_field' => $sort_field,
 					'myAssignedProjects' => $this->getAllMyAssignedMyProjects (),
@@ -73,7 +73,7 @@ class ProjectsController extends Controller {
 		return Project::with ( 'members', 'assignee' )->get ();
 	}
 	public function getAllMyAssignedMyProjects() {
-		$sort_field = Input::get ( 'sort_field' );
+		/*$sort_field = Input::get ( 'sort_field' );
 		$user_id = Auth::user ()->id;
 		$projects = Project::with ( [ 
 				'members' => function ($q) use($user_id) {
@@ -82,11 +82,30 @@ class ProjectsController extends Controller {
 				'bmcs' 
 		] )->where ( 'assignee_id', $user_id )->orderBy ( $sort_field ? $sort_field : 'updated_at', 'asc' )->get ();
 		
+				
 		$myprojects = array ();
 		foreach ( $projects as $project ) {
 			$myprojects [$project->id] = $project;
 		}
 		return $myprojects;
+		*/
+		$allProjects = $this->getAllProjects ();
+		$projects = json_decode ( $allProjects, true );
+		
+		$user_id = Auth::user ()->id;
+		$myProjects = array ();
+		
+		foreach ( $projects as $project ) {
+				
+			$assigne_id = $project ["assignee_id"];
+				
+			if ($user_id == $assigne_id) {
+				array_push ( $myProjects, $project );
+			}
+		}
+		
+		return $myProjects;
+		
 	}
 	
 	/**

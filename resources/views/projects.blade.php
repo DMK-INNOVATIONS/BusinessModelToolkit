@@ -374,7 +374,6 @@ $(function() {
 					    type: 'GET',
 					    data: {_token:"<?php echo csrf_token(); ?>",sort_field: to_send},
 					    async: "false",
-					    dataType:"json",
 					    success: function (data) {
 						    $("#projects").html(data.projects);
 						    $("#custom_menu").selectmenu("destroy").selectmenu();
