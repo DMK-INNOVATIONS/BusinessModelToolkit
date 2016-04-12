@@ -51,7 +51,7 @@ class ProjectsController extends Controller {
 					'user' => $user,
 					'sort_field' => $sort_field,
 					'myAssignedProjects' => $this->getAllMyAssignedMyProjects (),
-					'assignedProjectsOwners' => $assignedProjectsOwners,
+					'assignedProjectsOwners' => $this->getAssignedProjectsOwner (),
 					'assignedProjects'=> $assignedProjects
 			] )->renderSections ();
 			return $view;
@@ -94,7 +94,12 @@ class ProjectsController extends Controller {
 	 * @return Ambigous <\Illuminate\Database\Eloquent\Collection, multitype:\Illuminate\Database\Eloquent\static >
 	 */
 	public function getAllProjects() {
-		return Project::all ();
+		$sort_field = Input::get ( 'sort_field' );
+		if($sort_field){
+			return Project::orderBy ( $sort_field, strcmp($sort_field,'created_at') ? 'desc' : 'asc' )->get ();
+		}else{
+			return Project::all ();
+		}
 	}
 	
 	/**
@@ -400,11 +405,17 @@ class ProjectsController extends Controller {
 		return $owner;
 	}
 	public function getAssignedProjects() {
+		
+		$sort_field = Input::get ( 'sort_field' );
 		$allProjects = $this->getAllProjects ();
+		
+		if($sort_field)
+			$allProjects=Project::orderBy ( $sort_field, strcmp($sort_field,'created_at') ? 'desc' : 'asc' )->get ();
+		
 		$user_id = Auth::user ()->id;
 		
 		$myAssignedProjects = array ();
-		$projects = Project::all ();
+		$projects = $allProjects;
 		foreach ( $projects as $project ) {
 			foreach ( $project->members ()->get () as $assigned ) {
 				foreach ( $assigned->memberOf ()->get () as $a ) {

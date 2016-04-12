@@ -165,8 +165,8 @@
 					<div class="divider_style_2_project"></div>
 				</div>
 			</div>
+	<div id="my_assign_projects">
 @section('my_assign_projects')
-		<div id="my_assign_projects">
 		<?php foreach ($assignedProjects as $my):	?>
 				<?php //if($m->id == $user->id):?>
 				<div class="row no_margin extra_padding">
@@ -231,8 +231,8 @@
 			</div>
 				<?php //endif;?>
 		<?php endforeach; ?>
-		</div>
 @show
+		</div>
 		<!-- end new -->
 		</div>
 		<!-- Assign Projects End-->
@@ -387,7 +387,7 @@ $(function() {
 	});
 	var to_send2=$("#custom_menu_2").val();
 	$("#custom_menu_2").on( "selectmenuchange", function() {
-		console.log("change"+$(this).val());
+		//console.log("change"+$(this).val());
 		to_send2=$(this).val();
 		$.ajax({
 		    url: '/projects',
@@ -397,8 +397,7 @@ $(function() {
 		    success: function (data) {
 			    $("#my_assign_projects").html(data.my_assign_projects);
 			    $("#custom_menu_2").selectmenu("destroy").selectmenu();
-			    //$("#custom_menu").on( "selectmenuselect", function( event, ui ) {} );;
-			    //console.log("succes");
+			    console.log("succes");
 		    }
 		})
 		.done(function() {
