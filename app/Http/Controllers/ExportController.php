@@ -105,7 +105,8 @@ class ExportController extends Controller {
 			$doc = $this->landscape($bmc_id.','.$project_id);
 		}
 			
-		$html2pdf = new HTML2PDF($format,'A4','de', false, 'UTF-8');
+		//$html2pdf = new HTML2PDF($format,'A4','de', false, 'UTF-8');
+		$html2pdf = new HTML2PDF($format,'A4','de', true);
 		$html2pdf->pdf->SetTitle($bmc['title']);
 		$html2pdf->pdf->SetAuthor($user['name']);
 		$html2pdf->setDefaultFont('Arial');
