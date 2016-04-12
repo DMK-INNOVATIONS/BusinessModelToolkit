@@ -81,6 +81,7 @@ class ProjectsController extends Controller {
 				},
 				'bmcs' 
 		] )->where ( 'assignee_id', $user_id )->orderBy ( $sort_field ? $sort_field : 'updated_at', 'asc' )->get ();
+		
 		$myprojects = array ();
 		foreach ( $projects as $project ) {
 			$myprojects [$project->id] = $project;
@@ -407,7 +408,7 @@ class ProjectsController extends Controller {
 	public function getAssignedProjects() {
 		
 		$sort_field = Input::get ( 'sort_field' );
-		$allProjects = $this->getAllProjects ();
+		$allProjects = Project::orderBy ( 'updated_at', 'desc' )->get ();
 		
 		if($sort_field)
 			$allProjects=Project::orderBy ( $sort_field, strcmp($sort_field,'created_at') ? 'desc' : 'asc' )->get ();
