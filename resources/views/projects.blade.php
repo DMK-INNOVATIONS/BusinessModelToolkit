@@ -373,7 +373,7 @@ $(function() {
 						url: '<?=$path ?>/projects',
 					    type: 'GET',
 					    data: {_token:"<?php echo csrf_token(); ?>",sort_field: to_send},
-					    async: "false",
+					    async:false,
 					    success: function (data) {
 						    $("#projects").html(data.projects);
 						    $("#custom_menu").selectmenu("destroy").selectmenu();
@@ -392,7 +392,7 @@ $(function() {
 			url: '<?=$path ?>/projects',
 		    type: 'GET',
 		    data: {_token:"<?php echo csrf_token(); ?>",sort_field: to_send2},
-		    async: "false",
+		    async: false,
 		    success: function (data) {
 			    $("#my_assign_projects").html(data.my_assign_projects);
 			    $("#custom_menu_2").selectmenu("destroy").selectmenu();
