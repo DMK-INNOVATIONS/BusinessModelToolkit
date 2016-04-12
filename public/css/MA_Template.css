@@ -1516,6 +1516,15 @@ h5.text_status_bmc:ACTIVE {
 		margin-top: 5px;
 		margin-bottom: 5px;
 	}
+	.personaAvatar img{
+		width: 100%;
+		height: auto;
+	}
+	.personaToolsHead, .personaToolItems{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }
 
 @media (min-width: 1423px){
