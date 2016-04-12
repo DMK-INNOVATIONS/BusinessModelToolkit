@@ -63,9 +63,12 @@ h2 .btn-primary{
 	color: #5ac8f0;
 	border-color: #5ac8f0;
 	border-radius:25px;
-	padding: 10px 25px;
+	padding: 0 20px;
 	font-weight: bold;
-	margin:10px;
+	margin: 10px 15px;
+	font-size: 16px;
+	line-height: 20px;
+	height: 30px;
 }
 h3 a{
 	color: #2d7893;
@@ -549,7 +552,7 @@ p{
 	height: 60px;
 	background-color: #eff1f2; 
 	border: 1px solid #dfe4e6;
-	color: #002837; 
+	color: #002837;
 }
 .navbar-nav h3 > a{
 	margin-left: 10px;
