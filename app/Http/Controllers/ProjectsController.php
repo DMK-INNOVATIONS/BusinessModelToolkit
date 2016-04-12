@@ -43,6 +43,8 @@ class ProjectsController extends Controller {
 		
 		$assignedProjectsOwners = $this->getAssignedProjectsOwner ();
 		$myProjects=$this->getAllMyAssignedMyProjects ();
+
+		$path = $this->getPath();
 		// send per ajax return parameter from sort
 		if (Request::ajax ()) {
 			$sort_field = Input::get ( 'sort_field' );
@@ -52,7 +54,8 @@ class ProjectsController extends Controller {
 					'sort_field' => $sort_field,
 					'myAssignedProjects' => $this->getAllMyAssignedMyProjects (),
 					'assignedProjectsOwners' => $this->getAssignedProjectsOwner (),
-					'assignedProjects'=> $assignedProjects
+					'assignedProjects'=> $assignedProjects,
+					'path' => $path
 			] )->renderSections ();
 			return $view;
 		}
@@ -62,7 +65,8 @@ class ProjectsController extends Controller {
 				'sort_field' => '',
 				'myAssignedProjects' => $this->getAllMyAssignedMyProjects (),
 				'assignedProjectsOwners' => $assignedProjectsOwners,
-				'assignedProjects'=> $assignedProjects 
+				'assignedProjects'=> $assignedProjects,
+				'path' => $path
 		] );
 	}
 	private function userEnable(){

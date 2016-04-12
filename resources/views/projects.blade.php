@@ -370,7 +370,7 @@ $(function() {
 	$("#custom_menu").on( "selectmenuchange", function() {
 					to_send=$(this).val();
 					$.ajax({
-					    url: '/projects',
+					    url: '<?=$path ?>/projects',
 					    type: 'GET',
 					    data: {_token:"<?php echo csrf_token(); ?>",sort_field: to_send},
 					    async: "false",
@@ -389,7 +389,7 @@ $(function() {
 		//console.log("change"+$(this).val());
 		to_send2=$(this).val();
 		$.ajax({
-		    url: '/projects',
+		    url: '<?=$path ?>/projects',
 		    type: 'GET',
 		    data: {_token:"<?php echo csrf_token(); ?>",sort_field: to_send2},
 		    async: "false",
