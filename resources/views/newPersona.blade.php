@@ -144,7 +144,7 @@
 									<?php if(isset($persona)) : ?>
 										<textarea type="text" class="form-control" rows="3" name="personality" ><?= $persona['personality'];?></textarea>
 									<?php else : ?>
-										<div class="input-group col-md-12">
+										<div class="input-group col-md-12 col-sm-12 col-xs-12">
 											<textarea type="text" class="form-control" rows="3" name="personality"></textarea>
 										</div>
 									<?php endif; ?>

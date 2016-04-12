@@ -1401,6 +1401,19 @@ h5.text_status_bmc:ACTIVE {
 		justify-content: center;
 		align-items: center;
 	}
+	.personaAvatar{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.personaToolItems span{
+		margin-bottom: 0;
+	}
+	.personaUpdated, .personaToolsHead, .personaToolItems{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }
 
 /******************* Anpassungen Tablet (col-sm) *************************/
@@ -1424,6 +1437,28 @@ h5.text_status_bmc:ACTIVE {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+	.personaTools span{
+		margin-left: 10px;
+		margin-top: 10px;
+	}
+	.personaTools{
+		border-top: 1px solid #E6EEF1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-top: 1px solid #E6EEF1;
+	}
+	.personaToolsHead{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-top: 1px solid #E6EEF1;
+	}
+	.personaAvatar img{
+		width: 100%;
+		height: auto;
+		margin-bottom: 10px;
 	}
 }
 
@@ -1455,6 +1490,15 @@ h5.text_status_bmc:ACTIVE {
 		margin-top: 15px;
 		margin-bottom: 0;
 	}
+	.personaAvatar img{
+		width: 100%;
+		height: auto;
+	}
+	.personaToolsHead, .personaToolItems{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }
 
 /******************* Anpassungen Desktops groﬂ (col-lg) ***********************/
@@ -1485,5 +1529,13 @@ h5.text_status_bmc:ACTIVE {
 		margin: 0;
 		margin-left: 5px;
 		margin-top: 15px;
+	}
+	.personaTools button{
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.personaTools span{
+		margin-left: 0;
+		margin-top: 0;
 	}
 }
