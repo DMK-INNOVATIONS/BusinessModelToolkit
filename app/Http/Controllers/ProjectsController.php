@@ -93,6 +93,7 @@ class ProjectsController extends Controller {
 		}
 		return $myprojects;
 		*/
+		
 		$allProjects = $this->getAllProjects ();
 		$projects = json_decode ( $allProjects, true );
 		
@@ -120,9 +121,10 @@ class ProjectsController extends Controller {
 	public function getAllProjects() {
 		$sort_field = Input::get ( 'sort_field' );
 		if($sort_field){
-			return Project::orderBy ( $sort_field, strcmp($sort_field,'created_at') ? 'desc' : 'asc' )->get ();
+			return Project::orderBy ( $sort_field, strcmp($sort_field,'created_at') ? 'asc' : 'desc' )->get ();
 		}else{
-			return Project::all ();
+			return Project::orderBy ( 'updated_at', 'desc' )->get ();
+			//return Project::all ();
 		}
 	}
 	
