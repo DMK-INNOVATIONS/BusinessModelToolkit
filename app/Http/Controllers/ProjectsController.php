@@ -123,7 +123,7 @@ class ProjectsController extends Controller {
 		if($sort_field){
 			return Project::orderBy ( $sort_field, strcmp($sort_field,'created_at') ? 'asc' : 'desc' )->get ();
 		}else{
-			return Project::orderBy ( 'updated_at', 'desc' )->get ();
+			return Project::orderBy ( 'updated_at', 'asc' )->get ();
 			//return Project::all ();
 		}
 	}
