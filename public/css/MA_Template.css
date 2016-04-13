@@ -1551,3 +1551,13 @@ h5.text_status_bmc:ACTIVE {
 		margin-top: 0;
 	}
 }
+/******************* Admin Dashboard ***********************/
+.admin_User_list{
+	background-color: #FFFFFF;
+	border: 1px solid #bfc9cd;
+	border-radius:5px;
+	float: left;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	padding: 0px;
+}

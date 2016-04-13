@@ -59,6 +59,9 @@ Route::post('team/addUserToProject', 'TeamController@addUserToProject');
 
 Route::get('authentificate/{token}/{email}', 'Auth\AuthentificateController@authentificateUser');
 
+Route::get('adminNewUser', 'AdminController@newUser');
+Route::get('adminDashboard', 'AdminController@index');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

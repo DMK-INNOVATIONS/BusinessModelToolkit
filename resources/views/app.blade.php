@@ -83,6 +83,16 @@
 					</div>
 				</div>	
 			</div>
+			@if (!Auth::guest())
+				@if (Auth::user()->is_Admin)
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 adminMenu">
+					<ul class="nav nav-tabs">
+						<li class="{{{ (Request::is('adminDashboard') ? 'active' : '') }}}" role="presentation"><a href="{{ url('/adminDashboard') }}">Dashboard</a></li>
+						<li class="{{{ (Request::is('adminNewUser') ? 'active' : '') }}}" role="presentation"><a href="{{ url('/adminNewUser') }}">New User</a></li>
+					</ul>
+				</div>
+				@endif
+			@endif
 		</div>
 		<div class="divider_style_2 no_space"></div>
 		<div class="divider_style_1 no_space"></div>

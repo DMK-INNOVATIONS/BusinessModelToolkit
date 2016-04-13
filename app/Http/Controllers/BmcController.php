@@ -38,10 +38,14 @@ class BmcController extends Controller {
 	public function index() {
 		$myProjects = $this->getMyProjects ();
 		$path = $this->getPath();
-		return view ( 'bmc',[ 
-				'myProjects' => $myProjects,
-				'path' => $path
-		]);
+		if(Auth::user()->is_Admin){
+			return redirect('adminDashboard');
+		}else{
+			return view ( 'bmc',[
+					'myProjects' => $myProjects,
+					'path' => $path
+			]);
+		}
 	}
 	public function create($id) {
 		$inserts = explode ( ",", $id );
