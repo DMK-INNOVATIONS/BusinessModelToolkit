@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use users;
+use UsersSeeder as UsersSeeder;
 
 class DatabaseSeeder extends Seeder {
 
@@ -15,7 +15,17 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
-		// $this->call('UserTableSeeder');
+		DB::table('users')->insert([
+		'name' => 'admin',
+		'email' => 'admin.dmk@dmk-ebusiness.de',
+		'password' => bcrypt('testtest'),
+		'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+		'status_enable' => 1,
+		'is_Admin' => 1,
+		'last_Login' => \Carbon\Carbon::now()->toDateTimeString()
+		]);
+		
+		// $this->call('UsersSeeder');
 	}
 
 }
