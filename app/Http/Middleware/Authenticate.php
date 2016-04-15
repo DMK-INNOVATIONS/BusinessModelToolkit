@@ -2,6 +2,8 @@
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class Authenticate {
 
@@ -43,16 +45,18 @@ class Authenticate {
 		}
 		
 		if($this->auth->user()){
-			if($this->auth->user()->status_enable!=0)
+			if($this->auth->user()->status_enable!=0){
+				Auth::user()->last_Login = Carbon::now('Europe/Berlin');
+				Auth::user()->save();
+				
 				return $next($request);
+			}
 			$this->auth->logout();
 			return response()->view('errors.403');
 		}else{
 			$this->auth->logout();
 			return redirect()->guest('auth/login');
 		}
-
-		
 		
 		return $next($request);
 	}

@@ -60,16 +60,9 @@
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div class="text">
-						<p>You&#8217;re one click away. Please verify your email address {{{ $email }}}.</p>
-						<p>Link to activate</p>
-						<a href="{{{ url('/authentificate',['token'=>$token,'email'=>$email]) }}}" class="link">{{{ url('/authentificate',['token'=>$token,'email'=>$email]) }}}</a>
-						<p>You&#8217;ve received this email because you requested an
-							app.toolkit.builders account with this email address. If you
-							didn&#8217;t intend to, you can ignore this email the account
-							hasn&#8217;t been created yet. Having trouble? Copy and paste
-							this link into your browser and start verification process
-							manually.</p>
-						<p>Your support@toolkit.builders.</p>
+						<p>A new User has registered on your Business Model Toolkit!</p>
+						<p>Username: {{{$name}}}</p>
+						<p>E-Mail Address: {{{$user_email}}}</p>
 					</div>
 				</div>
 			</div>

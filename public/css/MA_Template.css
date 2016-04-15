@@ -1561,3 +1561,48 @@ h5.text_status_bmc:ACTIVE {
 	margin-left: 0px;
 	padding: 0px;
 }
+.admin_Header{
+	margin-top: 15px;
+}
+.admin_Details_Button, .admin_Details_Button li{
+	margin: 0;
+}
+.admin_Details_Button ul{
+	margin-top: 10px;
+	margin-left: 12px;
+}
+.admin_Tools span{
+	margin: 0;
+	margin-right: 5px;
+}
+.admin_Tools{
+	margin-top: 10px;
+}
+.makeAdmin, .admin_Tools a, .dropdown_userDetails, .dropdown_myprojects{
+	cursor: pointer;
+}
+.makeAdmin:HOVER{
+	color:#5ac8f0;
+}
+.dropdown_userDetails, .dropdown_userDetails_open{
+	float: left;
+	margin-bottom: 10px;
+	margin-left: 12px;
+	margin-top: 3px;
+	padding: 15px;
+}
+.dropdown_userDetails:HOVER{
+	background: transparent url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
+}
+.dropdown_userDetails{
+	background: transparent url("../img/icbt_detail_more_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
+}
+.dropdown_userDetails_open {
+	background: transparent url("../img/icbt_detail_less_sprite_3vertikal_30x30.png") no-repeat scroll 0 0;
+}
+.dropdown_userDetails_open:HOVER{
+	background: transparent url("../img/icbt_detail_less_sprite_3vertikal_30x30.png") no-repeat scroll 0 -30px;
+}
+.createUser button{
+	margin: 0;
+}

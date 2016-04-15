@@ -14,8 +14,6 @@
 Route::get('/', 'BmcController@index');
 Route::get('home', 'BmcController@index');
 
-/*Route::get('test', 'TestController@index');*/
-
 Route::get('bmc', 'BmcController@index');
 Route::get('bmc/create/{id?}', 'BmcController@create');
 Route::post('bmc/save/{id}', 'BmcController@save');
@@ -61,8 +59,22 @@ Route::get('authentificate/{token}/{email}', 'Auth\AuthentificateController@auth
 
 Route::get('adminNewUser', 'AdminController@newUser');
 Route::get('adminDashboard', 'AdminController@index');
+Route::get('adminDeleteUser/{id}', 'AdminController@deleteUser');
+Route::get('removeAdminRights/{id}', 'AdminController@handleAdminRights');
+Route::get('giveAdminRights/{id}', 'AdminController@handleAdminRights');
+Route::post('createNewUser', 'AdminController@createNewUser');
+Route::get('adminEditUser/{id}', 'AdminController@adminEditUser');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+// Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+// Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
