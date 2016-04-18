@@ -9,27 +9,27 @@
 					<?php $inserts = explode ( ",", session()->get('data') );?>
 					<div class="alert alert-{{{$inserts[1]}}}" role="alert"><?=$inserts[0] ?></div>
 				<?php endif;?>
-				<div class="col-lg-2 col-md-2 col-sm-1 col-xs-5">
+				<div class="col-lg-2 col-md-2 col-sm-6 col-xs-5">
 					<h5>Name [ User-id ]</h5>
 				</div>
-				<div class="col-md-1 show_projects no_padding_right">
+				<div class="col-lg-1 col-md-1 col-sm-5 col-xs-5 show_projects no_padding_right">
 					<h6 class="text-right">Show all</h6>
 				</div>
-				<div class="col-md-1 show_projects no_padding_left">
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 show_projects no_padding_left">
 					<ul class="my_projects">
 						<li id="dropdown_details" class="dropdown_userDetails" onclick="showUserDetails()"><span class="icon_more"></span></li>
 					</ul>
 				</div>
-				<div class="col-md-3">
+				<div class="col-lg-3 col-md-3 col-sm-5 col-xs-6">
 					<h5>Email</h5>
 				</div>
-				<div class="col-md-2">
+				<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
 					<h5>last Login</h5>
 				</div>
-				<div class="col-md-1">
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-6 admin_Tools_Menu">
 					<h5>Tools</h5>
 				</div>
-				<div class="col-md-2">
+				<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
 					<a class="createUser" data-toggle="modal" data-target="#createUser">
 						<button type="button" class="btn btn-primary btn-secundar">Create User</button>
 					</a>
@@ -38,8 +38,8 @@
 			</div>
 			<?php foreach($user as $u):?>
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="row col-md-12 admin_User_list">
-						<div class="col-md-3">
+					<div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 admin_User_list">
+						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11">
 							<h3><?=$u['name'] ?> [ <?=$u['id'] ?> ]
 							<?php if($u['id'] != Auth::user()->id):?>
 								<?php if($u['is_Admin']):?>
@@ -50,18 +50,18 @@
 							<?php endif;?>
 							</h3>
 						</div>
-						<div class="col-md-1 show_projects no_padding_left admin_Details_Button">
-							<ul class="my_projects">
+						<div class="col-lg-1 col-md-1 col-sm-6 col-xs-1 show_projects no_padding_left admin_Details_Button">
+							<ul class="my_projects pull-right">
 								<li class="dropdown_myprojects" onclick="showDetails('project_{{{$u['id']}}}')" id="drop_project_{{{$u['id']}}}" ><span class="icon_more"></span></li>
 							</ul>
 						</div>
-						<div class="col-md-3 admin_Header">
+						<div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 admin_Header">
 							<?=$u['email'] ?>
 						</div>
-						<div class="col-md-2">
+						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
 							<h5>{{{ $u['last_Login'] }}}</h5>
 						</div>
-						<div class="col-md-2 admin_Tools">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 admin_Tools">
 							<a href="adminEditUser/<?=$u['id'] ?>"> 
 								<span class="edit-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"></span>
 							</a>
@@ -73,19 +73,19 @@
 						<?php $count=0;?>
 							<?php if(count($u['projects'])>0):?>
 							<div class="divider_style_1_project_inside"></div>
-							<div class="col-md-4"><h5 class="no_margin_top_bottom">Title</h5></div>
-							<div class="col-md-4"><h5 class="no_margin_top_bottom">Updated</h5></div>
-							<div class="col-md-2"><h5 class="no_margin_top_bottom">Tools</h5></div>
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6"><h5 class="no_margin_top_bottom">Title</h5></div>
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6"><h5 class="no_margin_top_bottom">Updated</h5></div>
+							<div class="col-lg-2 col-md-4 col-sm-4 col-sm-offset-0 col-xs-6 col-xs-offset-6"><h5 class="no_margin_top_bottom">Tools</h5></div>
 							<div class="divider_style_3"></div>
 								<?php foreach($u['projects'] as $p):?>
 								<?php $count++;?>
-									<div class="col-md-4">
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 										<h4>{{{ $p->title }}} [ id: {{{ $p->id }}} ]</h4>
 									</div>
-									<div class="col-md-4">
+									<div class="col-lg-4 col-md-4 col-sm-4 6">
 										<h5 class="no_margin_bottom">{{{ date('Y-m-d | H:m',strtotime($p->updated_at)) }}}</h5>
 									</div>
-									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+									<div class="col-lg-2 col-md-2 col-sm-2 col-sm-4 col-xs-12">
 										<a class="bmc_link" href="projects/showBMCs/{{{ $p->id }}},1"">
 											<button type="button" class="btn btn-primary btn-secundar">Show Models</button>
 										</a>
