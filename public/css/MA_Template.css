@@ -1606,3 +1606,6 @@ h5.text_status_bmc:ACTIVE {
 .createUser button{
 	margin: 0;
 }
+.admin-Menu .nav-tabs{
+	border-bottom: transparent;
+}

@@ -70,23 +70,23 @@
 							</a>
 						</div>
 						<div id="project_{{{$u['id']}}}" class="projects" style="display:none;">
+						<?php $count=0;?>
+							<?php if(count($u['projects'])>0):?>
 							<div class="divider_style_1_project_inside"></div>
 							<div class="col-md-4"><h5 class="no_margin_top_bottom">Title</h5></div>
 							<div class="col-md-4"><h5 class="no_margin_top_bottom">Updated</h5></div>
 							<div class="col-md-2"><h5 class="no_margin_top_bottom">Tools</h5></div>
 							<div class="divider_style_3"></div>
-							<?php $count=0;?>
-							<?php if(count($u['projects'])>0):?>
 								<?php foreach($u['projects'] as $p):?>
 								<?php $count++;?>
 									<div class="col-md-4">
-										<h4>{{{ $p->title }}} [ {{{ $p->id }}} ]</h4>
+										<h4>{{{ $p->title }}} [ id: {{{ $p->id }}} ]</h4>
 									</div>
 									<div class="col-md-4">
 										<h5 class="no_margin_bottom">{{{ date('Y-m-d | H:m',strtotime($p->updated_at)) }}}</h5>
 									</div>
 									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-										<a class="bmc_link" href="">
+										<a class="bmc_link" href="projects/showBMCs/{{{ $p->id }}},1"">
 											<button type="button" class="btn btn-primary btn-secundar">Show Models</button>
 										</a>
 									</div>
