@@ -10,7 +10,7 @@
 		<!-- new render -->
 		<div class="row no_margin">
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-				<h1>{{{ $project_name }}}<span class="light_color">(<?php if(isset($newget)){ echo count($newget); }?>)</span>
+				<h1>{{{ $project_name }}} <span class="light_color">(<?php if(isset($newget)){ echo count($newget); }?>)</span>
 				</h1>
 			</div>
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">

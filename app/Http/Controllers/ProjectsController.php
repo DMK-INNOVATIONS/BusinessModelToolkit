@@ -229,13 +229,8 @@ class ProjectsController extends Controller {
 	 * @return \App\Http\Controllers\Ambigous
 	 */
 	public function getProjectName($id) {
-		$allProjects = $this->getAllProjects ();
-		foreach ( $allProjects as $project ) {
-			if ($project ['id'] == $id) {
-				$name = $project ['title'];
-				return $name;
-			}
-		}
+		$project = Project::find($id);
+		return $project['title'];
 	}
 	
 	/**
