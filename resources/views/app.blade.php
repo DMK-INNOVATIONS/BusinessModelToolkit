@@ -109,7 +109,7 @@
 		}
 		$(function ($) {
 			var body = document.getElementsByTagName("BODY")[0]
-			if(body.clientHeight >= '450'){
+			if(body.clientHeight >= '600'){
 				document.getElementsByTagName("footer")[0].style.bottom = null;
 			}
 		});
