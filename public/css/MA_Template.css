@@ -530,6 +530,34 @@ p{
 .header_nav{
 	height: 60px;
 }
+.footer{
+	background-color: #ffffff;
+	border-top: 2px solid #bfc9cd;
+	position: absolute;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "Asap",sans-serif;
+}
+.footer .container div{
+	padding: 5px;
+}
+.footer a{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+/* @media (min-height: 560px)and (max-height: 599px){
+	.footer{
+		bottom: 0;
+	}
+}
+@media (min-height: 600px){
+	.footer{
+		bottom: 0 no;
+	}
+} */
 /***********************************************/
 /********* Navigation***************************/
 /***********************************************/
@@ -1417,6 +1445,11 @@ h5.text_status_bmc:ACTIVE {
 		justify-content: center;
 		align-items: center;
 	}
+	.xsFooter{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }
 
 /******************* Anpassungen Tablet (col-sm) *************************/
@@ -1606,8 +1639,8 @@ h5.text_status_bmc:ACTIVE {
 .createUser button{
 	margin: 0;
 }
-.admin-Menu .nav-tabs{
-	border-bottom: transparent;
+.adminMenu ul{
+	border-bottom: none;
 }
 .admin_last_login{
 	padding-top: 10px;
