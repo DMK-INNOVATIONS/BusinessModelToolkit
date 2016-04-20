@@ -7,16 +7,16 @@
 	  <h1>Export</h1>
 	</div>
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1 col-sm-10 col-xs-12">
+		<div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
 			<div class="panel panel-default">
 				<div class="panel-heading"><b><?= $bmc['title'];?></b> <button type="button" data-toggle="modal" data-target="#helpModal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></button></div>
 				<div class="panel-body">
-					<div class="col-md-6 export">
+					<div class="col-md-6 col-sm-6 col-xs-12 export">
 						<a href="<?= $path.'/export/export/'.$bmc["id"].','.$project["id"].',1'.',P';?>"><button type="button" class="btn btn-primary btn-lg">Portrait Format</button></a>
 					</div>
-	  				<div class="col-md-6 export">
-	  					<a href="<?= $path.'/export/export/'.$bmc["id"].','.$project["id"].',1'.',L';?>"><button type="button" class="btn btn-primary btn-lg">Landscape Format</button></a>
-  					</div>
+					<div class="col-md-6 col-sm-6 col-xs-12 export">
+						<a href="<?= $path.'/export/export/'.$bmc["id"].','.$project["id"].',1'.',L';?>"><button type="button" class="btn btn-primary btn-lg">Landscape Format</button></a>
+					</div>
 					
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<?php 
@@ -53,7 +53,7 @@
 <script type="text/javascript">
 $(function() {
 	var d = document.getElementById("footer");
-	d.className += " footerSmXs";
+	d.className += " exportView";
 });
 </script>
 @endsection

@@ -210,7 +210,7 @@ In addition, using Personas lets you target and design your products and service
 <script type="text/javascript">
 $(function() {
 	var d = document.getElementById("footer");
-	d.className += " footerSmXs";
+	d.className += " personaView";
 });
 </script>
 @endsection

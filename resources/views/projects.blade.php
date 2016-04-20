@@ -340,7 +340,7 @@
 <script type="text/javascript">
 $(function() {
 	var d = document.getElementById("footer");
-	d.className += " footerSmXs";
+	d.className += " ProjectView";
 	
 	var to_send=$("#custom_menu").val();
 	$("#custom_menu").on( "selectmenuchange", function() {

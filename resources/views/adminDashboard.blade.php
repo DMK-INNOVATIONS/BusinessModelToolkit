@@ -205,7 +205,7 @@
 <script type="text/javascript">
 $(function() {
 	var d = document.getElementById("footer");
-	d.className += " footerSmXs";
+	d.className += " adminView";
 });
 </script>
 @endsection

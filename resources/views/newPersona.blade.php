@@ -199,6 +199,10 @@
 	</div>
 </div>
 <script>
+$(function() {
+	var d = document.getElementById("footer");
+	d.className += " addpersonaView";
+});
 $("#gender").change(function() {
     var avatar=$(this).val();
     if(avatar==="male"){
