@@ -107,12 +107,6 @@
 				document.getElementById(id).style.display = 'block';
 			}
 		}
-		$(function ($) {
-			var body = document.getElementsByTagName("BODY")[0]
-			if(body.clientHeight >= '600'){
-				document.getElementsByTagName("footer")[0].style.bottom = null;
-			}
-		});
 	</script>
 <footer class="footer col-lg-12 col-md-12 col-sm-12 col-xs-12" style="bottom:0;">
 	<div><span class="xsFooter">Questions? <a href="mailto:support@toolkit.builders">support@toolkit.builders</a></span><span class="xsFooter"> © DMK INNOVATIONS </span><span class="xsFooter">by DMK E-BUSINESS GmbH | <a href="http://www.dmk-innovations.de/en/legal-disclaimer/"> Imprint </a></span></div>

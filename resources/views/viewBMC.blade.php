@@ -299,7 +299,7 @@ $(function ($) {
 			}
 		//console.log($(v).children().length);
 	});
-		
+	document.getElementsByTagName("footer")[0].style.bottom = null;
 });
 </script>
 @include('viewBMCModals') @endsection

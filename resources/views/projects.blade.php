@@ -336,6 +336,7 @@
 </div>
 <script type="text/javascript">
 $(function() {
+	document.getElementsByTagName("footer")[0].style.bottom = null;
 /*
 	$('.myProjects.selected_sort').bind('change',function(){
 		var to_send=$(this).val();
