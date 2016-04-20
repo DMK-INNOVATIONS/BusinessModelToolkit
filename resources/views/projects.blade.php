@@ -109,9 +109,11 @@
 							</a>
 						</div>
 					</div>
+					
 				</div>
 				<?php endforeach; ?>
 			<?php endif; ?>
+			<div class="divider_style_1_project"></div>
 @show
 		</div>
 <?php if(count($assignedProjects) > 0): ?>
@@ -121,7 +123,6 @@
 
 			<div class="row no_margin">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-				<div class="divider_style_1_project"></div>
 					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 						<h1>My Assigned Projects <span class="light_color">(<?= count($assignedProjects)?>)</span></h1>
 					</div>
