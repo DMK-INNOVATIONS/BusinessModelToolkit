@@ -1472,6 +1472,9 @@ h5.text_status_bmc:ACTIVE {
 	.footerSmXs{
 		bottom: 0;
 	}
+	.adminShowProjects{
+		padding-right: 30px;
+	}
 }
 
 /******************* Anpassungen Tablet (col-sm) *************************/

@@ -12,11 +12,11 @@
 				<div class="col-lg-2 col-md-2 col-sm-6 col-xs-5">
 					<h5>Name [ User-id ]</h5>
 				</div>
-				<div class="col-lg-1 col-md-1 col-sm-5 col-xs-5 show_projects no_padding_right">
+				<div class="col-lg-1 col-md-1 col-sm-5 col-xs-5 show_projects no_padding_right adminShowProjects">
 					<h6 class="text-right">Show all</h6>
 				</div>
 				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 show_projects no_padding_left">
-					<ul class="my_projects">
+					<ul class="my_projects pull-right">
 						<li id="dropdown_details" class="dropdown_userDetails" onclick="showUserDetails()"><span class="icon_more"></span></li>
 					</ul>
 				</div>
@@ -26,8 +26,7 @@
 				<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
 					<h5>last Login</h5>
 				</div>
-				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-6 admin_Tools_Menu">
-					<h5>Tools</h5>
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-4">
 				</div>
 				<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
 					<a class="createUser" data-toggle="modal" data-target="#createUser">
