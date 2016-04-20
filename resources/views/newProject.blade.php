@@ -59,4 +59,10 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+$(function() {
+	var d = document.getElementById("footer");
+	d.className += " footerSmXs";
+});
+</script>
 @endsection

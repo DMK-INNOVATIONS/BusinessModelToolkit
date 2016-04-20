@@ -20,6 +20,10 @@
 	</div>
 </div>
 <script>
+$(function ($) {
+	var d = document.getElementById("footer");
+	d.className += " indexFooter";
+});
 var height=0;
 var h=0;
 var count_panel=0; 

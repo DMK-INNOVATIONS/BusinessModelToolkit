@@ -78,7 +78,7 @@
 									<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6" style="margin-top: 15px">
 										<div
 											class="label_{{{ $myProject['status'] }}} label_project no_padding_left no_margin_left label_status_bmc">
-											<h5 class="in_label_project">{{{ $myProject['status'] }}}</h5>
+											<h5 class="in_label_project label_show_{{{ $myProject['status'] }}}">{{{ $myProject['status'] }}}</h5>
 										</div>
 									</div>
 									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -241,6 +241,9 @@
 </div>
 <script type="text/javascript">
 $(function() {
+	var d = document.getElementById("footer");
+	d.className += " ProjectView";
+	
 	var to_send=$("#custom_menu").val();
 	$("#custom_menu").on( "selectmenuchange", function() {
 					//console.log("change"+$(this).val());

@@ -55,13 +55,13 @@
 								<li class="dropdown_myprojects" onclick="showDetails('project_{{{$u['id']}}}')" id="drop_project_{{{$u['id']}}}" ><span class="icon_more"></span></li>
 							</ul>
 						</div>
-						<div class="col-lg-3 col-md-3 col-sm-5 col-xs-6 admin_Header">
+						<div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 admin_Header">
 							<?=$u['email'] ?>
 						</div>
 						<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
 							<h5>{{{ $u['last_Login'] }}}</h5>
 						</div>
-						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 admin_Tools">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 admin_Tools">
 							<a href="adminEditUser/<?=$u['id'] ?>"> 
 								<span class="edit-icon no_background" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="edit"></span>
 							</a>
@@ -143,48 +143,48 @@
 
 <div class="modal fade" id="createUser" tabindex="-1" role="dialog">
 	<div class="modal-dialog delete" role="document">
-		<div class="modal-content delete col-md-12">
+		<div class="modal-content delete col-md-12 col-sm-12 col-xs-12">
 			<div class="modal-header col-md-12">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Create new User</h4>
 			</div>
 			<div class="modal-body">
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-12 col-sm-12 col-xs-12">
 						<form class="form-horizontal" role="form" method="POST" action="{{ url('createNewUser') }}">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	
 							<div class="form-group">
-								<label class="col-md-4 control-label">Username</label>
-								<div class="col-md-8">
+								<label class="col-md-4 col-sm-4 col-xs-4 control-label">Username</label>
+								<div class="col-md-8 col-sm-8 col-xs-8">
 									<input type="text" class="form-control" name="username">
 								</div>
 							</div>
 	
 							<div class="form-group">
-								<label class="col-md-4 control-label">E-Mail Address</label>
-								<div class="col-md-8">
+								<label class="col-md-4 col-sm-4 col-xs-4 control-label">E-Mail Address</label>
+								<div class="col-md-8 col-sm-8 col-xs-8">
 									<input type="email" class="form-control" name="email">
 								</div>
 							</div>
 	
 							<div class="form-group">
-								<label class="col-md-4 control-label">Password</label>
-								<div class="col-md-8">
+								<label class="col-md-4 col-sm-4 col-xs-4 control-label">Password</label>
+								<div class="col-md-8 col-sm-8 col-xs-8">
 									<input type="password" class="form-control" name="password">
 								</div>
 							</div>
 	
 							<div class="form-group">
-								<label class="col-md-4 control-label">Confirm Password</label>
-								<div class="col-md-8">
+								<label class="col-md-4 col-sm-4 col-xs-4 control-label">Confirm Password</label>
+								<div class="col-md-8 col-sm-8 col-xs-8">
 									<input type="password" class="form-control" name="password_confirmation">
 								</div>
 							</div>
 							
 							<div class="form-group">
-								<label for="gender" class="col-md-4 control-label">Give Role</label>
-								<div class="col-md-8">
+								<label for="gender" class="col-md-4 col-sm-4 col-xs-4 control-label">Give Role</label>
+								<div class="col-md-8 col-sm-8 col-xs-8">
 									<select class="form-control" id="gender" name="is_admin">
 										<option value="User">User</option>
 										<option value="Admin">Admin</option>
@@ -193,8 +193,8 @@
 							</div>
 							<div class="divider_style_3"></div>
 							<div class="form-group">
-								<div class="col-md-6"><button type="submit" class="btn btn-primary">Register</button></div>
-								<div class="col-md-6"><button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Back</button></div>
+								<div class="col-md-6 col-sm-6 col-xs-6"><button type="submit" class="btn btn-primary">Register</button></div>
+								<div class="col-md-6 col-sm-6 col-xs-6"><button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Back</button></div>
 							</div>
 						</form>
 					</div>
@@ -203,7 +203,12 @@
 		</div>
 	</div>
 </div>
-
+<script type="text/javascript">
+$(function() {
+	var d = document.getElementById("footer");
+	d.className += " footerSmXs";
+});
+</script>
 @endsection
 <script>
 function showUserDetails(){

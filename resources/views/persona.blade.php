@@ -25,13 +25,13 @@
 					<div class="panel panel-default">
 					
 					<div class="row table_head">
-							<div class="col-lg-1 col-md-1 col-sm-2 col-xs-12 personaAvatar">Avatar</div>
-							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">Name</div>
-							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-6">Age</div>
-							<div class="col-lg-1 col-md-1 col-sm-2 col-xs-6">Gender</div>
-							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">Occupation</div>
-							<div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 personaUpdated">Updated at</div>
-							<div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-10 col-sm-offset-2 col-xs-12 personaToolsHead">Tools</div>
+							<div class="col-lg-1 col-md-1 col-sm-12 col-xs-12 personaAvatar">Avatar</div>
+							<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">Name</div>
+							<div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">Age</div>
+							<div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">Gender</div>
+							<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">Occupation</div>
+							<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 personaToolsHead">Updated at</div>
+							<div class="col-lg-3 col-md-3 col-md-offset-0 col-sm-12 col-xs-12 personaToolsHead">Tools</div>
 					</div>
 						<?php 
 							$view_type= 'persona';
@@ -49,13 +49,13 @@
 							$updated_at_time = $created_at[1];
 							
 							print	'<div class="row table_body">
-											<div class="col-lg-1 col-md-1 col-sm-2 col-xs-12 personaAvatar"><img class="avatarImg" src="'.$myPersona["avatarImg"].'" alt="Selfhtml" /></div>
-											<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">'.$myPersona["name"].'</div>
-											<div class="col-lg-1 col-md-1 col-sm-1 col-xs-6">'.$myPersona["age"].'</div>
-											<div class="col-lg-1 col-md-1 col-sm-2 col-xs-6">'.$myPersona["gender"].'</div>
-											<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">'.$myPersona["occupation"].'</div>
-											<div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 personaUpdated">'.date('l, d-m-Y | H:m', strtotime($myPersona["updated_at"])).'</div>
-											<div class="col-lg-3 col-md-3 col-sm-10 col-xs-12 personaTools">
+											<div class="col-lg-1 col-md-1 col-sm-12 col-xs-12 personaAvatar"><img class="avatarImg" src="'.$myPersona["avatarImg"].'" alt="Selfhtml" /></div>
+											<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">'.$myPersona["name"].'</div>
+											<div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">'.$myPersona["age"].'</div>
+											<div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">'.$myPersona["gender"].'</div>
+											<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">'.$myPersona["occupation"].'</div>
+											<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 personaTools">'.date('l, d-m-Y | H:m', strtotime($myPersona["updated_at"])).'</div>
+											<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 personaTools">
 												<div class="row">
 													<div class="col-lg-5 col-md-12 col-sm-6 col-xs-12 personaToolItems">
 														<a href="persona/edit/'.$myPersona["id"].','.$view_type.','.$bmc_id.','.$project_id.','.$bmc_status.',0,Persona">
@@ -200,58 +200,6 @@ In addition, using Personas lets you target and design your products and service
 		      	</div>
 	      	</div>
       	</div>
-<!--       	<div class="container-fluid"> -->
-<!--       		<div class="panel panel-default"> -->
-<!--       			<div class="panel-heading">Persona Structure</div> -->
-<!--       			<div class="panel-body bmcViewBackground"> -->
-<!--       				<div class="row"> -->
-<!--       					<div class="col-md-4"> -->
-<!--       						<div class="col-md-12 panel panel-default"><b>John Doe</b></div> -->
-<!--       						<div class="col-md-12 panel panel-default persona_view_box"><img alt="Persona Avatar" src="{{{ asset('img/male_persona_default.png') }}}" height="125px"></div> -->
-<!--       					</div> -->
-<!--       					<div class="col-md-8"> -->
-<!--       						<div class="col-md-12 persona_view_box_quote"> -->
-<!--       							<div class="col-md-12"> -->
-<!--       								<b>"I love playing with my Kids!"</b> -->
-<!--       							</div> -->
-<!--       						</div> -->
-<!--       						<div class="col-md-12 panel panel-default"> -->
-<!--       							<div class="col-md-12"><b>Personality</b></div><br> -->
-<!--       							<p>John lives in a small town near London with his wife and two kids. He loves to play with his two Children after work. Also he loves to hear Jazz Music in his study.</p> -->
-<!--       						</div> -->
-<!--       					</div> -->
-<!--       				</div> -->
-<!--       				<div class="row"> -->
-<!--       					<div class="col-md-4"> -->
-<!-- 	      					<div class="col-md-12 panel panel-default"> -->
-<!-- 	      						<div class="col-md-12 persona_view_box_content"><b>Age:</b> 30</div> -->
-<!-- 	      						<div class="col-md-12 persona_view_box_content"><b>Marital Status:</b> married</div> -->
-<!-- 	      						<div class="col-md-12 persona_view_box_content"><b>Occupation:</b> Salesman</div> -->
-<!-- 	      						<div class="col-md-12 persona_view_box_content"><b>Nationality:</b> British</div> -->
-<!-- 	      					</div> -->
-<!--       					</div> -->
-<!--       					<div class="col-md-4"> -->
-<!-- 	      					<div class="col-md-12 panel panel-default persona_view_box_content"> -->
-<!-- 	      						<div class="col-md-12"><b>Skills</b></div><br> -->
-<!-- 	      						<ul> -->
-<!-- 	      							<li>MS Office</li> -->
-<!-- 	      							<li>BWL</li> -->
-<!-- 	      						</ul> -->
-<!-- 	      					</div> -->
-<!--       					</div> -->
-<!--       					<div class="col-md-4"> -->
-<!-- 	      					<div class="col-md-12 panel panel-default persona_view_box_content"> -->
-<!-- 	      						<div class="col-md-12"><b>Needs</b></div><br> -->
-<!-- 	      						<ul> -->
-<!-- 	      							<li>new Laptop</li> -->
-<!-- 	      							<li>advanced training</li> -->
-<!-- 	      						</ul> -->
-<!-- 	      					</div> -->
-<!--       					</div>	 -->
-<!--       				</div> -->
-<!-- 		      	</div> -->
-<!--       		</div> -->
-<!-- 		</div> -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -259,4 +207,10 @@ In addition, using Personas lets you target and design your products and service
     </div>
   </div>
 </div>
+<script type="text/javascript">
+$(function() {
+	var d = document.getElementById("footer");
+	d.className += " footerSmXs";
+});
+</script>
 @endsection

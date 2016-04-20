@@ -100,7 +100,7 @@ h3{
 }
 h4{
 	margin: 10px 0 5px 0;
-	font-size: 14px;
+	font-size: 13px;
 	line-height: 20px; 
 	color: #2d7893;
 	font-weight: bold;
@@ -666,6 +666,9 @@ button#dropdown_navbar:ACTIVE{
 .dropdown_project.open .dropdown-menu{
 	margin-top: 2px;
 } 
+.dropdown_project {
+	height: 20px;
+}
 .navbar-collapse > div{
 	height: 60px;
 }
@@ -710,7 +713,7 @@ h3.logged{
 	}
 	li.dropdown_project {
       display: block;
-      height: 0;
+      /* height: 0; */
       padding-right: 0;
 	}
    .navbar-nav h3 a {
@@ -1416,7 +1419,9 @@ h5.text_status_bmc:ACTIVE {
 .primary.green{
 	background-color: #b9f9b4;
 }
-
+.footer{
+	bottom: 0;
+}
 /******************* Anpassungen Smartphones (col-xs) ********************/
 @media (max-width: 749px) {
 	a.bmc_link {
@@ -1450,6 +1455,23 @@ h5.text_status_bmc:ACTIVE {
 		justify-content: center;
 		align-items: center;
 	}
+	.footer{
+		bottom: inherit;
+	}
+	.projectsButton{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.tools_projects{
+		margin: 5px;
+	}
+	.label_show_approved{
+		margin-left: 10px;
+	}
+	.footerSmXs{
+		bottom: 0;
+	}
 }
 
 /******************* Anpassungen Tablet (col-sm) *************************/
@@ -1479,22 +1501,29 @@ h5.text_status_bmc:ACTIVE {
 		margin-top: 10px;
 	}
 	.personaTools{
-		border-top: 1px solid #E6EEF1;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		border-top: 1px solid #E6EEF1;
 	}
-	.personaToolsHead{
+	.personaToolsHead, .personaAvatar{
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		border-top: 1px solid #E6EEF1;
 	}
-	.personaAvatar img{
-		width: 100%;
-		height: auto;
-		margin-bottom: 10px;
+	.footer{
+		bottom: inherit;
+	}
+	.indexFooter{
+		bottom: 0px;
+	}
+	.group-icons{
+		margin-bottom: 5px;
+	}
+	.showModelsButton{
+		padding-left: 5px;
+	}
+	.footerSmXs, .ProjectView{
+		bottom: 0;
 	}
 }
 
@@ -1535,6 +1564,12 @@ h5.text_status_bmc:ACTIVE {
 		justify-content: center;
 		align-items: center;
 	}
+	.group-icons{
+		margin-bottom: 5px;
+	}
+	.label_show_approved{
+		margin-left: 10px;
+	}
 }
 
 /******************* Anpassungen Desktops groﬂ (col-lg) ***********************/
@@ -1561,9 +1596,12 @@ h5.text_status_bmc:ACTIVE {
 		justify-content: center;
 		align-items: center;
 	}
+	.BMCView{
+		bottom: inherit;
+	}
 }
 
-@media (min-width: 1423px){
+@media (min-width: 1423px)and (max-width: 2559px){
 	a.bmc_link {
 		float: right;
 	}
@@ -1583,6 +1621,9 @@ h5.text_status_bmc:ACTIVE {
 		margin-left: 0;
 		margin-top: 0;
 	}
+}
+
+@media (min-width: 2560px){
 }
 /******************* Admin Dashboard ***********************/
 .admin_User_list{
@@ -1666,7 +1707,6 @@ h5.text_status_bmc:ACTIVE {
 		margin-top: 0;
 	}
 	.admin_Tools{
-		margin-top: 0;
 		margin-bottom: 5px;
 		display: flex;
 		justify-content: center;

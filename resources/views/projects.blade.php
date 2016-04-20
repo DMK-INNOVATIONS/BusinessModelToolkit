@@ -23,10 +23,10 @@
 							My Own Projects <span class="light_color">(<?php if(isset($myProjects)){ echo count($myProjects); }?>)</span>
 						</h1>
 					</div>
-					<div class="col-md-4 col-sm-4 col-xs-6">
+					<div class="col-md-4 col-sm-4 col-xs-12 projectsButton">
 						<a href="projects/create"><button type="button" class="btn btn-primary">New Project</button></a>
 					</div>
-					<div class="col-md-4 col-sm-4 col-xs-6 sortProject">
+					<div class="col-md-4 col-sm-4 col-xs-12 sortProject">
 						<h6>Sort by</h6>
 						<select id="custom_menu" class="myProjects selected_sort form-control">
 							<option value="updated_at"
@@ -41,10 +41,10 @@
 			</div>
 			<div class="row no_margin">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="col-lg-3 col-md-2 col-sm-1 col-xs-5">
+					<div class="col-lg-3 col-md-2 col-sm-1 col-xs-4">
 						<h5>Title</h5>
 					</div>
-					<div class="col-lg-2 col-md-2 col-sm-3 col-xs-5 show_projects no_padding_right">
+					<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 show_projects no_padding_right">
 						<h6 class="text-right">Show details for all</h6>
 					</div>
 					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 show_projects no_padding_left">
@@ -72,7 +72,7 @@
 					<?php foreach ($myProjects as $myProject):	?>
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 my_project_list">
 					<div class="row">
-						<div class="col-lg-5 col-md-4 col-sm-4 col-xs-10">
+						<div class="col-lg-5 col-md-4 col-sm-4 col-xs-9">
 							<h3>{{{ $myProject['title'] }}}</h3>
 						</div>
 						<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 no_padding_left">
@@ -88,20 +88,20 @@
 									strtotime($myProject['created_at'])) }}}</h6>
 							</div>
 						</div>
-						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
 
 							<a href="projects/edit/{{{ $myProject['id'] }}}"> <span
-								class="edit-icon no_background" aria-hidden="true"
+								class="edit-icon no_background tools_projects" aria-hidden="true"
 								data-toggle="tooltip" data-placement="bottom" title="edit" />
 							</a>
 							 <a data-toggle="modal"
 								data-target="#deleteModal{{{ $myProject['id'] }}}"> <span
-								class="delete-icon no_background" aria-hidden="true"
+								class="delete-icon no_background tools_projects" aria-hidden="true"
 								data-toggle="tooltip" data-placement="bottom" title="delete" />
 							</a>
 
 						</div>
-						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
+						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-8 showModelsButton">
 							<a class="project_link"
 								href="projects/showBMCs/{{{ $myProject['id'] }}},1">
 								<button type="button" class="btn btn-primary btn-secundar">Show
@@ -112,15 +112,16 @@
 				</div>
 				<?php endforeach; ?>
 			<?php endif; ?>
-			<div class="divider_style_1_project"></div>
 @show
 		</div>
+<?php if(count($assignedProjects) > 0): ?>
 			<!-- Assigned Projects Start-->
 
 			<!-- start new -->
 
 			<div class="row no_margin">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="divider_style_1_project"></div>
 					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 						<h1>My Assigned Projects <span class="light_color">(<?= count($assignedProjects)?>)</span></h1>
 					</div>
@@ -140,10 +141,10 @@
 			</div>
 			<div class="row no_margin">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="col-lg-3 col-md-2 col-sm-1 col-xs-5">
+					<div class="col-lg-3 col-md-2 col-sm-1 col-xs-4">
 						<h5>Title</h5>
 					</div>
-					<div class="col-lg-2 col-md-2 col-sm-3 col-xs-5 show_projects no_padding_right">
+					<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 show_projects no_padding_right">
 						<h6 class="text-right">Show details for all</h6>
 					</div>
 					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 show_projects no_padding_left">
@@ -162,17 +163,17 @@
 					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
 						<h5>Owner</h5>
 					</div>
-					<div class="divider_style_2_project"></div>
 				</div>
 			</div>
+<?php foreach ($assignedProjects as $my):	?>
+<div class="divider_style_2_project"></div>
 	<div id="my_assign_projects">
 @section('my_assign_projects')
-		<?php foreach ($assignedProjects as $my):	?>
 				<?php //if($m->id == $user->id):?>
 				<div class="row no_margin extra_padding">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 my_project_list">
 					<div class="row">
-						<div class="col-lg-5 col-md-4 col-sm-4 col-xs-10">
+						<div class="col-lg-5 col-md-4 col-sm-4 col-xs-9">
 							<h3>{{{ $my->title }}}</h3>
 						</div>
 						<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 no_padding_left">
@@ -188,10 +189,10 @@
 									strtotime($my->created_at)) }}}</h6>
 							</div>
 						</div>
-						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
 							<h5 class="no_margin_bottom">{{{$my->assignee->name}}}</h5>
 						</div>
-						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
+						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-8 showModelsButton">
 							<a class="project_link" href="projects/showBMCs/{{{ $my->id }}},1">
 								<button type="button" class="btn btn-primary btn-secundar">Show Models</button>
 							</a>
@@ -209,12 +210,12 @@
 						<div class="col-lg-6 col-md-5 col-sm-5 col-xs-12">
 							<h4>{{{ $b->title }}}</h4>
 						</div>
-						<div class="col-lg-4 col-md-5 col-sm-5 col-xs-6">
+						<div class="col-lg-4 col-md-5 col-sm-5 col-xs-7">
 							<div class="label_{{{ $b->status }}} label_project">
 								<h5 class="in_label_project">{{{ $b->status }}}</h5>
 							</div>
 						</div>
-						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-5">
 							<a class="bmc_link"
 								href="bmc/viewBMC/{{{ $b->id }}},{{{ $my->id }}},1,1,showBMCs">
 								<button type="button" class="btn btn-primary btn-secundar">View
@@ -233,10 +234,12 @@
 		<?php endforeach; ?>
 @show
 		</div>
+		<?php endif;?>
 		<!-- end new -->
 		</div>
 		<!-- Assign Projects End-->
 	</div>
+
 
 	<!-- Help Modal -->
 	<?php foreach ($myProjects as $myProject):	?>
@@ -336,58 +339,28 @@
 </div>
 <script type="text/javascript">
 $(function() {
-	document.getElementsByTagName("footer")[0].style.bottom = null;
-/*
-	$('.myProjects.selected_sort').bind('change',function(){
-		var to_send=$(this).val();
-		//console.log(to_send);  
-		$.ajax({
-		    url: '/projects',
-		    type: 'GET',
-		    data: {_token:"<?php echo csrf_token(); ?>",sort_field: to_send},
-		    async: "false",
-		    success: function (data) {
-			    $('#my_projects').html(data.content);
-			    //console.log("succes");
-		    }
-		});
-	});
-	$('.assigned_select.selected_sort').bind('change',function(){
-		var to_send=$(this).val();
-		//console.log(to_send);  
-		$.ajax({
-		    url: '/projects',
-		    type: 'GET',
-		    data: {_token:"<?php echo csrf_token(); ?>",sort_field: to_send},
-		    async: "false",
-		    success: function (data) {
-			    $('#project_list').html(data.content);
-			    //console.log("succes");
-		    }
-		});
-	});
-*/	
+	var d = document.getElementById("footer");
+	d.className += " footerSmXs";
+	
 	var to_send=$("#custom_menu").val();
 	$("#custom_menu").on( "selectmenuchange", function() {
-					to_send=$(this).val();
-					$.ajax({
-						url: '<?=$path ?>/projects',
-					    type: 'GET',
-					    data: {_token:"<?php echo csrf_token(); ?>",sort_field: to_send},
-					    async:false,
-					    success: function (data) {
-						    $("#projects").html(data.projects);
-						    $("#custom_menu").selectmenu("destroy").selectmenu();
-					    }
-					})
-					.done(function() {
-					    	$("#custom_menu").selectmenu();
-					      })
-				;
+		to_send=$(this).val();
+		$.ajax({
+				url: '<?=$path ?>/projects',
+			    type: 'GET',
+			    data: {_token:"<?php echo csrf_token(); ?>",sort_field: to_send},
+			    async:false,
+			    success: function (data) {
+				    $("#projects").html(data.projects);
+				    $("#custom_menu").selectmenu("destroy").selectmenu();
+			    }
+			})
+		.done(function() {
+		    	$("#custom_menu").selectmenu();
+		      });
 	});
 	var to_send2=$("#custom_menu_2").val();
 	$("#custom_menu_2").on( "selectmenuchange", function() {
-		//console.log("change"+$(this).val());
 		to_send2=$(this).val();
 		$.ajax({
 			url: '<?=$path ?>/projects',
@@ -402,9 +375,8 @@ $(function() {
 		})
 		.done(function() {
 		    	$("#custom_menu_2").selectmenu();
-		      })
-	;
-});
+		      });
+	});
 	$("#custom_menu").selectmenu();
 	$("#custom_menu_2").selectmenu();
 });

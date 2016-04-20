@@ -24,7 +24,7 @@ if (isset ( $user )) :
 		<div class="col-md-12">
 			<div class="panel panel-default bmc_view_background">
 				<div class="panel-heading bmc_view_Header no_padding_right">
-					<div class="col-md-3 col-sm-4">
+					<div class="col-md-3 col-sm-4 col-xs-12">
 						<?php
 						if ($view_type == 'models') {
 							print '<a href="'.$path.'/bmc/models"><button type="button" class="btn btn-default">Back to Model View</button></a>';
@@ -33,7 +33,7 @@ if (isset ( $user )) :
 						}
 						?>
 					</div>
-					<div class="col-md-7 col-sm-4">
+					<div class="col-md-6 col-sm-4 col-xs-12">
 						<?php
 						if ($owner != 0) {
 							print '<a type="button" class="edit-icon-header" data-toggle="modal" data-target="#titleChangeModal" class="btn btn-default btn-sm"></a>  ';
@@ -41,7 +41,7 @@ if (isset ( $user )) :
 						?>
 						<h1 style="margin-top: 10px;">{{{$bmc_name}}}</h1>
 					</div>
-					<div class="col-md-2 col-sm-4 no_padding_right">
+					<div class="col-md-3 col-sm-4 col-xs-12 no_padding_right">
 						<div class="pull-right">
 						<div class="status_project">
 							<a class="show-icon" type="button" data-toggle="modal" data-target="#statusChangeModal">
@@ -299,7 +299,8 @@ $(function ($) {
 			}
 		//console.log($(v).children().length);
 	});
-	document.getElementsByTagName("footer")[0].style.bottom = null;
+	var d = document.getElementById("footer");
+	d.className += " footerSmXs";
 });
 </script>
 @include('viewBMCModals') @endsection
