@@ -66,20 +66,20 @@
 					</ul>
 					</div>
 					<div class="col-md-3 col-sm-12 header_nav col-xs-6">
-					<ul class="nav navbar-nav navbar-right">
-						@if (Auth::guest())
-							<li><a href="{{ url('/auth/login') }}">Login</a></li>
-							<li><a href="{{ url('/auth/register') }}">Register</a></li>
-						@else
-							<li class="dropdown">
-								<a class="loggin" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><h3 class="logged">You are logged in as {{ Auth::user()->name }} </h3><span class="icon_more"></span></a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="{{ url('/profile') }}">User Profile</a></li>
-									<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
-								</ul>
-							</li>
-						@endif
-					</ul>
+						<ul class="nav navbar-nav navbar-right">
+							@if (Auth::guest())
+								<li><a href="{{ url('/auth/login') }}">Login</a></li>
+								<li><a href="{{ url('/auth/register') }}">Register</a></li>
+							@else
+								<li class="dropdown">
+									<a class="loggin" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><h3 class="logged">You are logged in as {{ Auth::user()->name }} </h3><span class="icon_more"></span></a>
+									<ul class="dropdown-menu" role="menu" id="userMenu">
+										<li><a href="{{ url('/profile') }}">User Profile</a></li>
+										<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
+									</ul>
+								</li>
+							@endif
+						</ul>
 					</div>
 				</div>	
 			</div>
@@ -99,7 +99,7 @@
 	</nav>
 		@yield('content')
 	<!-- Scripts -->
-	<script>
+	<script>	
 		function showStuff(id, btn) {
 			if(document.getElementById(id).style.display == 'block'){
 				document.getElementById(id).style.display = 'none';
