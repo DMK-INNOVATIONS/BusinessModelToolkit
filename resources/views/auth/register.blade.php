@@ -44,7 +44,7 @@
                     				<div class="progress">
 										<div role="progressbar" class="progress-bar" id="complexity-bar"></div>
 									</div>
-									<h1 class="pull-right" id="complexity" class="hidden">0</h1>
+									<h1 class="pull-right h_complexity" class="hidden">0</h1>
 									<div class="error hidden">Password  is not strenght enough</div>
                 			</div>
 						</div>
@@ -78,7 +78,7 @@ function passwordStrength(){
 		progressBar.toggleClass('progress-bar-success', valid);
 		progressBar.toggleClass('progress-bar-danger', !valid);
 		progressBar.css({'width': complexity});
-		$('#complexify #complexity').text(Math.round(complexity));
+		$('#complexify .h_complexity').text(Math.round(complexity));
 	});
 }
 $(".progress").addClass("hidden");
@@ -89,7 +89,7 @@ $( "#password" ).keyup(function() {
 	if(value.length > 0){
 		$(".progress").removeClass("hidden");
 		passwordStrength();
-		var procent=$("h1#complexity").text();
+		var procent=$(".h_complexity").text();
 		if(procent>41){
 			valid=true;
 		}else{

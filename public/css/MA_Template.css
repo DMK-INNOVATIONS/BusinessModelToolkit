@@ -1829,7 +1829,7 @@ h5.text_status_bmc:ACTIVE {
 .progress{
 	margin-top: 30px;
 }
-h1#complexity{
+.h_complexity{
 	display:none;
 }
 .error{
