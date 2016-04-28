@@ -87,33 +87,51 @@ class AdminController extends Controller {
 	public function deleteUserElements($user_id){
 		$projectsOfUser = Project::where('assignee_id', '=', $user_id)->get();
 		$personasOfUser = Persona::where('assignee_id', '=', $user_id)->get();
-		foreach($projectsOfUser as $projectOfUser){ // deletes all Projects of a User
-			$bmcsOfProject = BMC::where('project_id', '=', $projectOfUser['id'])->get();
-			if(!empty($projectOfUser)){
-				foreach($bmcsOfProject as $bmcOfProject){ // deletes all BMC of a Project
-					$noticesOfBmc = Notice::where('bmc_id', '=', $bmcOfProject['id'])->get();
-					if(!empty($bmcOfProject)){
-						foreach($noticesOfBmc as $noticeOfBmc){ // deletes all Notices of a BMC
-							if(!empty($noticeOfBmc)){
-								Notice::destroy($noticeOfBmc['id']);
+
+		if(!empty($projectsOfUser)){
+			foreach($projectsOfUser as $projectOfUser){ // deletes all Projects of a User
+				$bmcsOfProject = BMC::where('project_id', '=', $projectOfUser['id'])->get();
+				if(!empty($projectOfUser)){
+					foreach($bmcsOfProject as $bmcOfProject){ // deletes all BMC of a Project
+						$noticesOfBmc = Notice::where('bmc_id', '=', $bmcOfProject['id'])->get();
+						if(!empty($bmcOfProject)){
+							foreach($noticesOfBmc as $noticeOfBmc){ // deletes all Notices of a BMC
+								if(!empty($noticeOfBmc)){
+									Notice::destroy($noticeOfBmc['id']);
+								}
 							}
+							BMC::destroy($bmcOfProject['id']);
 						}
-						BMC::destroy($bmcOfProject['id']);
 					}
-				}
-				$project = Project::find($projectOfUser['id']);
-				$assignedTeamMembers = $project->members()->get();
 					
-				foreach ($assignedTeamMembers as $assignedTeamMember){ //detaches all attached Users
-					$project->members()->detach($assignedTeamMember['id']);
+					$project = Project::find($projectOfUser['id']);
+					$assignedTeamMembers = $project->members()->get();
+					
+					foreach ($assignedTeamMembers as $assignedTeamMember){ //detaches assignes users from Project
+						if($assignedTeamMember['pivot']['user_id'] == $user_id){
+							$project->members()->detach($user_id);
+						}		
+					}
+					Project::destroy($projectOfUser['id']);
 				}
-				Project::destroy($projectOfUser['id']);
 			}
 		}
-		foreach($personasOfUser as $personaOfUser){
-			if(!empty($personaOfUser['id'])){
-				Persona::destroy($personaOfUser['id']);
-				
+		
+		if(!empty($personasOfUser)){
+			foreach($personasOfUser as $personaOfUser){
+				if(!empty($personaOfUser['id'])){
+					Persona::destroy($personaOfUser['id']);
+					
+				}
+			}
+		}
+		
+		$assignedProjects = DB::table('project_members')->where('user_id', '=', $user_id)->get();
+		
+		if(!empty($assignedProjects)){
+			foreach ($assignedProjects as $assignedProject){ //detaches the User from the projects he was assigned to
+				$project = Project::find($assignedProject->project_id);
+				$project->members()->detach($assignedProject->user_id);
 			}
 		}
 	}

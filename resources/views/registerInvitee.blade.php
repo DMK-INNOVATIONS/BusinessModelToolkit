@@ -31,7 +31,7 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label">E-Mail Address</label>
 							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
+								<input type="email" class="form-control" name="email" value="{{ $email }}" >
 							</div>
 						</div>
 					
@@ -45,7 +45,7 @@
 										<div role="progressbar" class="progress-bar" id="complexity-bar"></div>
 									</div>
 									<h1 class="pull-right h_complexity" class="hidden">0</h1>
-									<div class="error hidden">Password strength is not enough</div>
+									<div class="error hidden">Password  is not strenght enough</div>
                 			</div>
 						</div>
 
@@ -70,43 +70,6 @@
 	</div>
 </div>
 
-<script>
-function passwordStrength(){
-	$('#complexify #password').complexify({}, function (valid, complexity) {
-		var progressBar = $('#complexify #complexity-bar');
-		progressBar.toggleClass('progress-bar-success', valid);
-		progressBar.toggleClass('progress-bar-danger', !valid);
-		progressBar.css({'width': complexity});
-		$('#complexify .h_complexity').text(Math.round(complexity));
-	});
-}
-$(".progress").addClass("hidden");
-var valid = false;
-$( "#password" ).keyup(function() {
-	var value=$("#password").val();
-	$(".error").addClass("hidden");
-	if(value.length > 0){
-		$(".progress").removeClass("hidden");
-		passwordStrength();
-		var procent=$(".h_complexity").text();
-		if(procent>41){
-			valid=true;
-		}else{
-			valid=false;
-		}
-	}else{
-		$(".progress").addClass("hidden");
-	}
-});
 
-$( "#complexify").submit(function( event ) {
-	if(valid){
-		return;
-	}
-	event.preventDefault();
-	$(".error.hidden").removeClass("hidden");
-});
-
-</script>
 
 @endsection

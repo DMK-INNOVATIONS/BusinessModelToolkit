@@ -7,9 +7,11 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
+use App\Invitation;
 use Mail;
 use DB;
 use App\User;
+use App\Project;
 
 class AuthentificateController extends Controller {
 	
@@ -22,6 +24,17 @@ class AuthentificateController extends Controller {
 				$user->status_enable = 1;
 				$user->save();
 				$this->sendMessageToAdmins($user->id);
+				
+				$was_invited = Invitation::where(['invitee_email' => $request->email])->get();
+				if(!empty($was_invited)){
+					foreach($was_invited as $i){
+						$project = Project::find($i['project_id']);
+						$project->members()->attach($user['id']);
+						$project->save();
+						$invitation = Invitation::find($i['id']);
+						$invitation->delete();
+					}
+				}
 			}
 			return redirect()->guest('auth/login');
 		}
@@ -41,5 +54,10 @@ class AuthentificateController extends Controller {
 				$message->subject('A new User has Registered!');
 			});
 		}
+	}
+	
+	public function getLogin($email)
+	{
+		return view('registerInvitee', ['email'=>$email]);
 	}
 }

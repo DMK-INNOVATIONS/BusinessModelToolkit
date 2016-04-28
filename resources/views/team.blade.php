@@ -13,15 +13,12 @@
 	</div>
 	<div class="divider_style_1"></div>
 	<div class="row" style="margin-top: 10px;">
+		@if(session('error'))
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="alert alert-alert col-md-12" role="alert">{{{ session('error') }}}</div>
+			</div>
+		@endif
 		<div class="col-md-12 col-sm-12 col-xs-12">
-
-			@if(session('error'))
-				<div class="panel panel-danger">
-					<div class="panel-heading"></div>
-					<div class="panel-body">{{{ session('error') }}}</div>
-				</div>
-			@endif
-
 			<div class="panel panel-default">
 				<div class="panel-heading"><b>Your Connections</b> 
 					<!--	<button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-sm">
@@ -96,6 +93,39 @@
 			</div> 
 		</div>
 	</div>
+<?php if(!empty($invitations)):?>
+	<!-- Invitation Table -->
+	<div class="row" style="margin-top: 10px;">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<b>Your Open Invitations</b>
+				</div>
+				<div class="panel-body">
+					<div class="panel panel-default">
+					
+						<!-- Table -->
+						<div class="row table_head">
+							<div class="col-md-3 col-sm-3 col-xs-12">Email</div>
+							<div class="col-md-3 col-sm-3 col-xs-12">Assigned Project</div>
+							<div class="col-md-3 col-sm-3 col-xs-12">Invited on</div>
+							<div class="col-md-3 col-sm-3 col-xs-12">Expires in</div>
+						</div>
+						
+						<?php foreach($invitations as $invitation):?>
+						<div class="row table_body">
+							<div class="col-md-3 col-sm-3 col-xs-12">{{{ $invitation['invitee_email'] }}}</div>
+							<div class="col-md-3 col-sm-3 col-xs-12">{{{ $invitation['project_name'] }}}</div>
+							<div class="col-md-3 col-sm-3 col-xs-12">{{{ date('Y-m-d | H:m',strtotime($invitation['assigned_on'])) }}}</div>
+							<div class="col-md-3 col-sm-3 col-xs-12">{{{ $invitation['expires_on'] }}} Days</div>
+						</div>
+						<?php endforeach;?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php endif;?>
 </div>
 
 <!-- Modal -->

@@ -1,19 +1,20 @@
 <?php namespace App\Http\Controllers;
 
-use App\Persona;
 use App\Project;
 use App\User;
-use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Auth;
-use App\BMC;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
+use App\Invitation;
+use Mail;
+use Carbon\Carbon;
+use DateTime;
 class TeamController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
-	| Persona Controller
+	| Team Controller
 	|--------------------------------------------------------------------------
 	|
 	|
@@ -38,8 +39,9 @@ class TeamController extends Controller {
 	{
 		$assignedTeamMembers = $this->getAssignedTeamMembers();	
 		$myProjects = $this->getMyProjects();
+		$invitations = $this->sortInvitations();
 		
-		return view('team', ['assignedTeamMembers' => $assignedTeamMembers, 'myProjects' => $myProjects]);
+		return view('team', ['assignedTeamMembers' => $assignedTeamMembers, 'myProjects' => $myProjects, 'invitations'=> $invitations]);
 	}
 	
 	public function getAssignedTeamMembers(){
@@ -121,25 +123,30 @@ class TeamController extends Controller {
 	}
 	
 	public function addUserToProject(Request $request){
-		$allUsers = $this->getAllUsers();
+		$token = Input::get('_token');
 		$teamMemberEmail = Input::get('Email');
 		$project_id = Input::get('projects');
+		$project = Project::find($project_id);
+		$project_name = $project['title'];
+		$inviter_id = $project['assignee_id'];
 		$myProjects = $this->getMyProjects();
-		
-		$teamMemberId = 'The User could not be found.';
+		$inviter = User::find($inviter_id);
+		$inviterMail = $inviter['email'];
+		$teamMember = User::where('email',$teamMemberEmail)->get();
+		$teamMemberId = '';
 		$allreadyConnected = false;
-		foreach($allUsers as $user){
-			if($user['email'] == $teamMemberEmail){
-				$teamMemberId = $user['id'];
+		
+		if(!empty($teamMember)){
+			foreach($teamMember as $t){
+				$teamMemberId =  $t['id'];
 			}
 		}
 		
 		if(is_numeric($teamMemberId)){
-			$project = Project::find($project_id);
 			$assignedTeamMembers = $project->members()->get();
 			
 			foreach ($assignedTeamMembers as $assignedTeamMember){
-				if ($assignedTeamMember['id'] == $teamMemberId){ //pr�fen ob User bereits mit Projekt verbunden ist
+				if ($assignedTeamMember['id'] == $teamMemberId){
 					$errorMessage = 'There is already a connection between '.$assignedTeamMember['name'].' and your Project: '.$project['title'].'.';
 					$allreadyConnected = true;
 					
@@ -150,16 +157,63 @@ class TeamController extends Controller {
 			$project->members()->attach($teamMemberId);
 			$project->save();
 			
-			return redirect('team');			
+			return redirect('team');
 		}else{
-			$errorMessage = 'The User with the email '.$teamMemberEmail.' could not be found.';
-			return redirect('team')->with('error', $errorMessage);
+			$is_Invitee_already_invited = Invitation::where(['inviter_id' =>$inviter_id, 'invitee_email' => $teamMemberEmail])->get();
+			$newInvitee = Invitation::where(['invitee_email' => $teamMemberEmail, 'project_id' => $project_id])->get();
+			if(!empty($newInvitee)){
+				if(count($is_Invitee_already_invited) >=1){//keine message schicken + hinzufügen zu Invitations Tabelle
+					$this->saveInvitation($inviter_id, $teamMemberEmail, $project_id);
+					
+					return redirect('team');
+				}else{// message versenden + hinzufügen zu Invitations Tabelle
+					$this->saveInvitation($inviter_id, $teamMemberEmail, $project_id);
+					
+					$this->sendMessageToInvitee($token, $teamMemberEmail, $inviterMail, $project_name);
+					
+					return redirect('team');
+				}
+			}else{
+				$message = 'There is already a connection between '.$teamMemberEmail.' and your Project.';
+				return redirect('team')->with('error', $message);
+			}
 		}
 	}
 	
-	public function getAllUsers(){
-		return User::where('status_enable','1')->get();
+	public function saveInvitation($inviter_id, $teamMemberEmail, $project_id){
+		$invitation = new Invitation();
+		$invitation->inviter_id = $inviter_id;
+		$invitation->invitee_email = $teamMemberEmail;
+		$invitation->project_id = $project_id;
+		$invitation->assigned_on = Carbon::now('Europe/Berlin');
+		$invitation->expires_on = Carbon::now('Europe/Berlin')->addDays(30);
+		$invitation->save();
+	}
+	
+	public function sendMessageToInvitee($token, $email, $inviterMail, $project_name){
+		Mail::send('registering.emailTeamNewInvitee', ['token'=>$token, 'email'=>$email, 'inviterMail'=>$inviterMail, 'project_name'=>$project_name], function($message) use ($email)
+		{
+			$message->from('support@toolkit.builders', 'support@toolkit.builders');
+			$message->to($email);
+			$message->subject('You where invited to a toolkit.builders Project');
+				
+		});
+	}
+	public function sortInvitations(){
+		$invitations = Invitation::where(['inviter_id' => Auth::user()->id])->get();
+		$invitationArray = array();
 		
+		foreach($invitations as $invitation){
+			$project = Project::find($invitation['project_id']);
+			$project_name = $project['title'];
+			
+			$datetime1 = new DateTime($invitation['assigned_on']);
+			$datetime2 = new DateTime($invitation['expires_on']);
+			$diff = $datetime1->diff($datetime2);
+			array_push($invitationArray, ['id'=>$invitation['id'],'inviter_id'=>$invitation['inviter_id'], 'invitee_email'=>$invitation['invitee_email'], 'project_id'=>$invitation['project_id'], 'project_name'=>$project_name, 'created_at'=>$invitation['created_at'], 'assigned_on' =>$invitation['assigned_on'], 'expires_on' =>$diff->format('%a')]);
+		}
+		
+		return $invitationArray;
 	}
 	
 }
